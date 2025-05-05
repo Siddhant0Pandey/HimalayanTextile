@@ -90,10 +90,24 @@ function Navbar() {
         </div>
       </div>
 
+
       {/* Navbar */}
       <nav
         ref={navbarRef}
         className="fixed top-0 left-0 w-full bg-white z-40 shadow-md text-darkText font-display transform -translate-y-full"
+
+      {/* Breadcrumb */}
+      <div className="lg:hidden px-4 py-2 text-sm text-gray-500">
+        {location.pathname !== "/" && (
+          <p>Home / {location.pathname.split("/").slice(1).join(" / ")}</p>
+        )}
+      </div>
+
+      {/* Sidebar Mobile Menu */}
+      <div
+        ref={sidebarRef}
+        className="lg:hidden fixed top-0 right-0 w-3/4 h-full bg-white shadow-lg transform translate-x-full"
+
       >
         <div className="relative flex justify-between items-center px-4 py-4 lg:px-8 lg:py-6">
           <Link to="/">
