@@ -48,7 +48,7 @@ export default function Hero() {
           [3, 4].forEach((j) => {
             tl.fromTo(
               imageRefs.current[j],
-              { y: 200, opacity: 0 },
+              { y: 200, opacity: 0,zIndex:-2},
               {
                 y: 0,
                 opacity: 1,
@@ -96,7 +96,7 @@ export default function Hero() {
           // Normal animation for image 1, 2, 3
           tl.fromTo(
             imageRefs.current[i],
-            { y: 200, opacity: 0 },
+            { y: 200, opacity: 0},
             {
               y: 0,
               opacity: 1,
@@ -164,7 +164,7 @@ export default function Hero() {
           <div
             key={num}
             className="absolute bottom-0 left-0 w-full h-full pointer-events-none"
-            style={{ zIndex: i + 1 }}
+            style={{ zIndex: i === 2 ? -1 : i + 1 }}
             ref={(el) => (imageRefs.current[i] = el)}
           >
             <img
