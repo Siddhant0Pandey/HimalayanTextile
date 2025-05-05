@@ -156,7 +156,7 @@ const FiberMain = () => {
         Natural Fiber Collection
       </h1>
 
-      <div className=" flex  gap-6 max-w-4xl mx-auto overflow-visible">
+      <div className=" flex max-w-4xl mx-auto  w-full sm:w-1/2 p-3 flex-wrap mx-mt-10">
         {cardsData.map((card) => (
           <FiberCard
             key={card.id}
