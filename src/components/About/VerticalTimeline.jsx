@@ -83,12 +83,12 @@ export default function VerticalTimeline() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4">
-      <h1 className="text-4xl font-bold mb-12 text-center">Project Timeline</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center">Our Milestone</h1>
 
       <div className="flex justify-center w-full max-w-6xl">
         <div className="relative">
           {/* Central vertical line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-green-500 z-0"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0"></div>
 
           <div className="relative">
             {timelineData.map((item, index) => {
@@ -111,7 +111,7 @@ export default function VerticalTimeline() {
                     <div
                       className={`w-1 h-1 ${
                         activeItems.includes(index)
-                          ? "bg-green-500 h-full"
+                          ? "bg-[#1fa951] h-full"
                           : "h-0"
                       } transition-all duration-700`}
                     ></div>
@@ -150,7 +150,7 @@ export default function VerticalTimeline() {
                   {/* Icon in the center */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                     <div
-                      className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-green-500 shadow-lg transition-all duration-500 ${
+                      className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
                         activeItems.includes(index) ? "scale-100" : "scale-0"
                       }`}
                     >
@@ -166,7 +166,7 @@ export default function VerticalTimeline() {
 
       {/* Scroll Down Indicator */}
       <div className="mt-6 animate-bounce">
-        <FaChevronDown size={32} className="text-green-500" />
+        <FaChevronDown size={32} className="text-[#1fa951]" />
       </div>
     </div>
   );
