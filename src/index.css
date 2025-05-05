@@ -5,7 +5,7 @@
 @plugin "daisyui";
 
 @theme {
-  --font-display: "Lato", sans-serif;
+  --font-display: "Roboto Slab", sans-serif;
 
   --color-primary: #1fa951;
   --color-secondary: #729a78;
