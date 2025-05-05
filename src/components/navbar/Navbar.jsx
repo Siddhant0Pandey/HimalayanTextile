@@ -179,7 +179,11 @@ function Navbar() {
               onClick={toggleAboutDropdown}
             >
               About
-              <span className="w-2 h-2 bg-highlight rounded-full"></span>
+              <FiChevronDown
+                  className={`transition-transform duration-300 ${
+                    isAboutDropdownOpen ? "rotate-180" : ""
+                  }`}
+                />
             </button>
             {isAboutDropdownOpen && (
               <div className="ml-4 mt-2 space-y-2">
