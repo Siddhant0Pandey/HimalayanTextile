@@ -107,7 +107,7 @@ function Navbar() {
           {/* Desktop Links */}
           <div className="lg:flex gap-8 hidden items-center">
             <div className="relative group" ref={aboutRef}>
-              <h3
+              <div
                 className="text-xl cursor-pointer flex items-center gap-1 relative group"
                 onClick={toggleAboutDropdown}
               >
@@ -118,24 +118,27 @@ function Navbar() {
                   }`}
                 />
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight transition-all duration-300 group-hover:w-full"></span>
-              </h3>
+              </div>
               {isAboutDropdownOpen && (
                 <div className="absolute top-full mt-2 bg-lightText shadow-lg rounded p-2 text-darkText">
                   <Link
                     to="/about"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
+                    onClick={() => setIsAboutDropdownOpen(false)}
                   >
                     About Us
                   </Link>
                   <Link
                     to="/our-story"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
+                    onClick={() => setIsAboutDropdownOpen(false)}
                   >
                     Our Story
                   </Link>
                   <Link
                     to="/sustainability"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
+                    onClick={() => setIsAboutDropdownOpen(false)}
                   >
                     Sustainability
                   </Link>
@@ -180,22 +183,31 @@ function Navbar() {
             >
               About
               <FiChevronDown
-                  className={`transition-transform duration-300 ${
-                    isAboutDropdownOpen ? "rotate-180" : ""
-                  }`}
-                />
+                className={`transition-transform duration-300 ${
+                  isAboutDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
             {isAboutDropdownOpen && (
               <div className="ml-4 mt-2 space-y-2">
                 <Link
+                  to="/about"
+                  className="block text-highlight transition-all duration-300 hover:translate-x-1"
+                  onClick={() => setIsAboutDropdownOpen(false)}
+                >
+                  About Us
+                </Link>
+                <Link
                   to="/our-story"
                   className="block text-highlight transition-all duration-300 hover:translate-x-1"
+                  onClick={() => setIsAboutDropdownOpen(false)}
                 >
                   Our Story
                 </Link>
                 <Link
                   to="/sustainability"
                   className="block text-highlight transition-all duration-300 hover:translate-x-1"
+                  onClick={() => setIsAboutDropdownOpen(false)}
                 >
                   Sustainability
                 </Link>
