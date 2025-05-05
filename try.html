@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Vertical Timeline with GSAP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #121212;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/api/placeholder/1920/1080");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.3;
+        transition: background-image 0.8s ease-in-out;
+        z-index: -1;
+      }
+      .timeline {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        padding: 100px 0;
+      }
+      .line-container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+      .line-segment {
+        position: absolute;
+        width: 100%;
+        background-color: #f57c00;
+        height: 0;
+        transform-origin: top;
+      }
+      .checkpoint {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        opacity: 0;
+      }
+      .checkpoint:nth-child(even) {
+        justify-content: flex-end;
+      }
+      .text-box {
+        position: relative;
+        max-width: 400px;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        z-index: 1;
+        border-left: 4px solid #f57c00;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(8px);
+        transform: perspective(1000px) rotateY(0deg);
+        transition: transform 0.6s ease-out;
+      }
+      .text-box:hover {
+        transform: perspective(1000px) rotateY(5deg) scale(1.03);
+      }
+      .checkpoint:nth-child(even) .text-box {
+        border-left: none;
+        border-right: 4px solid #f57c00;
+        transform: perspective(1000px) rotateY(0deg);
+      }
+      .checkpoint:nth-child(even) .text-box:hover {
+        transform: perspective(1000px) rotateY(-5deg) scale(1.03);
+      }
+      .dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #f57c00;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        box-shadow: 0 0 0 4px rgba(245, 124, 0, 0.3),
+          0 0 0 8px rgba(245, 124, 0, 0.1);
+        opacity: 0;
+      }
+      .text-box h2 {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #f57c00;
+      }
+      .text-box p {
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+      .intro {
+        text-align: center;
+        padding: 10vh 5vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+      .intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/api/placeholder/1920/1080?text=Our%20Process");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: -1;
+        animation: zoomEffect 20s infinite alternate ease-in-out;
+      }
+      @keyframes zoomEffect {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.1);
+        }
+      }
+      .intro h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, #f57c00, #ff9800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .intro p {
+        font-size: 1.4rem;
+        max-width: 600px;
+        opacity: 0.9;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        backdrop-filter: blur(8px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="intro">
+      <h1>Our Crafting Process</h1>
+      <p>
+        Scroll down to discover how we create our handcrafted masterpieces
+        through traditional techniques passed down through generations.
+      </p>
+    </div>
+    <div class="timeline">
+      <div class="line-container"></div>
+
+      <div class="checkpoint" data-bg="">
+        <div class="dot"></div>
+        <div class="text-box">
+          <h2>Step One</h2>
+          <p>
+            We start by selecting the finest natural fibers from Himalayan
+            regions. Each material is carefully inspected for quality and
+            sustainability.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="checkpoint"
+        data-bg="/api/placeholder/1920/1080?text=Traditional%20Dyeing"
+      >
+        <div class="dot"></div>
+        <div class="text-box">
+          <h2>Step Two</h2>
+          <p>
+            Expert artisans spin and dye the fibers using traditional
+            techniques. Natural dyes create vibrant, long-lasting colors that
+            tell a story of their own.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="checkpoint"
+        data-bg="/api/placeholder/1920/1080?text=Hand%20Weaving"
+      >
+        <div class="dot"></div>
+        <div class="text-box">
+          <h2>Step Three</h2>
+          <p>
+            Every rug is handwoven, preserving unique cultural patterns. This
+            process can take several weeks as master weavers bring intricate
+            designs to life.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="checkpoint"
+        data-bg="/api/placeholder/1920/1080?text=Quality%20Inspection"
+      >
+        <div class="dot"></div>
+        <div class="text-box">
+          <h2>Step Four</h2>
+          <p>
+            Finished pieces are inspected, packaged, and prepared for delivery.
+            Each creation carries with it centuries of tradition and artisanal
+            excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Create line segments between checkpoints
+      const checkpoints = gsap.utils.toArray(".checkpoint");
+      const lineContainer = document.querySelector(".line-container");
+
+      // Create line segments
+      for (let i = 0; i < checkpoints.length; i++) {
+        const lineSegment = document.createElement("div");
+        lineSegment.classList.add("line-segment");
+        lineSegment.setAttribute("data-index", i);
+        lineContainer.appendChild(lineSegment);
+      }
+
+      const lineSegments = gsap.utils.toArray(".line-segment");
+
+      // Position line segments
+      function updateLineSegments() {
+        checkpoints.forEach((checkpoint, i) => {
+          if (i < lineSegments.length) {
+            const checkpointTop = checkpoint.offsetTop;
+            const nextCheckpointTop =
+              i < checkpoints.length - 1
+                ? checkpoints[i + 1].offsetTop
+                : checkpoint.offsetTop + checkpoint.offsetHeight;
+
+            const segmentHeight = nextCheckpointTop - checkpointTop;
+
+            gsap.set(lineSegments[i], {
+              top: checkpointTop + checkpoint.offsetHeight / 2,
+              height: 0,
+            });
+          }
+        });
+      }
+
+      updateLineSegments();
+      window.addEventListener("resize", updateLineSegments);
+
+      // Background image change function
+      function changeBackgroundImage(imageSrc) {
+        const pseudoElement = document.styleSheets[0].cssRules[1]; // Target the body::before rule
+        if (pseudoElement && pseudoElement.style) {
+          // Create a temporary div to preload the image
+          const preloadDiv = document.createElement("div");
+          preloadDiv.style.backgroundImage = `url('${imageSrc}')`;
+          preloadDiv.style.position = "absolute";
+          preloadDiv.style.opacity = "0";
+          preloadDiv.style.pointerEvents = "none";
+          document.body.appendChild(preloadDiv);
+
+          setTimeout(() => {
+            // After a brief moment to ensure loading, update the actual background
+            document.body.style.setProperty(
+              "--current-bg",
+              `url('${imageSrc}')`
+            );
+            document.body.classList.add("bg-transitioning");
+
+            setTimeout(() => {
+              document.body.classList.remove("bg-transitioning");
+              document.body.removeChild(preloadDiv);
+            }, 800);
+          }, 100);
+        }
+      }
+
+      // Add the CSS variable and transition class
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `
+        <style>
+          body {
+            --current-bg: url('/api/placeholder/1920/1080?text=Our%20Process');
+          }
+          body::before {
+            background-image: var(--current-bg);
+          }
+          .bg-transitioning::before {
+            opacity: 0;
+          }
+          body::before {
+            transition: opacity 0.8s ease;
+          }
+        </style>
+      `
+      );
+
+      // Animate checkpoints and line segments
+      checkpoints.forEach((checkpoint, index) => {
+        const dot = checkpoint.querySelector(".dot");
+        const textBox = checkpoint.querySelector(".text-box");
+        const lineSegment = lineSegments[index];
+        const fromX = index % 2 === 0 ? -100 : 100;
+        const bgImage = checkpoint.getAttribute("data-bg");
+
+        // Animation for text box
+        gsap.set(textBox, {
+          x: fromX,
+          opacity: 0,
+          rotationY: index % 2 === 0 ? -20 : 20,
+          scale: 0.8,
+        });
+
+        gsap.set(dot, { opacity: 0, scale: 0 });
+
+        // Create animation for each element
+        gsap.to(checkpoint, {
+          opacity: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: checkpoint,
+            start: "top 70%",
+            end: "center center",
+            toggleActions: "play reverse play reverse",
+            scrub: 0.5,
+            markers: false,
+            onEnter: () => {
+              if (bgImage) changeBackgroundImage(bgImage);
+            },
+            onEnterBack: () => {
+              if (bgImage) changeBackgroundImage(bgImage);
+            },
+          },
+        });
+
+        gsap.to(textBox, {
+          x: 0,
+          opacity: 1,
+          rotationY: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: checkpoint,
+            start: "top 70%",
+            end: "center center",
+            toggleActions: "play reverse play reverse",
+            scrub: 0.5,
+            markers: false,
+          },
+        });
+
+        gsap.to(dot, {
+          opacity: 1,
+          scale: 1.2,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: checkpoint,
+            start: "top 70%",
+            end: "center center",
+            toggleActions: "play reverse play reverse",
+            scrub: 0.5,
+            markers: false,
+          },
+        });
+
+        // Only animate line segment if it's not the last one
+        if (index < checkpoints.length - 1) {
+          const nextCheckpoint = checkpoints[index + 1];
+          const segmentHeight = nextCheckpoint.offsetTop - checkpoint.offsetTop;
+
+          gsap.set(lineSegment, { height: 0 });
+
+          gsap.to(lineSegment, {
+            height: segmentHeight,
+            duration: 0.6,
+            ease: "power1.inOut",
+            scrollTrigger: {
+              trigger: checkpoint,
+              start: "top 70%",
+              end: "bottom 70%",
+              toggleActions: "play reverse play reverse",
+              scrub: 0.5,
+              markers: false,
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
