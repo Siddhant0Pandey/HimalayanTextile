@@ -12,12 +12,14 @@ function Navbar() {
       </div> */}
 
       <div className="relative z-10 flex justify-between items-center px-4 py-6 h-full shadow-md  ">
-        <div className=""><h1 className="text-2xl ">Logo</h1></div>
+        <div className="">
+          <h1 className="text-2xl ">Logo</h1>
+        </div>
         <div className="flex gap-8 text-primary">
           <Link>
             <h3 className="text-xl">About</h3>
           </Link>
-          <Link>
+          <Link to={"/fiber"}>
             <h3 className="text-xl">Fiber</h3>
           </Link>
           <Link>
@@ -27,7 +29,9 @@ function Navbar() {
             <h3 className="text-xl">Fabrics</h3>
           </Link>
         </div>
-        <div><BiPhone size={32}/></div>
+        <div>
+          <BiPhone size={32} />
+        </div>
       </div>
     </nav>
   );
