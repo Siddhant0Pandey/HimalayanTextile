@@ -1,168 +1,178 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useState, useEffect } from "react";
 
-// Card Component
-const FiberCard = ({ imageSrc, title, description }) => {
-  const cardRef = useRef(null);
-  const imageRef = useRef(null);
-  const contentRef = useRef(null);
-  const hoverTl = useRef(null);
+// Card Component with enhanced animations
+const FiberCard = ({ imageSrc, title, description, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Set content hidden initially
-    gsap.set(contentRef.current, {
-      yPercent: 100,
-      opacity: 0,
-      height: 0,
-      padding: 0,
-    });
+    // Staggered entrance animation
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100 * index);
 
-    // Create separate hover animation for each card
-    hoverTl.current = gsap.timeline({ paused: true });
-
-    hoverTl.current.to(
-      imageRef.current,
-      {
-        scale: 1.05,
-        duration: 0.4,
-        ease: "power2.out",
-      },
-      0
-    );
-
-    hoverTl.current.to(
-      contentRef.current,
-      {
-        yPercent: 0,
-        opacity: 1,
-        height: "auto",
-        padding: "1.5rem",
-        duration: 0.4,
-        ease: "power2.out",
-      },
-      0
-    );
-
-    // Entrance animation per card (each one runs independently)
-    gsap.fromTo(
-      cardRef.current,
-      {
-        opacity: 0,
-        y: 30,
-        scale: 0.96,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: Math.random() * 0.5, // randomize for natural staggered entrance
-      }
-    );
-  }, []);
+    return () => clearTimeout(timer);
+  }, [index]);
 
   const handleMouseEnter = () => {
-    hoverTl.current.play();
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    hoverTl.current.reverse();
+    setIsHovered(false);
   };
 
   return (
     <div
-      ref={cardRef}
-      className="card bg-base-100 shadow-lg overflow-hidden cursor-pointer h-full transition-transform duration-300"
+      className={`relative bg-white shadow-lg overflow-hidden cursor-pointer w-full h-96 rounded-lg transition-all duration-700 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {/* Card shine effect on hover */}
+      {isHovered && (
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 z-10 animate-shine" />
+      )}
+
       <figure
-        ref={imageRef}
-        className="relative h-64 overflow-hidden transition-transform duration-300"
+        className={`h-full w-full overflow-hidden transition-all duration-500 ${
+          isHovered ? "scale-105" : ""
+        }`}
       >
         <img
-          src={imageSrc || "/api/placeholder/400/320"}
+          src={imageSrc || "assets/img/Fiber/hemp.jpg"}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-all duration-700"
         />
       </figure>
 
       <div
-        ref={contentRef}
-        className="card-body overflow-hidden p-0"
-        style={{ height: 0 }}
+        className={`absolute bottom-0 left-0 w-full bg-white bg-opacity-90 p-6 transition-all duration-500 transform ${
+          isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+        }`}
       >
-        <h2 className="card-title text-primary">{title}</h2>
-        <p>{description}</p>
-        <div className="card-actions justify-end mt-2">
-          <button className="btn btn-primary">Learn More</button>
+        <h2
+          className={`text-xl font-bold text-indigo-600 mb-2 transition-all duration-300 ${
+            isHovered ? "translate-x-0" : "-translate-x-4"
+          }`}
+        >
+          {title}
+        </h2>
+        <p
+          className={`text-sm text-gray-700 transition-all duration-500 delay-100 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {description}
+        </p>
+        <div className="mt-3 text-right">
+          <button
+            className={`bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1 px-3 rounded text-sm transition-all duration-300 transform ${
+              isHovered ? "scale-105" : "scale-100"
+            }`}
+          >
+            Learn More
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-// Main Component
-const FiberMain = () => {
-  const cardsData = [
-    {
-      id: 1,
-      title: "Hemp Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Hemp fiber offers exceptional strength while remaining eco-friendly. Cultivated with minimal resources, it supports sustainable innovation in modern textiles and construction.",
-    },
-    {
-      id: 2,
-      title: "Cotton Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Soft and breathable cotton is a versatile natural fiber. Its comfort and absorbency make it ideal for everyday clothing and personal care products.",
-    },
-    {
-      id: 3,
-      title: "Flax Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Flax produces linen, a lightweight and moisture-wicking fabric. Known for its durability and natural cooling properties, it's perfect for warm climates.",
-    },
-    {
-      id: 4,
-      title: "Jute Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Jute is among the most affordable natural fibers with low environmental impact. Its coarse texture makes it excellent for rugs, bags, and packaging materials.",
-    },
-    {
-      id: 5,
-      title: "Bamboo Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Fast-growing bamboo creates soft, antibacterial fibers. Its sustainability and luxurious feel have made it increasingly popular in modern eco-friendly textiles.",
-    },
-    {
-      id: 6,
-      title: "Silk Fiber",
-      imageSrc: "assets/img/Fiber/hemp.jpg",
-      description:
-        "Legendary for its lustrous appearance and smooth texture, silk remains one of the most luxurious natural fibers. Its protein structure gives it unique insulating properties.",
-    },
-  ];
+// Animated Title Component
+const AnimatedTitle = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-gray-50">
-      <h1 className="text-3xl font-bold text-center mb-8 text-primary">
-        Natural Fiber Collection
-      </h1>
+    <h1
+      className={`text-3xl font-bold text-center mb-12 text-indigo-600 transition-all duration-1000 transform ${
+        isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
+      }`}
+    >
+      {children}
+    </h1>
+  );
+};
 
-      <div className=" flex max-w-4xl mx-auto  w-full sm:w-1/2 p-3 flex-wrap mx-mt-10">
-        {cardsData.map((card) => (
+// Fiber data with unique images for each type
+const fiberData = [
+  {
+    id: 1,
+    title: "Hemp Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Hemp fiber offers exceptional strength while remaining eco-friendly. Cultivated with minimal resources, it supports sustainable innovation in modern textiles and construction.",
+  },
+  {
+    id: 2,
+    title: "Cotton Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Soft and breathable cotton is a versatile natural fiber. Its comfort and absorbency make it ideal for everyday clothing and personal care products.",
+  },
+  {
+    id: 3,
+    title: "Flax Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Flax produces linen, a lightweight and moisture-wicking fabric. Known for its durability and natural cooling properties, it's perfect for warm climates.",
+  },
+  {
+    id: 4,
+    title: "Jute Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Jute is among the most affordable natural fibers with low environmental impact. Its coarse texture makes it excellent for rugs, bags, and packaging materials.",
+  },
+  {
+    id: 5,
+    title: "Bamboo Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Fast-growing bamboo creates soft, antibacterial fibers. Its sustainability and luxurious feel have made it increasingly popular in modern eco-friendly textiles.",
+  },
+  {
+    id: 6,
+    title: "Silk Fiber",
+    imageSrc: "assets/img/Fiber/hemp.jpg",
+    description:
+      "Legendary for its lustrous appearance and smooth texture, silk remains one of the most luxurious natural fibers. Its protein structure gives it unique insulating properties.",
+  },
+];
+
+// Main Component
+const FiberMain = () => {
+  return (
+    <div className="min-h-screen p-4 md:p-8 bg-gradient-to-b from-gray-50 to-gray-100">
+      <style jsx global>{`
+        @keyframes shine {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+        .animate-shine {
+          animation: shine 1.5s ease-in-out;
+        }
+      `}</style>
+
+      <AnimatedTitle>Natural Fiber Collection</AnimatedTitle>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {fiberData.map((fiber, index) => (
           <FiberCard
-            key={card.id}
-            title={card.title}
-            imageSrc={card.imageSrc}
-            description={card.description}
+            key={fiber.id}
+            title={fiber.title}
+            imageSrc={fiber.imageSrc}
+            description={fiber.description}
+            index={index}
           />
         ))}
       </div>
