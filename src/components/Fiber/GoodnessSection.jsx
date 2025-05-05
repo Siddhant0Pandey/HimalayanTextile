@@ -284,5 +284,4 @@ const GoodnessSection = () => {
     </section>
   );
 };
-
 export default GoodnessSection;
