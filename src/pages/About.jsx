@@ -1,10 +1,11 @@
 import React from "react";
-import Timeline from "../components/About/VerticalTimeline";
 import VerticalTimeline from "../components/About/VerticalTimeline";
+import AboutHero from "../components/About/AboutHero";
 
 function About() {
   return (
     <div>
+      <AboutHero />
       <VerticalTimeline />
     </div>
   );
