@@ -91,8 +91,8 @@ export default function WhatSetsUsApartHorizontal() {
       className="h-screen overflow-hidden relative bg-white"
     >
       {/* Fixed Title */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#1fa951] mb-4">
-        <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1]  bg-opacity-90 px-4 py-2 transition-all duration-300">
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText mb-4">
+        <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1]  bg-opacity-90 px-4 py-2 transition-all duration-300  ">
           {currentTitle}
         </h1>
       </div>
