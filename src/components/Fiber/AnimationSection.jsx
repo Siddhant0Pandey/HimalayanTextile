@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 
 // Add your image URLs here
 const imageData = [
@@ -20,6 +20,23 @@ const imageData = [
 const AnimationSection = () => {
   const [animationState, setAnimationState] = useState(0);
   const [resetTrigger, setResetTrigger] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  // Check screen size when component mounts and when window resizes
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // 768px is a common breakpoint for medium screens
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add resize listener
+    window.addEventListener("resize", checkScreenSize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setAnimationState(1), 500);
@@ -43,13 +60,22 @@ const AnimationSection = () => {
   }, [resetTrigger]);
 
   return (
-    <div className="w-full h-64 bg-gray-100 relative overflow-hidden rounded-lg">
+    <div
+      className={`w-full ${
+        isSmallScreen ? "h-96" : "h-64"
+      } bg-gray-100 relative overflow-hidden rounded-lg`}
+    >
       <div className="w-full h-full flex items-center justify-center relative">
+        {/* Images Layer (lower z-index) */}
         {/* First Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
+          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 z-10 ${
             animationState >= 1
-              ? "transform -translate-x-72"
+              ? isSmallScreen
+                ? "transform -translate-y-32"
+                : "transform -translate-x-72"
+              : isSmallScreen
+              ? "transform translate-y-full"
               : "transform translate-x-full"
           }`}
         >
@@ -60,22 +86,15 @@ const AnimationSection = () => {
           />
         </div>
 
-        {/* First Arrow */}
-        <div
-          className={`absolute transition-all duration-1000 ease-in-out ${
-            animationState >= 2
-              ? "transform -translate-x-36"
-              : "transform translate-x-full"
-          }`}
-        >
-          <FaArrowRight className="text-gray-700 w-10 h-10" />
-        </div>
-
         {/* Second Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
+          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 z-10 ${
             animationState >= 3
-              ? "transform translate-x-0"
+              ? isSmallScreen
+                ? "transform translate-y-0"
+                : "transform translate-x-0"
+              : isSmallScreen
+              ? "transform translate-y-full"
               : "transform translate-x-full"
           }`}
         >
@@ -86,22 +105,15 @@ const AnimationSection = () => {
           />
         </div>
 
-        {/* Second Arrow */}
-        <div
-          className={`absolute transition-all duration-1000 ease-in-out ${
-            animationState >= 4
-              ? "transform translate-x-36"
-              : "transform translate-x-full"
-          }`}
-        >
-          <FaArrowRight className="text-gray-700 w-10 h-10" />
-        </div>
-
         {/* Third Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
+          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 z-10 ${
             animationState >= 5
-              ? "transform translate-x-72"
+              ? isSmallScreen
+                ? "transform translate-y-32"
+                : "transform translate-x-72"
+              : isSmallScreen
+              ? "transform translate-y-full"
               : "transform translate-x-full"
           }`}
         >
@@ -110,6 +122,45 @@ const AnimationSection = () => {
             alt={imageData[2].alt}
             className="w-full h-full object-cover rounded"
           />
+        </div>
+
+        {/* Arrows Layer (higher z-index) */}
+        {/* First Arrow */}
+        <div
+          className={`absolute transition-all duration-1000 ease-in-out z-20 ${
+            animationState >= 2
+              ? isSmallScreen
+                ? "transform -translate-y-16"
+                : "transform -translate-x-36"
+              : isSmallScreen
+              ? "transform translate-y-full"
+              : "transform translate-x-full"
+          }`}
+        >
+          {isSmallScreen ? (
+            <FaArrowDown className="text-gray-700 w-10 h-7" />
+          ) : (
+            <FaArrowRight className="text-gray-700 w-10 h-7" />
+          )}
+        </div>
+
+        {/* Second Arrow */}
+        <div
+          className={`absolute transition-all duration-1000 ease-in-out z-20 ${
+            animationState >= 4
+              ? isSmallScreen
+                ? "transform translate-y-16"
+                : "transform translate-x-36"
+              : isSmallScreen
+              ? "transform translate-y-full"
+              : "transform translate-x-full"
+          }`}
+        >
+          {isSmallScreen ? (
+            <FaArrowDown className="text-gray-700 w-10 h-7" />
+          ) : (
+            <FaArrowRight className="text-gray-700 w-10 h-7" />
+          )}
         </div>
       </div>
 
