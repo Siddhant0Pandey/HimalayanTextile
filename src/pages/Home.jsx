@@ -1,14 +1,16 @@
 import React from 'react'
 import Hero from '../components/home/Hero'
-//  import WhatSetsUsApart from '../components/home/WhatSetsUsApart'
+ import WhatSetsUsApart from '../components/home/WhatSetsUsApart'
 
 function Home() {
   return (
-    <div>
+    <div >
      <Hero/>
-     {/* <WhatSetsUsApart/> */}
+     <div>
+     <WhatSetsUsApart/> 
+     </div>
     </div>
   )
 }
 
-export default Home
+export default Home;
