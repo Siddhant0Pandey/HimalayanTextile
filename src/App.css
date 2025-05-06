@@ -6,3 +6,7 @@
   -webkit-text-stroke: 2px #1d1f10; 
   color: transpardarkent;
 }
+.text-stroke-coreValue{
+  -webkit-text-stroke: 2px #edfeee; 
+  color: transpardarkent;
+}

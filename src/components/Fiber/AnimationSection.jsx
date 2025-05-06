@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 
-// Add your image URLs here
-const imageData = [
+// Desktop and mobile image data
+const desktopImageData = [
   {
-    url: "/assets/img/Fiber/raw1.png", // Make sure path is from public folder
+    url: "/assets/img/Fiber/raw4.png", // Original desktop images
+    alt: "Image 1",
+  },
+  {
+    url: "/assets/img/Fiber/raw5.png",
+    alt: "Image 2",
+  },
+  {
+    url: "/assets/img/Fiber/raw8.png",
+    alt: "Image 3",
+  },
+];
+
+const mobileImageData = [
+  {
+    url: "/assets/img/Fiber/raw1.png", // Mobile images as requested
     alt: "Image 1",
   },
   {
@@ -18,19 +33,52 @@ const imageData = [
 ];
 
 const AnimationSection = () => {
-  const [animationState, setAnimationState] = useState(0);
+  // Use a single state to track which element is currently entering
+  const [currentElement, setCurrentElement] = useState(0);
   const [resetTrigger, setResetTrigger] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  // Check screen size when component mounts and when window resizes
   useEffect(() => {
-    const timer1 = setTimeout(() => setAnimationState(1), 500);
-    const timer2 = setTimeout(() => setAnimationState(2), 2000);
-    const timer3 = setTimeout(() => setAnimationState(3), 3500);
-    const timer4 = setTimeout(() => setAnimationState(4), 5000);
-    const timer5 = setTimeout(() => setAnimationState(5), 6500);
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // 768px is a common breakpoint for medium screens
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    // Add resize listener
+    window.addEventListener("resize", checkScreenSize);
+
+    // Clean up
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  // Sequential animation effect - one element at a time
+  useEffect(() => {
+    // Clear animation first
+    setCurrentElement(0);
+
+    // Element 1: First image
+    const timer1 = setTimeout(() => setCurrentElement(1), 500);
+
+    // Element 2: First arrow
+    const timer2 = setTimeout(() => setCurrentElement(2), 2000);
+
+    // Element 3: Second image
+    const timer3 = setTimeout(() => setCurrentElement(3), 3500);
+
+    // Element 4: Second arrow
+    const timer4 = setTimeout(() => setCurrentElement(4), 5000);
+
+    // Element 5: Third image
+    const timer5 = setTimeout(() => setCurrentElement(5), 6500);
+
+    // Reset animation after showing all elements
     const timerReset = setTimeout(() => {
-      setAnimationState(0);
+      setCurrentElement(0);
       setResetTrigger((prev) => prev + 1);
-    }, 9000);
+    }, 10000);
 
     return () => {
       clearTimeout(timer1);
@@ -42,15 +90,28 @@ const AnimationSection = () => {
     };
   }, [resetTrigger]);
 
+  // Choose which image set to use based on screen size
+  const imageData = isSmallScreen ? mobileImageData : desktopImageData;
+
   return (
-    <div className="w-full h-64 bg-gray-100 relative overflow-hidden rounded-lg">
+    <div
+      className={`w-full ${
+        isSmallScreen ? "h-96" : "h-64"
+      } bg-gray-100 relative overflow-hidden rounded-lg`}
+    >
       <div className="w-full h-full flex items-center justify-center relative">
         {/* First Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
-            animationState >= 1
-              ? "transform -translate-x-72"
-              : "transform translate-x-full"
+          className={`absolute transition-all duration-1000 ease-in-out ${
+            isSmallScreen ? "w-20 h-20" : "w-30 h-40"
+          } z-10 transform ${
+            currentElement >= 1
+              ? isSmallScreen
+                ? "-translate-y-32"
+                : "-translate-x-72"
+              : isSmallScreen
+              ? "translate-y-full"
+              : "translate-x-full"
           }`}
         >
           <img
@@ -62,21 +123,37 @@ const AnimationSection = () => {
 
         {/* First Arrow */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out ${
-            animationState >= 2
-              ? "transform -translate-x-36"
-              : "transform translate-x-full"
+          className={`absolute transition-all duration-1000 ease-in-out z-20 ${
+            isSmallScreen && currentElement >= 2 ? "mt-2" : ""
+          } transform ${
+            currentElement >= 2
+              ? isSmallScreen
+                ? "-translate-y-16"
+                : "-translate-x-36"
+              : isSmallScreen
+              ? "translate-y-full"
+              : "translate-x-full"
           }`}
         >
-          <FaArrowRight className="text-gray-700 w-10 h-10" />
+          {isSmallScreen ? (
+            <FaArrowDown className="text-gray-700 w-10 h-7" />
+          ) : (
+            <FaArrowRight className="text-gray-700 w-8 h-8" />
+          )}
         </div>
 
         {/* Second Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
-            animationState >= 3
-              ? "transform translate-x-0"
-              : "transform translate-x-full"
+          className={`absolute transition-all duration-1000 ease-in-out ${
+            isSmallScreen ? "w-20 h-20" : "w-30 h-35"
+          } z-10 transform ${
+            currentElement >= 3
+              ? isSmallScreen
+                ? "translate-y-0"
+                : "translate-x-0"
+              : isSmallScreen
+              ? "translate-y-full"
+              : "translate-x-full"
           }`}
         >
           <img
@@ -88,21 +165,35 @@ const AnimationSection = () => {
 
         {/* Second Arrow */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out ${
-            animationState >= 4
-              ? "transform translate-x-36"
-              : "transform translate-x-full"
+          className={`absolute transition-all duration-1000 ease-in-out z-20 transform ${
+            currentElement >= 4
+              ? isSmallScreen
+                ? "translate-y-16"
+                : "translate-x-36"
+              : isSmallScreen
+              ? "translate-y-full"
+              : "translate-x-full"
           }`}
         >
-          <FaArrowRight className="text-gray-700 w-10 h-10" />
+          {isSmallScreen ? (
+            <FaArrowDown className="text-gray-700 w-10 h-7" />
+          ) : (
+            <FaArrowRight className="text-gray-700 w-8 h-8" />
+          )}
         </div>
 
         {/* Third Image */}
         <div
-          className={`absolute transition-all duration-1000 ease-in-out w-28 h-28 ${
-            animationState >= 5
-              ? "transform translate-x-72"
-              : "transform translate-x-full"
+          className={`absolute transition-all duration-1000 ease-in-out ${
+            isSmallScreen ? "w-20 h-20" : "w-30 h-35"
+          } z-10 transform ${
+            currentElement >= 5
+              ? isSmallScreen
+                ? "translate-y-32"
+                : "translate-x-72"
+              : isSmallScreen
+              ? "translate-y-full"
+              : "translate-x-full"
           }`}
         >
           <img
@@ -112,17 +203,6 @@ const AnimationSection = () => {
           />
         </div>
       </div>
-
-      {/* Restart Button */}
-      {/* <button
-        onClick={() => {
-          setAnimationState(0);
-          setTimeout(() => setResetTrigger((prev) => prev + 1), 100);
-        }}
-        className="absolute bottom-2 right-2 bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded text-sm"
-      >
-        Restart Animation
-      </button> */}
     </div>
   );
 };

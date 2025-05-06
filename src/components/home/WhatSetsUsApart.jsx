@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const panels = [
   {
     title: "What Set Us Apart?",
-    image: "/raw-product.jpg",
+    image: "/assets/img/Fiber/raw4.png",
     description: "Sustainable materials sourced from the Himalayas",
     reason:
       "Unlike mass-produced goods, we use traceable, eco-friendly raw materials directly supporting local Himalayan communities.",
@@ -23,7 +23,7 @@ const panels = [
   },
   {
     title: "Finished Product",
-    image: "/finished-product.jpg",
+    image: "/assets/img/Fiber/raw8.png",
     description: "Durable, eco-conscious quality for modern living",
     reason:
       "Our products are built to last using minimal-impact processes, ensuring longevity without compromising sustainability.",
