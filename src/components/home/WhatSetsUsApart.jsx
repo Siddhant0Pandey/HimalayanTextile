@@ -40,14 +40,24 @@ const panels = [
 export default function WhatSetsUsApartHorizontal() {
   const containerRef = useRef(null);
   const panelRefs = useRef([]);
+  const titleRef = useRef(null);
   const [currentTitle, setCurrentTitle] = useState(panels[0].title);
 
+  // Animate title on mount
   useEffect(() => {
-    const panelElements = gsap.utils.toArray(".panel");
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+    );
+  }, []);
+
+  useEffect(() => {
+    const panelElements = panelRefs.current;
     const totalPanels = panelElements.length;
 
     const ctx = gsap.context(() => {
-      // Horizontal scroll animation
+      // Horizontal scroll
       gsap.to(panelElements, {
         xPercent: -100 * (totalPanels - 1),
         ease: "none",
@@ -59,14 +69,30 @@ export default function WhatSetsUsApartHorizontal() {
         },
       });
 
-      // Panel entrance and title update
+      // Animations for each panel
       panelElements.forEach((panel, index) => {
+        if (!panel) return;
+
         ScrollTrigger.create({
           trigger: panel,
           start: "left center",
           horizontal: true,
-          onEnter: () => setCurrentTitle(panels[index].title),
-          onEnterBack: () => setCurrentTitle(panels[index].title),
+          onEnter: () => {
+            setCurrentTitle(panels[index].title);
+            gsap.fromTo(
+              titleRef.current,
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+            );
+          },
+          onEnterBack: () => {
+            setCurrentTitle(panels[index].title);
+            gsap.fromTo(
+              titleRef.current,
+              { opacity: 0, y: 30 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+            );
+          },
         });
 
         gsap.from(panel, {
@@ -92,7 +118,10 @@ export default function WhatSetsUsApartHorizontal() {
     >
       {/* Fixed Title */}
       <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText mb-4">
-        <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1]  bg-opacity-90 px-4 py-2 transition-all duration-300  ">
+        <h1
+          ref={titleRef}
+          className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2 transition-all duration-300"
+        >
           {currentTitle}
         </h1>
       </div>
@@ -103,7 +132,9 @@ export default function WhatSetsUsApartHorizontal() {
           <div
             key={index}
             className="panel w-screen h-full flex items-center justify-center flex-col p-10 text-center"
-            ref={(el) => (panelRefs.current[index] = el)}
+            ref={(el) => {
+              if (el) panelRefs.current[index] = el;
+            }}
           >
             {panel.isQuote ? (
               <blockquote className="text-3xl italic text-[#2c3e50] font-semibold max-w-md">
