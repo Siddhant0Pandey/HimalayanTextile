@@ -11,46 +11,40 @@ import {
 const timelineData = [
   {
     id: 1,
-    title: "Project Inception",
-    date: "January 2025",
+    title: "Fiber Sourcing",
     description:
-      "Initial ideation and project planning. Gathered requirements and assembled the core team.",
+      "Carefully selected cotton, wool, and synthetic blends from trusted suppliers.",
     bgImage: "https://via.placeholder.com/800x500",
     icon: FaCalendarAlt,
   },
   {
     id: 2,
-    title: "Design Phase",
-    date: "February 2025",
+    title: "Yarn Spinning",
     description:
-      "Created wireframes, mockups, and finalized the visual design. Conducted user testing on initial prototypes.",
+      "Precision spinning ensures strength, softness, and consistency.",
     bgImage: "https://via.placeholder.com/800x500",
     icon: FaMapMarkerAlt,
   },
   {
     id: 3,
-    title: "Development Sprint",
-    date: "March 2025",
-    description:
-      "Core functionality implemented. Backend systems set up and initial frontend components created.",
+    title: "Dyeing & Finishing",
+    description: "Eco-conscious dyeing with vibrant, long-lasting colors.",
     bgImage: "https://via.placeholder.com/800x500",
     icon: FaCode,
   },
   {
     id: 4,
-    title: "Testing & Refinement",
-    date: "April 2025",
+    title: "Weaving & Knitting",
     description:
-      "Extensive QA testing, bug fixing, and performance optimization. Prepared documentation for release.",
+      "Traditional craftsmanship meets modern machinery for perfect fabric.",
     bgImage: "https://via.placeholder.com/800x500",
     icon: FaCheckCircle,
   },
   {
     id: 5,
-    title: "Launch Day",
-    date: "May 2025",
+    title: "Quality Control",
     description:
-      "Official product launch with marketing campaign. Monitoring systems and support team in place.",
+      "Every batch undergoes strict inspection to meet international standards.",
     bgImage: "https://via.placeholder.com/800x500",
     icon: FaRocket,
   },
@@ -83,7 +77,7 @@ export default function VerticalTimeline() {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4">
-      <h1 className="text-4xl font-bold mb-12 text-center">Our Milestone</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center">Our Process</h1>
 
       <div className="flex justify-center w-full max-w-6xl">
         <div className="relative">
