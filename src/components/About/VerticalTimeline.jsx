@@ -76,13 +76,13 @@ export default function VerticalTimeline() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4">
+    <div className="flex flex-col items-center bg-gray-100 px-4 pt-20">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Process</h1>
 
       <div className="flex justify-center w-full max-w-6xl">
-        <div className="relative">
-          {/* Central vertical line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0"></div>
+        <div className="relative w-full">
+          {/* Vertical Line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0"></div>
 
           <div className="relative">
             {timelineData.map((item, index) => {
@@ -92,18 +92,18 @@ export default function VerticalTimeline() {
               return (
                 <div
                   key={item.id}
-                  className={`timeline-card mb-20 flex ${
-                    isLeft ? "flex-row" : "flex-row-reverse"
-                  } items-center justify-between`}
+                  className={`timeline-card mb-20 flex flex-col md:flex-row ${
+                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                  } items-center justify-between relative`}
                 >
-                  {/* Connector line */}
+                  {/* Connector Line (only on md+) */}
                   <div
-                    className={`w-1/2 flex justify-${
+                    className={`hidden md:flex w-1/2 justify-${
                       isLeft ? "end" : "start"
                     } pr-4 pl-4`}
                   >
                     <div
-                      className={`w-1 h-1 ${
+                      className={`w-1 ${
                         activeItems.includes(index)
                           ? "bg-[#1fa951] h-full"
                           : "h-0"
@@ -111,9 +111,9 @@ export default function VerticalTimeline() {
                     ></div>
                   </div>
 
-                  {/* Card */}
+                  {/* Card Content */}
                   <div
-                    className={`w-5/12 transition-all duration-700 ease-in-out transform ${
+                    className={`w-full md:w-5/12 transition-all duration-700 ease-in-out transform ${
                       activeItems.includes(index)
                         ? "translate-y-0 opacity-100"
                         : isLeft
@@ -128,9 +128,6 @@ export default function VerticalTimeline() {
                           style={{ backgroundImage: `url(${item.bgImage})` }}
                         ></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div className="absolute bottom-0 left-0 p-4 text-white">
-                          <p className="text-lg font-semibold">{item.date}</p>
-                        </div>
                       </div>
                       <div className="p-6">
                         <h3 className="text-2xl font-bold mb-2">
@@ -141,8 +138,8 @@ export default function VerticalTimeline() {
                     </div>
                   </div>
 
-                  {/* Icon in the center */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                  {/* Icon Centered (only on md+) */}
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
                     <div
                       className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
                         activeItems.includes(index) ? "scale-100" : "scale-0"
