@@ -57,19 +57,6 @@ function Navbar() {
     }
   }, [isNavbarVisible]);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (aboutRef.current && !aboutRef.current.contains(event.target)) {
-        setIsAboutDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <>
       {/* Toggle Icon */}
@@ -122,21 +109,18 @@ function Navbar() {
                   <Link
                     to="/about"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                    onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                   >
                     About Us
                   </Link>
                   <Link
                     to="/our-story"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                    onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                   >
                     Our Story
                   </Link>
                   <Link
                     to="/sustainability"
                     className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                    onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                   >
                     Sustainability
                   </Link>
@@ -189,21 +173,18 @@ function Navbar() {
                 <Link
                   to="/about"
                   className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                  onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                 >
                   About Us
                 </Link>
                 <Link
                   to="/our-story"
                   className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                  onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                 >
                   Our Story
                 </Link>
                 <Link
                   to="/sustainability"
                   className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                  onClick={() => setTimeout(() => setIsAboutDropdownOpen(false), 50)}
                 >
                   Sustainability
                 </Link>
