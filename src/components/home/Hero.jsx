@@ -37,6 +37,7 @@ export default function Hero() {
         scale: 0.8,
         y: -80,
         duration: 1.5,
+    
         ease: "power2.out",
       });
 
