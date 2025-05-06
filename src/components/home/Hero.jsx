@@ -7,10 +7,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const imageOrder = [1, 2, 3, 4, 5];
 const processSteps = [
-  { title: "Raw Fibres", image: "/assets/img/icons/fibre.png" },
-  { title: "Spinning", image: "/assets/img/icons/spinning.png" },
-  { title: "Cottonised", image: "/assets/img/icons/yarn.png" },
-  { title: "Yarns", image: "/assets/img/icons/weaving.png" },
+  { title: "Raw Fibres", image: "/assets/img/Fiber/raw.png" },
+  { title: "Spinning", image: "/assets/img/Fiber/raw.png" },
+  { title: "Cottonised", image: "/assets/img/Fiber/raw.png" },
+  { title: "Yarns", image: "/assets/img/Fiber/raw.png" },
 ];
 
 export default function Hero() {
@@ -37,6 +37,7 @@ export default function Hero() {
         scale: 0.8,
         y: -80,
         duration: 1.5,
+    
         ease: "power2.out",
       });
 
@@ -185,7 +186,7 @@ export default function Hero() {
           >
             {/* Box */}
             <div
-              className="w-[clamp(120px,15vw,240px)] bg-white/90 text-darkText shadow-xl flex flex-col items-center justify-center text-[clamp(0.9rem,1.5vw,1.1rem)] font-semibold rounded p-3"
+              className="w-[clamp(120px,15vw,240px)] bg-transparent/90 text-darkText shadow-xl flex flex-col items-center justify-center text-[clamp(0.9rem,1.5vw,1.1rem)] font-semibold rounded p-3"
               ref={(el) => (boxRefs.current[i] = el)}
             >
               <img
