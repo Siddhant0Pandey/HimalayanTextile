@@ -1,88 +1,147 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BiPhone } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import { Draggable } from "gsap/Draggable";
-import { FaAngleDoubleDown, FaAngleDoubleUp } from "react-icons/fa";
-import { FiChevronDown } from "react-icons/fi";
-
-gsap.registerPlugin(Draggable);
+import { IoClose } from "react-icons/io5";
 
 function Navbar() {
-  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const navbarRef = useRef(null);
-  const toggleIconRef = useRef(null);
-  const aboutRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleNavbar = () => {
-    setIsNavbarVisible((prev) => !prev);
+  const menuRef = useRef(null);
+  const menuLinksRef = useRef([]);
+  const subMenuLinksRef = useRef([]);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+    if (menuOpen) setAboutOpen(false);
   };
 
   const toggleAboutDropdown = () => {
-    setIsAboutDropdownOpen((prev) => !prev);
+    setAboutOpen((prev) => !prev);
   };
 
   useEffect(() => {
-    gsap.to(navbarRef.current, {
-      y: isNavbarVisible ? 0 : "-100%",
-      duration: 0.5,
-      ease: "power3.inOut",
-    });
-  }, [isNavbarVisible]);
+    const handleScroll = () => {
+      const triggerPoint = window.innerHeight * 10.4;
+      setScrolled(window.scrollY > triggerPoint);
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
 
   useEffect(() => {
-    Draggable.create(toggleIconRef.current, {
-      type: "y",
-      bounds: { minY: 0, maxY: 100 },
-      onDragEnd: function () {
-        if (this.y > 30) {
-          setIsNavbarVisible(true);
-        }
-        gsap.to(this.target, { y: 0, duration: 0.3 });
-      },
-    });
-
-    if (!isNavbarVisible) {
-      gsap.to(toggleIconRef.current, {
-        y: 5,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-        duration: 0.6,
+    if (menuOpen) {
+      gsap.to(menuRef.current, {
+        clipPath: "circle(150% at 90% -10%)",
+        duration: 0.7,
+        ease: "power4.inOut",
+        pointerEvents: "auto",
       });
+
+      gsap.fromTo(
+        menuLinksRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.3,
+          ease: "power3.out",
+        }
+      );
     } else {
-      gsap.killTweensOf(toggleIconRef.current);
-      gsap.to(toggleIconRef.current, { y: 0, duration: 0.3 });
+      gsap.to(menuRef.current, {
+        clipPath: "circle(0% at 90% -10%)",
+        duration: 0.6,
+        ease: "power4.inOut",
+        pointerEvents: "none",
+      });
     }
-  }, [isNavbarVisible]);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (aboutOpen) {
+      gsap.fromTo(
+        subMenuLinksRef.current,
+        { x: -20, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.4,
+          stagger: 0.1,
+          ease: "power2.out",
+        }
+      );
+    }
+  }, [aboutOpen]);
+
+  const navLinks = [
+    { text: "Home", to: "/" },
+    {
+      text: "About",
+      dropdown: [
+        { text: "About Us", to: "/about" },
+        { text: "Our Story", to: "/about/our-process" },
+        { text: "Sustainability", to: "/about/sustainability" },
+      ],
+    },
+    { text: "Fiber", to: "/fiber" },
+    { text: "Yarn", to: "/yarn" },
+    { text: "Fabric", to: "/fabric" },
+  ];
 
   return (
     <>
-      {/* Toggle Icon */}
-      <div
-        className="fixed -top-2 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center w-full pointer-events-none"
-        style={{ height: "60px" }}
-      >
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-4 bg-transparent fixed w-full top-0 left-0 z-30 transition-colors duration-300">
+        <Link to="/">
+          <img
+            src={
+              scrolled
+                ? "/assets/img/logo/logodark.png"
+                : "/assets/img/logo/logowhite.png"
+            }
+            alt="logo"
+            className="h-16 w-16"
+          />
+        </Link>
         <div
-          ref={toggleIconRef}
-          onClick={toggleNavbar}
-          className="relative z-50 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-darkText cursor-pointer pointer-events-auto"
+          onClick={toggleMenu}
+          className="flex items-center gap-2 cursor-pointer group"
         >
-          {isNavbarVisible ? (
-            <FaAngleDoubleUp size={24} />
-          ) : (
-            <FaAngleDoubleDown size={24} />
+          {!menuOpen && (
+            <span
+              className="tracking-widest text-sm"
+              style={{ color: scrolled ? "#1fa951" : "white" }}
+            >
+              MENU
+            </span>
           )}
+          <div className="space-y-1 group-hover:rotate-90 transition-transform duration-300">
+            <div
+              className="w-6 h-[2px]"
+              style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
+            ></div>
+            <div
+              className="w-6 h-[2px]"
+              style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
+            ></div>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Navbar */}
-      <nav
-        ref={navbarRef}
-        className="fixed top-0 left-0 w-full bg-white z-40 shadow-md text-darkText font-display transform -translate-y-full"
+      {/* Fullscreen Menu */}
+      <div
+        ref={menuRef}
+        className="fixed top-0 left-0 w-full h-full bg-[#18181C] text-white z-40 flex flex-col items-start justify-center px-8 clip-circle"
+        style={{ clipPath: "circle(0% at 90% -10%)", pointerEvents: "none" }}
       >
-        <div className="relative flex justify-between items-center px-4 py-4 lg:px-8 lg:py-6">
+        {/* Logo and Close */}
+        <div className="absolute top-6 left-6 text-lg tracking-widest">
           <Link to="/">
             <img
               src="/assets/img/logo/logodark.png"
@@ -90,127 +149,61 @@ function Navbar() {
               className="h-16 w-16"
             />
           </Link>
+        </div>
+        <div
+          className="absolute top-6 right-6 cursor-pointer flex items-center gap-2"
+          onClick={toggleMenu}
+        >
+          <span className="text-sm tracking-widest">CLOSE</span>
+          <IoClose size={28} />
+        </div>
 
-          {/* Desktop Links */}
-          <div className="lg:flex gap-8 hidden items-center">
-            <div className="relative group" ref={aboutRef}>
+        {/* Navigation Links */}
+        <div className="mt-12 space-y-10 text-6xl font-bold tracking-tight">
+          {navLinks.map((link, index) => (
+            <div key={index}>
               <div
-                className="text-xl cursor-pointer flex items-center gap-1 relative group"
-                onClick={toggleAboutDropdown}
+                ref={(el) => (menuLinksRef.current[index] = el)}
+                className="flex items-center gap-6 cursor-pointer"
+                onClick={link.dropdown ? toggleAboutDropdown : toggleMenu}
               >
-                About
-                <FiChevronDown
-                  className={`transition-transform duration-300 ${isAboutDropdownOpen ? "rotate-180" : ""}`}
-                />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight transition-all duration-300 group-hover:w-full"></span>
+                <span className="text-sm font-light">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {link.dropdown ? (
+                  <span className="hover:text-[#1fa951] transition-colors duration-300">
+                    {link.text}
+                  </span>
+                ) : (
+                  <Link
+                    to={link.to}
+                    className="hover:text-[#1fa951] transition-colors duration-300"
+                  >
+                    {link.text}
+                  </Link>
+                )}
               </div>
-              {isAboutDropdownOpen && (
-                <div className="absolute top-full mt-2 bg-lightText shadow-lg rounded p-2 text-darkText">
-                  <Link
-                    to="/about"
-                    className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                  >
-                    About Us
-                  </Link>
-                  <Link
-                    to="/our-story"
-                    className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                  >
-                    Our Story
-                  </Link>
-                  <Link
-                    to="/sustainability"
-                    className="block px-4 py-2 transition-all duration-300 hover:text-highlight hover:translate-x-1"
-                  >
-                    Sustainability
-                  </Link>
+
+              {/* Dropdown Links for "About" */}
+              {link.dropdown && aboutOpen && (
+                <div className="ml-16 mt-6 space-y-4 text-3xl font-medium">
+                  {link.dropdown.map((subLink, subIndex) => (
+                    <Link
+                      key={subIndex}
+                      to={subLink.to}
+                      onClick={toggleMenu}
+                      ref={(el) => (subMenuLinksRef.current[subIndex] = el)}
+                      className="block hover:text-[#1fa951] transition-colors duration-300"
+                    >
+                      {subLink.text}
+                    </Link>
+                  ))}
                 </div>
               )}
             </div>
-            <Link
-              to="/fiber"
-              className="text-xl relative group transition-all duration-300"
-            >
-              Fiber
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
-              to="/yarn"
-              className="text-xl relative group transition-all duration-300"
-            >
-              Yarn
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
-              to="/fabrics"
-              className="text-xl relative group transition-all duration-300"
-            >
-              Fabrics
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-highlight transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          </div>
-
-          {/* Phone Icon */}
-          <div className="lg:flex items-center hidden">
-            <BiPhone size={32} />
-          </div>
+          ))}
         </div>
-
-        {/* Mobile Menu */}
-        <div className="lg:hidden px-6 pb-6 flex flex-col gap-4">
-          <div className="relative w-full" ref={aboutRef}>
-            <button
-              className="text-xl flex items-center gap-2 w-full"
-              onClick={toggleAboutDropdown}
-            >
-              About
-              <FiChevronDown
-                className={`transition-transform duration-300 ${isAboutDropdownOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {isAboutDropdownOpen && (
-              <div className="ml-4 mt-2 space-y-2">
-                <Link
-                  to="/about"
-                  className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                >
-                  About Us
-                </Link>
-                <Link
-                  to="/our-story"
-                  className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                >
-                  Our Story
-                </Link>
-                <Link
-                  to="/sustainability"
-                  className="block text-highlight transition-all duration-300 hover:translate-x-1"
-                >
-                  Sustainability
-                </Link>
-              </div>
-            )}
-          </div>
-          <Link
-            to="/fiber"
-            className="text-xl transition-all duration-300 hover:text-highlight hover:translate-x-1"
-          >
-            Fiber
-          </Link>
-          <Link
-            to="/yarn"
-            className="text-xl transition-all duration-300 hover:text-highlight hover:translate-x-1"
-          >
-            Yarn
-          </Link>
-          <Link
-            to="/fabrics"
-            className="text-xl transition-all duration-300 hover:text-highlight hover:translate-x-1"
-          >
-            Fabrics
-          </Link>
-        </div>
-      </nav>
+      </div>
     </>
   );
 }
