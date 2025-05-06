@@ -1,107 +1,161 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+"use client";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaLeaf, FaHandsHelping, FaCheckCircle } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
+const panels = [
   {
-    title: "Eco-Friendly Production",
-    desc: "We use sustainable practices and biodegradable materials to ensure minimal environmental impact.",
-    icon: <FaLeaf className="text-primary w-10 h-10 mb-4" />,
+    title: "What Set Us Apart?",
+    image: "/assets/img/Fiber/raw4.png",
+    description: "Sustainable materials sourced from the Himalayas",
+    reason:
+      "Unlike mass-produced goods, we use traceable, eco-friendly raw materials directly supporting local Himalayan communities.",
   },
   {
-    title: "Heritage Craftsmanship",
-    desc: "Every textile is handcrafted by skilled artisans from the Himalayan region, preserving age-old techniques.",
-    icon: <FaHandsHelping className="text-primary w-10 h-10 mb-4" />,
+    title: "Craftsmanship",
+    image: "/arrow-step.svg",
+    description: "Transformed by skilled artisans",
+    isArrow: true,
+    reason:
+      "Each item is hand-finished, ensuring individuality and superior attention to detail that machines can't replicate.",
   },
   {
-    title: "Superior Quality",
-    desc: "Our products undergo rigorous quality checks for durability, comfort, and beauty.",
-    icon: <FaCheckCircle className="text-primary w-10 h-10 mb-4" />,
+    title: "Finished Product",
+    image: "/assets/img/Fiber/raw8.png",
+    description: "Durable, eco-conscious quality for modern living",
+    reason:
+      "Our products are built to last using minimal-impact processes, ensuring longevity without compromising sustainability.",
+  },
+  {
+    title: "Quote",
+    description: "“Crafted with care. Inspired by the mountains.”",
+    isQuote: true,
+    reason:
+      "This quote reflects our philosophy: every product carries a story rooted in nature, people, and purpose.",
   },
 ];
 
-export default function WhatSetsUsApart() {
-  const sectionRef = useRef();
-  const titleRef = useRef();
+export default function WhatSetsUsApartHorizontal() {
+  const containerRef = useRef(null);
+  const panelRefs = useRef([]);
+  const [currentTitle, setCurrentTitle] = useState(panels[0].title);
 
   useEffect(() => {
-    // Section title animation
-    gsap.from(titleRef.current, {
-      y: -40,
-      opacity: 0,
-      scale: 0.95,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-      },
-    });
+    const panelElements = gsap.utils.toArray(".panel");
+    const totalPanels = panelElements.length;
 
-    // Card and icon animation
-    const cards = gsap.utils.toArray(".card");
-    gsap.from(cards, {
-      opacity: 0,
-      y: 60,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 70%",
-      },
-    });
+    const ctx = gsap.context(() => {
+      // Horizontal scroll animation
+      gsap.to(panelElements, {
+        xPercent: -100 * (totalPanels - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          pin: true,
+          scrub: 1,
+          end: () => `+=${window.innerWidth * (totalPanels - 1)}`,
+        },
+      });
 
-    // Icon bob animation
-    gsap.to(".card-icon", {
-      y: -5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      duration: 1.5,
-      stagger: 0.2,
-    });
+      // Panel entrance and title update
+      panelElements.forEach((panel, index) => {
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "left center",
+          horizontal: true,
+          onEnter: () => setCurrentTitle(panels[index].title),
+          onEnterBack: () => setCurrentTitle(panels[index].title),
+        });
+
+        gsap.from(panel, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: panel,
+            start: "left center",
+            toggleActions: "play none none reset",
+          },
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="relative bg-light text-darkText py-20 px-4 md:px-0 overflow-hidden"
+      ref={containerRef}
+      className="h-screen overflow-hidden relative bg-white"
     >
-      {/* Background glow effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary opacity-10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary opacity-10 rounded-full blur-[150px]" />
+      {/* Fixed Title */}
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText mb-4">
+        <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1]  bg-opacity-90 px-4 py-2 transition-all duration-300  ">
+          {currentTitle}
+        </h1>
       </div>
 
-      <div className="container max-w-6xl mx-auto relative z-10">
-        <h2
-          ref={titleRef}
-          className="text-4xl font-bold text-center mb-4 font-display"
-        >
-          What Sets Us Apart
-        </h2>
-        <p className="text-center text-lg mb-12 text-secondary">
-          Discover the values that define Himalayan Textile.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-10">
-          {features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="card bg-white shadow-xl p-6 rounded-2xl transition transform hover:scale-[1.03] hover:shadow-2xl duration-300 group"
-            >
-              <div className="card-icon">{feature.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 font-display group-hover:text-primary transition">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-gray-700">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
+      {/* Panels */}
+      <div className="flex h-full w-[400vw] py-4">
+        {panels.map((panel, index) => (
+          <div
+            key={index}
+            className="panel w-screen h-full flex items-center justify-center flex-col p-10 text-center"
+            ref={(el) => (panelRefs.current[index] = el)}
+          >
+            {panel.isQuote ? (
+              <blockquote className="text-3xl italic text-[#2c3e50] font-semibold max-w-md">
+                {panel.description}
+                {panel.reason && (
+                  <p className="mt-4 text-base text-gray-700 italic">
+                    {panel.reason}
+                  </p>
+                )}
+              </blockquote>
+            ) : (
+              <>
+                {!panel.isArrow && (
+                  <img
+                    src={panel.image}
+                    alt={panel.title}
+                    className="w-48 h-48 object-cover rounded-xl shadow-lg mb-4"
+                  />
+                )}
+                {panel.isArrow && (
+                  <svg
+                    viewBox="0 0 200 50"
+                    className="w-60 h-10 mb-4"
+                    fill="none"
+                    stroke="#2c3e50"
+                    strokeWidth="2"
+                  >
+                    <path d="M0 25 Q 100 0, 200 25" markerEnd="url(#arrowhead)" />
+                    <defs>
+                      <marker
+                        id="arrowhead"
+                        markerWidth="10"
+                        markerHeight="7"
+                        refX="10"
+                        refY="3.5"
+                        orient="auto"
+                      >
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+                      </marker>
+                    </defs>
+                  </svg>
+                )}
+                <p className="text-lg text-darkText max-w-md">{panel.description}</p>
+                {panel.reason && (
+                  <p className="mt-4 text-base text-gray-700 italic max-w-md">
+                    {panel.reason}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

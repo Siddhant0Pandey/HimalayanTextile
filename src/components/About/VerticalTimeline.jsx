@@ -76,7 +76,9 @@ export default function VerticalTimeline() {
   }, []);
 
   return (
+
     <div className="flex flex-col items-center bg-gray-100 px-4 pt-20">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Process</h1>
 
       <div className="flex justify-center w-full max-w-6xl">
