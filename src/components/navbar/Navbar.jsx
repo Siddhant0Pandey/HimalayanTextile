@@ -141,7 +141,8 @@ function Navbar() {
         style={{ clipPath: "circle(0% at 90% -10%)", pointerEvents: "none" }}
       >
         {/* Logo and Close */}
-        <div className="absolute top-6 left-6 text-lg tracking-widest">
+        <div className="flex items-center justify-between">
+        <div className="absolute  left-6 text-lg tracking-widest">
           <Link to="/">
             <img
               src="/assets/img/logo/logodark.png"
@@ -151,11 +152,12 @@ function Navbar() {
           </Link>
         </div>
         <div
-          className="absolute top-6 right-6 cursor-pointer flex items-center gap-2"
+          className="absolute  right-6 cursor-pointer flex items-center gap-2"
           onClick={toggleMenu}
         >
           <span className="text-sm tracking-widest">CLOSE</span>
           <IoClose size={28} />
+        </div>
         </div>
 
         {/* Navigation Links */}
