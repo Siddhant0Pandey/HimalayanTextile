@@ -27,7 +27,9 @@ export default function YarnOfferings() {
       name: "Pashmina Wool",
       description:
         "Ultra-soft premium wool derived from the undercoat of Himalayan mountain goats. Known for exceptional warmth and lightweight properties.",
-      image: "public/assets/img/Fiber/hemp.jpg",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Temperature regulating", "Ethically sourced", "Handspun"],
     },
     {
@@ -35,7 +37,9 @@ export default function YarnOfferings() {
       name: "Yak Wool",
       description:
         "Naturally insulating wool that is softer than sheep's wool and extremely durable. Perfect for high-quality garments requiring warmth.",
-      image: "public/assets/img/Fiber/hemp.jpg",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Water resistant", "Hypoallergenic", "Non-pilling"],
     },
     {
@@ -43,7 +47,9 @@ export default function YarnOfferings() {
       name: "Hemp Fiber",
       description:
         "Sustainable natural fiber with exceptional durability. Our hemp yarns are processed using traditional methods for minimal environmental impact.",
-      image: "public/assets/img/Fiber/hemp.jpg",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Antimicrobial", "UV resistant", "Eco-friendly"],
     },
     {
@@ -51,7 +57,9 @@ export default function YarnOfferings() {
       name: "Himalayan Silk",
       description:
         "Handcrafted silk yarn produced by skilled artisans using heritage techniques passed down through generations.",
-      image: "public/assets/img/Fiber/hemp.jpg",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Lustrous finish", "Breathable", "Biodegradable"],
     },
   ];
