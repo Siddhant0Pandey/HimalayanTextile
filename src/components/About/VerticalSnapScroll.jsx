@@ -188,7 +188,7 @@ export default function HorizontalSnapPanels() {
   }, []);
 
   return (
-    <div ref={scrollSectionRef} className="w-full h-[300vh] overflow-hidden">
+    <div ref={scrollSectionRef} className="w-full overflow-hidden">
       <div
         ref={containerRef}
         className="sticky top-0 h-screen w-full overflow-hidden"
