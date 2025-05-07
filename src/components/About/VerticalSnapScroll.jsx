@@ -31,7 +31,7 @@ const WelcomePanel = () => {
 
     gsap.from(image1Ref.current, {
       y: -80,
-      opacity: 0,
+      opacity: 1,
       duration: 1.2,
       ease: "power2.out",
       scrollTrigger: {
@@ -44,7 +44,7 @@ const WelcomePanel = () => {
 
     gsap.from(image2Ref.current, {
       y: 80,
-      opacity: 0,
+      opacity: 1,
       duration: 1.2,
       ease: "power2.out",
       scrollTrigger: {
@@ -81,7 +81,7 @@ const WelcomePanel = () => {
         </h1>
         <p
           ref={paragraphRef}
-          className="text-base md:text-lg xl:text-xl leading-relaxed max-w-3xl"
+          className="text-base my-10 md:text-lg xl:text-xl leading-relaxed max-w-3xl"
         >
           <span className="text-[#1FA951] font-semibold">
             Himalayan Textile
@@ -93,7 +93,7 @@ const WelcomePanel = () => {
         </p>
         <button
           ref={buttonRef}
-          className="bg-[#1FA951] text-white py-3 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] transition"
+          className="bg-[#1FA951] text-white py-3 my-4 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] transition"
         >
           Read More →
         </button>
