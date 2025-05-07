@@ -80,7 +80,7 @@ const AboutHero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[70vh] mb-15 bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
         // backgroundColor: "#1FA951", // Fixed syntax error in original code
         backgroundImage: `url(${bgImg})`,
