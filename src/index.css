@@ -10,15 +10,15 @@
   --color-primary: #1fa951;
   --color-secondary: #729a78;
   --color-light: #edfeee;
-  --color-highlight: #f6edd9;
+
   --color-lightText: #eaeeff;
   --color-darkText: #1d1f10;
 }
-@extend{
-  scrollSnapType: ['x', 'mandatory'],
+@extend {
+  scrollsnaptype: [ "x", "mandatory"];
 }
 
-body{
+body {
   overflow-x: hidden;
 }
 
@@ -27,7 +27,8 @@ body{
   margin: 0 auto;
 }
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
