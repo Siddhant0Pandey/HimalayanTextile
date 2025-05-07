@@ -1,32 +1,36 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-
+import { FaStar } from "react-icons/fa";
+import { IoIosColorPalette } from "react-icons/io";
+import { FaEarthAmericas } from "react-icons/fa6";
+import { FaRecycle } from "react-icons/fa6";
+import { GrDeliver } from "react-icons/gr";
 
 const cardData = [
   {
     title: "Quality Fabrics",
     description: "Top-grade textiles with durability and comfort.",
-    icon: "🧵",
+    icon: <FaStar />,
   },
   {
     title: "Innovative Designs",
     description: "Trendy and modern patterns tailored to client needs.",
-    icon: "🎨",
+    icon: <IoIosColorPalette />,
   },
   {
     title: "Global Reach",
     description: "Supplying clients across continents with ease.",
-    icon: "🌍",
+    icon: <FaEarthAmericas />,
   },
   {
     title: "Sustainable Production",
     description: "Eco-conscious processes and ethical sourcing.",
-    icon: "♻️",
+    icon: <FaRecycle />,
   },
   {
     title: "Reliable Delivery",
     description: "On-time delivery and professional handling.",
-    icon: "🚚",
+    icon: <GrDeliver/>,
   },
 ];
 
@@ -132,7 +136,9 @@ const AboutKeyStrength = () => {
               index % 2 === 0 ? "md:mt-0" : "md:mt-10"
             }`}
           >
-            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{card.icon}</div>
+            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#1FA951]">
+              {card.icon}
+            </div>
             <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#1FA951]">
               {card.title}
             </h3>
