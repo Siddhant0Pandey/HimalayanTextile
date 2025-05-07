@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 
+
 const cardData = [
   {
     title: "Quality Fabrics",
@@ -48,14 +49,16 @@ const AboutKeyStrength = () => {
     });
   }, []);
 
-  // Auto scroll
+  // Auto scroll (desktop only)
   useEffect(() => {
     const el = containerRef.current;
+    if (window.innerWidth < 768) return; // Only on md and up
+
     const maxScroll = el.scrollWidth - el.clientWidth;
 
     autoScrollTween.current = gsap.to(el, {
       scrollLeft: maxScroll,
-      duration: 6, // faster scroll
+      duration: 6,
       ease: "power1.inOut",
       repeat: -1,
       yoyo: true,
@@ -66,9 +69,11 @@ const AboutKeyStrength = () => {
     };
   }, []);
 
-  // Drag to scroll
+  // Drag to scroll (desktop only)
   useEffect(() => {
     const el = containerRef.current;
+    if (window.innerWidth < 768) return;
+
     let startX = 0;
     let scrollLeft = 0;
 
@@ -108,26 +113,32 @@ const AboutKeyStrength = () => {
 
   return (
     <section className="bg-gray-50 py-12">
-      <h2 className="text-center text-3xl font-bold mb-8 text-[#1FA951]">
+      <h2 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-[#1FA951]">
         Our Key Strengths
       </h2>
       <div
         ref={containerRef}
-        className="flex gap-6 overflow-x-auto px-6 scroll-container no-scrollbar"
-        style={{ cursor: "grab", userSelect: "none" }}
+        className="flex flex-col md:flex-row gap-6 md:gap-6 px-4 md:px-6 overflow-x-hidden md:overflow-x-auto scroll-container no-scrollbar"
+        style={{
+          cursor: "grab",
+          userSelect: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
       >
         {cardData.map((card, index) => (
           <div
             key={index}
-            className={`card bg-white shadow-xl rounded-2xl p-6 w-72 flex-shrink-0 ${
-              index % 2 === 0 ? "mt-0" : "mt-10"
+            className={`card bg-white shadow-xl rounded-2xl p-6 w-full md:w-72 flex-shrink-0 ${
+              index % 2 === 0 ? "md:mt-0" : "md:mt-10"
             }`}
           >
-            <div className="text-4xl mb-4">{card.icon}</div>
-            <h3 className="text-xl font-semibold mb-2 text-[#1FA951]">
+            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{card.icon}</div>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#1FA951]">
               {card.title}
             </h3>
-            <p className="text-gray-600">{card.description}</p>
+            <p className="text-gray-600 text-sm sm:text-base">
+              {card.description}
+            </p>
           </div>
         ))}
       </div>
