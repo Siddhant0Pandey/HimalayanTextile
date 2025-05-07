@@ -100,11 +100,11 @@ const AboutHero = () => {
       <div className="text-center px-4 z-10">
         <h1
           ref={textRef}
-          className="text-5xl md:text-6xl font-semibold mb-4 drop-shadow-lg"
+          className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg"
         >
           About Us
         </h1>
-        <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
+        <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">9
           Sustainable by Nature. Stylish by Design.
         </p>
 
