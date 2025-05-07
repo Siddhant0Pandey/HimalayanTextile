@@ -31,7 +31,7 @@ export default function Making() {
       icon: <FiFeather style={{ color: theme.primary }} />,
       color: theme.light,
       accent: theme.primary,
-      image: "public/assets/img/Fiber/hemp.jpg",
+      image: "assets/img/Fiber/hemp.jpg",
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ export default function Making() {
       icon: <FiWind style={{ color: theme.secondary }} />,
       color: theme.light,
       accent: theme.secondary,
-      image: "public/assets/img/Fiber/hemp.jpg",
+      image: "assets/img/Fiber/hemp.jpg",
     },
     {
       id: 3,
@@ -51,7 +51,7 @@ export default function Making() {
       icon: <FiScissors style={{ color: theme.primary }} />,
       color: theme.light,
       accent: theme.primary,
-      image: "public/assets/img/Fiber/hemp.jpg",
+      image: "assets/img/Fiber/hemp.jpg",
     },
     {
       id: 4,
@@ -61,7 +61,7 @@ export default function Making() {
       icon: <FiDroplet style={{ color: theme.secondary }} />,
       color: theme.light,
       accent: theme.secondary,
-      image: "public/assets/img/Fiber/hemp.jpg",
+      image: "assets/img/Fiber/hemp.jpg",
     },
   ];
 
