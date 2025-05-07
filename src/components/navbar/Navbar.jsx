@@ -99,7 +99,7 @@ function Navbar() {
       text: "About",
       dropdown: [
         { text: "About Us", to: "/about" },
-        { text: "Our Story", to: "/about/our-process" },
+        { text: "Our Story", to: "/about/our-story" },
         { text: "Sustainability", to: "/about/sustainability" },
       ],
     },
@@ -223,4 +223,3 @@ function Navbar() {
 }
 
 export default Navbar;
-  
