@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import bgImg from "../../../public/assets/img/bgImage1.png";
+// import bgImg from "../../../public/assets/img/bgImage1.png";
 
-const AboutHero = () => {
+const OurStoryHero = () => {
   // Create refs for animated elements
   const heroRef = useRef(null);
   const textRef = useRef(null);
@@ -82,8 +82,8 @@ const AboutHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        // backgroundColor: "#1FA951", // Fixed syntax error in original code
-        backgroundImage: `url(${bgImg})`,
+        backgroundColor: "#1FA951", // Fixed syntax error in original code
+        // backgroundImage: `url(${bgImg})`,
       }}
     >
       {/* Wavy border bottom */}
@@ -102,10 +102,10 @@ const AboutHero = () => {
           ref={textRef}
           className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg"
         >
-          About Us
+          Our Story
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          Sustainable by Nature. Stylish by Design.
+          "Crafted by hands, cherished by hearts."
         </p>
 
         {/* Badge element */}
@@ -120,4 +120,4 @@ const AboutHero = () => {
   );
 };
 
-export default AboutHero;
+export default OurStoryHero;
