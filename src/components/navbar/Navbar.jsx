@@ -100,13 +100,14 @@ function Navbar() {
       dropdown: [
         { text: "About Us", to: "/about" },
         { text: "Our Story", to: "/about/our-story" },
-        { text: "Sustainability", to: "/about/sustainability" },
       ],
     },
     { text: "Fiber", to: "/fiber" },
     { text: "Yarn", to: "/yarn" },
     { text: "Fabric", to: "/fabric" },
   ];
+
+  const navLink2 = [{ text: "Sustainability", to: "/about/sustainability" }];
 
   return (
     <>
@@ -151,22 +152,20 @@ function Navbar() {
       {/* Fullscreen Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 left-0 w-full h-full bg-[#18181C] text-white z-40 flex flex-col items-start justify-center px-8 clip-circle"
+        className="fixed top-0 left-0 w-full h-full bg-[#18181C] text-white z-40 px-8 clip-circle"
         style={{ clipPath: "circle(0% at 90% -10%)", pointerEvents: "none" }}
       >
         {/* Logo and Close */}
-        <div className="flex items-center justify-between">
-          <div className="absolute left-6 text-lg tracking-widest">
-            <Link to="/">
-              <img
-                src="/assets/img/logo/logodark.png"
-                alt="logo"
-                className="h-16 w-16"
-              />
-            </Link>
-          </div>
+        <div className="absolute left-6 top-6 flex items-center justify-between w-full pr-12 z-50">
+          <Link to="/">
+            <img
+              src="/assets/img/logo/logodark.png"
+              alt="logo"
+              className="h-16 w-16"
+            />
+          </Link>
           <div
-            className="absolute right-6 cursor-pointer flex items-center gap-2"
+            className="cursor-pointer flex items-center gap-2"
             onClick={toggleMenu}
           >
             <span className="text-sm tracking-widest">CLOSE</span>
@@ -175,47 +174,74 @@ function Navbar() {
         </div>
 
         {/* Navigation Links */}
-        <div className="mt-12 space-y-10 text-6xl font-bold tracking-tight">
-          {navLinks.map((link, index) => (
-            <div key={index}>
-              <div
-                ref={(el) => (menuLinksRef.current[index] = el)}
-                className="flex items-center gap-6 cursor-pointer"
-                onClick={() => {
-                  if (link.dropdown) {
-                    toggleAboutDropdown();
-                  } else {
-                    handleNavigateWithAnimation(link.to);
-                  }
-                }}
-              >
-                <span className="text-sm font-light">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="hover:text-[#1fa951] transition-colors duration-300">
-                  {link.text}
-                </span>
-              </div>
-
-              {/* Dropdown Links for "About" */}
-              {link.dropdown && aboutOpen && (
-                <div className="ml-16 mt-6 space-y-4 text-3xl font-medium">
-                  {link.dropdown.map((subLink, subIndex) => (
-                    <span
-                      key={subIndex}
-                      onClick={() => handleNavigateWithAnimation(subLink.to)}
-                      ref={(el) =>
-                        (subMenuLinksRef.current[subIndex] = el)
-                      }
-                      className="block hover:text-[#1fa951] transition-colors duration-300 cursor-pointer"
-                    >
-                      {subLink.text}
-                    </span>
-                  ))}
+        <div className="mt-32 flex flex-col md:flex-row w-full justify-between gap-12">
+          {/* Left Side Links */}
+          <div className="flex-1 space-y-10 text-5xl md:text-6xl font-bold tracking-tight">
+            {navLinks.map((link, index) => (
+              <div key={index}>
+                <div
+                  ref={(el) => (menuLinksRef.current[index] = el)}
+                  className="flex items-center gap-6 cursor-pointer"
+                  onClick={() => {
+                    if (link.dropdown) {
+                      toggleAboutDropdown();
+                    } else {
+                      handleNavigateWithAnimation(link.to);
+                    }
+                  }}
+                >
+                  <span className="text-sm font-light">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="hover:text-[#1fa951] transition-colors duration-300">
+                    {link.text}
+                  </span>
                 </div>
-              )}
+
+                {/* Dropdown Links */}
+                {link.dropdown && aboutOpen && (
+                  <div className="ml-16 mt-6 space-y-4 text-3xl font-medium">
+                    {link.dropdown.map((subLink, subIndex) => (
+                      <span
+                        key={subIndex}
+                        onClick={() => handleNavigateWithAnimation(subLink.to)}
+                        ref={(el) =>
+                          (subMenuLinksRef.current[subIndex] = el)
+                        }
+                        className="block hover:text-[#1fa951] transition-colors duration-300 cursor-pointer"
+                      >
+                        {subLink.text}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Side Link */}
+          <div className="flex-1 flex items-start md:items-start justify-end">
+            <div className="space-y-10 text-5xl md:text-6xl font-bold tracking-tight text-right">
+              {navLink2.map((link, index) => (
+                <div key={index}>
+                  <div
+                    ref={(el) =>
+                      (menuLinksRef.current[navLinks.length + index] = el)
+                    }
+                    className="flex items-center gap-6 cursor-pointer justify-start"
+                    onClick={() => handleNavigateWithAnimation(link.to)}
+                  >
+                    <span className="text-sm font-light">
+                      {String(navLinks.length + index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="hover:text-[#1fa951] transition-colors duration-300">
+                      {link.text}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </>
