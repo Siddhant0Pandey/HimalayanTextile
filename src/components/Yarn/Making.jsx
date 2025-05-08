@@ -17,7 +17,6 @@ export default function Making() {
     primary: "#1fa951",
     secondary: "#729a78",
     light: "#edfeee",
-    highlight: "#f6edd9",
     lightText: "#eaeeff",
     darkText: "#1d1f10",
     fontDisplay: "'Roboto Slab', sans-serif",
@@ -32,7 +31,9 @@ export default function Making() {
       icon: <FiFeather style={{ color: theme.primary }} />,
       color: theme.light,
       accent: theme.primary,
-      image: "/api/placeholder/800/500",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
     },
     {
       id: 2,
@@ -42,7 +43,9 @@ export default function Making() {
       icon: <FiWind style={{ color: theme.secondary }} />,
       color: theme.light,
       accent: theme.secondary,
-      image: "/api/placeholder/800/500",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
     },
     {
       id: 3,
@@ -52,7 +55,9 @@ export default function Making() {
       icon: <FiScissors style={{ color: theme.primary }} />,
       color: theme.light,
       accent: theme.primary,
-      image: "/api/placeholder/800/500",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
     },
     {
       id: 4,
@@ -62,7 +67,9 @@ export default function Making() {
       icon: <FiDroplet style={{ color: theme.secondary }} />,
       color: theme.light,
       accent: theme.secondary,
-      image: "/api/placeholder/800/500",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
     },
   ];
 
@@ -102,9 +109,9 @@ export default function Making() {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen py-16 px-4 md:px-8"
+      className="min-h-screen py-16 px-4 md:px-8 bg-gradient-to-br from-white to-green-50"
       style={{
-        backgroundImage: `linear-gradient(135deg, ${theme.light} 0%, ${theme.highlight} 100%)`,
+        // Light gray background
         fontFamily: theme.fontDisplay,
       }}
     >
@@ -253,7 +260,6 @@ export default function Making() {
               <p className="mb-6" style={{ color: theme.darkText }}>
                 {processSteps[activeStep].description}
               </p>
-              <div className="mt-auto"></div>
             </div>
           </div>
         </motion.div>
@@ -304,37 +310,6 @@ export default function Making() {
             />
           </div>
         </div>
-
-        {/* Call to Action */}
-        {/* <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-        >
-          <h3
-            className="text-2xl font-bold mb-4"
-            style={{ color: theme.primary }}
-          >
-            Experience Our Craft Firsthand
-          </h3>
-          <p
-            className="mb-6 max-w-2xl mx-auto"
-            style={{ color: theme.darkText }}
-          >
-            Join one of our workshops to see the entire process and create your
-            own custom yarn under the guidance of master artisans.
-          </p>
-          <button
-            className="font-semibold py-3 px-8 rounded-full transition-colors shadow-lg"
-            style={{
-              backgroundColor: theme.primary,
-              color: theme.light,
-            }}
-          >
-            Book a Workshop
-          </button>
-        </motion.div> */}
       </motion.div>
     </div>
   );
