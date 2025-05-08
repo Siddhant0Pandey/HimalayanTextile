@@ -13,9 +13,12 @@ const processSteps = [
   { title: "Yarns", image: "/assets/img/Fiber/raw.png" },
 ];
 
+const yOffsets = ["-translate-y-3", "translate-y-0", "translate-y-0", "-translate-y-3"];
+
 export default function Hero() {
   const containerRef = useRef(null);
   const textRef = useRef(null);
+  const textileRef = useRef(null);
   const imageRefs = useRef([]);
   const boxRefs = useRef([]);
   const arrowRefs = useRef([]);
@@ -35,21 +38,19 @@ export default function Hero() {
       // Animate title
       tl.to(textRef.current, {
         scale: 0.8,
-        y: -80,
+        y: -160,
         duration: 1.5,
-    
         ease: "power2.out",
       });
 
       imageOrder.forEach((_, i) => {
         if (i === 3) {
-          // Animate image 4 and 5 together
           tl.addLabel("images4and5");
 
           [3, 4].forEach((j) => {
             tl.fromTo(
               imageRefs.current[j],
-              { y: 200, opacity: 0,zIndex:-2},
+              { y: 200, opacity: 0, zIndex: -2 },
               {
                 y: 0,
                 opacity: 1,
@@ -60,7 +61,6 @@ export default function Hero() {
             );
           });
 
-          // Animate box 4 (i === 3)
           tl.fromTo(
             boxRefs.current[3],
             { x: 300, opacity: 0 },
@@ -94,10 +94,9 @@ export default function Hero() {
             );
           }
         } else if (i < 3) {
-          // Normal animation for image 1, 2, 3
           tl.fromTo(
             imageRefs.current[i],
-            { y: 200, opacity: 0},
+            { y: 200, opacity: 0 },
             {
               y: 0,
               opacity: 1,
@@ -152,10 +151,13 @@ export default function Hero() {
       {/* Title Text */}
       <div
         ref={textRef}
-        className="absolute top-[50%] left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
+        className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
       >
         <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1] text-white">
-          Himalayan <br /> <span>Textile</span>
+          Himalayan <br />
+          <span ref={textileRef} className="mr-9">
+            Textile
+          </span>
         </h1>
       </div>
 
@@ -177,42 +179,42 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Horizontal Process Boxes */}
-      <div className="absolute top-[65%] sm:top-[60%] w-full z-50 flex flex-wrap justify-center gap-y-4 sm:space-x-[5vw] px-4 pointer-events-none">
+      {/* Process Boxes */}
+      <div className="absolute top-[65%] sm:top-[60%] w-full z-50 flex flex-wrap justify-center gap-4 sm:gap-y-4 sm:space-x-[4vw] px-4 pointer-events-none">
         {processSteps.map((step, i) => (
           <div
             key={i}
-            className="relative flex items-center mb-4 sm:mb-0 sm:flex-row flex-col gap-2 sm:gap-0"
+            className={`relative flex flex-col sm:flex-row items-center gap-2 sm:gap-0 ${i < 3 ? "mb-4 sm:mb-0" : ""}`}
           >
             {/* Box */}
             <div
-              className="w-[clamp(120px,15vw,240px)] bg-transparent/90 text-darkText shadow-xl flex flex-col items-center justify-center text-[clamp(0.9rem,1.5vw,1.1rem)] font-semibold rounded p-3"
               ref={(el) => (boxRefs.current[i] = el)}
+              className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] border rounded-lg border-gray-300 flex flex-col items-center justify-center text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold  p-4 sm:p-5  transform ${yOffsets[i]}`}
             >
               <img
                 src={step.image}
                 alt={step.title}
-                className="w-12 h-12 mb-2 object-contain"
+                className="w-12 sm:w-16 h-12 sm:h-16 mb-2 sm:mb-3 object-contain"
               />
-              <p className="text-center">{step.title}</p>
+              <p className="text-center leading-tight ">{step.title}</p>
             </div>
 
-            {/* Arrow (only on larger screens) */}
+            {/* Arrow */}
             {i < 3 && (
               <div
                 ref={(el) => (arrowRefs.current[i] = el)}
-                className="hidden sm:block absolute left-full ml-4 opacity-0 transition-opacity duration-500"
+                className="hidden sm:block absolute left-full ml-3 sm:ml-4 opacity-0 transition-opacity duration-500"
               >
                 <svg
                   className="animate-pulse"
-                  width="32"
-                  height="32"
+                  width="28"
+                  height="28"
                   viewBox="0 0 24 24"
                   fill="none"
                 >
                   <path
                     d="M4 12h16m0 0l-6-6m6 6l-6 6"
-                    stroke="black"
+                    stroke="white "
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
