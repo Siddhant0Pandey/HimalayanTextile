@@ -24,7 +24,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const triggerPoint = window.innerHeight * 10.4;
+      const triggerPoint = window.innerHeight * 18;
       setScrolled(window.scrollY > triggerPoint);
     };
 

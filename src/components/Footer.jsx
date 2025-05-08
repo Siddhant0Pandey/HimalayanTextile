@@ -112,7 +112,7 @@ const Footer = () => {
                   <li key={i}>
                     <a
                       href="#"
-                      className="hover:text-white transition duration-300"
+                      className="hover:text-[#1fa951] transition duration-300"
                     >
                       {link}
                     </a>
