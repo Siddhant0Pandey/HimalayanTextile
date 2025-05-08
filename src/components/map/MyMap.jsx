@@ -2,25 +2,40 @@ import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import CountryInfo from './CountryInfo';
 import MapContainerComponent from './MapContainerComponent';
+import useInView from './useInView';
 
 const MyMap = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const titleRef = useRef(null); 
+  const titleRef = useRef(null);
+  const mapRef = useRef(null);
 
+
+  const titleInView = useInView(titleRef, { threshold: 0.2 });
+  const mapInView = useInView(mapRef, { threshold: 0.2 });
+
+  // Title animation
   useEffect(() => {
-  
-    gsap.fromTo(
-      titleRef.current,
-      { y: 100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-      }
-    );
-  }, []);
+    if (titleInView) {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 50 }, // Starting position
+        { opacity: 1, y: 0, duration: 1.5, ease: 'power4.out' } // Smoother animation
+      );
+    }
+  }, [titleInView]);
 
+  // Map animation
+  useEffect(() => {
+    if (mapInView) {
+      gsap.fromTo(
+        mapRef.current,
+        { opacity: 0, y: 80 }, // Starting position
+        { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
+      );
+    }
+  }, [mapInView]);
+
+  // List of countries with coordinates
   const countries = [
     { lat: 51.5074, lng: -0.1278, name: 'United Kingdom', type: 'export' },
     { lat: 48.8566, lng: 2.3522, name: 'France', type: 'import' },
@@ -30,16 +45,17 @@ const MyMap = () => {
     { lat: 55.7558, lng: 37.6173, name: 'Russia', type: 'import' },
   ];
 
+  // Handle click on a marker
   const handleMarkerClick = (countryName) => {
     setSelectedCountry(countryName);
   };
 
   return (
-    <div className="w-full h-screen flex flex-col bg-gray-100 pt-16">
+    <div className="w-full min-h-screen flex flex-col bg-gray-100 pt-16">
       {/* Title section */}
       <div
         ref={titleRef}
-        className="w-full p-6 bg-white shadow-md text-center z-10"
+        className="w-full p-6 bg-white shadow-md text-center z-10 opacity-0"
       >
         <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] text-darkText">
           Global Trade Flows
@@ -56,8 +72,11 @@ const MyMap = () => {
         </div>
       </div>
 
-   
-      <div className="flex-1 relative">
+      {/* Map section */}
+      <div
+        ref={mapRef}
+        className="relative opacity-0 h-[80vh] w-full"
+      >
         <MapContainerComponent
           countries={countries}
           onMarkerClick={handleMarkerClick}
