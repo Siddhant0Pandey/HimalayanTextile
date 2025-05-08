@@ -155,10 +155,10 @@ export default function VerticalTimeline() {
         </div>
       </div>
 
-      {/* Scroll Down Indicator
+      {/* Scroll Down Indicator  
       <div className="mt-6 animate-bounce">
         <FaChevronDown size={32} className="text-[#1fa951]" />
-      </div> */}
+      </div> /*/}
     </div>
   );
 }
