@@ -59,7 +59,7 @@ export default function WhatSetsUsApartHorizontal() {
       // Title fade in
       gsap.fromTo(
         titleRef.current,
-        { y: 60, opacity: 0 },
+        { y: 120, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -67,7 +67,8 @@ export default function WhatSetsUsApartHorizontal() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top top"
+            start: "top top",
+            scrub:true
           }
         }
       );
@@ -96,10 +97,10 @@ export default function WhatSetsUsApartHorizontal() {
   return (
     <section ref={containerRef} className="h-screen overflow-hidden relative bg-white">
       {/* Title */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText">
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#1fa951]">
         <h1
           ref={titleRef}
-          className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2"
+          className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2"
         >
           What Sets Us Apart
         </h1>
