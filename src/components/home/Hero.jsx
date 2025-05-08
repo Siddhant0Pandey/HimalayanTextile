@@ -7,10 +7,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const imageOrder = [1, 2, 3, 4, 5];
 const processSteps = [
-  { title: "Raw Fibres", image: "/assets/img/Fiber/raw.png" },
-  { title: "Spinning", image: "/assets/img/Fiber/raw.png" },
-  { title: "Cottonised", image: "/assets/img/Fiber/raw.png" },
+  { title: "Fibres", image: "/assets/img/Fiber/raw.png" },
   { title: "Yarns", image: "/assets/img/Fiber/raw.png" },
+  { title: "Fabrics", image: "/assets/img/Fiber/raw.png" },
+  { title: "Fashion", image: "/assets/img/Fiber/raw.png" },
 ];
 
 const yOffsets = ["-translate-y-3", "translate-y-0", "translate-y-0", "-translate-y-3"];

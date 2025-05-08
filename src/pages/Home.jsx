@@ -3,11 +3,13 @@ import Hero from '../components/home/Hero'
  import WhatSetsUsApart from '../components/home/WhatSetsUsApart'
 import CoreValues from '../components/home/CoreValues';
 import MyMap from '../components/map/MyMap';
+import AboutSection from '../components/home/AboutSection';
 
 function Home() {
   return (
     <div >
      <Hero/>
+     <AboutSection/>
      <div>
      <WhatSetsUsApart/> 
      </div>

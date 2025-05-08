@@ -37,6 +37,7 @@ export default function WhatSetsUsApartHorizontal() {
   const containerRef = useRef(null);
   const panelRefs = useRef([]);
   const titleRef = useRef(null);
+  const bgRef = useRef(null);
 
   useEffect(() => {
     const panelsArray = panelRefs.current;
@@ -56,10 +57,22 @@ export default function WhatSetsUsApartHorizontal() {
         }
       });
 
+      // Background parallax effect
+      gsap.to(bgRef.current, {
+        x: () => `-${window.innerWidth * 0.3}`, // adjust depth
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          scrub: true,
+          start: "top top",
+          end: () => `+=${window.innerWidth * (total - 1)}`,
+        }
+      });
+
       // Title fade in
       gsap.fromTo(
         titleRef.current,
-        { y: 120, opacity: 0 },
+        { y: 80, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -68,7 +81,7 @@ export default function WhatSetsUsApartHorizontal() {
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
-            scrub:true
+            scrub: true
           }
         }
       );
@@ -95,9 +108,27 @@ export default function WhatSetsUsApartHorizontal() {
   }, []);
 
   return (
-    <section ref={containerRef} className="h-screen overflow-hidden relative bg-white">
+    <section
+      ref={containerRef}
+      className="h-screen overflow-hidden relative bg-white"
+    >
+      {/* Parallax Background */}
+      <div
+        ref={bgRef}
+        className="absolute top-0 left-0 w-[150vw] h-full bg-gradient-to-r from-[#e0f7ec] to-[#f4f7f5] opacity-80 pointer-events-none"
+        style={{
+          backgroundImage: "url('/assets/img/parallax-texture.jpg')",
+          backgroundSize: "cover",
+          backgroundRepeat: "repeat",
+          mixBlendMode: "multiply",
+          zIndex: 0,
+          opacity:2
+        }}
+      />
+
       {/* Title */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#1fa951]">
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#fff]">
+      {/* #1fa951 */}
         <h1
           ref={titleRef}
           className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2"
@@ -107,7 +138,7 @@ export default function WhatSetsUsApartHorizontal() {
       </div>
 
       {/* Panels Container */}
-      <div className="flex h-full w-[400vw] py-4">
+      <div className="flex h-full w-[400vw] py-4 relative z-10">
         {panels.map((panel, idx) => (
           <div
             key={idx}
@@ -115,10 +146,10 @@ export default function WhatSetsUsApartHorizontal() {
             ref={(el) => el && (panelRefs.current[idx] = el)}
           >
             {panel.isQuote ? (
-              <blockquote className="text-3xl italic text-[#2c3e50] font-semibold max-w-md">
+              <blockquote className="text-3xl italic text-[#fff] font-semibold max-w-md">
                 {panel.description}
                 {panel.reason && (
-                  <p className="mt-4 text-base text-gray-700 italic">
+                  <p className="mt-4 text-base text-[#fff] italic">
                     {panel.reason}
                   </p>
                 )}
@@ -137,7 +168,7 @@ export default function WhatSetsUsApartHorizontal() {
                     viewBox="0 0 200 50"
                     className="w-60 h-10 mb-4"
                     fill="none"
-                    stroke="#2c3e50"
+                    stroke="#fff"
                     strokeWidth="2"
                   >
                     <path d="M0 25 Q 100 0, 200 25" markerEnd="url(#arrowhead)" />
@@ -150,16 +181,16 @@ export default function WhatSetsUsApartHorizontal() {
                         refY="3.5"
                         orient="auto"
                       >
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#fff" />
                       </marker>
                     </defs>
                   </svg>
                 )}
-                <p className="text-lg text-darkText max-w-md">
+                <p className="text-2xl text-lightText max-w-md">
                   {panel.description}
                 </p>
                 {panel.reason && (
-                  <p className="mt-4 text-base text-gray-700 italic max-w-md">
+                  <p className="mt-4 text-xl   text-light italic max-w-md">
                     {panel.reason}
                   </p>
                 )}

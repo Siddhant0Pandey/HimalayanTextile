@@ -72,7 +72,7 @@ const CoreValues = () => {
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-100 to-transparent z-10 pointer-events-none" />
 
       {/* Bottom blurry gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-gray-100 to-transparent z-10 pointer-events-none" />
+      {/* <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-gray-100 to-transparent z-10 pointer-events-none" /> */}
 
       {/* Main content */}
       <div className="relative w-full max-w-6xl h-[700px] sm:h-[500px] md:h-[600px] lg:h-[650px] flex flex-col sm:flex-row items-start sm:items-center justify-between z-20">
