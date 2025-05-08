@@ -7,8 +7,8 @@ function OurStory() {
   return (
     <div>
       <OurStoryHero />
-      <OurStoryFounderMsg />
       <OurStoryTimeline />
+      <OurStoryFounderMsg />
     </div>
   );
 }
