@@ -8,18 +8,22 @@ import Yarn from "./pages/Yarn";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import OurStory from "./components/About/OurStoryHero";
+
+
 import Fabric from "./pages/Fabric";
+
+import OurStory from "./pages/OurStory";
+
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollToTop /> 
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about/our-story" element={<OurStory />} />
+          <Route path="/about/our-story" element={<OurStory/>} />
           <Route path="*" element={<NoPage />} />
 
           <Route path="/fiber" element={<Fibers />} />
