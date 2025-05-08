@@ -27,7 +27,9 @@ export default function YarnOfferings() {
       name: "Pashmina Wool",
       description:
         "Ultra-soft premium wool derived from the undercoat of Himalayan mountain goats. Known for exceptional warmth and lightweight properties.",
-      image: "/api/placeholder/500/300",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Temperature regulating", "Ethically sourced", "Handspun"],
     },
     {
@@ -35,7 +37,9 @@ export default function YarnOfferings() {
       name: "Yak Wool",
       description:
         "Naturally insulating wool that is softer than sheep's wool and extremely durable. Perfect for high-quality garments requiring warmth.",
-      image: "/api/placeholder/500/300",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Water resistant", "Hypoallergenic", "Non-pilling"],
     },
     {
@@ -43,7 +47,9 @@ export default function YarnOfferings() {
       name: "Hemp Fiber",
       description:
         "Sustainable natural fiber with exceptional durability. Our hemp yarns are processed using traditional methods for minimal environmental impact.",
-      image: "/api/placeholder/500/300",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Antimicrobial", "UV resistant", "Eco-friendly"],
     },
     {
@@ -51,7 +57,9 @@ export default function YarnOfferings() {
       name: "Himalayan Silk",
       description:
         "Handcrafted silk yarn produced by skilled artisans using heritage techniques passed down through generations.",
-      image: "/api/placeholder/500/300",
+
+      image: "assets/img/Fiber/hemp.jpg",
+
       features: ["Lustrous finish", "Breathable", "Biodegradable"],
     },
   ];
@@ -302,9 +310,8 @@ export default function YarnOfferings() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen py-16 font-['Roboto_Slab',sans-serif] overflow-hidden"
+      className="min-h-screen py-16 font-['Roboto_Slab',sans-serif] overflow-hidden bg-gradient-to-br from-white to-green-50"
       style={{
-        background: `linear-gradient(135deg, #edfeee 0%, #f6edd9 100%)`,
         color: "#1d1f10",
       }}
     >
@@ -336,7 +343,7 @@ export default function YarnOfferings() {
               ref={addToCardsRef}
               className="rounded-2xl overflow-hidden shadow-lg transition-all duration-300"
               style={{
-                background: index % 2 === 0 ? "#f6edd9" : "#edfeee",
+                background: index % 2 === 0 ? "#edfeee" : "#edfeee",
                 opacity: 1, // Set initial opacity to ensure visibility
               }}
             >
@@ -395,11 +402,11 @@ export default function YarnOfferings() {
       <div
         ref={processRef}
         className="container mx-auto px-4 py-16 rounded-3xl my-20"
-        style={{ backgroundColor: "#1fa951", marginTop: 30 }}
+        style={{ marginTop: 30 }}
       >
         <h2
           className="text-4xl font-bold text-center mb-12"
-          style={{ color: "#edfeee" }}
+          style={{ color: "#1fa951" }}
         >
           Our Traditional Production Process
         </h2>
