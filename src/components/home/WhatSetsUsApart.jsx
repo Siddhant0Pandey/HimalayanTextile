@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -7,14 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const panels = [
   {
-    title: "What Set Us Apart?",
     image: "/assets/img/Fiber/raw4.png",
     description: "Sustainable materials sourced from the Himalayas",
     reason:
       "Unlike mass-produced goods, we use traceable, eco-friendly raw materials directly supporting local Himalayan communities.",
   },
   {
-    title: "Craftsmanship",
     image: "/arrow-step.svg",
     description: "Transformed by skilled artisans",
     isArrow: true,
@@ -22,14 +20,12 @@ const panels = [
       "Each item is hand-finished, ensuring individuality and superior attention to detail that machines can't replicate.",
   },
   {
-    title: "Finished Product",
     image: "/assets/img/Fiber/raw8.png",
     description: "Durable, eco-conscious quality for modern living",
     reason:
       "Our products are built to last using minimal-impact processes, ensuring longevity without compromising sustainability.",
   },
   {
-    title: "Quote",
     description: "“Crafted with care. Inspired by the mountains.”",
     isQuote: true,
     reason:
@@ -41,23 +37,13 @@ export default function WhatSetsUsApartHorizontal() {
   const containerRef = useRef(null);
   const panelRefs = useRef([]);
   const titleRef = useRef(null);
-  const [currentTitle, setCurrentTitle] = useState(panels[0].title);
-
-  // Animate title on mount
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
-    );
-  }, []);
 
   useEffect(() => {
     const panelElements = panelRefs.current;
     const totalPanels = panelElements.length;
-
+  
     const ctx = gsap.context(() => {
-      // Horizontal scroll
+      // Horizontal scroll animation
       gsap.to(panelElements, {
         xPercent: -100 * (totalPanels - 1),
         ease: "none",
@@ -66,35 +52,28 @@ export default function WhatSetsUsApartHorizontal() {
           pin: true,
           scrub: 1,
           end: () => `+=${window.innerWidth * (totalPanels - 1)}`,
+          invalidateOnRefresh: true,
         },
       });
-
-      // Animations for each panel
-      panelElements.forEach((panel, index) => {
-        if (!panel) return;
-
-        ScrollTrigger.create({
-          trigger: panel,
-          start: "left center",
-          horizontal: true,
-          onEnter: () => {
-            setCurrentTitle(panels[index].title);
-            gsap.fromTo(
-              titleRef.current,
-              { opacity: 0, y: 30 },
-              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-            );
+  
+      // Title animation
+      gsap.fromTo(
+        titleRef.current,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
           },
-          onEnterBack: () => {
-            setCurrentTitle(panels[index].title);
-            gsap.fromTo(
-              titleRef.current,
-              { opacity: 0, y: 30 },
-              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-            );
-          },
-        });
-
+        }
+      );
+  
+      // Panel animations
+      panelElements.forEach((panel) => {
         gsap.from(panel, {
           opacity: 0,
           y: 50,
@@ -107,22 +86,26 @@ export default function WhatSetsUsApartHorizontal() {
         });
       });
     }, containerRef);
-
-    return () => ctx.revert();
+  
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ctx.revert(); // ensures GSAP context cleanup
+    };
   }, []);
+  
 
   return (
     <section
       ref={containerRef}
       className="h-screen overflow-hidden relative bg-white"
     >
-      {/* Fixed Title */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText mb-4">
+      {/* Single Title */}
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-darkText">
         <h1
           ref={titleRef}
-          className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2 transition-all duration-300"
+          className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2"
         >
-          {currentTitle}
+          What Sets Us Apart
         </h1>
       </div>
 
@@ -150,7 +133,7 @@ export default function WhatSetsUsApartHorizontal() {
                 {!panel.isArrow && (
                   <img
                     src={panel.image}
-                    alt={panel.title}
+                    alt="Panel visual"
                     className="w-48 h-48 object-cover rounded-xl shadow-lg mb-4"
                   />
                 )}
@@ -177,7 +160,9 @@ export default function WhatSetsUsApartHorizontal() {
                     </defs>
                   </svg>
                 )}
-                <p className="text-lg text-darkText max-w-md">{panel.description}</p>
+                <p className="text-lg text-darkText max-w-md">
+                  {panel.description}
+                </p>
                 {panel.reason && (
                   <p className="mt-4 text-base text-gray-700 italic max-w-md">
                     {panel.reason}
