@@ -8,7 +8,12 @@ import Yarn from "./pages/Yarn";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
+import Fabric from "./pages/Fabric";
+
 import OurStory from "./pages/OurStory";
+
 
 function App() {
   return (
@@ -22,6 +27,7 @@ function App() {
           <Route path="*" element={<NoPage />} />
 
           <Route path="/fiber" element={<Fibers />} />
+          <Route path="/fabric" element={<Fabric />} />
 
           <Route path="/yarn" element={<Yarn />} />
         </Route>

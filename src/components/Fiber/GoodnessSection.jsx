@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,7 +12,29 @@ const GoodnessSection = () => {
   const overlayRefs = useRef([]);
   const buttonRef = useRef(null);
   const hoverTimelines = useRef([]);
-  const textOverlayRefs = useRef([]); // New ref for text overlays
+  const textOverlayRefs = useRef([]);
+
+  // Responsive state
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  // Handle responsive breakpoints
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 640);
+      setIsTablet(width >= 640 && width < 1024);
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Clear refs
@@ -114,57 +136,61 @@ const GoodnessSection = () => {
         );
       }
 
-      // Hover animations
-      const caption = img.querySelector(".image-caption");
-      const hoverTl = gsap.timeline({ paused: true });
+      // Hover animations - only on non-touch devices
+      if (window.matchMedia("(hover: hover)").matches) {
+        const caption = img.querySelector(".image-caption");
+        const hoverTl = gsap.timeline({ paused: true });
 
-      hoverTl.to(img, {
-        scale: 1.05,
-        boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
-        duration: 0.4,
-        ease: "power2.out",
-      });
+        hoverTl.to(img, {
+          scale: 1.05,
+          boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+          duration: 0.4,
+          ease: "power2.out",
+        });
 
-      if (caption) {
-        hoverTl.to(
-          caption,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          "-=0.2"
-        );
+        if (caption) {
+          hoverTl.to(
+            caption,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.3,
+              ease: "power2.out",
+            },
+            "-=0.2"
+          );
+        }
+
+        const onEnter = () => hoverTl.play();
+        const onLeave = () => hoverTl.reverse();
+
+        img.addEventListener("mouseenter", onEnter);
+        img.addEventListener("mouseleave", onLeave);
+
+        // Store for cleanup
+        hoverTimelines.current.push({ img, onEnter, onLeave });
       }
-
-      const onEnter = () => hoverTl.play();
-      const onLeave = () => hoverTl.reverse();
-
-      img.addEventListener("mouseenter", onEnter);
-      img.addEventListener("mouseleave", onLeave);
-
-      // Store for cleanup
-      hoverTimelines.current.push({ img, onEnter, onLeave });
     });
 
     // Button animation
-    gsap.fromTo(
-      buttonRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 1,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: buttonRef.current,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    if (buttonRef.current) {
+      gsap.fromTo(
+        buttonRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: buttonRef.current,
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
 
     // Cleanup
     return () => {
@@ -210,33 +236,56 @@ const GoodnessSection = () => {
     },
   ];
 
+  // Get image size based on screen size
+  const getImageSize = () => {
+    if (isMobile) return "h-40 w-full";
+    if (isTablet) return "h-52 w-52";
+    return "h-60 w-60 md:h-72 md:w-72";
+  };
+
+  // Get font size based on screen size
+  const getOverlayTextSize = () => {
+    if (isMobile) return "text-2xl";
+    if (isTablet) return "text-2xl";
+    return "text-3xl";
+  };
+
   return (
-    <section ref={sectionRef} className="py-16 px-4 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="py-8 sm:py-12 md:py-16 px-4 relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-blue-500"></div>
 
       <div className="max-w-6xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-center py-10 text-4xl md:text-5xl font-semibold text-green-800"
+          className="text-center py-6 sm:py-8 md:py-10 text-3xl sm:text-4xl md:text-5xl font-semibold text-green-800"
         >
           Goodness is woven into every fiber we produce.
         </h1>
 
         <p
           ref={textRef}
-          className="text-center max-w-3xl mx-auto text-lg text-gray-600 mb-12"
+          className="text-center max-w-3xl mx-auto text-base sm:text-lg text-gray-600 mb-8 sm:mb-10 md:mb-12 px-2 sm:px-4"
         >
           Our commitment to sustainability and performance drives every aspect
           of our fiber technology. From raw materials to finished products, we
           ensure ethical and eco-friendly practices.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-6 md:gap-10 p-4 md:p-10">
+        <div
+          className={`flex ${
+            isMobile ? "flex-col" : "flex-wrap"
+          } justify-center gap-4 sm:gap-6 md:gap-10 p-2 sm:p-4 md:p-10`}
+        >
           {images.map((img, index) => (
             <div
               key={index}
               ref={addToImageRefs}
-              className="relative h-60 w-60 md:h-72 md:w-72 rounded-lg overflow-hidden cursor-pointer shadow-lg transition-all duration-300"
+              className={`relative ${getImageSize()} rounded-lg overflow-hidden cursor-pointer shadow-lg transition-all duration-300 ${
+                isMobile ? "mb-4" : ""
+              }`}
             >
               {/* Reveal overlay */}
               <div
@@ -249,7 +298,7 @@ const GoodnessSection = () => {
                 <img
                   src={`/assets/img/Fiber/${img.name}`}
                   alt={img.name}
-                  className="h-full w-full object-cover blur-[1px]" // Added blur-sm class
+                  className="h-full w-full object-cover blur-[1px]"
                 />
 
                 {/* Text overlay with featured phrase */}
@@ -257,31 +306,42 @@ const GoodnessSection = () => {
                   ref={addToTextOverlayRefs}
                   className="absolute inset-0 flex items-center justify-center z-10"
                 >
-                  <h2 className="text-white font-bold text-3xl tracking-wider drop-shadow-lg text-center px-4">
+                  <h2
+                    className={`text-white font-bold ${getOverlayTextSize()} tracking-wider drop-shadow-lg text-center px-4`}
+                  >
                     {img.overlayText}
                   </h2>
                 </div>
               </div>
 
-              {/* Caption overlay on hover */}
-              <div className="image-caption absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 transform translate-y-4 z-10">
-                <h3 className="text-white font-bold text-xl">{img.title}</h3>
-                <p className="text-white/90 text-sm">{img.description}</p>
+              {/* Caption overlay - always visible on mobile, hover on desktop */}
+              <div
+                className={`image-caption absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4 ${
+                  isMobile ? "opacity-100" : "opacity-0 transform translate-y-4"
+                } z-10`}
+              >
+                <h3 className="text-white font-bold text-lg sm:text-xl">
+                  {img.title}
+                </h3>
+                <p className="text-white/90 text-xs sm:text-sm">
+                  {img.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <button
+        <div className="text-center mt-8 sm:mt-10 md:mt-12">
+          {/* <button
             ref={buttonRef}
-            className="px-8 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors duration-300 shadow-md"
+            className="px-6 sm:px-8 py-2 sm:py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors duration-300 shadow-md"
           >
             Discover Our Process
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
   );
 };
+
 export default GoodnessSection;
