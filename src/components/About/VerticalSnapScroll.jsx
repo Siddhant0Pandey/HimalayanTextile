@@ -8,62 +8,11 @@ if (typeof window !== "undefined") {
 
 // --- Panel Components ---
 const WelcomePanel = () => {
-  const titleRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const buttonRef = useRef(null);
-  const image1Ref = useRef(null);
-  const image2Ref = useRef(null);
-
-  useEffect(() => {
-    gsap.from([titleRef.current, paragraphRef.current, buttonRef.current], {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 85%",
-        end: "top 30%",
-        scrub: 1,
-      },
-    });
-
-    gsap.from(image1Ref.current, {
-      y: -80,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: image1Ref.current,
-        start: "top 85%",
-        end: "top 50%",
-        scrub: 1,
-      },
-    });
-
-    gsap.from(image2Ref.current, {
-      y: 80,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: image2Ref.current,
-        start: "top 85%",
-        end: "top 50%",
-        scrub: 1,
-      },
-    });
-  }, []);
-
   return (
     <section className="panel w-screen h-screen flex flex-col lg:flex-row items-center justify-center text-black p-6 md:p-12 gap-8 bg-white">
-      {/* Image comes first in mobile view */}
+      {/* Mobile Image */}
       <div className="w-full lg:hidden block">
-        <div
-          ref={image1Ref}
-          className="w-full rounded-lg overflow-hidden shadow-lg"
-        >
+        <div className="w-full rounded-lg overflow-hidden shadow-lg animate-float">
           <img
             src="/assets/img/materials.jpg"
             alt="Materials"
@@ -72,50 +21,34 @@ const WelcomePanel = () => {
         </div>
       </div>
 
+      {/* Text & Button */}
       <div className="text w-full lg:w-1/2 space-y-6">
-        <h1
-          ref={titleRef}
-          className="text-4xl md:text-6xl xl:text-7xl font-bold leading-tight"
-        >
+        <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold leading-tight">
           Himalayan <span className="text-[#1FA951]">Textile</span>
         </h1>
-        <p
-          ref={paragraphRef}
-          className="text-base my-10 md:text-lg xl:text-xl leading-relaxed max-w-3xl"
-        >
-          <span className="text-[#1FA951] font-semibold">
-            Himalayan Textile
-          </span>{" "}
+        <p className="text-base my-10 md:text-lg xl:text-xl leading-relaxed max-w-3xl">
+          <span className="text-[#1FA951] font-semibold">Himalayan Textile</span>{" "}
           is a heritage-inspired brand dedicated to preserving the timeless art
           of handwoven textiles from the Himalayas. Blending tradition with
           sustainability, we empower local artisans—especially women—to craft
           each piece with care, using natural fibers and eco-friendly processes.
         </p>
-        <button
-          ref={buttonRef}
-          className="bg-[#1FA951] text-white py-3 my-4 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] transition"
-        >
+        <button className="bg-[#1FA951] text-white py-3 my-4 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] animate-float">
           Read More →
         </button>
       </div>
 
-      {/* Desktop Image */}
+      {/* Desktop Images */}
       <div className="hidden lg:block w-1/2 relative h-[400px] xl:h-[500px]">
         <div className="wrap w-full h-full relative">
-          <div
-            ref={image1Ref}
-            className="absolute top-0 left-0 w-[55%] rounded-lg overflow-hidden shadow-lg"
-          >
+          <div className="absolute top-0 left-0 w-[55%] rounded-lg overflow-hidden shadow-lg animate-float">
             <img
               src="/assets/img/materials.jpg"
               alt="Materials"
               className="w-full h-auto object-cover"
             />
           </div>
-          <div
-            ref={image2Ref}
-            className="absolute bottom-0 right-0 w-[55%] rounded-lg overflow-hidden shadow-lg"
-          >
+          <div className="absolute bottom-0 right-0 w-[55%] rounded-lg overflow-hidden shadow-lg animate-float">
             <img
               src="/assets/img/img2.jpg"
               alt="Artisans"
@@ -188,7 +121,7 @@ export default function HorizontalSnapPanels() {
   }, []);
 
   return (
-    <div ref={scrollSectionRef} className="w-full h-[300vh] overflow-hidden">
+    <div ref={scrollSectionRef} className="w-full overflow-hidden">
       <div
         ref={containerRef}
         className="sticky top-0 h-screen w-full overflow-hidden"

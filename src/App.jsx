@@ -3,23 +3,26 @@ import NoPage from "./components/NoPage";
 import About from "./pages/About";
 import Fibers from "./pages/Fibers";
 import Home from "./pages/Home";
+import Yarn from "./pages/Yarn";
+
+import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Yarn from "./pages/Yarn";
-import ScrollToTop from "./components/ScrollToTop";
+import OurStory from "./components/About/OurStoryHero";
 
 function App() {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/about/our-story" element={<OurStory />} />
           <Route path="*" element={<NoPage />} />
-          {/* Fiber Page Routes */}
+
           <Route path="/fiber" element={<Fibers />} />
-          {/* Yarn Page */}
+
           <Route path="/yarn" element={<Yarn />} />
         </Route>
       </Routes>
