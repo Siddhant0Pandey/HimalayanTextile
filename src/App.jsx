@@ -13,7 +13,7 @@ import OurStory from "./pages/OurStory";
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollToTop /> 
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
