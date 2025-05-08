@@ -189,14 +189,14 @@ export default function Hero() {
             {/* Box */}
             <div
               ref={(el) => (boxRefs.current[i] = el)}
-              className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] bg-white/90 text-darkText shadow-xl flex flex-col items-center justify-center text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold rounded-[2rem] p-4 sm:p-5 border border-gray-300 transform ${yOffsets[i]}`}
+              className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] border rounded-lg border-gray-300 flex flex-col items-center justify-center text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold  p-4 sm:p-5  transform ${yOffsets[i]}`}
             >
               <img
                 src={step.image}
                 alt={step.title}
                 className="w-12 sm:w-16 h-12 sm:h-16 mb-2 sm:mb-3 object-contain"
               />
-              <p className="text-center leading-tight">{step.title}</p>
+              <p className="text-center leading-tight ">{step.title}</p>
             </div>
 
             {/* Arrow */}
@@ -214,7 +214,7 @@ export default function Hero() {
                 >
                   <path
                     d="M4 12h16m0 0l-6-6m6 6l-6 6"
-                    stroke="black"
+                    stroke="white "
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
