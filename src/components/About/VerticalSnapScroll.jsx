@@ -67,18 +67,31 @@ const OurMissionPanel = () => {
   useEffect(() => {
     paraRefs.current.forEach((el, index) => {
       if (!el) return;
+
+      const directions = [
+        { x: -100, y: 0 }, // para1 from left
+        { x: 0, y: 100 }, // para2 from bottom
+        { x: 100, y: 0 }, // para3 from right
+      ];
+
+      const { x, y } = directions[index];
+
+      // Create individual timelines for each paragraph
       gsap.fromTo(
         el,
-        { x: -100, opacity: 0 },
+        { x, y, opacity: 0 },
         {
           x: 0,
+          y: 0,
           opacity: 1,
           duration: 1,
           ease: "power3.out",
-          delay: index * 0.2,
           scrollTrigger: {
             trigger: el,
             start: "top 85%",
+            toggleActions: "play none none reset", // replays on scroll-in
+            once: false, // always triggers
+            markers: false, // set to true for debugging
           },
         }
       );
@@ -125,7 +138,7 @@ const OurMissionPanel = () => {
         <div className="space-y-6 flex flex-col justify-center">
           <div
             ref={(el) => (paraRefs.current[2] = el)}
-            className="bg-white shadow-md rounded-2xl p-6"
+            className="bg-white shadow-md  p-6"
           >
             <p>
               Our mission is to weave a better future—combining quality,

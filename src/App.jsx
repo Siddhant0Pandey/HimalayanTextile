@@ -8,19 +8,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Fabric from "./pages/Fabric";
 
-
-
-
 function App() {
   return (
-  
     <BrowserRouter>
-
       <ScrollToTop />
       <AppRoutes />
-
     </BrowserRouter>
-   
   );
 }
 
