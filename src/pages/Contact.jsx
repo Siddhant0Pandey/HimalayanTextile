@@ -23,7 +23,7 @@ function Contact() {
           </div>
           <div>
             <h4 className="font-medium">Email</h4>
-            <p className="text-[#1fa951]">contact@yourcompany.com</p>
+            <p className="text-[#1fa951]">himalayan@info.com</p>
           </div>
           <div>
             <h4 className="font-medium">Phone</h4>
@@ -31,7 +31,7 @@ function Contact() {
           </div>
           <div>
             <h4 className="font-medium">Address</h4>
-            <p>123 Eco Textile Street<br />Sustainable City, Planet Earth</p>
+            <p>Bhagwan <Pau></Pau><br />Kathmandu, Nepal</p>
           </div>
         </div>
 
