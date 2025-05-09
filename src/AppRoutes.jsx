@@ -23,7 +23,7 @@ function AppRoutes() {
 
   return (
     <>
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
       <Routes location={location}>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
