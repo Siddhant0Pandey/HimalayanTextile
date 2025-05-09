@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  FaChevronDown,
-  FaCalendarAlt,
-  FaMapMarkerAlt,
-  FaCode,
-  FaCheckCircle,
-  FaRocket,
+  FaSeedling, // For Fiber Sourcing
+  FaIndustry, // For Yarn Spinning
+  FaPalette, // For Dyeing & Finishing
+  FaShieldAlt, // For Quality Control
+  FaBolt,
 } from "react-icons/fa";
 
 const timelineData = [
@@ -15,7 +14,7 @@ const timelineData = [
     description:
       "Carefully selected cotton, wool, and synthetic blends from trusted suppliers.",
     bgImage: "https://via.placeholder.com/800x500",
-    icon: FaCalendarAlt,
+    icon: FaSeedling,
   },
   {
     id: 2,
@@ -23,14 +22,14 @@ const timelineData = [
     description:
       "Precision spinning ensures strength, softness, and consistency.",
     bgImage: "https://via.placeholder.com/800x500",
-    icon: FaMapMarkerAlt,
+    icon: FaIndustry,
   },
   {
     id: 3,
     title: "Dyeing & Finishing",
     description: "Eco-conscious dyeing with vibrant, long-lasting colors.",
     bgImage: "https://via.placeholder.com/800x500",
-    icon: FaCode,
+    icon: FaPalette,
   },
   {
     id: 4,
@@ -38,7 +37,7 @@ const timelineData = [
     description:
       "Traditional craftsmanship meets modern machinery for perfect fabric.",
     bgImage: "https://via.placeholder.com/800x500",
-    icon: FaCheckCircle,
+    icon: FaBolt,
   },
   {
     id: 5,
@@ -46,7 +45,7 @@ const timelineData = [
     description:
       "Every batch undergoes strict inspection to meet international standards.",
     bgImage: "https://via.placeholder.com/800x500",
-    icon: FaRocket,
+    icon: FaShieldAlt,
   },
 ];
 
@@ -76,9 +75,8 @@ export default function VerticalTimeline() {
   }, []);
 
   return (
-
     <div className="flex flex-col items-center bg-gray-100 px-4 pt-20">
-    {/* <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4"> */}
+      {/* <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4"> */}
       <h1 className="text-4xl font-bold mb-12 text-center">Our Process</h1>
 
       <div className="flex justify-center w-full max-w-6xl">
@@ -157,10 +155,10 @@ export default function VerticalTimeline() {
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
+      {/* Scroll Down Indicator  
       <div className="mt-6 animate-bounce">
         <FaChevronDown size={32} className="text-[#1fa951]" />
-      </div>
+      </div> / */}
     </div>
   );
 }

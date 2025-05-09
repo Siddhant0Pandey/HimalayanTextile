@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView, useAnimation } from "framer-motion"; // Ensure correct imports
 
 function OurStoryFounderMsg() {
   const ref = useRef(null);
@@ -40,7 +41,8 @@ function OurStoryFounderMsg() {
   }, [isInView, controlsLeft, controlsRight]);
 
   return (
-    <div className="py-20 max-w-[80%] m-auto">
+    <motion.div className="py-20 max-w-[80%] m-auto">
+      {/* Title Animation */}
       <motion.h1
         className="text-4xl text-center font-bold text-[#1FA951] mb-12"
         initial={{ opacity: 0, y: -30 }}
@@ -55,10 +57,12 @@ function OurStoryFounderMsg() {
         Founder Message
       </motion.h1>
 
-      <div
+      {/* Content Section */}
+      <motion.div
         className="wrap flex flex-col md:flex-row gap-12 px-4 md:px-15 items-center"
         ref={ref}
       >
+        {/* Left Content (Text) */}
         <motion.div
           className="left md:w-1/2 text-lg leading-relaxed"
           animate={controlsLeft}
@@ -81,6 +85,7 @@ function OurStoryFounderMsg() {
           </p>
         </motion.div>
 
+        {/* Right Content (Image) */}
         <motion.div
           className="right md:w-1/2"
           animate={controlsRight}
@@ -92,8 +97,8 @@ function OurStoryFounderMsg() {
             className="rounded-xl shadow-xl object-cover w-full max-h-[400px]"
           />
         </motion.div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
