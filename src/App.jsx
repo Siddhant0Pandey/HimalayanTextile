@@ -9,27 +9,27 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Fabric from "./pages/Fabric";
 
 import OurStory from "./pages/OurStory";
-
+import Sustainable from "./pages/Sustainable";
 
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop /> 
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about/our-story" element={<OurStory/>} />
+          <Route path="/about/our-story" element={<OurStory />} />
           <Route path="*" element={<NoPage />} />
 
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/fabric" element={<Fabric />} />
 
           <Route path="/yarn" element={<Yarn />} />
+          <Route path="/sustainable" element={<Sustainable />} />
         </Route>
       </Routes>
     </BrowserRouter>
