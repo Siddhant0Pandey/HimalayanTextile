@@ -19,40 +19,28 @@
 }
 
 /* loading animation */
+
 .loader-container {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  background-color: #18181C;
 }
 
 .mountain-svg {
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: auto;
 }
 
 .mountain-path {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawPath 2s ease-in-out infinite;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawMountain 3s linear forwards;
 }
 
-.path2 {
-  animation-delay: 0.5s;
-  opacity: 0.5;
-}
-
-@keyframes drawPath {
-  0% {
-    stroke-dashoffset: 600;
-  }
-  50% {
+@keyframes drawMountain {
+  to {
     stroke-dashoffset: 0;
-  }
-  100% {
-    stroke-dashoffset: 600;
   }
 }

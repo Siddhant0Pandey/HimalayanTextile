@@ -9,18 +9,11 @@ function Loader() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          className="mountain-path path1"
-          d="M0,80 Q25,10 50,80 Q75,10 100,80 Q125,10 150,80 Q175,10 200,80"
+          className="mountain-path"
+          d="M0,80 L10,40 L20,80 L30,30 L40,80 L50,35 L60,80 L70,30 L80,80 L90,25 L100,80 L110,35 L120,80 L130,30 L140,80 L150,40 L160,80 L170,30 L180,80 L190,35 L200,80"
           fill="none"
-          stroke="#1fa951"
+          stroke="#eaeeff"
           strokeWidth="2"
-        />
-        <path
-          className="mountain-path path2"
-          d="M0,80 Q25,20 50,80 Q75,20 100,80 Q125,20 150,80 Q175,20 200,80"
-          fill="none"
-          stroke="#1fa951"
-          strokeWidth="1"
         />
       </svg>
     </div>
