@@ -1,6 +1,6 @@
 // App.jsx
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import AppRoutes from "./AppRoutes";
 
