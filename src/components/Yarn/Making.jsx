@@ -1,15 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import {
-  FiScissors,
-  FiWind,
-  FiDroplet,
-  FiFeather,
-  FiChevronRight,
-} from "react-icons/fi";
 
 export default function Making() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeMethod, setActiveMethod] = useState(0);
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,54 +15,92 @@ export default function Making() {
     fontDisplay: "'Roboto Slab', sans-serif",
   };
 
-  const processSteps = [
+  // Custom SVG icons
+  const SettingsIcon = ({ color }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+    </svg>
+  );
+
+  const HandsIcon = ({ color }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 11.5V14c0 .8.7 1.5 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-2.5a1.5 1.5 0 0 0-1.5-1.5h-9A1.5 1.5 0 0 0 7 11.5z"></path>
+      <path d="M7 13h9m-9-1.5h9m-3-3V5.5a1.5 1.5 0 0 0-1.5-1.5h-3A1.5 1.5 0 0 0 7 5.5V10"></path>
+      <path d="M16 13v2.5a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 18.5 6h-3a1.38 1.38 0 0 0-1 .41"></path>
+      <path d="M9 17v1a1 1 0 0 0 1 1h0a1 1 0 0 0 1-1v-1"></path>
+      <path d="M13 17v1a1 1 0 0 0 1 1h0a1 1 0 0 0 1-1v-1"></path>
+    </svg>
+  );
+
+  const ChevronRightIcon = ({ color }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  );
+
+  const yarnMethods = [
     {
       id: 1,
-      title: "Harvesting & Sorting",
+      title: "Machine Spun",
       description:
-        "Fibers are carefully harvested from premium sources like sheep, alpaca, or cotton plants. The raw materials are then meticulously sorted by quality, length, and texture.",
-      icon: <FiFeather style={{ color: theme.primary }} />,
+        "Machine spinning uses advanced technology to transform raw fibers into yarn with perfect consistency. Industrial equipment processes large volumes efficiently, creating uniform yarns ideal for commercial textiles and everyday garments. This method ensures precise tension control and identical thickness throughout, making it perfect for projects requiring consistency.",
+      icon: <SettingsIcon color={theme.primary} />,
       color: theme.light,
       accent: theme.primary,
-
-      image: "assets/img/Fiber/hemp.jpg",
-
+      features: [
+        "High production volume",
+        "Consistent yarn thickness",
+        "Precise tension control",
+        "Uniform texture and appearance",
+        "Cost-effective for commercial use",
+      ],
     },
     {
       id: 2,
-      title: "Cleaning & Carding",
+      title: "Hand Spun",
       description:
-        "Raw fibers undergo a thorough cleaning process to remove impurities. Then, carding aligns the fibers in the same direction, creating soft, fluffy sheets ready for spinning.",
-      icon: <FiWind style={{ color: theme.secondary }} />,
+        "Hand spinning is an ancient craft where artisans manually transform fibers into yarn using simple tools like drop spindles or spinning wheels. This traditional method allows for creative control over thickness, texture, and twist, resulting in unique, characterful yarns. Hand-spun yarns have natural variations that add charm and personality to finished projects.",
+      icon: <HandsIcon color={theme.secondary} />,
       color: theme.light,
       accent: theme.secondary,
-
-      image: "assets/img/Fiber/hemp.jpg",
-
-    },
-    {
-      id: 3,
-      title: "Spinning & Plying",
-      description:
-        "The prepared fibers are twisted together, creating a continuous strand. Multiple strands are then plied together in the opposite direction for strength and balance.",
-      icon: <FiScissors style={{ color: theme.primary }} />,
-      color: theme.light,
-      accent: theme.primary,
-
-      image: "assets/img/Fiber/hemp.jpg",
-
-    },
-    {
-      id: 4,
-      title: "Dyeing & Finishing",
-      description:
-        "The yarn is dyed using natural or synthetic colorants. Finally, it undergoes finishing treatments like steaming or washing to set the twist and enhance softness.",
-      icon: <FiDroplet style={{ color: theme.secondary }} />,
-      color: theme.light,
-      accent: theme.secondary,
-
-      image: "assets/img/Fiber/hemp.jpg",
-
+      features: [
+        "Unique character and texture",
+        "Artisanal quality",
+        "Creative control over thickness",
+        "Natural variations in twist and density",
+        "Connection to traditional craft practices",
+      ],
     },
   ];
 
@@ -88,8 +119,8 @@ export default function Making() {
     let interval;
     if (isVisible) {
       interval = setInterval(() => {
-        setActiveStep((prev) => (prev + 1) % processSteps.length);
-      }, 5000);
+        setActiveMethod((prev) => (prev + 1) % yarnMethods.length);
+      }, 8000);
     }
 
     return () => {
@@ -98,22 +129,12 @@ export default function Making() {
       }
       clearInterval(interval);
     };
-  }, [isVisible, processSteps.length]);
-
-  const getStepStatus = (index) => {
-    if (index === activeStep) return "active";
-    if (index < activeStep) return "completed";
-    return "upcoming";
-  };
+  }, [isVisible, yarnMethods.length]);
 
   return (
     <div
       ref={containerRef}
       className="min-h-screen py-16 px-4 md:px-8 bg-gradient-to-br from-white to-green-50"
-      style={{
-        // Light gray background
-        fontFamily: theme.fontDisplay,
-      }}
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -131,85 +152,78 @@ export default function Making() {
           className="text-lg text-center max-w-3xl mx-auto mb-16"
           style={{ color: theme.darkText }}
         >
-          Discover our meticulous four-stage process that transforms raw natural
-          fibers into luxurious, premium-quality yarn for your creative
-          projects.
+          Explore the two primary methods of transforming natural fibers into
+          beautiful yarn: traditional hand spinning and modern machine
+          production.
         </p>
 
-        {/* Timeline Steps */}
-        <div className="flex flex-wrap justify-center mb-12 relative">
-          <div
-            className="absolute top-5 left-0 right-0 h-1 hidden md:block"
-            style={{ backgroundColor: theme.secondary, opacity: 0.3 }}
-          />
-          {processSteps.map((step, index) => (
+        {/* Method Selection */}
+        <div className="flex flex-col md:flex-row justify-center gap-6 mb-16">
+          {yarnMethods.map((method, index) => (
             <motion.div
-              key={step.id}
-              className={`relative z-10 px-4 mb-6 md:mb-0 w-full md:w-1/4 ${
-                getStepStatus(index) === "active" ? "scale-110" : "scale-100"
-              }`}
-              animate={
-                getStepStatus(index) === "active"
-                  ? { scale: 1.05 }
-                  : { scale: 1 }
-              }
+              key={method.id}
+              className="w-full md:w-1/2 max-w-md"
+              whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3 }}
             >
               <div
-                className="flex flex-col items-center cursor-pointer"
-                onClick={() => setActiveStep(index)}
+                className={`p-6 rounded-xl cursor-pointer h-full transition-all duration-300 ${
+                  activeMethod === index
+                    ? "border-4 shadow-lg"
+                    : "border-2 opacity-80"
+                }`}
+                style={{
+                  borderColor: method.accent,
+                  backgroundColor: method.color,
+                  boxShadow:
+                    activeMethod === index
+                      ? `0 10px 15px -3px ${method.accent}30`
+                      : "none",
+                }}
+                onClick={() => setActiveMethod(index)}
               >
-                <motion.div
-                  style={{
-                    width: "2.5rem",
-                    height: "2.5rem",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "0.5rem",
-                    borderWidth: "2px",
-                    borderColor: step.accent,
-                    backgroundColor:
-                      getStepStatus(index) === "active"
-                        ? "#ffffff"
-                        : step.color,
-                  }}
-                  animate={
-                    getStepStatus(index) === "active"
-                      ? {
-                          scale: [1, 1.2, 1],
-                          backgroundColor: ["#ffffff", step.color, "#ffffff"],
-                        }
-                      : {}
-                  }
-                  transition={{
-                    duration: 1.5,
-                    repeat: getStepStatus(index) === "active" ? Infinity : 0,
-                    repeatDelay: 1,
-                  }}
-                >
-                  {step.icon}
-                </motion.div>
-                <h3
-                  className="text-center font-semibold"
-                  style={{
-                    color:
-                      getStepStatus(index) === "active"
-                        ? theme.primary
-                        : theme.secondary,
-                  }}
-                >
-                  {step.title}
-                </h3>
+                <div className="flex items-center mb-4">
+                  <div
+                    style={{
+                      width: "3rem",
+                      height: "3rem",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: "1rem",
+                      backgroundColor: "white",
+                      borderWidth: "2px",
+                      borderColor: method.accent,
+                    }}
+                  >
+                    {method.icon}
+                  </div>
+                  <h3
+                    className="text-2xl font-bold"
+                    style={{
+                      color:
+                        activeMethod === index
+                          ? theme.primary
+                          : theme.secondary,
+                    }}
+                  >
+                    {method.title}
+                  </h3>
+                </div>
+                <p className="mb-2 text-sm" style={{ color: theme.darkText }}>
+                  {activeMethod === index
+                    ? method.description.substring(0, 70) + "..."
+                    : ""}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Step Content */}
+        {/* Method Detail */}
         <motion.div
-          key={activeStep}
+          key={activeMethod}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
@@ -219,20 +233,14 @@ export default function Making() {
             overflow: "hidden",
             boxShadow:
               "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-            backgroundColor: processSteps[activeStep].color,
+            backgroundColor: yarnMethods[activeMethod].color,
             borderWidth: "2px",
-            borderColor: processSteps[activeStep].accent,
+            borderColor: yarnMethods[activeMethod].accent,
           }}
+          className="mb-12"
         >
           <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/2">
-              <img
-                src={processSteps[activeStep].image}
-                alt={processSteps[activeStep].title}
-                className="w-full h-64 md:h-full object-cover"
-              />
-            </div>
-            <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+            <div className="w-full md:w-1/2 p-6 md:p-8">
               <div className="flex items-center mb-4">
                 <div
                   style={{
@@ -243,44 +251,92 @@ export default function Making() {
                     alignItems: "center",
                     justifyContent: "center",
                     marginRight: "1rem",
-                    backgroundColor: processSteps[activeStep].color,
+                    backgroundColor: "white",
                     borderWidth: "2px",
-                    borderColor: processSteps[activeStep].accent,
+                    borderColor: yarnMethods[activeMethod].accent,
                   }}
                 >
-                  {processSteps[activeStep].icon}
+                  {yarnMethods[activeMethod].icon}
                 </div>
                 <h3
                   className="text-2xl md:text-3xl font-bold"
                   style={{ color: theme.primary }}
                 >
-                  {processSteps[activeStep].title}
+                  {yarnMethods[activeMethod].title}
                 </h3>
               </div>
               <p className="mb-6" style={{ color: theme.darkText }}>
-                {processSteps[activeStep].description}
+                {yarnMethods[activeMethod].description}
               </p>
+              <div>
+                <h4
+                  className="font-semibold mb-3"
+                  style={{ color: theme.primary }}
+                >
+                  Key Features:
+                </h4>
+                <ul className="space-y-2">
+                  {yarnMethods[activeMethod].features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mt-1 mr-2 flex-shrink-0">
+                        <ChevronRightIcon
+                          color={yarnMethods[activeMethod].accent}
+                        />
+                      </span>
+                      <span style={{ color: theme.darkText }}>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 bg-gray-100 flex items-center justify-center p-6">
+              <div className="text-center p-8 rounded-lg bg-white bg-opacity-80 shadow-md">
+                <div
+                  className="w-24 h-24 mx-auto mb-4 flex items-center justify-center"
+                  style={{
+                    backgroundColor: yarnMethods[activeMethod].color,
+                    borderRadius: "50%",
+                    borderWidth: "3px",
+                    borderColor: yarnMethods[activeMethod].accent,
+                  }}
+                >
+                  {yarnMethods[activeMethod].icon}
+                </div>
+                <h4
+                  className="text-xl font-semibold mb-2"
+                  style={{ color: theme.primary }}
+                >
+                  {yarnMethods[activeMethod].title}
+                </h4>
+                <p className="text-sm" style={{ color: theme.darkText }}>
+                  {activeMethod === 0
+                    ? "Industrial efficiency meets consistent quality"
+                    : "Traditional craftsmanship with unique character"}
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Dots Navigation */}
-        <div className="flex justify-center mt-8">
-          {processSteps.map((_, index) => (
+        {/* Toggle Buttons */}
+        <div className="flex justify-center mt-8 mb-8">
+          {yarnMethods.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveStep(index)}
+              onClick={() => setActiveMethod(index)}
+              className="mx-2 px-4 py-2 rounded-full transition-all duration-300"
               style={{
-                width: "0.75rem",
-                height: "0.75rem",
-                borderRadius: "50%",
-                margin: "0 0.5rem",
                 backgroundColor:
-                  index === activeStep ? theme.primary : theme.secondary,
-                opacity: index === activeStep ? 1 : 0.3,
+                  index === activeMethod ? theme.primary : "transparent",
+                color: index === activeMethod ? "white" : theme.secondary,
+                borderWidth: "2px",
+                borderColor:
+                  index === activeMethod ? theme.primary : theme.secondary,
+                fontWeight: index === activeMethod ? "bold" : "normal",
               }}
-              aria-label={`Go to step ${index + 1}`}
-            />
+            >
+              {yarnMethods[index].title}
+            </button>
           ))}
         </div>
 
