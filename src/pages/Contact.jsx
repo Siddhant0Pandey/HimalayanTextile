@@ -31,7 +31,7 @@ function Contact() {
           </div>
           <div>
             <h4 className="font-medium">Address</h4>
-            <p>Bhagwan <Pau></Pau><br />Kathmandu, Nepal</p>
+            <p>Bhagwan Pau<br />Kathmandu, Nepal</p>
           </div>
         </div>
 
