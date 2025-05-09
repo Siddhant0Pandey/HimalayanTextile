@@ -2,7 +2,7 @@ import React from "react";
 
 function Contact() {
   return (
-    <div className="min-h-screen bg-light text-gray-900 px-6 py-12 md:px-16 lg:px-32">
+    <div className="min-h-screen bg-light text-gray-900 px-6 py-12 md:px-16 lg:px-32 lg:pt-38   ">
       {/* Header Section */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fadeInUp">

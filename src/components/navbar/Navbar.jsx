@@ -129,21 +129,21 @@ function Navbar() {
           {/* Contact Button */}
           <button
             onClick={() => navigate("/contact")}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border transition-transform duration-300 hover:scale-105 hover:border-[#1fa951] group"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border transition-transform duration-300 hover:scale-105 hover:border-[#1fa951] group cursor-pointer"
             style={{
               borderColor: scrolled ? "#1fa951" : "white",
               color: scrolled ? "#1fa951" : "white",
             }}
           >
             <svg
-              className="w-5 h-5 group-hover:fill-[#1fa951] transition-all"
+              className="w-5 h-5 group-hover:fill-[#edfeee] transition-all"
               fill={scrolled ? "#1fa951" : "white"}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
               <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v.01L12 13 2 4.01V4zm0 2.2l8.8 7.33a1 1 0 001.2 0L22 6.2V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6.2z" />
             </svg>
-            <span className="text-sm tracking-wide group-hover:text-[#1fa951] transition-all">
+            <span className="text-sm tracking-wide group-hover:text-[#edfeee  ] transition-all">
               Contact
             </span>
           </button>

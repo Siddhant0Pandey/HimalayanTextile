@@ -1,34 +1,18 @@
-import Layout from "./components/Layout";
-import NoPage from "./components/NoPage";
-import About from "./pages/About";
-import Fibers from "./pages/Fibers";
-import Home from "./pages/Home";
-import Yarn from "./pages/Yarn";
-
+// App.jsx
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import AppRoutes from "./AppRoutes";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import OurStory from "./pages/OurStory";
-import Contact from "./pages/Contact";
 
 function App() {
   return (
+  
     <BrowserRouter>
-      <ScrollToTop /> 
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about/our-story" element={<OurStory/>} />
-          <Route path="*" element={<NoPage />} />
-
-          <Route path="/fiber" element={<Fibers />} />
-
-          <Route path="/yarn" element={<Yarn />} />
-        </Route>
-      </Routes>
+      <ScrollToTop />
+      <AppRoutes />
     </BrowserRouter>
+   
   );
 }
 
