@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import OurStory from "./pages/OurStory";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/about/our-story" element={<OurStory/>} />
           <Route path="*" element={<NoPage />} />
 
