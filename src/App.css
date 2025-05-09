@@ -17,3 +17,30 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* loading animation */
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #18181C;
+}
+
+.mountain-svg {
+  width: 300px;
+  height: auto;
+}
+
+.mountain-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawMountain 3s linear forwards;
+}
+
+@keyframes drawMountain {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
