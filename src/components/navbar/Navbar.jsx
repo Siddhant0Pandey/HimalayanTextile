@@ -24,7 +24,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const triggerPoint = window.innerHeight * 18;
+      const triggerPoint = window.innerHeight * 14;
       setScrolled(window.scrollY > triggerPoint);
     };
 
@@ -124,27 +124,53 @@ function Navbar() {
             className="h-16 w-16"
           />
         </Link>
-        <div
-          onClick={toggleMenu}
-          className="flex items-center gap-2 cursor-pointer group"
-        >
-          {!menuOpen && (
-            <span
-              className="tracking-widest text-sm"
-              style={{ color: scrolled ? "#1fa951" : "white" }}
+
+        <div className="flex items-center gap-6">
+          {/* Contact Button */}
+          <button
+            onClick={() => navigate("/contact")}
+            className="flex items-center gap-2 px-4 py-2 rounded-full border transition-transform duration-300 hover:scale-105 hover:border-[#1fa951] group cursor-pointer"
+            style={{
+              borderColor: scrolled ? "#1fa951" : "white",
+              color: scrolled ? "#1fa951" : "white",
+            }}
+          >
+            <svg
+              className="w-5 h-5 group-hover:fill-[#edfeee] transition-all"
+              fill={scrolled ? "#1fa951" : "white"}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
             >
-              MENU
+              <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v.01L12 13 2 4.01V4zm0 2.2l8.8 7.33a1 1 0 001.2 0L22 6.2V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6.2z" />
+            </svg>
+            <span className="text-sm tracking-wide group-hover:text-[#edfeee  ] transition-all">
+              Contact
             </span>
-          )}
-          <div className="space-y-1 group-hover:rotate-90 transition-transform duration-300">
-            <div
-              className="w-6 h-[2px]"
-              style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
-            ></div>
-            <div
-              className="w-6 h-[2px]"
-              style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
-            ></div>
+          </button>
+
+          {/* Menu Button */}
+          <div
+            onClick={toggleMenu}
+            className="flex items-center gap-2 cursor-pointer group"
+          >
+            {!menuOpen && (
+              <span
+                className="tracking-widest text-sm"
+                style={{ color: scrolled ? "#1fa951" : "white" }}
+              >
+                MENU
+              </span>
+            )}
+            <div className="space-y-1 group-hover:rotate-90 transition-transform duration-300">
+              <div
+                className="w-6 h-[2px]"
+                style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
+              ></div>
+              <div
+                className="w-6 h-[2px]"
+                style={{ backgroundColor: scrolled ? "#1fa951" : "white" }}
+              ></div>
+            </div>
           </div>
         </div>
       </header>
