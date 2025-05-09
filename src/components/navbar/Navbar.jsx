@@ -107,7 +107,7 @@ function Navbar() {
     { text: "Fabric", to: "/fabric" },
   ];
 
-  const navLink2 = [{ text: "Sustainability", to: "/about/sustainability" }];
+  const navLink2 = [{ text: "Sustainability", to: "/sustainable" }];
 
   return (
     <>
@@ -231,9 +231,7 @@ function Navbar() {
                       <span
                         key={subIndex}
                         onClick={() => handleNavigateWithAnimation(subLink.to)}
-                        ref={(el) =>
-                          (subMenuLinksRef.current[subIndex] = el)
-                        }
+                        ref={(el) => (subMenuLinksRef.current[subIndex] = el)}
                         className="block hover:text-[#1fa951] transition-colors duration-300 cursor-pointer"
                       >
                         {subLink.text}

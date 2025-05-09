@@ -9,7 +9,8 @@ import Home from "./pages/Home";
 import Yarn from "./pages/Yarn";
 import OurStory from "./pages/OurStory";
 import Contact from "./pages/Contact";
-import Loader from "./components/Loader"; 
+import Loader from "./components/Loader";
+import Sustainable from "./pages/Sustainable";
 
 function AppRoutes() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function AppRoutes() {
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/yarn" element={<Yarn />} />
           <Route path="*" element={<NoPage />} />
+          <Route path="/sustainable" element={<Sustainable />} />
         </Route>
       </Routes>
     </>
