@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-// import bgImg from "../../../public/assets/img/bgImage1.png";
+import bgImg from "../../../public/assets/img/hero.jpg";
 
 const SustainableHero = () => {
   // Create refs for animated elements
@@ -82,8 +82,8 @@ const SustainableHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", // Fixed syntax error in original code
-        // backgroundImage: `url(${bgImg})`,
+        backgroundColor: "", // Fixed syntax error in original code
+        backgroundImage: `url(${bgImg})`,
       }}
     >
       {/* Wavy border bottom */}
@@ -105,7 +105,7 @@ const SustainableHero = () => {
           Sustainabilty
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "Sustainable by Nature, Innovative by Design"
+          "Sustainability is a journey, not simply a destination."
         </p>
 
         {/* Badge element */}

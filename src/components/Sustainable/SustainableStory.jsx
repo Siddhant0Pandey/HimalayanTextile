@@ -75,7 +75,8 @@ export default function SustainabilityStory() {
       ref={containerRef}
       className="h-screen w-full flex items-center justify-center relative overflow-hidden"
       style={{
-        background: "linear-gradient(145deg, #edfeee, #729a78)",
+        background:
+          "url('/assets/img/denseforest.jpg') center/cover fixed no-repeat",
         fontFamily: "var(--font-display)",
       }}
     >
@@ -88,7 +89,7 @@ export default function SustainabilityStory() {
           ref={(el) => (contentRefs.current[index] = el)}
           className="absolute max-w-4xl text-center px-6 text-2xl md:text-4xl font-semibold z-20"
           style={{
-            color: "var(--color-darkText)",
+            color: "white",
             textShadow: "1px 1px 4px rgba(255,255,255,0.5)",
           }}
         >
