@@ -151,6 +151,96 @@ const OurMissionPanel = () => {
   );
 };
 
+const OurVisionPanel = () => {
+  const paraRefs = useRef([]);
+
+  useEffect(() => {
+    paraRefs.current.forEach((el, index) => {
+      if (!el) return;
+
+      const directions = [
+        { x: -100, y: 0 }, // para1 from left
+        { x: 0, y: 100 }, // para2 from bottom
+        { x: 100, y: 0 }, // para3 from right
+      ];
+
+      const { x, y } = directions[index];
+
+      // Create individual timelines for each paragraph
+      gsap.fromTo(
+        el,
+        { x, y, opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reset", // replays on scroll-in
+            once: false, // always triggers
+            markers: false, // set to true for debugging
+          },
+        }
+      );
+    });
+  }, []);
+
+  return (
+    <section className="panel w-screen h-screen flex justify-center items-center text-[#333] p-6 md:p-12 bg-[#f5f5f0]">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        {/* Left Column */}
+        <div className="space-y-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1FA951]">
+            Our Mission
+          </h2>
+          <div
+            ref={(el) => (paraRefs.current[0] = el)}
+            className="bg-white shadow-md  p-6"
+          >
+            <p>
+              At the heart of our textile innovations lies a deep commitment to
+              sustainability. We focus on ethical sourcing and eco-friendly
+              manufacturing.
+            </p>
+          </div>
+        </div>
+
+        {/* Center Column: Icon and Para2 */}
+        <div className="flex flex-col items-center space-y-6">
+          <div className="w-48 h-48 flex justify-center items-center bg-white rounded-full shadow-lg">
+            <GiArcheryTarget className="text-[#1FA951] w-36 h-36 animate-pulse" />
+          </div>
+          <div
+            ref={(el) => (paraRefs.current[1] = el)}
+            className="bg-white shadow-md  p-6 w-full md:w-72"
+          >
+            <p>
+              Every fabric we produce tells a story of responsibility—from using
+              organic materials to reducing water usage across production.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column: Para3 */}
+        <div className="space-y-6 flex flex-col justify-center">
+          <div
+            ref={(el) => (paraRefs.current[2] = el)}
+            className="bg-white shadow-md  p-6"
+          >
+            <p>
+              Our mission is to weave a better future—combining quality,
+              innovation, and care for the planet in every thread.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // --- Main Horizontal Snap Component ---
 export default function HorizontalSnapPanels() {
   const containerRef = useRef(null);
@@ -190,7 +280,7 @@ export default function HorizontalSnapPanels() {
         <div className="flex h-full w-[300vw]">
           <WelcomePanel />
           <OurMissionPanel />
-          {/* Add more panels here if needed */}
+          <OurVisionPanel />
         </div>
       </div>
     </div>

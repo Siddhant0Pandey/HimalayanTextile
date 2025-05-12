@@ -30,7 +30,7 @@ const cardData = [
   {
     title: "Reliable Delivery",
     description: "On-time delivery and professional handling.",
-    icon: <GrDeliver/>,
+    icon: <GrDeliver />,
   },
 ];
 
@@ -139,7 +139,7 @@ const AboutKeyStrength = () => {
             <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#1FA951]">
               {card.icon}
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-[#1FA951]">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600">
               {card.title}
             </h3>
             <p className="text-gray-600 text-sm sm:text-base">
