@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // AppRoutes.jsx
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
