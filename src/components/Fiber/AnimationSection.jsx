@@ -99,7 +99,7 @@ const AnimationSection = () => {
   // Select appropriate image set
   const imageData = isSmallScreen
     ? imageCollections.mobile
-    : imageCollections.desktop;
+    : imageCollections.mobile;
 
   // Animation styles
   const getAnimationClass = (elementIndex) => {
@@ -143,7 +143,7 @@ const AnimationSection = () => {
           return baseClasses;
       }
     } else {
-      // Desktop animations (horizontal flow)
+      // mobile animations (horizontal flow)
       switch (elementIndex) {
         case 1:
           return `${baseClasses} ${
