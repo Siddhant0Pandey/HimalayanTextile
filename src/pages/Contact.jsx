@@ -100,7 +100,7 @@ function Contact() {
       <div className="mt-20 fade-up rounded-xl overflow-hidden shadow-lg">
         <iframe
           title="Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0861348480793!2d-122.41941548468114!3d37.7749297797594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c13c3aef1%3A0x9e3c3bc3b2bb5f25!2sTextile%20HQ!5e0!3m2!1sen!2sus!4v1616174202123!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3512.7890008687627!2d82.63087324208507!3d28.30471515000736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3997ddf0c876d2e9%3A0xfd4b62bd9905fe44!2sHimalayan%20Textile%20Industries!5e0!3m2!1sen!2snp!4v1747030788211!5m2!1sen!2snp"
           className="w-full h-64 md:h-96 border-0"
           allowFullScreen=""
           loading="lazy"
