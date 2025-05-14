@@ -21,7 +21,6 @@ export default function Making() {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
       fill="none"
       stroke={color}
       strokeWidth="2"
@@ -29,7 +28,7 @@ export default function Making() {
       strokeLinejoin="round"
     >
       <circle cx="12" cy="12" r="3"></circle>
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 21v.09a2 2 0 0 1-4 0V21a1.65 1.65 0 0 0-1-1.51A1.65 1.65 0 0 0 7 19.4l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 5 15H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 5V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51A1.65 1.65 0 0 0 15 5l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19 9h.09a2 2 0 0 1 0 4H19a1.65 1.65 0 0 0-.6.11z"></path>
     </svg>
   );
 
@@ -38,7 +37,6 @@ export default function Making() {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
       fill="none"
       stroke={color}
       strokeWidth="2"
@@ -58,7 +56,6 @@ export default function Making() {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
       fill="none"
       stroke={color}
       strokeWidth="2"
@@ -69,6 +66,8 @@ export default function Making() {
     </svg>
   );
 
+  // Replace inside the Making component (rest of the code remains the same):
+
   const yarnMethods = [
     {
       id: 1,
@@ -78,6 +77,7 @@ export default function Making() {
       icon: <SettingsIcon color={theme.primary} />,
       color: theme.light,
       accent: theme.primary,
+      videoSrc: "public/assets/img/yarn/vido2.mov",
       features: [
         "High production volume",
         "Consistent yarn thickness",
@@ -94,6 +94,7 @@ export default function Making() {
       icon: <HandsIcon color={theme.secondary} />,
       color: theme.light,
       accent: theme.secondary,
+      videoSrc: "public/assets/img/yarn/vide.mp4",
       features: [
         "Unique character and texture",
         "Artisanal quality",
@@ -291,19 +292,22 @@ export default function Making() {
             </div>
             <div className="w-full md:w-1/2 bg-gray-100 flex items-center justify-center p-6">
               <div className="text-center p-8 rounded-lg bg-white bg-opacity-80 shadow-md">
-                <div
-                  className="w-24 h-24 mx-auto mb-4 flex items-center justify-center"
-                  style={{
-                    backgroundColor: yarnMethods[activeMethod].color,
-                    borderRadius: "50%",
-                    borderWidth: "3px",
-                    borderColor: yarnMethods[activeMethod].accent,
-                  }}
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="rounded-lg shadow-md max-w-full h-auto"
                 >
-                  {yarnMethods[activeMethod].icon}
-                </div>
+                  <source
+                    src={yarnMethods[activeMethod].videoSrc}
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+
                 <h4
-                  className="text-xl font-semibold mb-2"
+                  className="text-xl font-semibold mt-4 mb-2"
                   style={{ color: theme.primary }}
                 >
                   {yarnMethods[activeMethod].title}
@@ -338,33 +342,6 @@ export default function Making() {
               {yarnMethods[index].title}
             </button>
           ))}
-        </div>
-
-        {/* Yarn Motion Line */}
-        <div className="relative mt-16 py-8">
-          <div
-            className="absolute left-0 right-0 h-1 top-1/2 transform -translate-y-1/2"
-            style={{
-              background: `linear-gradient(to right, transparent, ${theme.primary}, transparent)`,
-            }}
-          >
-            <motion.div
-              style={{
-                position: "absolute",
-                width: "2rem",
-                height: "2rem",
-                borderRadius: "50%",
-                backgroundColor: theme.primary,
-                borderWidth: "4px",
-                borderColor: "white",
-                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-                top: "50%",
-                transform: "translateY(-50%)",
-              }}
-              animate={{ left: ["0%", "100%", "0%"] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-          </div>
         </div>
       </motion.div>
     </div>
