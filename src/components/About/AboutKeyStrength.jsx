@@ -116,13 +116,13 @@ const AboutKeyStrength = () => {
   }, []);
 
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 py-30 ">
       <h2 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-[#1FA951]">
         Our Key Strengths
       </h2>
       <div
         ref={containerRef}
-        className="flex flex-col md:flex-row gap-6 md:gap-6 px-4 md:px-6 overflow-x-hidden md:overflow-x-auto scroll-container no-scrollbar"
+        className="flex flex-col md:flex-row gap-6 md:gap-6 px-4 py-8 md:px-6 overflow-x-hidden md:overflow-x-auto scroll-container no-scrollbar"
         style={{
           cursor: "grab",
           userSelect: "none",
@@ -132,7 +132,7 @@ const AboutKeyStrength = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className={`card bg-white shadow-xl rounded-2xl p-6 w-full md:w-72 flex-shrink-0 ${
+            className={`card bg-white shadow-xl rounded-2xl p-6  w-full md:w-72 flex-shrink-0 ${
               index % 2 === 0 ? "md:mt-0" : "md:mt-10"
             }`}
           >
