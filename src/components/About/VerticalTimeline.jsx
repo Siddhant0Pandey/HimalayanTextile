@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import processBg from "/assets/img/processBg.jpg";
+// public\assets\img\processBg.jpg
 import {
   FaSeedling, // For Fiber Sourcing
   FaIndustry, // For Yarn Spinning
@@ -13,7 +15,7 @@ const timelineData = [
     title: "Fiber Sourcing",
     description:
       "Carefully selected cotton, wool, and synthetic blends from trusted suppliers.",
-    bgImage: "https://via.placeholder.com/800x500",
+    bgImage: "/assets/img/fiberSourcing.jpg",
     icon: FaSeedling,
   },
   {
@@ -21,14 +23,14 @@ const timelineData = [
     title: "Yarn Spinning",
     description:
       "Precision spinning ensures strength, softness, and consistency.",
-    bgImage: "https://via.placeholder.com/800x500",
+    bgImage: "/assets/img/yarnSpinning.jpg",
     icon: FaIndustry,
   },
   {
     id: 3,
     title: "Dyeing & Finishing",
     description: "Eco-conscious dyeing with vibrant, long-lasting colors.",
-    bgImage: "https://via.placeholder.com/800x500",
+    bgImage: "/assets/img/dyeing&Finishing.jpg",
     icon: FaPalette,
   },
   {
@@ -36,7 +38,7 @@ const timelineData = [
     title: "Weaving & Knitting",
     description:
       "Traditional craftsmanship meets modern machinery for perfect fabric.",
-    bgImage: "https://via.placeholder.com/800x500",
+    bgImage: "/assets/img/weaving&knitting.jpg",
     icon: FaBolt,
   },
   {
@@ -44,7 +46,7 @@ const timelineData = [
     title: "Quality Control",
     description:
       "Every batch undergoes strict inspection to meet international standards.",
-    bgImage: "https://via.placeholder.com/800x500",
+    bgImage: "/assets/img/qualityControl.jpg",
     icon: FaShieldAlt,
   },
 ];
@@ -75,9 +77,19 @@ export default function VerticalTimeline() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center bg-gray-100 px-4 pt-20">
+    <div className="relative flex flex-col items-center px-4 pt-20">
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+        <img
+          src={processBg}
+          alt="process background"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
       {/* <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4"> */}
-      <h1 className="text-4xl font-bold mb-12 text-center">Our Process</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center text-[#1fa951]">
+        Our Process
+      </h1>
 
       <div className="flex justify-center w-full max-w-6xl">
         <div className="relative w-full">
