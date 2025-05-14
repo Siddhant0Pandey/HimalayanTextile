@@ -118,7 +118,7 @@ gsap.fromTo(
       <div className="absolute bottom-0 left-0 z-1 perspective">
         <img
           ref={imageRef}
-          src="assets/img/animate/abt-svg1.png"
+          src="assets/img/animate/abt-svg1.svg"
           alt="about image"
           className="transform-style-preserve"
         />
