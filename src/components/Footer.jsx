@@ -94,11 +94,11 @@ const Footer = () => {
             },
             {
               title: 'Company',
-              links: ['About Us', 'Team', 'Careers', 'Vision'],
+              links: ['About Us', 'Team', 'Vision'],
             },
             {
               title: 'Explore',
-              links: ['Blog', 'Gallery', 'Testimonials'],
+              links: ['Blog', 'Testimonials'],
             },
             {
               title: 'Support',
