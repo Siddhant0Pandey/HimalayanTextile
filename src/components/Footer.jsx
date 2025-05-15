@@ -96,10 +96,7 @@ const Footer = () => {
               title: 'Company',
               links: ['About Us', 'Team', 'Vision'],
             },
-            {
-              title: 'Explore',
-              links: ['Blog', 'Testimonials'],
-            },
+           
             {
               title: 'Support',
               links: ['Contact', 'FAQs', 'Privacy Policy'],
