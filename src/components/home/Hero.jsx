@@ -180,51 +180,56 @@ export default function Hero() {
       </div>
 
       {/* Process Boxes */}
-      <div className="absolute top-[65%] sm:top-[60%] w-full z-50 flex flex-wrap justify-center gap-4 sm:gap-y-4 sm:space-x-[4vw] px-4 pointer-events-none">
-        {processSteps.map((step, i) => (
-          <div
-            key={i}
-            className={`relative flex flex-col sm:flex-row items-center gap-2 sm:gap-0 ${i < 3 ? "mb-4 sm:mb-0" : ""}`}
-          >
-            {/* Box */}
-            <div
-              ref={(el) => (boxRefs.current[i] = el)}
-              className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] border rounded-lg border-gray-300 flex flex-col items-center justify-center text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold  p-4 sm:p-5  transform ${yOffsets[i]}`}
-            >
-              <img
-                src={step.image}
-                alt={step.title}
-                className="w-12 sm:w-16 h-12 sm:h-16 mb-2 sm:mb-3 object-contain"
-              />
-              <p className="text-center leading-tight ">{step.title}</p>
-            </div>
-
-            {/* Arrow */}
-            {i < 3 && (
-              <div
-                ref={(el) => (arrowRefs.current[i] = el)}
-                className="hidden sm:block absolute left-full ml-3 sm:ml-4 opacity-0 transition-opacity duration-500"
-              >
-                <svg
-                  className="animate-pulse"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M4 12h16m0 0l-6-6m6 6l-6 6"
-                    stroke="white "
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            )}
-          </div>
-        ))}
+     <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-50 flex flex-wrap justify-center gap-4 sm:gap-y-4 sm:space-x-[4vw] px-4 pointer-events-none">
+  {processSteps.map((step, i) => (
+    <div
+      key={i}
+      className={`relative  flex flex-col sm:flex-row items-center gap-2 sm:gap-0 ${i < 3 ? "mb-4 sm:mb-0" : ""}`}
+    >
+      {/* Box */}
+      <div
+        ref={(el) => (boxRefs.current[i] = el)}
+        className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] h-[clamp(280px,30vh,300px)] border rounded-lg border-gray-300 flex flex-col items-center justify-between text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold overflow-hidden p-2 bg-transparent transform ${yOffsets[i]}`}
+      >
+        <div className="h-[80%] flex items-center justify-center">
+          <img
+            src={step.image}
+            alt={step.title}
+            className="h-full w-auto object-contain"
+          />
+        </div>
+        <p className="h-[20%] flex items-center justify-center text-center leading-tight px-2 text-darkText">
+          {step.title}
+        </p>
       </div>
+
+      {/* Arrow */}
+      {i < 3 && (
+        <div
+          ref={(el) => (arrowRefs.current[i] = el)}
+          className="hidden sm:block absolute left-full ml-3 sm:ml-4 opacity-0 transition-opacity duration-500"
+        >
+          <svg
+            className="animate-pulse"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M4 12h16m0 0l-6-6m6 6l-6 6"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
     </section>
   );
 }
