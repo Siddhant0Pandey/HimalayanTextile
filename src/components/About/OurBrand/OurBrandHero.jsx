@@ -82,7 +82,7 @@ const OurBrandHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", // Fixed syntax error in original code
+        backgroundColor: "#1FA951", 
         // backgroundImage: `url(${bgImg})`,
       }}
     >
