@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
 
         {/* Section 2: Navigation Columns */}
-        <div className="footer-columns grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
+        <div className="footer-columns grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center">
           {[
             {
               title: 'Products',
@@ -96,10 +96,7 @@ const Footer = () => {
               title: 'Company',
               links: ['About Us', 'Team', 'Vision'],
             },
-            {
-              title: 'Explore',
-              links: ['Blog', 'Testimonials'],
-            },
+           
             {
               title: 'Support',
               links: ['Contact', 'FAQs', 'Privacy Policy'],
