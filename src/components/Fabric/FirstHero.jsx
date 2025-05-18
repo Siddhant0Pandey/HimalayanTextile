@@ -100,7 +100,7 @@ const FirstHero = () => {
           ref={textRef}
           className="text-5xl md:text-6xl font-semibold mb-4 drop-shadow-lg"
         >
-          Fibric
+          Fabric
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
           Made for Goodness. Made for Performance.
