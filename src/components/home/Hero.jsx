@@ -180,14 +180,14 @@ export default function Hero() {
       </div>
 
       {/* Process Boxes */}
-     <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-50 flex flex-wrap justify-center gap-4 sm:gap-y-4 sm:space-x-[4vw] px-4 pointer-events-none">
+{/*  <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full z-50 flex flex-wrap justify-center gap-4 sm:gap-y-4 sm:space-x-[4vw] px-4 pointer-events-none">
   {processSteps.map((step, i) => (
     <div
       key={i}
       className={`relative  flex flex-col sm:flex-row items-center gap-2 sm:gap-0 ${i < 3 ? "mb-4 sm:mb-0" : ""}`}
     >
       {/* Box */}
-      <div
+    {/*  <div
         ref={(el) => (boxRefs.current[i] = el)}
         className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] h-[clamp(280px,30vh,300px)]  flex flex-col items-center justify-between text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold overflow-hidden p-2 bg-transparent transform ${yOffsets[i]}`}
       >
@@ -203,7 +203,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Arrow */}
+       Arrow 
       {i < 3 && (
         <div
           ref={(el) => (arrowRefs.current[i] = el)}
@@ -228,7 +228,7 @@ export default function Hero() {
       )}
     </div>
   ))}
-</div>
+</div>*/}
 
     </section>
   );
