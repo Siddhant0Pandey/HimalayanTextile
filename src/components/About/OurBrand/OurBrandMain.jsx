@@ -11,7 +11,7 @@ const OurBrandMain = () => {
     <div className="bg-light text-white px-6 py-12 md:py-20 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
       <div className="flex flex-col items-start">
         <img
-          src="/assets/img/Dangi.png"
+          src="/assets/img/Dangi.png" 
           alt="Himalayan Textile"
           className="w-full rounded-xl h-full object-cover mb-6"
         />
