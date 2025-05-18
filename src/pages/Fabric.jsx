@@ -1,14 +1,13 @@
-import React from "react";
-import Animation from "../components/Fabric/Animation";
-import FabricHero from "../components/Fabric/FabricHero";
+import CraftSection from "../components/Fabric/CraftSection";
+import HeroSection from "../components/Fabric/HeroSection";
+import StorySection from "../components/Fabric/StorySection";
 
-const Fabric = () => {
+export default function Fabric() {
   return (
-    <div>
-      <FabricHero />
-      <Animation />
+    <div className="min-h-screen bg-[#edfeee] text-[#1d1f10] font-['Roboto_Slab',sans-serif] overflow-x-hidden">
+      <HeroSection />
+      <CraftSection />
+      <StorySection />
     </div>
   );
-};
-
-export default Fabric;
+}
