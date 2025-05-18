@@ -14,7 +14,7 @@ const PageTransition = ({ children }) => {
       );
     }, containerRef);
 
-    return () => ctx.revert(); // cleans animation
+    return () => ctx.revert(); 
   }, []);
 
   return (
