@@ -18,6 +18,7 @@ function Navbar() {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
     if (menuOpen) setAboutOpen(false);
+        
   };
 
   const toggleAboutDropdown = () => {
@@ -26,7 +27,7 @@ function Navbar() {
 
   // useEffect(() => {
   //   const handleScroll = () => {
-  //     const triggerPoint = window.innerHeight * 14; 
+  //     const triggerPoint = window.innerHeight * 14;
   //     setScrolled(window.scrollY > triggerPoint);
   //   };
 
@@ -95,7 +96,6 @@ function Navbar() {
     });
   };
 
- 
   const navStyles = {
     "/": {
       bg: "bg-transparent",
@@ -127,6 +127,13 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
+     "/about/our-brand": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
+   
     default: {
       bg: "bg-transparent",
       textColor: "#1fa951",
@@ -143,6 +150,7 @@ function Navbar() {
       dropdown: [
         { text: "About Us", to: "/about" },
         { text: "Our Story", to: "/about/our-story" },
+        { text: "Our Brand", to: "/about/our-brand" },
       ],
     },
     { text: "Fiber", to: "/fiber" },
