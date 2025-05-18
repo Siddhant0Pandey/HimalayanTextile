@@ -94,7 +94,7 @@ export default function OurStoryTimeline() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-4">
+    <div className="bg-highlight py-16 px-4">
       <h1 className="text-4xl font-bold text-center mb-16">Our Journey</h1>
       <div className="relative max-w-5xl mx-auto">
         {/* Vertical line */}
@@ -125,7 +125,7 @@ export default function OurStoryTimeline() {
                     : "translate-x-10 opacity-0"
                 }`}
               >
-                <div className="p-8">
+                <div className="p-8 px-18">
                   <h3 className="text-2xl font-semibold mb-2">{item.date}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </div>
