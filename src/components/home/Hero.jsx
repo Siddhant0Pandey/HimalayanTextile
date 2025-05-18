@@ -7,10 +7,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const imageOrder = [1, 2, 3, 4, 5];
 const processSteps = [
-  { title: "Fibres", image: "/assets/img/Fiber/raw.png" },
-  { title: "Yarns", image: "/assets/img/Fiber/raw.png" },
-  { title: "Fabrics", image: "/assets/img/Fiber/raw.png" },
-  { title: "Fashion", image: "/assets/img/Fiber/raw.png" },
+  { title: "Fibres", image: "/assets/img/Fiber/fibre.png" },
+  { title: "Yarns", image: "/assets/img/yarn/yarn.png" },
+  { title: "Fabrics", image: "/assets/img/fabrics.jpg" },
+  { title: "Fashion", image: "/assets/img/textile1.jpg" },
 ];
 
 const yOffsets = ["-translate-y-3", "translate-y-0", "translate-y-0", "-translate-y-3"];
@@ -173,7 +173,7 @@ export default function Hero() {
             <img
               src={`/assets/img/parallax/${num}.png`}
               alt={`mountain ${num}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full"
             />
           </div>
         ))}
@@ -189,7 +189,7 @@ export default function Hero() {
       {/* Box */}
       <div
         ref={(el) => (boxRefs.current[i] = el)}
-        className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] h-[clamp(280px,30vh,300px)] border rounded-lg border-gray-300 flex flex-col items-center justify-between text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold overflow-hidden p-2 bg-transparent transform ${yOffsets[i]}`}
+        className={`w-[clamp(120px,28vw,220px)] sm:w-[clamp(140px,18vw,260px)] h-[clamp(280px,30vh,300px)]  flex flex-col items-center justify-between text-[clamp(0.875rem,1.5vw,1.25rem)] font-semibold overflow-hidden p-2 bg-transparent transform ${yOffsets[i]}`}
       >
         <div className="h-[80%] flex items-center justify-center">
           <img
@@ -198,7 +198,7 @@ export default function Hero() {
             className="h-full w-auto object-contain"
           />
         </div>
-        <p className="h-[20%] flex items-center justify-center text-center leading-tight px-2 text-darkText">
+        <p className="h-[20%] flex items-center justify-center text-center leading-tight px-2 py-0 text-darkText">
           {step.title}
         </p>
       </div>
@@ -218,7 +218,7 @@ export default function Hero() {
           >
             <path
               d="M4 12h16m0 0l-6-6m6 6l-6 6"
-              stroke="white"
+              stroke="black"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
