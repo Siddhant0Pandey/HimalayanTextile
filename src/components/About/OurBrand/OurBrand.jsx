@@ -1,14 +1,11 @@
 import React from "react";
 import OurBrandHero from "./OurBrandHero";
-import Certifications from "./Certifications";
-import SubCollections from "./SubCollections";
-
+import OurBrandMain from "./OurBrandMain";
 function OurBrand() {
   return (
     <div>
       <OurBrandHero />
-      <SubCollections />
-      <Certifications />
+      <OurBrandMain />
     </div>
   );
 }
