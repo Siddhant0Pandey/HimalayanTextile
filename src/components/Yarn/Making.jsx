@@ -77,7 +77,7 @@ export default function Making() {
       icon: <SettingsIcon color={theme.primary} />,
       color: theme.light,
       accent: theme.primary,
-      videoSrc: "public/assets/img/yarn/vido2.mov",
+      videoSrc: "public/assets/img/yarn/vido2.mp4",
       features: [
         "High production volume",
         "Consistent yarn thickness",
