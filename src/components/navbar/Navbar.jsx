@@ -109,6 +109,24 @@ function Navbar() {
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
+     "/fiber": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
+      "/yarn": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
+     "/about/our-story": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
     default: {
       bg: "bg-transparent",
       textColor: "#1fa951",
@@ -132,7 +150,7 @@ function Navbar() {
     { text: "Fabric", to: "/fabric" },
   ];
 
-  const navLink2 = [{ text: "Sustainability", to: "/sustainable" }];
+  const navLink2 = [{ text: "Sustainability", to: "/sustainable" },{text:'Journals', to:'/journals'}];
 
   return (
     <>
