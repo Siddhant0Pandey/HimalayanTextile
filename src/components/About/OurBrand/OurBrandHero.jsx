@@ -105,7 +105,7 @@ const OurBrandHero = () => {
           Our Brand
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "From Fiber to Finish — Quality You Can Feel."
+          "From Fiber to Fashion — Quality You Can Feel."
         </p>
 
         {/* Badge element */}
