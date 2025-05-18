@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const panels = [
   {
     image: "/assets/img/nettle-leaf.png",
-    description: "100% Nepalese Nettle Fiber",
+    description: "100% Himalayan Nettle Fiber",
     reason:
       "Harvested from wild Himalayan nettle, our fiber is organic, traceable, and supports local communities."
   },
