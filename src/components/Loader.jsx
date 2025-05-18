@@ -16,7 +16,7 @@ function Loader() {
           strokeWidth="2"
         />
       </svg>
-    </div>
+    </div>    
   );
 }
 
