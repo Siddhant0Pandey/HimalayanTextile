@@ -18,7 +18,7 @@ function Navbar() {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
     if (menuOpen) setAboutOpen(false);
-    
+        
   };
 
   const toggleAboutDropdown = () => {

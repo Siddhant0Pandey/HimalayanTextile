@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import OurBrandHero from "./OurBrandHero";
 
 function OurBrand() {
   return (
-    <div>OurBrand</div>
-  )
+    <div>
+      <OurBrandHero />
+    </div>
+  );
 }
 
-export default OurBrand
+export default OurBrand;
