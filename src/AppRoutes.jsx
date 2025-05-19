@@ -16,6 +16,8 @@ import Sustainable from "./pages/Sustainable";
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
 import Fabric from "./pages/Fabric";
+import Journals from "./pages/Journals";
+// import JournalsDetails from "./components/Journals/JournalsDetails";
 
 function AppRoutes() {
   const location = useLocation();
@@ -36,12 +38,14 @@ function AppRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about/our-story" element={<OurStory />} />
-          <Route path="/about/our-brand" element={<OurBrand />   } />
+          <Route path="/about/our-brand" element={<OurBrand />} />
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/yarn" element={<Yarn />} />
           <Route path="/fabric" element={<Fabric />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/sustainable" element={<Sustainable />} />
+          <Route path="/journals" element={<Journals />} />
+          {/* <Route path="/journals/:slug" element={<JournalsDetails />} /> */}
         </Route>
       </Routes>
     </>
