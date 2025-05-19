@@ -144,6 +144,12 @@ function Navbar() {
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
+    "/journals": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
   };
 
   const currentStyle = navStyles[location.pathname] || navStyles.default;
