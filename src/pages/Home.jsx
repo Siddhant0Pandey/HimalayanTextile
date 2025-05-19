@@ -4,15 +4,19 @@ import Hero from '../components/home/Hero'
 import CoreValues from '../components/home/CoreValues';
 import MyMap from '../components/map/MyMap';
 import AboutSection from '../components/home/AboutSection';
+import ProductsSection from '../components/home/ProductsSection';
 
 function Home() {
   return (
     <div >
      <Hero/>
-     <AboutSection/>
+     <div >
+      <AboutSection />
+    </div>
      <div>
      <WhatSetsUsApart/> 
      </div>
+     <ProductsSection/>
      <CoreValues/>
      <MyMap/>
     </div>
