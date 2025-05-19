@@ -15,9 +15,27 @@ export default function HimalayanTextiles() {
       image: "/assets/img/yarn/paswool.jpg",
     },
     {
+      title: "Nettle Fabric",
+      description:
+        "Harvested from wild nettle plants in Himalayan forests, this fabric is strong, breathable, and naturally textured. Traditionally spun, nettle blends sustainability with cultural heritage.",
+      image: "/assets/img/yarn/paswool.jpg",
+    },
+    {
       title: "Flax Fabric",
       description:
         "Derived from the flax plant, this linen-like fabric carries a natural texture and resilience. Its cooling properties make it ideal for warm climates, while its rustic feel brings timeless charm to any garment.",
+      image: "/assets/img/yarn/paswool.jpg",
+    },
+    {
+      title: "Cactus Fabric",
+      description:
+        "A rising star in sustainable fashion, cactus fabric is crafted from prickly pear leaves. Its leather-like texture is both durable and biodegradable, with minimal water usage in production.",
+      image: "/assets/img/yarn/paswool.jpg",
+    },
+    {
+      title: "Banana Fabric",
+      description:
+        "Spun from the fibers of banana plant stalks, this fabric is strong, silky, and biodegradable. Traditionally used in South Asian textiles, it combines resilience with sustainable innovation.",
       image: "/assets/img/yarn/paswool.jpg",
     },
     {
@@ -27,9 +45,9 @@ export default function HimalayanTextiles() {
       image: "/assets/img/yarn/paswool.jpg",
     },
     {
-      title: "Bamboo Fabric",
+      title: "Wool Fabric",
       description:
-        "Soft as silk with a luxurious drape, bamboo fabric is naturally antibacterial and moisture-wicking. Its smooth texture and low environmental footprint make it a modern favorite in sustainable textile design.",
+        "Sourced from Himalayan highland sheep, wool fabric offers exceptional warmth and softness. Naturally insulating and moisture-wicking, it’s a staple for traditional winter wear.",
       image: "/assets/img/yarn/paswool.jpg",
     },
     {
