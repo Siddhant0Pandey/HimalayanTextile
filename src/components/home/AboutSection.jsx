@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -28,7 +27,6 @@ const AboutSection = () => {
     if (lines.length === 0) return;
 
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.fromTo(
         titleRef.current,
         { y: 80, skewY: 5, opacity: 0 },
@@ -41,13 +39,11 @@ const AboutSection = () => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 80%',
-            toggleActions: 'play reverse play reverse',
           },
         }
       );
 
-      // Line-by-line paragraph animation
-      linesRef.current.forEach((el, i) => {
+      linesRef.current.forEach((el) => {
         gsap.fromTo(
           el,
           { opacity: 0, y: 30 },
@@ -59,13 +55,11 @@ const AboutSection = () => {
             scrollTrigger: {
               trigger: el,
               start: 'top 95%',
-              toggleActions: 'play reverse play reverse',
             },
           }
         );
       });
 
-      // Button animation
       gsap.fromTo(
         buttonRef.current,
         { scale: 0.5, opacity: 0 },
@@ -77,33 +71,28 @@ const AboutSection = () => {
           scrollTrigger: {
             trigger: buttonRef.current,
             start: 'top 90%',
-            toggleActions: 'play reverse play reverse',
           },
         }
       );
 
-      // Image "stand-up" animation
-     // Image "stand-up toward you" animation
-gsap.fromTo(
-  imageRef.current,
-  {
-    rotateX: 90,
-    transformOrigin: 'bottom center',
-    opacity: 0,
-  },
-  {
-    rotateX: 0,
-    opacity: 1,
-    duration: 1.5,
-    ease: 'power4.out',
-    scrollTrigger: {
-      trigger: sectionRef.current,
-      start: 'top 85%',
-      toggleActions: 'play reverse play reverse',
-    },
-  }
-);
-
+      gsap.fromTo(
+        imageRef.current,
+        {
+          rotateX: 90,
+          transformOrigin: 'bottom center',
+          opacity: 0,
+        },
+        {
+          rotateX: 0,
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -112,26 +101,26 @@ gsap.fromTo(
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100vh] flex flex-col items-center justify-center px-6 py-20 text-center bg-gradient-to-br from-[#e6fff4] to-[#f0fff9] overflow-hidden"
+      className="h-screen snap-start overflow-hidden flex flex-col items-center justify-center text-center px-4 bg-gradient-to-br from-[#e6fff4] to-[#f0fff9] relative"
     >
-      {/* Animated Image with Perspective */}
-      <div className="absolute bottom-0 left-0 z-1 perspective">
+      {/* Background Image */}
+      <div className="absolute bottom-0 left-0 z-0 w-1/2 max-h-[40%]">
         <img
           ref={imageRef}
           src="assets/img/animate/abt-svg1.svg"
-          alt="about image"
-          className="transform-style-preserve"
+          alt="about"
+          className="w-full h-full object-contain"
         />
       </div>
 
       <h2
         ref={titleRef}
-        className="text-6xl md:text-7xl font-extrabold mb-6 text-[#1fa951] opacity-0"
+        className="text-5xl md:text-7xl font-extrabold mb-4 text-[#1fa951] opacity-0 z-10"
       >
         ABOUT US
       </h2>
 
-      <div className="max-w-3xl text-lg md:text-xl mb-6 leading-relaxed text-[#154d30] space-y-4 z-2">
+      <div className="max-w-2xl text-lg md:text-xl leading-relaxed text-[#154d30] space-y-3 z-10">
         {lines.map((line, i) => (
           <p
             key={i}
@@ -145,16 +134,10 @@ gsap.fromTo(
 
       <button
         ref={buttonRef}
-        className="px-8 py-3 text-lg border-2 border-[#1fa951] text-[#1fa951] hover:bg-[#1fa951] hover:text-white transition duration-300 shadow-md opacity-0 scale-50 z-2"
+        className="mt-6 px-8 py-3 text-lg border-2 border-[#1fa951] text-[#1fa951] hover:bg-[#1fa951] hover:text-white transition duration-300 shadow-md opacity-0 scale-50 z-10"
       >
         Read More
       </button>
-
-      {/* Decorative Circles */}
-      <div className="absolute bottom-0 w-full flex justify-between items-end px-10 pointer-events-none">
-        <div className="h-32 w-32 rounded-full opacity-10 border-2 border-[#1fa951]" />
-        <div className="h-32 w-32 rounded-full opacity-10 border-2 border-[#1fa951]" />
-      </div>
     </section>
   );
 };
