@@ -104,7 +104,7 @@ function SimpleCarousel({ items, isFromLeft }) {
 function ProductSection({ product, isFromLeft }) {
   return (
     <div className="w-full py-16 px-4 relative">
-      {/* Animated Title on opposite side */}
+   
       <motion.div
         className={`absolute top-8 ${isFromLeft ? 'right-8' : 'left-8'} z-10`}
         initial={{ 
@@ -144,7 +144,7 @@ function ProductSection({ product, isFromLeft }) {
           }}
         >
           <div className={`flex flex-col ${isFromLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'} min-h-96`}>
-            {/* Content Section */}
+
             <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
               <motion.h2 
                 className="text-4xl font-bold text-gray-800 mb-6"
@@ -166,7 +166,6 @@ function ProductSection({ product, isFromLeft }) {
               </motion.p>
             </div>
 
-            {/* Product Items Section with Simple Carousel */}
             <div className="flex-1 p-8 lg:p-12 flex items-center justify-center">
               <SimpleCarousel items={product.items} isFromLeft={isFromLeft} />
             </div>
