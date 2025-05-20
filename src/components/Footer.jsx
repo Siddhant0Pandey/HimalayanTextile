@@ -9,6 +9,9 @@ const Footer = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Optional: Save styles to avoid conflicts
+      ScrollTrigger.saveStyles(['.footer-brand', '.footer-column', '.footer-badge']);
+
       // Section 1: Brand Logo and Intro Text
       gsap.from('.footer-brand', {
         scale: 0.8,
@@ -18,6 +21,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: '.footer-brand',
           start: 'top bottom',
+          lazy: false,
         },
       });
 
@@ -31,6 +35,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: '.footer-columns',
           start: 'top 80%',
+          lazy: false,
         },
       });
 
@@ -44,10 +49,11 @@ const Footer = () => {
         scrollTrigger: {
           trigger: '.footer-badge',
           start: 'top 85%',
+          lazy: false,
         },
       });
 
-   
+      // Floating animation for background shapes
       gsap.to('.floating-shape', {
         y: 20,
         repeat: -1,
@@ -55,6 +61,11 @@ const Footer = () => {
         duration: 2,
         ease: 'sine.inOut',
       });
+
+      // Ensure layout is fully ready before refresh
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
     }, footerRef);
 
     return () => ctx.revert();
@@ -90,16 +101,15 @@ const Footer = () => {
           {[
             {
               title: 'Products',
-              links: ['Fibre', 'Yarn', 'Fabric', 'Cotton', 'Wool'],
+              links: ['fibre', 'yarn', 'fabric', 'cotton', 'wool'],
             },
             {
               title: 'Company',
-              links: ['About Us', 'Team', 'Vision'],
+              links: ['about', 'our-story', 'our-brand'],
             },
-           
             {
               title: 'Support',
-              links: ['Contact', 'FAQs', 'Privacy Policy'],
+              links: ['contact', 'FAQs', 'Privacy Policy'],
             },
           ].map((section, idx) => (
             <div key={idx} className="footer-column space-y-4">
@@ -108,8 +118,8 @@ const Footer = () => {
                 {section.links.map((link, i) => (
                   <li key={i}>
                     <a
-                      href="#"
-                      className="hover:text-[#1fa951] transition duration-300"
+                      href={`${link}`}
+                      className="hover:text-[#1fa951] capitalize transition duration-300"
                     >
                       {link}
                     </a>
