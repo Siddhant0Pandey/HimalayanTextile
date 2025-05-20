@@ -19,8 +19,13 @@ import HempTextile from "./components/Fiber/Products/HempTextile";
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
 import Journals from "./pages/Journals";
+
+import CottonTextile from "./components/Fiber/Products/CottonTextile";
+import FlaxTextile from "./components/Fiber/Products/FlaxTextile";
+
 import JournalsDetails from "./components/Journals/JournalsDetails";
 import Fabric from "./pages/Fabric";
+
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -53,7 +58,12 @@ function AppRoutes() {
           <Route path="/Hemp" element={<HempTextile />} />
 
           <Route path="/journals" element={<Journals />} />
+
+          <Route path="/flax" element={<FlaxTextile />} />
+          <Route path="/cotton" element={<CottonTextile />} />
+
           <Route path="/blog/:slug" element={<JournalsDetails />} />
+
         </Route>
       </Routes>
     </>
