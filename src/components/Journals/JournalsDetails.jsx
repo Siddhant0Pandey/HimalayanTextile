@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useParams } from "react-router-dom";
 import img1 from "/assets/img/blog/textile01.jpg";
@@ -6,10 +7,8 @@ import img3 from "/assets/img/blog/textile03.jpg";
 import img4 from "/assets/img/blog/textile04.jpg";
 import img5 from "/assets/img/blog/textile05.jpg";
 import img6 from "/assets/img/blog/textile06.jpg";
-import { GiApc } from "react-icons/gi";
 
 const blogPosts = [
-  // blog01 starts here
   {
     id: 1,
     slug: "textile01",
@@ -263,74 +262,63 @@ const blogPosts = [
 
   //   blog06 ends here
 ];
+
 function JournalsDetails() {
   const { slug } = useParams();
   const blog = blogPosts.find((post) => post.slug === slug);
-  console.log(blog);
 
-  if (!blog) {
-    return <div>Blog not found</div>;
-  }
+  if (!blog) return <div className="text-center py-10">Blog not found</div>;
+
   return (
-    <>
-      <div className="container pt-15 leading-5 md:leading-6 lg:leading-8">
-        <div className=" w-full flex flex-wrap">
-          <div className="left flex-1/2">
-            <h1 className="text-4xl font-semibold text-[#1FA951] py-6 ">
-              {blog.title}
-            </h1>
-          </div>
-          <div className="right flex-1/2">
-            <p className="pt-12 pb-8 text-gray-700 text-sm">
-              {blog.titleShortDescription}
-            </p>
-          </div>
+    <div className="container mx-auto px-4 py-22">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h1 className="text-2xl md:text-4xl font-semibold text-[#1FA951]">
+            {blog.title}
+          </h1>
         </div>
-        <img
-          src={blog.image}
-          alt={blog.title}
-          style={{ width: "100%", height: "60vh", objectFit: "cover" }}
-        />
-        <p
-          className="font-semibold"
-          style={{
-            color: "#1FA951",
-            paddingBottom: "5px",
-            paddingTop: "8px",
-          }}
-        >
-          By {blog.author} on {blog.date}
-        </p>
-        <p style={{ paddingTop: "10px", color: "black" }}>
-          {blog.description.description1}
-        </p>
-        <p style={{ color: "black" }}>{blog.description.description2}</p>
-        <div className="text-gray-700 te">
-          <h2 style={{ paddingTop: "15px", color: "#1FA951" }}>
-            {blog.description.title.title1}
-          </h2>
-          <p>{blog.description.title.title1Content}</p>
-          <h2 style={{ paddingTop: "15px", color: "#1FA951" }}>
-            {blog.description.title.title2}
-          </h2>
-          <p>{blog.description.title.title2Content}</p>
-          <h2 style={{ paddingTop: "15px", color: "#1FA951" }}>
-            {blog.description.title.title3}
-          </h2>
-          <p>{blog.description.title.title3Content}</p>
-          <h2 style={{ paddingTop: "15px", color: "#1FA951" }}>
-            {blog.description.title.title4}
-          </h2>
-          <p>{blog.description.title.title4Content}</p>
-          <h2 style={{ paddingTop: "15px", color: "#1FA951" }}>
-            {blog.description.title.title5}
-          </h2>
-          <p style={{ paddingBottom: "50px" }}>
-            {blog.description.title.title5Content}
+        <div>
+          <p className="text-gray-700 text-sm md:text-base">
+            {blog.titleShortDescription}
           </p>
         </div>
       </div>
-    </>
+
+      <div className="mt-6">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="w-full h-[40vh] md:h-[60vh] object-cover rounded-md shadow"
+        />
+        <p className="text-sm md:text-base font-semibold text-[#1FA951] pt-4">
+          By {blog.author} on {blog.date}
+        </p>
+      </div>
+
+      <div className="mt-6 space-y-4 text-black text-sm md:text-base leading-relaxed">
+        <p>{blog.description.description1}</p>
+        <p>{blog.description.description2}</p>
+
+        <div className="space-y-6 pt-4">
+          {Object.entries(blog.description.title).map(([key, value], i) =>
+            key.includes("title") && !key.includes("Content") ? (
+              <div key={key}>
+                <h2 className="text-lg md:text-xl font-semibold text-[#1FA951] pt-4">
+                  {value}
+                </h2>
+                <p className="pt-1">
+                  {
+                    blog.description.title[
+                      `title${key.replace("title", "")}Content`
+                    ]
+                  }
+                </p>
+              </div>
+            ) : null
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
