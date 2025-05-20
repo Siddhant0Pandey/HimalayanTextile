@@ -56,8 +56,8 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center text-center text-white" style={{ backgroundImage: 'url(/assets/img/parallax/mountain.jpg)' }}>
-    
+    <div className="relative min-h-screen bg-cover bg-center text-center text-white" >
+    <div className='absolute top-0 left-0 w-full h-full blur-sm' style={{ backgroundImage: 'url(/assets/img/parallax/mountain.jpg)', backgroundSize: "cover",    }}></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         {[
           { top: '0%', left: '0%' },
