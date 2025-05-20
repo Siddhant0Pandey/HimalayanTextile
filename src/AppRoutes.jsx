@@ -13,7 +13,6 @@ import Contact from "./pages/Contact";
 import Loader from "./components/Loader";
 import Sustainable from "./pages/Sustainable";
 
-import Fabric from "./pages/Fabric";
 import Nettle from "./components/Fiber/Products/Nettle";
 import HempTextile from "./components/Fiber/Products/HempTextile";
 
