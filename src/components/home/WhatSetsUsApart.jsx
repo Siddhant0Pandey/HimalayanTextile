@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const panels = [
   {
-    image: "/assets/img/nettle-leaf.png",
-    description: "100% Nepalese Nettle Fiber",
+    image: "/assets/img/extra/nettle-leaf.jpg",
+    description: "100% Himalayan Nettle Fiber",
     reason:
       "Harvested from wild Himalayan nettle, our fiber is organic, traceable, and supports local communities."
   },
@@ -20,7 +20,7 @@ const panels = [
       "Unlike conventional textiles, we never blend in polyester. Every product is fully biodegradable and eco-friendly."
   },
   {
-    image: "/assets/img/handcrafted-textile.png",
+    image: "/assets/img/extra/skillartisan.jpg",
     description: "Handcrafted by Skilled Artisans",
     reason:
       "Our Nepalese artisans use traditional techniques to transform nettle fiber into durable, breathable textiles with unique character."
@@ -59,7 +59,7 @@ export default function WhatSetsUsApartHorizontal() {
 
       // Background parallax effect
       gsap.to(bgRef.current, {
-        x: () => `-${window.innerWidth * 0.3}`, // adjust depth
+        x: () => `-${window.innerWidth * 0.3}`, 
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -127,18 +127,18 @@ export default function WhatSetsUsApartHorizontal() {
       />
 
       {/* Title */}
-      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#fff]">
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 text-center text-[#fff] ">
       {/* #1fa951 */}
         <h1
           ref={titleRef}
-          className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2"
+          className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-[1] bg-opacity-90 px-4 py-2 "
         >
           What Sets Us Apart
         </h1>
       </div>
 
       {/* Panels Container */}
-      <div className="flex h-full w-[400vw] py-4 relative z-10">
+      <div className="flex h-full w-[400vw] py-4 relative z-10 mt-12">
         {panels.map((panel, idx) => (
           <div
             key={idx}
