@@ -121,13 +121,13 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-     "/about/our-story": {
+     "/our-story": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-     "/about/our-brand": {
+     "/our-brand": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
