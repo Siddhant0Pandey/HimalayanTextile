@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-// Card Component with enhanced animations and Learn More button
+// Card Component
 const FiberCard = ({ imageSrc, title, description, index, link }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -9,12 +9,14 @@ const FiberCard = ({ imageSrc, title, description, index, link }) => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100 * index);
-
     return () => clearTimeout(timer);
   }, [index]);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
+
+  const isExternalLink =
+    link && (link.startsWith("http://") || link.startsWith("https://"));
 
   return (
     <div
@@ -63,8 +65,9 @@ const FiberCard = ({ imageSrc, title, description, index, link }) => {
           <div className="mt-3 text-right">
             <a
               href={link}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(isExternalLink
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
               className={`inline-block bg-[#1fa951] hover:bg-[#178c42] text-white font-medium py-1.5 px-4 rounded text-sm transition-all duration-300 transform ${
                 isHovered ? "scale-105" : "scale-100"
               }`}
@@ -78,7 +81,7 @@ const FiberCard = ({ imageSrc, title, description, index, link }) => {
   );
 };
 
-// Animated Title Component
+// Animated Title
 const AnimatedTitle = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -97,7 +100,7 @@ const AnimatedTitle = ({ children }) => {
   );
 };
 
-// Fiber data with unique images and links
+// Fiber Data
 const fiberData = [
   {
     id: 1,
@@ -105,7 +108,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/hemp.jpg",
     description:
       "Hemp fiber offers exceptional strength while remaining eco-friendly. Cultivated with minimal resources, it supports sustainable innovation in modern textiles and construction.",
-    link: "https://example.com/hemp-fiber",
+    link: "/Hemp",
   },
   {
     id: 2,
@@ -137,7 +140,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/nettle.jpg",
     description:
       "Nettle fiber is strong, breathable, and eco-friendly. Traditionally used in Europe, it has resurfaced as a sustainable textile option with a silky texture similar to linen.",
-    link: "Nettle.jsx",
+    link: "/Nettle",
   },
   {
     id: 6,
@@ -177,7 +180,7 @@ const fiberData = [
 const FiberMain = () => {
   return (
     <div className="min-h-screen p-4 md:p-8 bg-gradient-to-b from-gray-50 to-gray-100">
-      <style jsx global>{`
+      <style jsx="true">{`
         @keyframes shine {
           0% {
             left: -100%;
@@ -187,7 +190,11 @@ const FiberMain = () => {
           }
         }
         .animate-shine {
-          animation: shine 1.5s ease-in-out;
+          animation: shine 1.5s ease-in-out forwards;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 200%;
         }
       `}</style>
 

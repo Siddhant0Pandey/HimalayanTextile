@@ -120,12 +120,17 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/about/our-story": {
+
+     "/our-story": {
+
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
+
+     "/our-brand": {
+
     "/about/our-brand": {
       bg: "bg-transparent",
       textColor: "white",
@@ -133,6 +138,7 @@ function Navbar() {
       borderColor: "white",
     },
     "/fabric": {
+
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
