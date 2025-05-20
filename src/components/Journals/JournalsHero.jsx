@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import bgImg from "../../../public/assets/img/bgImage1.png";
 
 const JournalsHero = () => {
   // Create refs for animated elements
