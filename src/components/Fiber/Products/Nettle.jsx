@@ -1,53 +1,106 @@
 import React, { useState, useEffect } from "react";
 import processBg from "/assets/img/processBg.jpg";
-// public\assets\img\processBg.jpg
 import {
-  FaSeedling, // For Fiber Sourcing
-  FaIndustry, // For Yarn Spinning
-  FaPalette, // For Dyeing & Finishing
-  FaShieldAlt, // For Quality Control
-  FaBolt,
+  FaLeaf,
+  FaSun,
+  FaWater,
+  FaHammer,
+  FaCloudSun,
+  FaShower,
+  FaTools,
+  FaCut,
+  FaSync,
+  FaThLarge,
 } from "react-icons/fa";
 
 const timelineData = [
   {
     id: 1,
-    title: "Fiber Sourcing",
+    title: "Peeling of Nettle Bark",
     description:
-      "Carefully selected cotton, wool, and synthetic blends from trusted suppliers.",
-    bgImage: "/assets/img/fiberSourcing.jpg",
-    icon: FaSeedling,
+      "Carefully stripping the outer bark from nettle stalks to expose the valuable fibers beneath.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaLeaf,
   },
   {
     id: 2,
-    title: "Yarn Spinning",
+    title: "Drying Bark",
     description:
-      "Precision spinning ensures strength, softness, and consistency.",
-    bgImage: "/assets/img/yarnSpinning.jpg",
-    icon: FaIndustry,
+      "Initial drying process to remove moisture and prepare the bark for further processing.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaSun,
   },
   {
     id: 3,
-    title: "Dyeing & Finishing",
-    description: "Eco-conscious dyeing with vibrant, long-lasting colors.",
-    bgImage: "/assets/img/dyeing&Finishing.jpg",
-    icon: FaPalette,
+    title: "Retting",
+    description:
+      "Controlled decomposition process that separates the fibrous material from the woody core.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaWater,
   },
   {
     id: 4,
-    title: "Weaving & Knitting",
+    title: "Washing",
     description:
-      "Traditional craftsmanship meets modern machinery for perfect fabric.",
-    bgImage: "/assets/img/weaving&knitting.jpg",
-    icon: FaBolt,
+      "Thorough cleaning to remove impurities and residues from the retting process.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaWater,
   },
   {
     id: 5,
-    title: "Quality Control",
+    title: "Beating with Wooden Club",
     description:
-      "Every batch undergoes strict inspection to meet international standards.",
-    bgImage: "/assets/img/qualityControl.jpg",
-    icon: FaShieldAlt,
+      "First mechanical softening of the fibers to break down their rigid structure.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaHammer,
+  },
+  {
+    id: 6,
+    title: "Drying in the Sun",
+    description:
+      "Broken fibers are dried in direct sunlight for a full day to prepare for further processing.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaCloudSun,
+  },
+  {
+    id: 7,
+    title: "Second Washing",
+    description:
+      "Additional washing to further remove impurities and prepare for final softening.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaShower,
+  },
+  {
+    id: 8,
+    title: "Second Beating",
+    description:
+      "Additional beating with wooden clubs to achieve optimal fiber softness and flexibility.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaTools,
+  },
+  {
+    id: 9,
+    title: "Hackling",
+    description:
+      "Combing the fibers to align them and remove any remaining short fibers or debris.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaCut,
+  },
+  {
+    id: 10,
+    title: "Spinning",
+    description:
+      "Transforming the prepared fibers into strong, consistent yarn ready for weaving.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaSync,
+  },
+  {
+    id: 11,
+    title: "Weaving Nettle Fabric",
+    description:
+      "Traditional methods combined with careful attention to detail create durable, sustainable nettle fabric.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaThLarge,
   },
 ];
 
@@ -57,17 +110,13 @@ export default function Nettle() {
   useEffect(() => {
     const handleScroll = () => {
       const cards = document.querySelectorAll(".timeline-card");
-      let newActiveItems = [];
-
+      const newActiveItems = [];
       cards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.75;
-
-        if (inView) {
+        if (rect.top < window.innerHeight * 0.85) {
           newActiveItems.push(index);
         }
       });
-
       setActiveItems(newActiveItems);
     };
 
@@ -86,91 +135,107 @@ export default function Nettle() {
         />
       </div>
 
-      {/* <div className="flex flex-col items-center min-h-screen bg-gray-100 py-12 px-4"> */}
-      <h1 className="text-4xl font-bold mb-12 text-center text-[#1fa951]">
-        Our Process
+      <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
+        Nettle Fabric Creation Process
       </h1>
 
-      <div className="flex justify-center w-full max-w-6xl">
-        <div className="relative w-full">
-          {/* Vertical Line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0"></div>
+      <div className="w-full max-w-6xl">
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
 
-          <div className="relative">
-            {timelineData.map((item, index) => {
-              const isLeft = index % 2 === 0;
-              const Icon = item.icon;
+          {timelineData.map((item, index) => {
+            const isLeft = index % 2 === 0;
+            const Icon = item.icon;
 
-              return (
+            return (
+              <div
+                key={item.id}
+                className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                } relative`}
+              >
+                {/* Line Progress (Desktop) */}
                 <div
-                  key={item.id}
-                  className={`timeline-card mb-20 flex flex-col md:flex-row ${
-                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                  } items-center justify-between relative`}
+                  className={`hidden md:flex w-1/2 ${
+                    isLeft ? "justify-end pr-4" : "justify-start pl-4"
+                  }`}
                 >
-                  {/* Connector Line (only on md+) */}
                   <div
-                    className={`hidden md:flex w-1/2 justify-${
-                      isLeft ? "end" : "start"
-                    } pr-4 pl-4`}
-                  >
-                    <div
-                      className={`w-1 ${
-                        activeItems.includes(index)
-                          ? "bg-[#1fa951] h-full"
-                          : "h-0"
-                      } transition-all duration-700`}
-                    ></div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div
-                    className={`w-full md:w-5/12 transition-all duration-700 ease-in-out transform ${
+                    className={`w-1 ${
                       activeItems.includes(index)
-                        ? "translate-y-0 opacity-100"
-                        : isLeft
-                        ? "-translate-x-10 opacity-0"
-                        : "translate-x-10 opacity-0"
-                    }`}
-                  >
-                    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                      <div className="h-48 overflow-hidden relative">
-                        <div
-                          className="absolute inset-0 bg-cover bg-center"
-                          style={{ backgroundImage: `url(${item.bgImage})` }}
-                        ></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                      </div>
-                      <div className="p-6">
-                        <h3 className="text-2xl font-bold mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">{item.description}</p>
+                        ? "bg-[#1fa951] h-full"
+                        : "h-0"
+                    } transition-all duration-700`}
+                  />
+                </div>
+
+                {/* Card Content */}
+                <div
+                  className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
+                    activeItems.includes(index)
+                      ? "translate-y-0 opacity-100"
+                      : isLeft
+                      ? "-translate-x-10 opacity-0"
+                      : "translate-x-10 opacity-0"
+                  }`}
+                >
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="h-48 sm:h-64 overflow-hidden relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${item.bgImage})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute bottom-4 left-4 bg-black/60 text-white px-2 py-1 rounded-full text-sm">
+                        Step {index + 1}
                       </div>
                     </div>
-                  </div>
-
-                  {/* Icon Centered (only on md+) */}
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
-                    <div
-                      className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
-                        activeItems.includes(index) ? "scale-100" : "scale-0"
-                      }`}
-                    >
-                      {Icon && <Icon className="text-white" size={18} />}
+                    <div className="p-4 sm:p-6">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600">{item.description}</p>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Icon */}
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                  <div
+                    className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
+                      activeItems.includes(index) ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <Icon className="text-white" size={18} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Scroll Down Indicator  
-      <div className="mt-6 animate-bounce">
-        <FaChevronDown size={32} className="text-[#1fa951]" />
-      </div> / */}
+      {/* About Section */}
+      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
+          About Nettle Fabric
+        </h2>
+        <p className="mb-4 text-gray-700">
+          Nettle fabric has been traditionally made for centuries, particularly
+          in Himalayan regions. This sustainable textile is known for its
+          durability, natural antibacterial properties, and breathability. The
+          process shown above illustrates the labor-intensive traditional
+          methods that transform the wild nettle plant into functional,
+          beautiful fabric.
+        </p>
+        <div className="flex justify-center">
+          <img
+            src="/api/placeholder/800/400"
+            alt="Nettle fabric production"
+            className="rounded-lg shadow-md w-full max-w-xl"
+          />
+        </div>
+      </div>
     </div>
   );
 }
