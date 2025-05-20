@@ -17,7 +17,6 @@ import Fabric from "./pages/Fabric";
 import Nettle from "./components/Fiber/Products/Nettle";
 import HempTextile from "./components/Fiber/Products/HempTextile";
 
-
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
 import Fabric from "./pages/Fabric";
@@ -53,6 +52,7 @@ function AppRoutes() {
 
           <Route path="/journals" element={<Journals />} />
 
+          <Route path="/journals" element={<Journals />} />
         </Route>
       </Routes>
     </>
