@@ -162,7 +162,7 @@ function ProductSection({ product, isFromLeft }) {
                 viewport={{ once: false }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                {product.description}
+                {product.description} 
               </motion.p>
             </div>
 

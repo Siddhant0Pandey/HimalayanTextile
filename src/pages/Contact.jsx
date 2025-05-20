@@ -1,8 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const containerRef = useRef(null);
+  const formRef = useRef();
+
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    message: "",
+  });
+
+  const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -14,9 +24,42 @@ function Contact() {
         ease: "power2.out",
       });
     }, containerRef);
-
     return () => ctx.revert();
   }, []);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!formData.user_name || !formData.user_email || !formData.message) {
+      setStatusMessage("Please fill in all fields.");
+      return;
+    }
+
+    emailjs
+      .sendForm(
+        "your_service_id",     // Replace with your EmailJS service ID
+        "your_template_id",    // Replace with your EmailJS template ID
+        formRef.current,
+        "your_public_key"      // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setStatusMessage("Message sent successfully!");
+          setFormData({ user_name: "", user_email: "", message: "" });
+        },
+        () => {
+          setStatusMessage("Failed to send message. Please try again.");
+        }
+      );
+  };
 
   return (
     <div
@@ -54,16 +97,26 @@ function Contact() {
 
           <div>
             <h4 className="font-semibold">Address</h4>
-            <p>Liwang 02<br />Rolpa 22100</p>
+            <p>
+              Liwang 02<br />
+              Rolpa 22100
+            </p>
           </div>
         </div>
 
         {/* Form */}
-        <form className="bg-white shadow-xl rounded-xl p-8 space-y-6">
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="bg-white shadow-xl rounded-xl p-8 space-y-6"
+        >
           <div className="fade-up">
             <label className="block font-medium mb-1">Name</label>
             <input
               type="text"
+              name="user_name"
+              value={formData.user_name}
+              onChange={handleChange}
               placeholder="Your Name"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300"
             />
@@ -73,6 +126,9 @@ function Contact() {
             <label className="block font-medium mb-1">Email</label>
             <input
               type="email"
+              name="user_email"
+              value={formData.user_email}
+              onChange={handleChange}
               placeholder="your@email.com"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300"
             />
@@ -81,6 +137,9 @@ function Contact() {
           <div className="fade-up">
             <label className="block font-medium mb-1">Message</label>
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               rows="5"
               placeholder="Your message..."
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300 resize-none"
@@ -93,6 +152,12 @@ function Contact() {
           >
             Send Message
           </button>
+
+          {statusMessage && (
+            <p className="text-center text-sm text-green-700 fade-up">
+              {statusMessage}
+            </p>
+          )}
         </form>
       </div>
 
