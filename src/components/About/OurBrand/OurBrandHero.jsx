@@ -82,7 +82,7 @@ const OurBrandHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", // Fixed syntax error in original code
+        backgroundColor: "#1FA951", 
         // backgroundImage: `url(${bgImg})`,
       }}
     >
@@ -105,7 +105,7 @@ const OurBrandHero = () => {
           Our Brand
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "From Fiber to Finish — Quality You Can Feel."
+          "From Fiber to Fashion — Quality You Can Feel."
         </p>
 
         {/* Badge element */}
