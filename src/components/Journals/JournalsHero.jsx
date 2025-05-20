@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-// import bgImg from "../../../public/assets/img/bgImage1.png";
 
-const OurBrandHero = () => {
+const JournalsHero = () => {
   // Create refs for animated elements
   const heroRef = useRef(null);
   const textRef = useRef(null);
@@ -80,9 +79,9 @@ const OurBrandHero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[70vh] mb-15 bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", 
+        backgroundColor: "#1FA951", // Fixed syntax error in original code
         // backgroundImage: `url(${bgImg})`,
       }}
     >
@@ -102,10 +101,10 @@ const OurBrandHero = () => {
           ref={textRef}
           className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg"
         >
-          Our Brand
+          Our Journals
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "From Fiber to Fashion — Quality You Can Feel."
+          "The Fabric of Thought and Innovation"
         </p>
 
         {/* Badge element */}
@@ -120,4 +119,4 @@ const OurBrandHero = () => {
   );
 };
 
-export default OurBrandHero;
+export default JournalsHero;

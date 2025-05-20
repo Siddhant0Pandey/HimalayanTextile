@@ -18,7 +18,6 @@ function Navbar() {
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
     if (menuOpen) setAboutOpen(false);
-        
   };
 
   const toggleAboutDropdown = () => {
@@ -109,36 +108,53 @@ function Navbar() {
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
-     "/fiber": {
+    "/fiber": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-      "/yarn": {
+    "/yarn": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
+
      "/our-story": {
+
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
+
      "/our-brand": {
+
+    "/about/our-brand": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-   
+    "/fabric": {
+
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
+    },
     default: {
       bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
+    },
+    "/journals": {
+      bg: "bg-transparent",
+      textColor: "white",
+      logo: "/assets/img/logo/logowhite.png",
+      borderColor: "white",
     },
   };
 
@@ -158,7 +174,10 @@ function Navbar() {
     { text: "Fabric", to: "/fabric" },
   ];
 
-  const navLink2 = [{ text: "Sustainability", to: "/sustainable" },{text:'Journals', to:'/journals'}];
+  const navLink2 = [
+    { text: "Sustainability", to: "/sustainable" },
+    { text: "Journals", to: "/journals" },
+  ];
 
   return (
     <>

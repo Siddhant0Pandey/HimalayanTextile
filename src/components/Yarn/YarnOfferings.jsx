@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -24,43 +25,75 @@ export default function YarnOfferings() {
   const yarnTypes = [
     {
       id: 1,
-      name: "Pashmina Wool",
+      name: "Hemp Yarn",
       description:
-        "Ultra-soft premium wool derived from the undercoat of Himalayan mountain goats. Known for exceptional warmth and lightweight properties.",
-
-      image: "assets/img/yarn/paswool.jpg",
-
-      features: ["Temperature regulating", "Ethically sourced", "Handspun"],
+        "Hemp yarn is incredibly strong, naturally antimicrobial, and ideal for eco-conscious textiles. It offers a slightly coarse texture that softens with time, making it perfect for durable home goods, bags, and rustic wearables.",
+      image: "assets/img/yarn/Hemp.jpg",
+      features: ["High tensile strength", "Antimicrobial", "Biodegradable"],
     },
     {
       id: 2,
-      name: "Yak Wool",
+      name: "Cotton Yarn",
       description:
-        "Naturally insulating wool that is softer than sheep's wool and extremely durable. Perfect for high-quality garments requiring warmth.",
-
-      image: "assets/img/yarn/yakwool.jpg",
-
-      features: ["Water resistant", "Hypoallergenic", "Non-pilling"],
+        "Soft, breathable yarn spun from pure cotton. Ideal for creating lightweight garments and textiles with natural comfort and versatility.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Soft texture", "Highly breathable", "Natural comfort"],
     },
     {
       id: 3,
-      name: "Hemp Fiber",
+      name: "Nettle Yarn",
       description:
-        "Sustainable natural fiber with exceptional durability. Our hemp yarns are processed using traditional methods for minimal environmental impact.",
-
-      image: "assets/img/yarn/Hemp.jpg",
-
-      features: ["Antimicrobial", "UV resistant", "Eco-friendly"],
+        "Traditional Himalayan nettle yarn is known for its strength, breathability, and rustic texture. A sustainable option for artisanal weaves.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Durable", "Natural sheen", "Eco-conscious"],
     },
     {
       id: 4,
-      name: "Himalayan Silk",
+      name: "Flax Yarn",
       description:
-        "Handcrafted silk yarn produced by skilled artisans using heritage techniques passed down through generations.",
-
+        "Derived from flax plants, this yarn offers a linen-like quality—lightweight, moisture-wicking, and naturally textured for a classic feel.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Moisture-wicking", "Strong fiber", "Rustic finish"],
+    },
+    {
+      id: 5,
+      name: "Cactus Yarn",
+      description:
+        "Innovative cactus-based yarn crafted from prickly pear fibers. It’s biodegradable, durable, and a water-efficient alternative to synthetics.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Biodegradable", "Low water usage", "Vegan alternative"],
+    },
+    {
+      id: 6,
+      name: "Banana Yarn",
+      description:
+        "Extracted from banana pseudostems, this yarn is strong, lustrous, and perfect for eco-conscious textile products with a silk-like sheen.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Silky feel", "Sustainable", "High tensile strength"],
+    },
+    {
+      id: 7,
+      name: "Jute Yarn",
+      description:
+        "Coarse and durable, jute yarn is ideal for crafts, rugs, and rustic textiles. Its natural golden hue adds earthy character to every piece.",
+      image: "assets/img/yarn/paswool.jpg",
+      features: ["Coarse texture", "Compostable", "Affordable"],
+    },
+    {
+      id: 8,
+      name: "Wool Yarn",
+      description:
+        "Warm and resilient, wool yarn offers excellent elasticity and insulation. Sourced from Himalayan sheep, it's perfect for winter garments.",
+      image: "assets/img/yarn/yakwool.jpg",
+      features: ["Insulating", "Elastic", "Moisture-wicking"],
+    },
+    {
+      id: 9,
+      name: "Silk Yarn",
+      description:
+        "Lustrous and breathable, silk yarn is handspun using traditional methods. Its smooth texture and sheen make it a luxury fiber for fine textiles.",
       image: "assets/img/yarn/silk.jpg",
-
-      features: ["Lustrous finish", "Breathable", "Biodegradable"],
+      features: ["Shiny finish", "Temperature regulating", "Biodegradable"],
     },
   ];
 
