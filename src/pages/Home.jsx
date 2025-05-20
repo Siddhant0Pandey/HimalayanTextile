@@ -5,11 +5,13 @@ import CoreValues from '../components/home/CoreValues';
 import MyMap from '../components/map/MyMap';
 import AboutSection from '../components/home/AboutSection';
 import ProductsSection from '../components/home/ProductsSection';
+import ProcessSection from '../components/home/ProcessSection';
 
 function Home() {
   return (
     <div >
      <Hero/>
+     <ProcessSection/>
      <div >
       <AboutSection />
     </div>
