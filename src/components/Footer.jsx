@@ -7,60 +7,69 @@ gsap.registerPlugin(ScrollTrigger);
 const Footer = () => {
   const footerRef = useRef(null);
 
- useEffect(() => {
-  const ctx = gsap.context(() => {
-    gsap.from('.footer-brand', {
-      scale: 0.8,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.footer-brand',
-        start: 'top bottom',
-      },
-    });
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Optional: Save styles to avoid conflicts
+      ScrollTrigger.saveStyles(['.footer-brand', '.footer-column', '.footer-badge']);
 
-    gsap.from('.footer-column', {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.footer-columns',
-        start: 'top 80%',
-      },
-    });
+      // Section 1: Brand Logo and Intro Text
+      gsap.from('.footer-brand', {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.footer-brand',
+          start: 'top bottom',
+          lazy: false,
+        },
+      });
 
-    gsap.from('.footer-badge', {
-      y: 50,
-      opacity: 0,
-      delay: 0.3,
-      duration: 1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.footer-badge',
-        start: 'top 85%',
-      },
-    });
+      // Section 2: Navigation Columns
+      gsap.from('.footer-column', {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.footer-columns',
+          start: 'top 80%',
+          lazy: false,
+        },
+      });
 
-    gsap.to('.floating-shape', {
-      y: 20,
-      repeat: -1,
-      yoyo: true,
-      duration: 2,
-      ease: 'sine.inOut',
-    });
+      // Section 3: Footer Badge
+      gsap.from('.footer-badge', {
+        y: 50,
+        opacity: 0,
+        delay: 0.3,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.footer-badge',
+          start: 'top 85%',
+          lazy: false,
+        },
+      });
 
-   
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-  }, footerRef);
+      // Floating animation for background shapes
+      gsap.to('.floating-shape', {
+        y: 20,
+        repeat: -1,
+        yoyo: true,
+        duration: 2,
+        ease: 'sine.inOut',
+      });
 
-  return () => ctx.revert();
-}, []);
+      // Ensure layout is fully ready before refresh
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    }, footerRef);
 
+    return () => ctx.revert();
+  }, []);
 
   return (
     <footer
@@ -98,7 +107,6 @@ const Footer = () => {
               title: 'Company',
               links: ['about', 'our-story', 'our-brand'],
             },
-           
             {
               title: 'Support',
               links: ['contact', 'FAQs', 'Privacy Policy'],
