@@ -56,7 +56,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-cover bg-center text-center text-white" style={{ backgroundImage: 'url(/images/mountain.jpg)' }}>
+    <div className="relative min-h-screen bg-cover bg-center text-center text-white" style={{ backgroundImage: 'url(/assets/img/parallax/mountain.jpg)' }}>
     
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         {[
