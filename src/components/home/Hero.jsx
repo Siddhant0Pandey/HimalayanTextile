@@ -232,7 +232,7 @@ tl.fromTo(
       
 
       {/* Text Boxes */}
-     <div className="absolute bottom-[10vh] left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4 z-30 flex flex-col sm:flex-row justify-center items-center gap-6 pointer-events-none">
+     <div className="absolute bottom-[10vh] left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-4 z-30 flex flex-col sm:flex-row justify-center items-center gap-6 pointer-events-none ">
   {textBoxContent.map((box, i) => (
     <div
       key={i}
