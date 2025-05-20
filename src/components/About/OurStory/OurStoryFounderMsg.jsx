@@ -54,7 +54,7 @@ function OurStoryFounderMsg() {
         }}
         viewport={{ once: false }}
       >
-        Founder Message
+        Founder's Message
       </motion.h1>
 
       {/* Content Section */}
