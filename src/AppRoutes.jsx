@@ -18,10 +18,14 @@ import HempTextile from "./components/Fiber/Products/HempTextile";
 
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
-import Fabric from "./pages/Fabric";
 import Journals from "./pages/Journals";
+
 import CottonTextile from "./components/Fiber/Products/CottonTextile";
 import FlaxTextile from "./components/Fiber/Products/FlaxTextile";
+
+import JournalsDetails from "./components/Journals/JournalsDetails";
+import Fabric from "./pages/Fabric";
+
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -40,8 +44,10 @@ function AppRoutes() {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/about/our-story" element={<OurStory />} />
-          <Route path="/about/our-brand" element={<OurBrand />} />
+
+          <Route path="/our-story" element={<OurStory />} />
+          <Route path="/our-brand" element={<OurBrand />} />
+
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/yarn" element={<Yarn />} />
           <Route path="/fabric" element={<Fabric />} />
@@ -52,8 +58,12 @@ function AppRoutes() {
           <Route path="/Hemp" element={<HempTextile />} />
 
           <Route path="/journals" element={<Journals />} />
+
           <Route path="/flax" element={<FlaxTextile />} />
           <Route path="/cotton" element={<CottonTextile />} />
+
+          <Route path="/blog/:slug" element={<JournalsDetails />} />
+
         </Route>
       </Routes>
     </>
