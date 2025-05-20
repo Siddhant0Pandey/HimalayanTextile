@@ -19,7 +19,6 @@ import HempTextile from "./components/Fiber/Products/HempTextile";
 
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
-import Fabric from "./pages/Fabric";
 import Journals from "./pages/Journals";
 function AppRoutes() {
   const location = useLocation();
