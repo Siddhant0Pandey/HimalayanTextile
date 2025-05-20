@@ -51,6 +51,8 @@ function AppRoutes() {
           <Route path="/Hemp" element={<HempTextile />} />
 
           <Route path="/journals" element={<Journals />} />
+
+          <Route path="/journals" element={<Journals />} />
         </Route>
       </Routes>
     </>
