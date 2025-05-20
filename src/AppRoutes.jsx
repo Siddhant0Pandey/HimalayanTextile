@@ -38,8 +38,10 @@ function AppRoutes() {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/about/our-story" element={<OurStory />} />
-          <Route path="/about/our-brand" element={<OurBrand />} />
+
+          <Route path="/our-story" element={<OurStory />} />
+          <Route path="/our-brand" element={<OurBrand />   } />
+
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/yarn" element={<Yarn />} />
           <Route path="/fabric" element={<Fabric />} />
@@ -51,7 +53,6 @@ function AppRoutes() {
 
           <Route path="/journals" element={<Journals />} />
 
-          <Route path="/journals" element={<Journals />} />
         </Route>
       </Routes>
     </>
