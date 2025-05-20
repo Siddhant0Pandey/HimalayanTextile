@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -47,7 +47,7 @@ const Footer = () => {
         },
       });
 
-      // Optional: floating animation for bg visuals
+   
       gsap.to('.floating-shape', {
         y: 20,
         repeat: -1,

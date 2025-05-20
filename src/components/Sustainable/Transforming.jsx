@@ -75,21 +75,27 @@ export default function Transforming() {
               example. Our environmental initiatives include:
             </p>
             <ul className="list-disc list-inside space-y-2 text-base md:text-lg">
-              <li className="pl-4 text-[#1FA951]">
-                <strong>Forests and Grasslands Restoration:</strong> By planting
-                trees and afforesting degraded lands near operational sites, we
-                support biodiversity and create carbon sinks.
+              <li className="pl-4 text-gray-600">
+                <strong className="text-[#1FA951]">
+                  Forests and Grasslands Restoration:
+                </strong>{" "}
+                By planting trees and afforesting degraded lands near
+                operational sites, we support biodiversity and create carbon
+                sinks.
               </li>
-              <li className="pl-4 text-[#1FA951]">
-                <strong>Water Conservation:</strong> Water is a critical
-                resource for textile production. Through monitoring, treatment,
-                and efficient reuse, we aim to achieve water positivity by 2030.
+              <li className="pl-4 text-gray-600">
+                <strong className="text-[#1FA951]">Water Conservation:</strong>{" "}
+                Water is a critical resource for textile production. Through
+                monitoring, treatment, and efficient reuse, we aim to achieve
+                water positivity by 2030.
               </li>
-              <li className="pl-4 text-[#1FA951]">
-                <strong>Net-Zero Carbon Goals:</strong> Our eco-friendly product
-                lines, combined with renewable energy adoption and conservation
-                practices, underscore our commitment to reducing our carbon
-                footprint.
+              <li className="pl-4 text-gray-600">
+                <strong className="text-[#1FA951]">
+                  Net-Zero Carbon Goals:
+                </strong>{" "}
+                Our eco-friendly product lines, combined with renewable energy
+                adoption and conservation practices, underscore our commitment
+                to reducing our carbon footprint.
               </li>
             </ul>
           </div>
