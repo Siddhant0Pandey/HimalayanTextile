@@ -116,7 +116,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/cotton.jpg",
     description:
       "Soft and breathable cotton is a versatile natural fiber. Its comfort and absorbency make it ideal for everyday clothing and personal care products.",
-    link: "https://example.com/cotton-fiber",
+    link: "/cotton",
   },
   {
     id: 3,
@@ -124,7 +124,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/flax.jpg",
     description:
       "Flax produces linen, a lightweight and moisture-wicking fabric. Known for its durability and natural cooling properties, it's perfect for warm climates.",
-    link: "https://example.com/flax-fiber",
+    link: "/flax",
   },
   {
     id: 4,
