@@ -18,7 +18,6 @@ import HempTextile from "./components/Fiber/Products/HempTextile";
 
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
-import Fabric from "./pages/Fabric";
 import Journals from "./pages/Journals";
 import JournalsDetails from "./components/Journals/JournalsDetails";
 function AppRoutes() {

@@ -7,58 +7,60 @@ gsap.registerPlugin(ScrollTrigger);
 const Footer = () => {
   const footerRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Section 1: Brand Logo and Intro Text
-      gsap.from('.footer-brand', {
-        scale: 0.8,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.footer-brand',
-          start: 'top bottom',
-        },
-      });
+ useEffect(() => {
+  const ctx = gsap.context(() => {
+    gsap.from('.footer-brand', {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.footer-brand',
+        start: 'top bottom',
+      },
+    });
 
-      // Section 2: Navigation Columns
-      gsap.from('.footer-column', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.footer-columns',
-          start: 'top 80%',
-        },
-      });
+    gsap.from('.footer-column', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.footer-columns',
+        start: 'top 80%',
+      },
+    });
 
-      // Section 3: Footer Badge
-      gsap.from('.footer-badge', {
-        y: 50,
-        opacity: 0,
-        delay: 0.3,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.footer-badge',
-          start: 'top 85%',
-        },
-      });
+    gsap.from('.footer-badge', {
+      y: 50,
+      opacity: 0,
+      delay: 0.3,
+      duration: 1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.footer-badge',
+        start: 'top 85%',
+      },
+    });
+
+    gsap.to('.floating-shape', {
+      y: 20,
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: 'sine.inOut',
+    });
 
    
-      gsap.to('.floating-shape', {
-        y: 20,
-        repeat: -1,
-        yoyo: true,
-        duration: 2,
-        ease: 'sine.inOut',
-      });
-    }, footerRef);
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  }, footerRef);
 
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, []);
+
 
   return (
     <footer
