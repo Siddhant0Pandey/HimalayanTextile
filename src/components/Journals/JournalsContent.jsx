@@ -4,135 +4,102 @@ import { Link } from "react-router-dom";
 const blogPosts = [
   {
     id: 1,
-    title: "Building a Better Tomorrow with Smart Construction Solutions",
+    title: "Weaving the Future: Smart Textiles and Sustainable Innovation",
     date: "April 23, 2025",
     author: "Admin",
-    image: "/blog/blog01.jpg",
-    link: "/blog/blog01",
+    image: "/assets/img/blog/textile01.jpg",
+    link: "/blog/textile01",
   },
   {
     id: 2,
-    title: "Your Trusted Source for Construction News and Industry Trends",
+    title: "Top Trends in the Textile Industry You Need to Know in 2025",
     date: "April 10, 2025",
     author: "Admin",
-    image: "/blog/blog02.jpg",
-    link: "/blog/blog02",
+    image: "/assets/img/blog/textile02.jpg",
+    link: "/blog/textile02",
   },
   {
     id: 3,
-    title: "HExpert Insights on Modern Construction Methods and Innovation",
+    title: "From Fiber to Fabric: Innovations in Textile Manufacturing",
     date: "March 30, 2025",
     author: "Admin",
-    image: "/blog/blog03.jpeg",
-    link: "/blog/blog03",
+    image: "/assets/img/blog/textile03.jpg",
+    link: "/blog/textile03",
   },
   {
     id: 4,
-    title: "Discover the Latest Developments in Construction and Design",
+    title: "Designing Tomorrow: How Technology is Shaping Textile Design",
     date: "March 15, 2025",
     author: "Admin",
-    image: "/blog/blog04.jpg",
-    link: "/blog/blog04",
+    image: "/assets/img/blog/textile04.jpg",
+    link: "/blog/textile04",
   },
   {
     id: 5,
-    title: "Guiding You Through Every Step of Your Construction Journey",
+    title: "Sustainability in Fashion: The Role of Eco-Friendly Textiles",
     date: "February 28, 2025",
     author: "Admin",
-    image: "/blog/blog05.jpg",
-    link: "/blog/blog05",
+    image: "/assets/img/blog/textile05.jpg",
+    link: "/blog/textile05",
   },
   {
     id: 6,
-    title: "Where Construction Expertise Meets Real World Experience",
+    title: "Global Supply Chains and the Future of Textile Production",
     date: "February 10, 2025",
     author: "Admin",
-    image: "/blog/blog06.jpg",
-    link: "/blog/blog06",
+    image: "/assets/img/blog/textile06.jpg",
+    link: "/blog/textile06",
   },
 ];
 
 function JournalsContent() {
   return (
-    <section className="blog-area gray-bg pt-120 pb-90">
-      <div className="container">
-        <div className="row">
-          {blogPosts.map((post) => (
-            <div className="col-xl-4 col-lg-4 col-md-6" key={post.id}>
-              <div className="single-blog mb-30">
-                <div className="blog-thumb">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="uniform-img"
-                  />
+    <section className="bg-gray-100 py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post, index) => (
+            <div
+              key={post.id}
+              className={`bg-white rounded-lg overflow-hidden shadow transform transition duration-300 ease-in-out hover:scale-105 hover:shadow-xl animate-fadeIn`}
+              style={{
+                animationDelay: `${index * 100}ms`,
+                animationFillMode: "both",
+              }}
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-56 object-cover"
+              />
+              <div className="p-6">
+                <div className="flex items-center text-sm text-gray-500 space-x-4 mb-3">
+                  <span className="flex items-center">
+                    <i className="fas fa-user mr-1 text-gray-400"></i>
+                    {post.author}
+                  </span>
+                  <span className="flex items-center">
+                    <i className="far fa-calendar-alt mr-1 text-gray-400"></i>
+                    {post.date}
+                  </span>
                 </div>
-                <div className="b-content">
-                  <div className="b-meta mb-10">
-                    <span>
-                      <Link to="#">
-                        <i className="fas fa-user"></i>
-                      </Link>
-                      {post.author}
-                    </span>
-                    <span>
-                      <Link to="#">
-                        <i
-                          className="far fa-calendar-alt"
-                          style={{ paddingLeft: "20px" }}
-                        ></i>{" "}
-                        {post.date}
-                      </Link>
-                    </span>
-                  </div>
-                  <div className="b-text mb-15">
-                    <h3>
-                      <Link to={post.link}>{post.title}</Link>
-                    </h3>
-                  </div>
-                  <div className="b-btn">
-                    <Link to={post.link}>
-                      Read More <i className="ti-angle-right"></i>
-                    </Link>
-                  </div>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 hover:text-[#1fa951]">
+                  <Link to={post.link}>{post.title}</Link>
+                </h3>
+                <Link
+                  to={post.link}
+                  className="text-[#1fa951] font-medium hover:underline inline-flex items-center"
+                >
+                  Read More
+                  <i className="ti-angle-right ml-2"></i>
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Pagination Section */}
-        <div className="row">
-          <div className="col-12">
-            <div className="basic-pagination text-center mt-35">
-              {/* <ul>
-                <li>
-                  <Link to="#">
-                    <i className="fas fa-angle-double-left"></i>
-                  </Link>
-                </li>
-                <li className="active">
-                  <Link to="#">01</Link>
-                </li>
-                <li>
-                  <Link to="#">02</Link>
-                </li>
-                <li>
-                  <Link to="#">03</Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    <i className="fas fa-ellipsis-h"></i>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#">
-                    <i className="fas fa-angle-double-right"></i>
-                  </Link>
-                </li>
-              </ul> */}
-            </div>
-          </div>
+        {/* Optional Pagination */}
+        <div className="flex justify-center mt-10">
+          {/* Pagination disabled for now */}
         </div>
       </div>
     </section>
