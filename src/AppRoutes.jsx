@@ -20,6 +20,7 @@ import OurBrand from "./components/About/OurBrand/OurBrand";
 
 import Journals from "./pages/Journals";
 import JournalsDetails from "./components/Journals/JournalsDetails";
+import Fabric from "./pages/Fabric";
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -40,7 +41,7 @@ function AppRoutes() {
           <Route path="/contact" element={<Contact />} />
 
           <Route path="/our-story" element={<OurStory />} />
-          <Route path="/our-brand" element={<OurBrand />   } />
+          <Route path="/our-brand" element={<OurBrand />} />
 
           <Route path="/fiber" element={<Fibers />} />
           <Route path="/yarn" element={<Yarn />} />
