@@ -95,7 +95,9 @@ export default function OurStoryTimeline() {
 
   return (
     <div className="bg-highlight py-16 px-4">
-      <h1 className="text-4xl font-bold text-center mb-16">Our Journey</h1>
+      <h1 className="text-4xl font-bold text-center mb-16 text-[#1FA951]">
+        Our Journey
+      </h1>
       <div className="relative max-w-5xl mx-auto">
         {/* Vertical line */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-green-400 rounded-md z-0" />
