@@ -13,6 +13,11 @@ import Contact from "./pages/Contact";
 import Loader from "./components/Loader";
 import Sustainable from "./pages/Sustainable";
 
+import Fabric from "./pages/Fabric";
+import Nettle from "./components/Fiber/Products/Nettle";
+import HempTextile from "./components/Fiber/Products/HempTextile";
+
+
 import OurBrand from "./components/About/OurBrand/OurBrand";
 
 import Fabric from "./pages/Fabric";
@@ -42,7 +47,12 @@ function AppRoutes() {
           <Route path="/fabric" element={<Fabric />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/sustainable" element={<Sustainable />} />
+
+          <Route path="/Nettle" element={<Nettle />} />
+          <Route path="/Hemp" element={<HempTextile />} />
+
           <Route path="/journals" element={<Journals />} />
+
         </Route>
       </Routes>
     </>
