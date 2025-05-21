@@ -22,6 +22,8 @@ import Fabric from "./pages/Fabric";
 import Journals from "./pages/Journals";
 import CottonTextile from "./components/Fiber/Products/CottonTextile";
 import FlaxTextile from "./components/Fiber/Products/FlaxTextile";
+import JuteTextile from "./components/Fiber/Products/JuteTextile";
+import SilkTextile from "./components/Fiber/Products/SilkTextile";
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -54,6 +56,8 @@ function AppRoutes() {
           <Route path="/journals" element={<Journals />} />
           <Route path="/flax" element={<FlaxTextile />} />
           <Route path="/cotton" element={<CottonTextile />} />
+          <Route path="/jute" element={<JuteTextile />} />
+          <Route path="/silk" element={<SilkTextile />} />
         </Route>
       </Routes>
     </>
