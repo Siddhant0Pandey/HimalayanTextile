@@ -132,7 +132,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/jute.jpg",
     description:
       "Jute is among the most affordable natural fibers with low environmental impact. Its coarse texture makes it excellent for rugs, bags, and packaging materials.",
-    link: "https://example.com/jute-fiber",
+    link: "/jute",
   },
   {
     id: 5,
@@ -148,7 +148,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/silk.jpg",
     description:
       "Legendary for its lustrous appearance and smooth texture, silk remains one of the most luxurious natural fibers. Its protein structure gives it unique insulating properties.",
-    link: "https://example.com/silk-fiber",
+    link: "/silk",
   },
   {
     id: 7,
