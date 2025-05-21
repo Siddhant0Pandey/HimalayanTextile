@@ -132,7 +132,7 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/journals": {
+    "/journals": {    
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
