@@ -2,111 +2,128 @@ import React, { useState, useEffect } from "react";
 import processBg from "/assets/img/processBg.jpg";
 import {
   FaSeedling,
-  FaSun,
   FaWater,
-  FaHammer,
-  FaWind,
-  FaShower,
+  FaSun,
+  FaLeaf,
+  FaHandsHelping,
+  FaSort,
   FaTools,
   FaCut,
+  FaIndustry,
   FaSync,
   FaThLarge,
   FaTractor,
-  FaIndustry,
+  FaBoxOpen,
 } from "react-icons/fa";
 
 const timelineData = [
   {
     id: 1,
+    title: "Planting",
+    description:
+      "Jute seeds are sown closely in warm, humid conditions. Planting typically occurs between March and May, with tropical and subtropical regions like Bangladesh and India being the primary cultivation areas.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaSeedling,
+  },
+  {
+    id: 2,
+    title: "Growing",
+    description:
+      "Jute plants grow rapidly, reaching heights of 8-12 feet in just 4-6 months. The plants thrive in hot, humid conditions with temperatures between 20-40°C and high rainfall, developing a straight stem with minimal branching.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaLeaf,
+  },
+  {
+    id: 3,
     title: "Harvesting",
     description:
-      "Hemp plants are cut and collected when they reach optimal maturity, usually 70-90 days after planting for fiber production.",
+      "Jute is harvested when the plants begin to flower, typically 4-6 months after planting. Harvesting at this stage ensures optimal fiber quality. The plants are cut close to the ground using sickles or other cutting tools.",
     bgImage: "/api/placeholder/600/400",
     icon: FaTractor,
   },
   {
-    id: 2,
-    title: "Field Retting",
+    id: 4,
+    title: "Bundling",
     description:
-      "Cut hemp stalks are left in the field for 2-3 weeks, allowing dew, rain, and sun to begin breaking down the pectin binding the fibers.",
+      "After cutting, jute stalks are bundled together and the leaves are removed. The bundles are left in the field for a few days to allow the leaves to shed naturally, making the next steps easier.",
     bgImage: "/api/placeholder/600/400",
-    icon: FaSun,
+    icon: FaBoxOpen,
   },
   {
-    id: 3,
-    title: "Water Retting",
+    id: 5,
+    title: "Retting",
     description:
-      "Alternatively, stalks are submerged in water (ponds, tanks, or slow-moving streams) to accelerate the breakdown of pectin through bacterial action.",
+      "Bundles of jute stems are submerged in slow-moving water (ponds, ditches, or tanks) for 10-30 days. This microbial action helps decompose the gummy materials binding the fibers to the woody stem.",
     bgImage: "/api/placeholder/600/400",
     icon: FaWater,
   },
   {
-    id: 4,
+    id: 6,
+    title: "Stripping",
+    description:
+      "After retting, farmers manually strip the fibers from the stem. Standing waist-deep in water, they remove non-fibrous matter by pulling and beating the stems, then washing the fibers clean.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaHandsHelping,
+  },
+  {
+    id: 7,
     title: "Drying",
     description:
-      "After retting, the stalks are thoroughly dried to stop the decomposition process and prepare for breaking.",
+      "The extracted jute fibers are hung on bamboo poles or laid out to dry in the sun for 2-3 days. Proper drying is essential to prevent fiber damage from mold or mildew and to maintain quality.",
     bgImage: "/api/placeholder/600/400",
-    icon: FaWind,
+    icon: FaSun,
   },
   {
-    id: 5,
-    title: "Breaking",
+    id: 8,
+    title: "Grading & Sorting",
     description:
-      "The dried stalks are crushed between fluted rollers to break the woody core (hurd) into small pieces while preserving the long outer fibers.",
+      "Dried jute fibers are sorted based on color, strength, length, luster, and other quality factors. Higher grades are used for fine textiles, while lower grades go into industrial applications like sacking.",
     bgImage: "/api/placeholder/600/400",
-    icon: FaHammer,
+    icon: FaSort,
   },
   {
-    id: 6,
-    title: "Scutching",
+    id: 9,
+    title: "Baling",
     description:
-      "The broken stalks are beaten to separate the broken hurds from the valuable long bast fibers.",
+      "The graded fibers are compressed into compact bales weighing about 150-180 kg each for easier transportation to jute mills. This step standardizes the raw material for industrial processing.",
     bgImage: "/api/placeholder/600/400",
     icon: FaTools,
   },
   {
-    id: 7,
-    title: "Hackling",
+    id: 10,
+    title: "Softening & Batching",
     description:
-      "Fibers are drawn through metal combs of increasing fineness to remove short fibers and align the long fibers in parallel.",
-    bgImage: "/api/placeholder/600/400",
-    icon: FaCut,
-  },
-  {
-    id: 8,
-    title: "Washing",
-    description:
-      "Fibers are washed to remove any remaining impurities and prepare them for processing into yarn.",
-    bgImage: "/api/placeholder/600/400",
-    icon: FaShower,
-  },
-  {
-    id: 9,
-    title: "Softening",
-    description:
-      "Chemical or mechanical treatments are applied to soften the naturally stiff hemp fibers for textile applications.",
+      "At the mill, jute fibers are treated with oil and water emulsion to make them soft, pliable, and easier to process. The batching process conditions the fibers for the next manufacturing stages.",
     bgImage: "/api/placeholder/600/400",
     icon: FaIndustry,
   },
   {
-    id: 10,
+    id: 11,
+    title: "Carding & Drawing",
+    description:
+      "The softened fibers pass through a series of machines that card (comb), draw (align), and blend the fibers into continuous ribbons called slivers, preparing them for spinning.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaCut,
+  },
+  {
+    id: 12,
     title: "Spinning",
     description:
-      "The prepared fibers are spun into yarn of various thicknesses depending on the intended final product.",
+      "The jute slivers are spun into yarn of various qualities and thicknesses. This process involves drafting (pulling) and twisting the fibers to create continuous threads with appropriate strength.",
     bgImage: "/api/placeholder/600/400",
     icon: FaSync,
   },
   {
-    id: 11,
-    title: "Weaving Hemp Fabric",
+    id: 13,
+    title: "Weaving",
     description:
-      "The spun hemp yarn is woven into fabric using traditional or modern weaving techniques to create durable textiles.",
+      "Jute yarn is woven into various fabrics using different techniques. The resulting textiles range from coarse sacking and hessian (burlap) to finer fabrics used for bags, rugs, and home furnishings.",
     bgImage: "/api/placeholder/600/400",
     icon: FaThLarge,
   },
 ];
 
-export default function HempTextile() {
+export default function JuteTextile() {
   const [activeItems, setActiveItems] = useState([]);
 
   useEffect(() => {
@@ -138,7 +155,7 @@ export default function HempTextile() {
       </div>
 
       <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
-        Hemp Fiber Creation Process
+        Jute Fiber Creation Process
       </h1>
 
       <div className="w-full max-w-6xl">
@@ -220,23 +237,32 @@ export default function HempTextile() {
       {/* About Section */}
       <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
-          About Hemp Fabric
+          About Jute Fabric
         </h2>
         <p className="mb-4 text-gray-700">
-          Hemp fabric is one of the oldest textile materials in human history,
-          with evidence of its use dating back 10,000 years. Known for
-          exceptional strength, durability, and breathability, hemp fabric
-          becomes softer with each wash while maintaining its structural
-          integrity. Hemp is also highly sustainable - it grows quickly without
-          pesticides, requires minimal water, improves soil health, and is 100%
-          biodegradable. The process above illustrates the traditional methods
-          used to transform the versatile hemp plant into high-quality,
-          eco-friendly textiles.
+          Known as the "Golden Fiber," jute has been cultivated for centuries
+          and is one of the most affordable natural fibers in the world. Jute is
+          predominantly grown in the fertile delta regions of Bangladesh and
+          India, where the warm, humid climate provides ideal growing
+          conditions. The resulting fabric is celebrated for its remarkable
+          tensile strength, biodegradability, and versatility. Jute fibers are
+          naturally lustrous, with a golden to brownish sheen, and are 100%
+          biodegradable and recyclable. Environmentally, jute is exceptionally
+          sustainable - it requires minimal fertilizers and pesticides, enriches
+          the soil, absorbs CO2 rapidly, and releases oxygen during cultivation.
+          One hectare of jute plants can absorb up to 15 tons of carbon dioxide
+          while releasing 11 tons of oxygen. Traditionally used for sacking and
+          packaging (burlap/hessian), modern applications have expanded to
+          include home textiles, carpets, high-fashion accessories, composites,
+          geotextiles, and even as a substitute for plastic and wood. The
+          labor-intensive processing methods have remained largely unchanged for
+          generations, preserving traditional skills while supporting rural
+          economies in South Asia.
         </p>
         <div className="flex justify-center">
           <img
             src="/api/placeholder/800/400"
-            alt="Hemp fabric production"
+            alt="Jute fabric production"
             className="rounded-lg shadow-md w-full max-w-xl"
           />
         </div>
