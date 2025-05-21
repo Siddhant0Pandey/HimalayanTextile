@@ -120,35 +120,30 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/about/our-story": {
+    "/our-story": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/about/our-brand": {
+    "/our-brand": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/fabric": {
+    "/journals": {    
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
+
     default: {
       bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
-    },
-    "/journals": {
-      bg: "bg-transparent",
-      textColor: "white",
-      logo: "/assets/img/logo/logowhite.png",
-      borderColor: "white",
     },
   };
 
@@ -159,8 +154,8 @@ function Navbar() {
       text: "About",
       dropdown: [
         { text: "About Us", to: "/about" },
-        { text: "Our Story", to: "/about/our-story" },
-        { text: "Our Brand", to: "/about/our-brand" },
+        { text: "Our Story", to: "/our-story" },
+        { text: "Our Brand", to: "/our-brand" },
       ],
     },
     { text: "Fiber", to: "/fiber" },
