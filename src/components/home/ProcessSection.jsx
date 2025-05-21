@@ -80,7 +80,6 @@ export default function ProcessSection() {
       <div className="relative z-10 pt-32">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-8">
             Weaving a Cleaner Future<br /> from the Roof of the World
-        
         </h1>
 
        <div className="flex justify-center items-center gap-4 flex-wrap mb-8">
