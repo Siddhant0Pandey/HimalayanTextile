@@ -11,7 +11,7 @@ const OurBrandMain = () => {
     <div className="bg-light text-white px-6 py-12 md:py-20 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
       <div className="flex flex-col items-start">
         <img
-          src="/assets/img/Dangi.png" 
+          src="/assets/img/Dangi.png"
           alt="Himalayan Textile"
           className="w-full rounded-xl h-full object-cover mb-6"
         />
@@ -38,7 +38,7 @@ const OurBrandMain = () => {
           overview of the businesses that form the backbone of the Dangi Group.
         </p>
         <a
-          href="https://himalayantextile.com"
+          href="https://dangiz.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-[#1FA951] text-white px-6 py-2 rounded-md font-medium mb-6"
@@ -49,21 +49,21 @@ const OurBrandMain = () => {
         <div className="grid grid-cols-2 gap-4 h-[200px]  mb-50">
           {/* Left vertical image (spans two rows) */}
           <img
-            src="/assets/img/yarn/Hemp.jpg"
+            src="/assets/img/hero/hemp.jpg"
             alt="product1"
             className="rounded-lg object-cover w-full h-65 row-span-2"
           />
 
           {/* Top-right image */}
           <img
-            src="/assets/img/yarn/Hemp.jpg"
+            src="/assets/img/hero/brand2.jpg"
             alt="product2"
             className="rounded-lg object-cover w-full h-30"
           />
 
           {/* Bottom-right image */}
           <img
-            src="/assets/img/yarn/Hemp.jpg"
+            src="/assets/img/hero/DANGIZ-TRAY.jpg"
             alt="product3"
             className="rounded-lg object-cover w-full h-30"
           />

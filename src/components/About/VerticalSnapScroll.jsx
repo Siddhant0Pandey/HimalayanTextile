@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GiArcheryTarget } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import OurStoryHero from "./OurStory/OurStoryHero";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -32,8 +34,8 @@ const WelcomePanel = () => (
         sustainability, we empower local artisans—especially women—to craft each
         piece with care, using natural fibers and eco-friendly processes.
       </p>
-      <button className="bg-[#1FA951] text-white py-3 my-4 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] animate-float">
-        Read More →
+      <button className="bg-[#1FA951] text-white py-3 my-4 px-6 md:py-4 md:px-8 text-sm md:text-base xl:text-lg font-medium rounded-full shadow-md hover:bg-[#168c3c] animate-float cursor-pointer">
+        <Link to="/our-story">Read More →</Link>
       </button>
     </div>
 
