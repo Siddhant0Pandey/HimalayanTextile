@@ -1,5 +1,5 @@
 .text-stroke {
-  -webkit-text-stroke: 2px white;
+  -webkit-text-stroke: 1px #fff   ;
   color: transparent;
 }
 .text-stroke-setusapart{
@@ -14,8 +14,8 @@
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
 }
 
 /* loading animation */
@@ -51,4 +51,22 @@
 
 .transform-style-preserve {
   transform-style: preserve-3d;
+}
+
+
+.text-image-fill {
+  background-image: url('/assets/img/processBg.jpg');
+  background-size: contain;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.text-image-fill2 {
+  background-image: url('/assets/img/processBg.jpg');
+  background-size: contain;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
