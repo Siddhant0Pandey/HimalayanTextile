@@ -2,8 +2,7 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { FaStar } from "react-icons/fa";
 import { IoIosColorPalette } from "react-icons/io";
-import { FaEarthAmericas } from "react-icons/fa6";
-import { FaRecycle } from "react-icons/fa6";
+import { FaEarthAmericas, FaRecycle } from "react-icons/fa6";
 import { GrDeliver } from "react-icons/gr";
 
 const cardData = [
@@ -53,15 +52,16 @@ const AboutKeyStrength = () => {
     });
   }, []);
 
-  // Auto scroll (desktop only)
+  // Auto scroll from right to left and back
   useEffect(() => {
     const el = containerRef.current;
-    if (window.innerWidth < 768) return; // Only on md and up
+    if (!el || window.innerWidth < 768) return;
 
     const maxScroll = el.scrollWidth - el.clientWidth;
+    el.scrollLeft = maxScroll;
 
     autoScrollTween.current = gsap.to(el, {
-      scrollLeft: maxScroll,
+      scrollLeft: 0,
       duration: 6,
       ease: "power1.inOut",
       repeat: -1,
@@ -73,17 +73,17 @@ const AboutKeyStrength = () => {
     };
   }, []);
 
-  // Drag to scroll (desktop only)
+  // Drag-to-scroll (desktop and touch)
   useEffect(() => {
     const el = containerRef.current;
-    if (window.innerWidth < 768) return;
+    if (!el) return;
 
     let startX = 0;
     let scrollLeft = 0;
 
     const startDrag = (e) => {
       isDragging.current = true;
-      startX = e.pageX - el.offsetLeft;
+      startX = (e.pageX || e.touches[0].pageX) - el.offsetLeft;
       scrollLeft = el.scrollLeft;
       autoScrollTween.current?.pause();
       el.style.cursor = "grabbing";
@@ -97,56 +97,77 @@ const AboutKeyStrength = () => {
 
     const onDrag = (e) => {
       if (!isDragging.current) return;
-      const x = e.pageX - el.offsetLeft;
+      const x = (e.pageX || e.touches[0].pageX) - el.offsetLeft;
       const walk = (x - startX) * 2;
       el.scrollLeft = scrollLeft - walk;
     };
 
+    // Mouse events
     el.addEventListener("mousedown", startDrag);
     el.addEventListener("mouseleave", stopDrag);
     el.addEventListener("mouseup", stopDrag);
     el.addEventListener("mousemove", onDrag);
+
+    // Touch events
+    el.addEventListener("touchstart", startDrag);
+    el.addEventListener("touchend", stopDrag);
+    el.addEventListener("touchmove", onDrag);
 
     return () => {
       el.removeEventListener("mousedown", startDrag);
       el.removeEventListener("mouseleave", stopDrag);
       el.removeEventListener("mouseup", stopDrag);
       el.removeEventListener("mousemove", onDrag);
+      el.removeEventListener("touchstart", startDrag);
+      el.removeEventListener("touchend", stopDrag);
+      el.removeEventListener("touchmove", onDrag);
     };
   }, []);
 
   return (
-    <section className="bg-gray-50 py-30 ">
+    <section className="bg-gray-50 py-30">
       <h2 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-[#1FA951]">
         Our Key Strengths
       </h2>
-      <div
-        ref={containerRef}
-        className="flex flex-col md:flex-row gap-6 md:gap-6 px-4 py-8 md:px-6 overflow-x-hidden md:overflow-x-auto scroll-container no-scrollbar"
-        style={{
-          cursor: "grab",
-          userSelect: "none",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        {cardData.map((card, index) => (
-          <div
-            key={index}
-            className={`card bg-white shadow-xl rounded-2xl p-6  w-full md:w-72 flex-shrink-0 ${
-              index % 2 === 0 ? "md:mt-0" : "md:mt-10"
-            }`}
-          >
-            <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#1FA951]">
-              {card.icon}
+
+      <div className="w-full overflow-hidden">
+        <div
+          ref={containerRef}
+          className="
+            flex 
+            flex-col md:flex-row 
+            gap-6 md:gap-6 
+            px-4 py-8 md:px-6 
+            overflow-x-hidden md:overflow-x-auto 
+            no-scrollbar 
+            justify-start md:justify-center
+            max-w-full
+          "
+          style={{
+            cursor: "grab",
+            userSelect: "none",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {cardData.map((card, index) => (
+            <div
+              key={index}
+              className={`card bg-white shadow-xl rounded-2xl p-6 w-full md:w-72 flex-shrink-0 ${
+                index % 2 === 0 ? "md:mt-0" : "md:mt-10"
+              }`}
+            >
+              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#1FA951]">
+                {card.icon}
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600">
+                {card.title}
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                {card.description}
+              </p>
             </div>
-            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600">
-              {card.title}
-            </h3>
-            <p className="text-gray-600 text-sm sm:text-base">
-              {card.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
