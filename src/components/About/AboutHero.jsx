@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import bgImg from "../../../public/assets/img/bgImage1.png";
+import bgImg from "../../../public/assets/img/hero/4.jpg";
 
 const AboutHero = () => {
   // Create refs for animated elements
@@ -72,6 +72,7 @@ const AboutHero = () => {
     return () => {
       if (badgeRef.current) {
         badgeRef.current.removeEventListener("mouseenter", () => {});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         badgeRef.current.removeEventListener("mouseleave", () => {});
       }
     };
