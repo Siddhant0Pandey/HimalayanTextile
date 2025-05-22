@@ -22,6 +22,7 @@ import Journals from "./pages/Journals";
 
 import CottonTextile from "./components/Fiber/Products/CottonTextile";
 import FlaxTextile from "./components/Fiber/Products/FlaxTextile";
+import Fabric from "./pages/Fabric";
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
