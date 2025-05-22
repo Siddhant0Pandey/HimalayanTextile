@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Card Component
 const FiberCard = ({ imageSrc, title, description, index, link }) => {
@@ -63,8 +64,8 @@ const FiberCard = ({ imageSrc, title, description, index, link }) => {
         </p>
         {link && (
           <div className="mt-3 text-right">
-            <a
-              href={link}
+            <Link
+              to={link}
               {...(isExternalLink
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
@@ -73,7 +74,7 @@ const FiberCard = ({ imageSrc, title, description, index, link }) => {
               }`}
             >
               Learn More
-            </a>
+            </Link>
           </div>
         )}
       </div>
