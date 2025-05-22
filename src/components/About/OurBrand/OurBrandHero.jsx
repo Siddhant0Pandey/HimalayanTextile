@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 // import bgImg from "../../../public/assets/img/bgImage1.png";
