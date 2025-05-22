@@ -19,7 +19,7 @@ const timelineData = [
     title: "Peeling of Nettle Bark",
     description:
       "Carefully stripping the outer bark from nettle stalks to expose the valuable fibers beneath.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/1.png",
     icon: FaLeaf,
   },
   {
@@ -27,7 +27,7 @@ const timelineData = [
     title: "Drying Bark",
     description:
       "Initial drying process to remove moisture and prepare the bark for further processing.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/21.png",
     icon: FaSun,
   },
   {
@@ -35,7 +35,7 @@ const timelineData = [
     title: "Retting",
     description:
       "Controlled decomposition process that separates the fibrous material from the woody core.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/31.png",
     icon: FaWater,
   },
   {
@@ -43,7 +43,7 @@ const timelineData = [
     title: "Washing",
     description:
       "Thorough cleaning to remove impurities and residues from the retting process.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/41.png",
     icon: FaWater,
   },
   {
@@ -51,7 +51,7 @@ const timelineData = [
     title: "Beating with Wooden Club",
     description:
       "First mechanical softening of the fibers to break down their rigid structure.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/51.png",
     icon: FaHammer,
   },
   {
