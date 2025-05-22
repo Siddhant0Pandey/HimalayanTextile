@@ -156,7 +156,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/cactus.jpg",
     description:
       "Cactus fiber, derived mainly from prickly pear, is a sustainable and biodegradable alternative to leather. It's durable, flexible, and produced with minimal water usage.",
-    link: "https://example.com/cactus-fiber",
+    link: "/cactus",
   },
   {
     id: 8,
@@ -164,7 +164,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/banana.jpg",
     description:
       "Banana fiber is extracted from the banana plant's pseudostems. It's strong, lightweight, and biodegradable—used in textiles, ropes, and eco-conscious packaging.",
-    link: "https://example.com/banana-fiber",
+    link: "/banana",
   },
   {
     id: 9,
@@ -172,7 +172,7 @@ const fiberData = [
     imageSrc: "assets/img/Fiber/wool.jpg",
     description:
       "Wool is a natural protein fiber from sheep, prized for its warmth, elasticity, and moisture-wicking abilities. It’s commonly used in garments, blankets, and insulation.",
-    link: "https://example.com/wool-fiber",
+    link: "/wool",
   },
 ];
 
