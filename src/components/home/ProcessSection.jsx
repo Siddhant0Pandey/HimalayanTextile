@@ -7,9 +7,9 @@ import { ArrowRight } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: "Fiber", image: "/assets/img/extra/nettle-leaf.jpg" },
+  { name: "Fiber", image: "/assets/img/Fiber/fibre.jpg" },
   { name: "Yarn", image: "/assets/img/extra/nettle.jpg" },
-  { name: "Fabric", image: "/assets/img/extra/nettle-leaf.jpg" },
+  { name: "Fabric", image: "/assets/img/fabrics.jpg" },
   { name: "Fashion", image: "/assets/img/extra/nettle.jpg" },
 ];
 

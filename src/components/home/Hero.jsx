@@ -169,18 +169,17 @@
           ref={containerRef}
           className="relative min-h-[100vh] overflow-hidden bg-cover bg-[url('/assets/img/clearsky.jpg')]"
         >
-          {/* Title Text */}
-          <div
-            ref={textRef}
-            className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
-          >
-            <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1] text-white">
-              Himalayan <br />
-              <span ref={textileRef} className="mr-9">
-                Textile
-              </span>
-            </h1>
-          </div>
+        <div
+  ref={textRef}
+  className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
+>
+  <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1]">
+    <span className=" block">Himalayan</span>
+    <span ref={textileRef} className="mr-9   block">
+      Textile
+    </span>
+  </h1>
+</div>
 
           {/* Mountain Images */}
           <div className="absolute bottom-0 left-0 w-full h-full z-10">
@@ -201,55 +200,73 @@
           </div>
 
 {/* Animated Cloud */}
-      <div className="absolute top-10 left-[-200px] w-[400px] h-[150px] z-20 opacity-70 pointer-events-none animate-cloudMove ">
-        <img
-          src="/assets/img/animate/cloud.png"
-          alt="moving cloud"
-          className="w-full h-full object-contain"
-        />
-      </div>
-        <div className="absolute top-40 left-[-100px] w-[400px] h-[150px] z-20 opacity-80 pointer-events-none animate-cloudMove">
-        <img
-          src="/assets/img/animate/cloud.png"
-          alt="moving cloud"
-          className="w-full h-full object-contain"
-        />
-      </div>
+      <div className="absolute top-10 left-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove1">
+  <img
+    src="/assets/img/animate/cloud2.png"
+    alt="moving cloud"
+    className="w-full h-full object-contain"
+  />
+</div>
+
+{/* Cloud moving right to left */}
+<div className="absolute top-40 right-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove2">
+  <img
+    src="/assets/img/animate/cloud2.png"
+    alt="moving cloud"
+    className="w-full h-full object-contain"
+  />
+</div>
       
 
       {/* Text Boxes */}
-   <div
-        ref={(el) => (textBoxRefs.current[0] = el)}
-        className="absolute bottom-[5vh] w-full overflow-hidden z-30 pointer-events-none opacity-0"
-      >
-        <div className="flex whitespace-nowrap animate-marquee text-[clamp(3rem,10vw,10rem)] text-stroke font-extrabold text-white uppercase italic gap-16 px-4">
-          {textBoxContent.map((box, i) => (
-            <span key={i} className="shrink-0">
-              {box.title}: {box.desc}
-            </span>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {textBoxContent.map((box, i) => (
-            <span key={`dup-${i}`} className="shrink-0">
-              {box.title}: {box.desc}
-            </span>
-          ))}
-        </div>
-      </div>
+  <div
+  ref={(el) => (textBoxRefs.current[0] = el)}
+  className="absolute bottom-[5vh] w-full overflow-hidden z-30 pointer-events-none opacity-0"
+>
+  <div className="flex whitespace-nowrap animate-marquee text-[clamp(3rem,10vw,12rem)] font-extrabold uppercase italic gap-16 px-4">
+    {textBoxContent.map((box, i) => (
+      <span key={i} className="shrink-0 inline-block  text-stroke">
+        {box.title}: {box.desc}
+      </span>
+    ))}
+
+    {/* Duplicate for seamless loop */}
+    {textBoxContent.map((box, i) => (
+      <span key={`dup-${i}`} className="shrink-0 inline-block ">
+        {box.title}: {box.desc}
+      </span>
+    ))}
+  </div>
+</div>
+
 
       {/* Cloud Animation Style */}
       <style jsx>{`
-        @keyframes cloudMove {
-          0% {
-            transform: translateX(-200px);
-          }
-          100% {
-            transform: translateX(120vw);
-          }
-        }
-        .animate-cloudMove {
-          animation: cloudMove 60s linear infinite;
-        }
+        @keyframes cloudMove1 {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+@keyframes cloudMove2 {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(-120vw);
+  }
+}
+
+.animate-cloudMove1 {
+  animation: cloudMove1 60s linear infinite;
+}
+
+.animate-cloudMove2 {
+  animation: cloudMove2 60s linear infinite;
+}
           @keyframes marquee {
           0% {
             transform: translateX(0%);
