@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-    "use client";
-    import React, { useLayoutEffect, useRef } from "react";
-    import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
+"use client";
+import React, { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-    const imageOrder = [1, 2, 3, 4, 5];
-  const textBoxContent = [
+const imageOrder = [1, 2, 3, 4, 5];
+const textBoxContent = [
   {
     title: "Who Are We?",
     desc: "A purpose-led company born in the Himalayas to heal an industry.",
@@ -22,16 +22,16 @@
   },
 ];
 
-    export default function Hero() {
-      const containerRef = useRef(null);
-      const textRef = useRef(null);
-      const textileRef = useRef(null);
-      const imageRefs = useRef([]);
-      const boxRefs = useRef([]);
-      const arrowRefs = useRef([]);
-        const textBoxRefs = useRef([]);
- 
-        useLayoutEffect(() => {
+export default function Hero() {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
+  const textileRef = useRef(null);
+  const imageRefs = useRef([]);
+  const boxRefs = useRef([]);
+  const arrowRefs = useRef([]);
+  const textBoxRefs = useRef([]);
+
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -113,7 +113,6 @@
             },
             "images4and5+=1.5"
           );
-
         } else if (i < 3) {
           tl.fromTo(
             imageRefs.current[i],
@@ -164,110 +163,108 @@
     };
   }, []);
 
-      return (
-        <section
-          ref={containerRef}
-          className="relative min-h-[100vh] overflow-hidden bg-cover bg-[url('/assets/img/clearsky.jpg')]"
-        >
-        <div
-  ref={textRef}
-  className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
->
-  <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1]">
-    <span className=" block">Himalayan</span>
-    <span ref={textileRef} className="mr-9   block">
-      Textile
-    </span>
-  </h1>
-</div>
+  return (
+    <section
+      ref={containerRef}
+      className="relative min-h-[100vh] overflow-hidden bg-cover bg-[url('/assets/img/clearsky.jpg')]"
+    >
+      <div
+        ref={textRef}
+        className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
+      >
+        <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1]">
+          <span className=" block">Himalayan</span>
+          <span ref={textileRef} className="mr-9 block">
+            Textile
+          </span>
+        </h1>
+      </div>
 
-          {/* Mountain Images */}
-          <div className="absolute bottom-0 left-0 w-full h-full z-10">
-            {imageOrder.map((num, i) => (
-              <div
-                key={num}
-                className="absolute bottom-0 left-0 w-full h-full pointer-events-none"
-                style={{ zIndex: i === 2 ? -1 : i + 1 }}
-                ref={(el) => (imageRefs.current[i] = el)}
-              >
-                <img
-                  src={`/assets/img/parallax/${num}.png`}
-                  alt={`mountain ${num}`}
-                  className="w-full h-full"
-                />
-              </div>
-            ))}
+      {/* Mountain Images */}
+      <div className="absolute bottom-0 left-0 w-full h-full z-10">
+        {imageOrder.map((num, i) => (
+          <div
+            key={num}
+            className="absolute bottom-0 left-0 w-full h-full pointer-events-none"
+            style={{ zIndex: i === 2 ? -1 : i + 1 }}
+            ref={(el) => (imageRefs.current[i] = el)}
+          >
+            <img
+              src={`/assets/img/parallax/${num}.png`}
+              alt={`mountain ${num}`}
+              className="w-full h-full"
+            />
           </div>
+        ))}
+      </div>
 
-{/* Animated Cloud */}
+      {/* Animated Cloud */}
       <div className="absolute top-10 left-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove1">
-  <img
-    src="/assets/img/animate/cloud2.png"
-    alt="moving cloud"
-    className="w-full h-full object-contain"
-  />
-</div>
+        <img
+          src="/assets/img/animate/cloud2.png"
+          alt="moving cloud"
+          className="w-full h-full object-contain"
+        />
+      </div>
 
-{/* Cloud moving right to left */}
-<div className="absolute top-40 right-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove2">
-  <img
-    src="/assets/img/animate/cloud2.png"
-    alt="moving cloud"
-    className="w-full h-full object-contain"
-  />
-</div>
-      
+      {/* Cloud moving right to left */}
+      <div className="absolute top-40 right-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove2">
+        <img
+          src="/assets/img/animate/cloud2.png"
+          alt="moving cloud"
+          className="w-full h-full object-contain"
+        />
+      </div>
 
       {/* Text Boxes */}
-  <div
-  ref={(el) => (textBoxRefs.current[0] = el)}
-  className="absolute bottom-[5vh] w-full overflow-hidden z-30 pointer-events-none opacity-0"
->
-  <div className="flex whitespace-nowrap animate-marquee text-[clamp(3rem,10vw,12rem)] font-extrabold uppercase italic gap-16 px-4">
-    {textBoxContent.map((box, i) => (
-      <span key={i} className="shrink-0 inline-block  text-stroke">
-        {box.title}: {box.desc}
-      </span>
-    ))}
+      <div
+        ref={(el) => (textBoxRefs.current[0] = el)}
+        className="absolute bottom-[5vh] w-full overflow-hidden z-30 pointer-events-none opacity-0"
+      >
+        <div className="flex whitespace-nowrap animate-marquee text-[clamp(3rem,10vw,12rem)] font-extrabold uppercase italic gap-16 px-4">
+          {textBoxContent.map((box, i) => (
+            <span key={i} className="shrink-0 inline-block  text-stroke">
+              {box.title}: {box.desc}
+            </span>
+          ))}
 
-    {/* Duplicate for seamless loop */}
-    {textBoxContent.map((box, i) => (
-      <span key={`dup-${i}`} className="shrink-0 inline-block ">
-        {box.title}: {box.desc}
-      </span>
-    ))}
-  </div>
-</div>
-
+          {/* Duplicate for seamless loop */}
+          {textBoxContent.map((box, i) => (
+            <span key={`dup-${i}`} className="shrink-0 inline-block ">
+              {box.title}: {box.desc}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Cloud Animation Style */}
       <style jsx>{`
         @keyframes cloudMove1 {
-  0% {
-    transform: translateX(-200px);
-  }
-  100% {
-    transform: translateX(120vw);
-  }
-}
+          0% {
+            transform: translateX(-200px);
+          }
+          100% {
+            transform: translateX(120vw);
+          }
+        }
 
-@keyframes cloudMove2 {
-  0% {
-    transform: translateX(200px);
-  }
-  100% {
-    transform: translateX(-120vw);
-  }
-}
+        @keyframes cloudMove2 {
+          0% {
+            transform: translateX(200px);
+          }
+          100% {
+            transform: translateX(-120vw);
+          }
+        }
 
-.animate-cloudMove1 {
-  animation: cloudMove1 60s linear infinite;
-}
+        .animate-cloudMove1 {
+          animation: cloudMove1 60s linear infinite;
+        }
 
-.animate-cloudMove2 {
-  animation: cloudMove2 60s linear infinite;
-}
-          @keyframes marquee {
+        .animate-cloudMove2 {
+          animation: cloudMove2 60s linear infinite;
+        }
+        @keyframes marquee {
           0% {
             transform: translateX(0%);
           }
@@ -279,8 +276,6 @@
           animation: marquee 20s linear infinite;
         }
       `}</style>
-          
-
-        </section>
-      );
-    }
+    </section>
+  );
+}
