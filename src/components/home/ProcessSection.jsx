@@ -7,10 +7,10 @@ import { ArrowRight } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: "Fiber", image: "/assets/img/Fiber/fibre.jpg" },
-  { name: "Yarn", image: "/assets/img/extra/nettle.jpg" },
-  { name: "Fabric", image: "/assets/img/fabrics.jpg" },
-  { name: "Fashion", image: "/assets/img/extra/nettle.jpg" },
+  { name: "Raw Fiber", image: "/assets/img/Fiber/fibre.jpg" },
+  { name: "Degummed", image: "/assets/img/extra/nettle.jpg" },
+  { name: "Yarn", image: "/assets/img/fabrics.jpg" },
+  { name: "Fabric", image: "/assets/img/extra/nettle.jpg" },
 ];
 
 export default function ProcessSection() {
@@ -87,7 +87,7 @@ export default function ProcessSection() {
     <div key={product.name} className="flex items-center gap-4">
       <motion.div
         ref={el => productRefs.current[index] = el}
-        className="relative w-28 h-28 md:w-36 md:h-36 bg-center bg-cover rounded-full flex items-center justify-center text-center overflow-hidden"
+        className="relative w-28 h-28 md:w-36 md:h-36 bg-center bg-contain bg-no-repeat rounded-full flex items-center justify-center text-center overflow-hidden"
         style={{ background: `url(${product.image})` }}
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -116,7 +116,7 @@ export default function ProcessSection() {
             <span>View Our Process</span>
             <ArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
           </button>
-        </div>
+        </div>  
       </div>
     </div>
   );
