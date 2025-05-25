@@ -172,7 +172,7 @@ export default function Hero() {
         ref={textRef}
         className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
       >
-        <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1]">
+        <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1] text-white">
           <span className=" block">Himalayan</span>
           <span ref={textileRef} className="mr-9 block">
             Textile
