@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import processBg from "/assets/img/processBg.jpg";
 import {
   FaLeaf,
   FaSun,
@@ -11,6 +10,8 @@ import {
   FaCut,
   FaSync,
   FaThLarge,
+  FaTimes,
+  FaExpand,
 } from "react-icons/fa";
 
 const timelineData = [
@@ -27,7 +28,7 @@ const timelineData = [
     title: "Drying Bark",
     description:
       "Initial drying process to remove moisture and prepare the bark for further processing.",
-    bgImage: "public/assets/img/nettle/21.png",
+    bgImage: "public/assets/img/nettle/2.1.png",
     icon: FaSun,
   },
   {
@@ -35,7 +36,7 @@ const timelineData = [
     title: "Retting",
     description:
       "Controlled decomposition process that separates the fibrous material from the woody core.",
-    bgImage: "public/assets/img/nettle/31.png",
+    bgImage: "public/assets/img/nettle/3.1.png",
     icon: FaWater,
   },
   {
@@ -43,7 +44,7 @@ const timelineData = [
     title: "Washing",
     description:
       "Thorough cleaning to remove impurities and residues from the retting process.",
-    bgImage: "public/assets/img/nettle/41.png",
+    bgImage: "public/assets/img/nettle/4.1.png",
     icon: FaWater,
   },
   {
@@ -51,7 +52,7 @@ const timelineData = [
     title: "Beating with Wooden Club",
     description:
       "First mechanical softening of the fibers to break down their rigid structure.",
-    bgImage: "public/assets/img/nettle/51.png",
+    bgImage: "public/assets/img/nettle/5.1.png",
     icon: FaHammer,
   },
   {
@@ -59,7 +60,7 @@ const timelineData = [
     title: "Drying in the Sun",
     description:
       "Broken fibers are dried in direct sunlight for a full day to prepare for further processing.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/6.1.png",
     icon: FaCloudSun,
   },
   {
@@ -67,7 +68,7 @@ const timelineData = [
     title: "Second Washing",
     description:
       "Additional washing to further remove impurities and prepare for final softening.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/7.1.png",
     icon: FaShower,
   },
   {
@@ -75,7 +76,7 @@ const timelineData = [
     title: "Second Beating",
     description:
       "Additional beating with wooden clubs to achieve optimal fiber softness and flexibility.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/8.png",
     icon: FaTools,
   },
   {
@@ -83,7 +84,7 @@ const timelineData = [
     title: "Hackling",
     description:
       "Combing the fibers to align them and remove any remaining short fibers or debris.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/9.png",
     icon: FaCut,
   },
   {
@@ -91,7 +92,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "Transforming the prepared fibers into strong, consistent yarn ready for weaving.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/10.jpg",
     icon: FaSync,
   },
   {
@@ -99,13 +100,14 @@ const timelineData = [
     title: "Weaving Nettle Fabric",
     description:
       "Traditional methods combined with careful attention to detail create durable, sustainable nettle fabric.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/nettle/11.jpg",
     icon: FaThLarge,
   },
 ];
 
 export default function Nettle() {
   const [activeItems, setActiveItems] = useState([]);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,14 +127,29 @@ export default function Nettle() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && fullscreenImage) {
+        setFullscreenImage(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [fullscreenImage]);
+
+  const openFullscreen = (item) => {
+    setFullscreenImage(item);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenImage(null);
+  };
+
   return (
     <div className="relative flex flex-col items-center px-4 pt-20">
       <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
-        <img
-          src={processBg}
-          alt="process background"
-          className="h-full w-full object-cover"
-        />
+        <div className="h-full w-full bg-gradient-to-br from-green-50 to-green-100" />
       </div>
 
       <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
@@ -180,14 +197,20 @@ export default function Nettle() {
                   }`}
                 >
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div className="h-48 sm:h-64 overflow-hidden relative">
+                    <div
+                      className="h-48 sm:h-64 overflow-hidden relative group cursor-pointer"
+                      onClick={() => openFullscreen(item)}
+                    >
                       <div
-                        className="absolute inset-0 bg-cover bg-center"
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
                         style={{ backgroundImage: `url(${item.bgImage})` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       <div className="absolute bottom-4 left-4 bg-black/60 text-white px-2 py-1 rounded-full text-sm">
                         Step {index + 1}
+                      </div>
+                      <div className="absolute top-4 right-4 bg-black/60 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <FaExpand size={14} />
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
@@ -230,12 +253,53 @@ export default function Nettle() {
         </p>
         <div className="flex justify-center">
           <img
-            src="/api/placeholder/800/400"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop"
             alt="Nettle fabric production"
-            className="rounded-lg shadow-md w-full max-w-xl"
+            className="rounded-lg shadow-md w-full max-w-xl cursor-pointer hover:shadow-lg transition-shadow duration-300"
+            onClick={() =>
+              openFullscreen({
+                title: "Nettle Fabric Production",
+                bgImage:
+                  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop",
+                description:
+                  "Traditional nettle fabric weaving process showcasing the final product.",
+              })
+            }
           />
         </div>
       </div>
+
+      {/* Fullscreen Modal */}
+      {fullscreenImage && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-full max-h-full">
+            <button
+              onClick={closeFullscreen}
+              className="absolute top-4 right-4 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition-colors duration-200 z-10"
+            >
+              <FaTimes size={20} />
+            </button>
+
+            <div className="relative">
+              <img
+                src={fullscreenImage.bgImage}
+                alt={fullscreenImage.title}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              />
+
+              {/* Image Info Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+                <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">
+                  {fullscreenImage.title}
+                </h3>
+                <p className="text-gray-200 text-sm sm:text-base">
+                  {fullscreenImage.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
