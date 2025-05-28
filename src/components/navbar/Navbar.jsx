@@ -132,7 +132,7 @@ function Navbar() {
       logo: "/assets/img/logo/logowhite.png",
       borderColor: "white",
     },
-    "/journals": {    
+    "/journals": {
       bg: "bg-transparent",
       textColor: "white",
       logo: "/assets/img/logo/logowhite.png",
@@ -259,7 +259,6 @@ function Navbar() {
             <IoClose size={28} />
           </div>
         </div>
-
         {/* Navigation Links */}
         <div className="mt-32 flex flex-col md:flex-row w-full justify-between gap-12">
           {/* Left Side Links */}
