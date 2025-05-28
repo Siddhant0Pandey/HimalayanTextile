@@ -42,12 +42,18 @@ const MyMap = () => {
   }, [mapInView]);
 
   const countries = [
-    { lat: 51.5074, lng: -0.1278, name: "United Kingdom", type: "export" },
-    { lat: 48.8566, lng: 2.3522, name: "France", type: "import" },
-    { lat: 40.7128, lng: -74.006, name: "United States", type: "export" },
-    { lat: 35.6762, lng: 139.6503, name: "Japan", type: "import" },
-    { lat: -33.8688, lng: 151.2093, name: "Australia", type: "export" },
-    { lat: 55.7558, lng: 37.6173, name: "Russia", type: "import" },
+    { lat: 40.7128, lng: -74.006, name: "United States" },
+    { lat: 45.4215, lng: -75.6972, name: "Canada" },
+    { lat: 50.8503, lng: 4.3517, name: "Belgium" },
+    { lat: 40.4637, lng: -3.7492, name: "Spain" },
+    { lat: 52.3676, lng: 4.9041, name: "Netherlands" },
+    { lat: 51.5074, lng: -0.1278, name: "England" },
+    { lat: 52.52, lng: 13.405, name: "Germany" },
+    { lat: -34.9011, lng: -56.1645, name: "Uruguay" },
+    { lat: -14.235, lng: -51.9253, name: "Brazil" },
+    { lat: 41.8719, lng: 12.5674, name: "Italy" },
+    { lat: 35.6762, lng: 139.6503, name: "Japan" },
+    { lat: 37.5665, lng: 126.978, name: "South Korea" },
   ];
 
   const handleMarkerClick = (countryName) => {
@@ -56,7 +62,6 @@ const MyMap = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-gray-100 pt-16">
-      {/* Title Section */}
       <div
         ref={titleRef}
         className="w-full p-6 bg-white shadow-md text-center z-10 opacity-100"
@@ -66,7 +71,6 @@ const MyMap = () => {
         </h1>
       </div>
 
-      {/* Map Section */}
       <div ref={mapRef} className="relative opacity-0 h-[80vh] w-full">
         <MapContainerComponent
           countries={countries}
