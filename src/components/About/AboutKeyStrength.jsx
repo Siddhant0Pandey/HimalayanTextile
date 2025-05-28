@@ -159,6 +159,7 @@ const AboutKeyStrength = () => {
               <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 text-[#1FA951]">
                 {card.icon}
               </div>
+              <div className="text-sm sm:text-xl mb-5 sm:mb-3 text-red-900 justify-between z-10 text-center" />
               <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-600">
                 {card.title}
               </h3>
