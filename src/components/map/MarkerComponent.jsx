@@ -1,21 +1,21 @@
-import React, { useEffect, useRef } from 'react';
-import { Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import gsap from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import gsap from "gsap";
 
 const getIcon = (type) => {
   const iconUrl =
-    type === 'export'
-      ? 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png'
-      : 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png';
+    type === "export"
+      ? "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
+      : "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png";
 
   return L.divIcon({
-    className: '',
+    className: "",
     html: `<img src="${iconUrl}" style="height:41px; width:25px;" />`,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+    shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
     shadowSize: [41, 41],
   });
 };
@@ -37,7 +37,7 @@ const MarkerComponent = ({ country, onClick }) => {
             y: 0,
             opacity: 1,
             duration: 0.8,
-            ease: 'bounce.out',
+            ease: "bounce.out",
           });
         } else {
           // Reset on exit so it can animate again when it re-enters
