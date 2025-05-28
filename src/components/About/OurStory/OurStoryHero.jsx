@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-// import bgImg from "../../../public/assets/img/bgImage1.png";
-
+import bgImg from "/assets/img/about-our-story.jpg";
 const OurStoryHero = () => {
   // Create refs for animated elements
   const heroRef = useRef(null);
@@ -82,8 +81,8 @@ const OurStoryHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", // Fixed syntax error in original code
-        // backgroundImage: `url(${bgImg})`,
+        // backgroundColor: "#1FA951", // Fixed syntax error in original code
+        backgroundImage: `url(${bgImg})`,
       }}
     >
       {/* Wavy border bottom */}
