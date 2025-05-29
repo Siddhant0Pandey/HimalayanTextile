@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerComponent from "./MarkerComponent";
 
 const MapContainerComponent = ({ countries, onMarkerClick }) => {
+  const [shouldAnimateMarkers, setShouldAnimateMarkers] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation when component mounts (when user reaches map section)
+    const timer = setTimeout(() => {
+      setShouldAnimateMarkers(true);
+    }, 300); // Small delay to ensure map is loaded
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <MapContainer
       center={[20, 0]}
@@ -18,7 +29,8 @@ const MapContainerComponent = ({ countries, onMarkerClick }) => {
           key={index}
           country={country}
           onClick={onMarkerClick}
-          index={index} // pass index for stagger
+          index={index}
+          shouldAnimate={shouldAnimateMarkers}
         />
       ))}
     </MapContainer>
