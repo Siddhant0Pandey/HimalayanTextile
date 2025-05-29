@@ -1,126 +1,50 @@
-
-"use client";
-import React, { useLayoutEffect, useRef } from "react";
+// components/HeroTitle.jsx
+import { useEffect, useRef, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import typeText from "../../../utils/typeText";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-function HeroTitle({containerRef}) {
- 
+export default function HeroTitle({ audioUnlocked }) {
   const textRef = useRef(null);
-  const textileRef = useRef(null);
- 
+  const triggeredRef = useRef(false);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=6000",
-          scrub: 1,
-          pin: true,
-        },
-      });
+  const audio = useMemo(() => new Audio("/assets/sound/typewriter.mp3"), []);
 
- 
-      // Animate title
-      tl.to(textRef.current, {
-        scale: 0.8,
-        y: -160,
-        duration: 1.5,
-        ease: "power2.out",
-      });
+  useEffect(() => {
+    if (!textRef.current) return;
 
-      
-    }, containerRef);
+    audio.loop = true;
+    audio.volume = 1.0;
+
+    const trigger = ScrollTrigger.create({
+      trigger: textRef.current,
+      start: "top 80%",
+      onEnter: () => {
+        if (triggeredRef.current || !audioUnlocked) return;
+        triggeredRef.current = true;
+        typeText(textRef.current, "Welcome to Himalayan Textile", audio, audioUnlocked);
+      },
+      onLeaveBack: () => {
+        textRef.current.textContent = "";
+        triggeredRef.current = false;
+      },
+    });
 
     return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      gsap.killTweensOf("*");
-    };
-  }, []);
+      trigger.kill();
+      audio.pause();
+      audio.currentTime = 0;
+    };  
+  }, [audioUnlocked, audio]);
 
   return (
-   <>
-      <div
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1
         ref={textRef}
-        className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none"
-      >
-        <h1 className="text-[clamp(3rem,10vw,10rem)] uppercase font-extrabold leading-[1] text-white">
-          <span className=" block">Himalayan</span>
-          <span ref={textileRef} className="mr-9 block">
-            Textile
-          </span>
-        </h1>
-      </div>
-
-
-
-      {/* Animated Cloud */}
-      <div className="absolute top-10 left-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove1">
-        <img
-          src="/assets/img/animate/cloud2.png"
-          alt="moving cloud"
-          className="w-full h-full object-contain"
-        />
-      </div>
-
-      {/* Cloud moving right to left */}
-      <div className="absolute top-40 right-[-200px] w-[400px] h-[150px] z-20 opacity-50 pointer-events-none animate-cloudMove2">
-        <img
-          src="/assets/img/animate/cloud2.png"
-          alt="moving cloud"
-          className="w-full h-full object-contain"
-        />
-      </div>
-
-     
-
-      {/* Cloud Animation Style */}
-      <style jsx>{`
-        @keyframes cloudMove1 {
-          0% {
-            transform: translateX(-200px);
-          }
-          100% {
-            transform: translateX(120vw);
-          }
-        }
-
-        @keyframes cloudMove2 {
-          0% {
-            transform: translateX(200px);
-          }
-          100% {
-            transform: translateX(-120vw);
-          }
-        }
-
-        .animate-cloudMove1 {
-          animation: cloudMove1 60s linear infinite;
-        }
-
-        .animate-cloudMove2 {
-          animation: cloudMove2 60s linear infinite;
-        }
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 20s linear infinite;
-        }
-      `}</style>
-   </>
+        className="text-5xl font-bold text-white text-center"
+      ></h1>
+    </div>
   );
 }
-
-export default HeroTitle
