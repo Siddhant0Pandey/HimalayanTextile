@@ -158,7 +158,7 @@ function Navbar() {
         { text: "Our Brand", to: "/our-brand" },
       ],
     },
-    { text: "Fiber", to: "/fiber" },
+    { text: "Fibre", to: "/fiber" },
     { text: "Yarn", to: "/yarn" },
     { text: "Fabric", to: "/fabric" },
   ];

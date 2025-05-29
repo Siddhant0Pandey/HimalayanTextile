@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-
+import bgImg from "/assets/img/journals-hero.jpg";
 const JournalsHero = () => {
   // Create refs for animated elements
   const heroRef = useRef(null);
@@ -81,9 +81,9 @@ const JournalsHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] mb-15 bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951",
+        // backgroundColor: "#1FA951",
         zIndex: "30px",
-        // backgroundImage: `url(${bgImg})`,
+        backgroundImage: `url(${bgImg})`,
       }}
     >
       {/* Dark overlay */}

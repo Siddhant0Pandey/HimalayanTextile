@@ -7,6 +7,9 @@ import img3 from "/assets/img/blog/textile03.jpg";
 import img4 from "/assets/img/blog/textile04.jpg";
 import img5 from "/assets/img/blog/textile05.jpg";
 import img6 from "/assets/img/blog/textile06.jpg";
+import { Link } from "react-router-dom";
+import JournalsContent from "./JournalsContent";
+import JournalsHero from "./JournalsHero";
 
 const blogPosts = [
   {
@@ -317,6 +320,11 @@ function JournalsDetails() {
             ) : null
           )}
         </div>
+      </div>
+      <div className="button mt-15 bg-[#1FA951] w-50 px-5 py-3 text-white cursor-pointer rounded-lg">
+        <Link to="/journals">
+          <button className="cursor-pointer">Go back to Blog Page</button>
+        </Link>
       </div>
     </div>
   );
