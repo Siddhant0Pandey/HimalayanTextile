@@ -298,7 +298,7 @@ function JournalsDetails() {
         </p>
       </div>
 
-      <div className="mt-6 space-y-4 text-black text-sm md:text-base leading-relaxed">
+      <div className="mt-6 mb-6 space-y-4 text-black text-sm md:text-base leading-relaxed">
         <p>{blog.description.description1}</p>
         <p>{blog.description.description2}</p>
 
@@ -321,11 +321,12 @@ function JournalsDetails() {
           )}
         </div>
       </div>
-      <div className="button mt-15 bg-[#1FA951] w-50 px-5 py-3 text-white cursor-pointer rounded-lg">
-        <Link to="/journals">
-          <button className="cursor-pointer">Go back to Blog Page</button>
-        </Link>
-      </div>
+      <Link
+        to="/journals"
+        className="inline-block bg-[#1FA951] text-white px-6 py-3 rounded-lg text-center w-full sm:w-auto hover:bg-green-600 transition duration-200"
+      >
+        Go back to Blog Page
+      </Link>
     </div>
   );
 }
