@@ -28,6 +28,7 @@ import SilkTextile from "./components/Fiber/Products/SilkTextile";
 import CactusTextile from "./components/Fiber/Products/CactusTextile";
 import BanaanaFiber from "./components/Fiber/Products/BananaFiber";
 import WoolFiber from "./components/Fiber/Products/WoolFiber";
+import JournalsDetails from "./components/Journals/JournalsDetails";
 function AppRoutes() {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -60,7 +61,7 @@ function AppRoutes() {
           <Route path="/Hemp" element={<HempTextile />} />
 
           <Route path="/journals" element={<Journals />} />
-
+          <Route path="/blog/:slug" element={<JournalsDetails />} />
           <Route path="/flax" element={<FlaxTextile />} />
           <Route path="/jute" element={<JuteTextile />} />
           <Route path="/cotton" element={<CottonTextile />} />
