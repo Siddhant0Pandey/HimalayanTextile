@@ -77,27 +77,27 @@ const OurStoryHero = () => {
       <img
         src={bgImg}
         alt="Background"
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-30"
       />
 
       {/* Slight Dark Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-20 z-10"></div>
+      <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
 
       {/* Wavy border bottom */}
-      <div
-        ref={waveRef}
-        className="absolute bottom-0 w-full overflow-hidden z-20"
-      >
-        <svg viewBox="0 0 1440 100" className="w-full">
-          <path
-            fill="white"
-            d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"
-          ></path>
-        </svg>
-      </div>
+        {/* <div
+          ref={waveRef}
+          className="absolute bottom-0 w-full overflow-hidden z-20"
+        >
+          <svg viewBox="0 0 1440 100" className="w-full">
+            <path
+              fill="white"
+              d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"
+            ></path>
+          </svg>
+        </div> */}
 
       {/* Main content */}
-      <div className="text-center px-4 z-20">
+      <div className="text-center px-4 z-50">
         <h1
           ref={textRef}
           className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg"
