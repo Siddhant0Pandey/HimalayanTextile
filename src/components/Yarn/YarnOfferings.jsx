@@ -36,7 +36,7 @@ export default function YarnOfferings() {
       name: "Cotton Yarn",
       description:
         "Soft, breathable yarn spun from pure cotton. Ideal for creating lightweight garments and textiles with natural comfort and versatility.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/cotton-yarn.jpg",
       features: ["Soft texture", "Highly breathable", "Natural comfort"],
     },
     {
@@ -44,7 +44,7 @@ export default function YarnOfferings() {
       name: "Nettle Yarn",
       description:
         "Traditional Himalayan nettle yarn is known for its strength, breathability, and rustic texture. A sustainable option for artisanal weaves.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/nettle-yarn.jpg",
       features: ["Durable", "Natural sheen", "Eco-conscious"],
     },
     {
@@ -52,7 +52,7 @@ export default function YarnOfferings() {
       name: "Flax Yarn",
       description:
         "Derived from flax plants, this yarn offers a linen-like quality—lightweight, moisture-wicking, and naturally textured for a classic feel.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/flax-yarn.jpg",
       features: ["Moisture-wicking", "Strong fiber", "Rustic finish"],
     },
     {
