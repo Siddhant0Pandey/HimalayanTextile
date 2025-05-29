@@ -170,6 +170,7 @@ export default function YarnOfferings() {
             "-=0.6"
           );
       }
+      
 
       // Immediately make cards visible with no scroll trigger dependency
       // Force cards to be visible first
