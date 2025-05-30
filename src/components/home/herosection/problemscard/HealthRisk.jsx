@@ -1,38 +1,24 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import typeText from "../../../../utils/typeText.js";
+import { useRef } from "react";
+import useTypewriterEffect from "../../../../hooks/useTypewriterEffect";
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function HealthRisk({ audioUnlocked }) {
+export default function HealthRisks({ audioUnlocked }) {
   const textRef = useRef(null);
 
-  useEffect(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: textRef.current,
-      start: "top 80%",
-      onEnter: () => {
-        typeText(
-          textRef.current,
-          "The chemicals used in textile manufacturing can pose serious health risks.",
-          "/assets/sound/narration-healthrisk.mp3",
-          audioUnlocked
-        );
-      },
-      onLeaveBack: () => {
-        textRef.current.textContent = "";
-      },
-    });
-
-    return () => {
-      trigger.kill();
-    };
-  }, [audioUnlocked]);
+  useTypewriterEffect({
+    ref: textRef,
+    text:
+      "👶 Human Health at Risk — Especially for Children:\n" +
+      "Microplastics and chemical residues are found in lungs, blood, and breast milk — especially harming children.",
+    audioUnlocked,
+    typingSpeed: 40,
+  });
 
   return (
-    <div className="flex items-center justify-center w-full h-screen px-10 bg-red-100">
-      <p ref={textRef} className="text-3xl text-center font-semibold text-red-800 leading-relaxed z-10"></p>
+    <div className="flex flex-col justify-center items-center h-screen bg-red-900 text-white px-6">
+      <p
+        ref={textRef}
+        className="text-xl md:text-2xl font-medium leading-relaxed max-w-3xl text-center whitespace-pre-wrap"
+      />
     </div>
   );
 }
