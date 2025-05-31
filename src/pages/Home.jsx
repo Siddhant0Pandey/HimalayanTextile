@@ -1,28 +1,27 @@
-import React from 'react'
-import Hero from '../components/home/Hero'
- import WhatSetsUsApart from '../components/home/WhatSetsUsApart'
-import CoreValues from '../components/home/CoreValues';
-import MyMap from '../components/map/MyMap';
-import AboutSection from '../components/home/AboutSection';
-import ProductsSection from '../components/home/ProductsSection';
-import ProcessSection from '../components/home/ProcessSection';
+import React from "react";
+import WhatSetsUsApart from "../components/home/WhatSetsUsApart";
+import CoreValues from "../components/home/CoreValues";
+import MyMap from "../components/map/MyMap";
+import AboutSection from "../components/home/AboutSection";
+import ProductsSection from "../components/home/ProductsSection";
+import ProcessSection from "../components/home/ProcessSection";
+import HomeHero from "../components/home/HomeHero";
 
 function Home() {
   return (
-    <div >
-     <Hero/>
-     <ProcessSection/>
-     <div >
+    <>
+      <HomeHero />
+      <ProcessSection />
+
       <AboutSection />
-    </div>
-     <div>
-     <WhatSetsUsApart/> 
-     </div>
-     <ProductsSection/>
-     <CoreValues/>
-     <MyMap/>
-    </div>
-  )
+
+      <WhatSetsUsApart />
+
+      <ProductsSection />
+      <CoreValues />
+      <MyMap />
+    </>
+  );
 }
 
 export default Home;
