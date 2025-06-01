@@ -98,9 +98,9 @@ function Navbar() {
   const navStyles = {
     "/": {
       bg: "bg-transparent",
-      textColor: "white",
-      logo: "/assets/img/logo/logowhite.png",
-      borderColor: "white",
+      textColor: "#1fa951",
+      logo: "/assets/img/logo/logodark.png",
+      borderColor: "#1fa951",
     },
     "/contact": {
       bg: "bg-transparent",
