@@ -21,7 +21,7 @@ export default function Hero({ sharedAudio = null }) {
 
   return (
     <div className="relative">
-      {/* Sticky container for the hero sections */}
+   
       <div 
         ref={containerRef}
         className="sticky top-0 w-full h-screen bg-highlight text-darkText overflow-hidden z-10"
@@ -55,7 +55,6 @@ export default function Hero({ sharedAudio = null }) {
         </div>
       </div>
       
-      {/* Spacer to allow scrolling past the hero sections */}
       <div 
         className="h-screen bg-transparent" 
         style={{ 
