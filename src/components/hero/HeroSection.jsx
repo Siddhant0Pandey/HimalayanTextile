@@ -8,7 +8,7 @@ import ProgressIndicator from '../ProgressIndicator/ProgressIndicator'
 import ScrollHint from '../ScrollHint/ScrollHint'
 import HeroTitle from "../home/HeroTitle";
 
-export default function Hero({ sharedAudio = null }) {
+export default function HeroSection({ sharedAudio = null }) {
   const [currentSection, setCurrentSection] = useState(0);
   const containerRef = useRef(null);
 
