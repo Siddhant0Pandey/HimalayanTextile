@@ -15,13 +15,13 @@ export default function ScrollHint({ currentSection, totalSections }) {
         ease: "easeInOut"
       }}
     >
-      <div className="text-sm text-white/60 mb-2">
-        {currentSection < totalSections - 1 ? 'Scroll or swipe to continue' : 'End of story'}
+      <div className="text-sm text-emerald-300/70  0 mb-2">
+        {currentSection < totalSections - 1 ? 'Scroll or swipe to continue' : 'Scroll or swipe to continue'}
       </div>
       {currentSection < totalSections - 1 && (
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full mx-auto relative">
+        <div className="w-6 h-10 border-2 border-emerald-300/30 rounded-full mx-auto relative">
           <motion.div 
-            className="w-2 h-2 bg-white/60 rounded-full absolute left-1/2 transform -translate-x-1/2 top-2"
+            className="w-2 h-2 bg-emerald-500/60 rounded-full absolute left-1/2 transform -translate-x-1/2 top-2"
             animate={{ y: [0, 20, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           />
