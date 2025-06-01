@@ -1,205 +1,274 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {
+  FaEgg,
+  FaBug,
+  FaLeaf,
+  FaHome,
+  FaFire,
+  FaWater,
+  FaHandsHelping,
+  FaSort,
+  FaTools,
+  FaCut,
+  FaIndustry,
+  FaSync,
+  FaThLarge,
+} from "react-icons/fa";
 
-const SilkTextile = () => {
+const timelineData = [
+  {
+    id: 1,
+    title: "Egg Stage",
+    description:
+      "Silkworm moths lay tiny eggs on mulberry leaves. These eggs are carefully collected and stored in controlled conditions. Each female moth can lay 300-500 eggs, which will hatch into silkworms in about 10-14 days under proper temperature and humidity.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaEgg,
+  },
+  {
+    id: 2,
+    title: "Larva Hatching",
+    description:
+      "Silkworm larvae (caterpillars) emerge from eggs and begin feeding exclusively on fresh mulberry leaves. These tiny worms are about 3mm long when they hatch and have voracious appetites, eating continuously to fuel their rapid growth.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaBug,
+  },
+  {
+    id: 3,
+    title: "Feeding & Growth",
+    description:
+      "For 4-6 weeks, silkworms eat mulberry leaves constantly, growing through five molting stages (instars). They increase their body weight by 3,000 times, becoming plump, white caterpillars about 3 inches long before they're ready to spin cocoons.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaLeaf,
+  },
+  {
+    id: 4,
+    title: "Cocoon Formation",
+    description:
+      "Mature silkworms begin spinning their cocoons by secreting liquid silk protein from special glands. They create a protective oval shell around themselves, spinning continuously for 2-3 days to produce up to 1,000 meters of continuous silk fiber.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaHome,
+  },
+  {
+    id: 5,
+    title: "Cocoon Selection",
+    description:
+      "Fresh cocoons are carefully sorted and selected for quality. The best cocoons are firm, well-shaped, and free from stains or defects. Some cocoons are set aside for breeding to continue the lifecycle, while others proceed to silk extraction.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaSort,
+  },
+  {
+    id: 6,
+    title: "Killing (Stifling)",
+    description:
+      "To prevent the pupae from emerging and breaking the silk fibers, cocoons are exposed to hot air or steam at 60-80°C. This stifling process preserves the continuous silk filament while stopping the metamorphosis process.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaFire,
+  },
+  {
+    id: 7,
+    title: "Softening",
+    description:
+      "Stifled cocoons are immersed in hot water (95-97°C) to soften the sericin gum that binds the silk fibers together. This process makes it easier to find the end of the silk filament and begins the unwinding process.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaWater,
+  },
+  {
+    id: 8,
+    title: "Reeling",
+    description:
+      "The softened cocoons are carefully unwound to extract the continuous silk filament. Multiple filaments (4-8) are combined and twisted together to form a single silk thread strong enough for textile production. This requires great skill and precision.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaHandsHelping,
+  },
+  {
+    id: 9,
+    title: "Twisting & Winding",
+    description:
+      "The reeled silk threads are twisted together to create stronger yarn with desired thickness and strength. The yarn is wound onto bobbins and prepared for further processing. Different twist levels create various silk yarn qualities.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaTools,
+  },
+  {
+    id: 10,
+    title: "Degumming",
+    description:
+      "Raw silk yarn undergoes degumming to remove residual sericin gum, which makes the silk softer, more lustrous, and lighter. This process involves boiling the silk in soapy water, reducing its weight by 20-25%.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaIndustry,
+  },
+  {
+    id: 11,
+    title: "Dyeing",
+    description:
+      "The degummed silk is dyed in various colors using natural or synthetic dyes. Silk's protein structure readily accepts dyes, resulting in vibrant, long-lasting colors. The dyeing process requires careful temperature and pH control.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaCut,
+  },
+  {
+    id: 12,
+    title: "Spinning & Preparation",
+    description:
+      "Dyed silk yarn is prepared for weaving by winding it onto spools, warping beams, or bobbins depending on its intended use. The yarn is inspected for quality and organized according to color and weight specifications.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaSync,
+  },
+  {
+    id: 13,
+    title: "Weaving",
+    description:
+      "Silk yarn is woven into luxurious fabrics using various techniques on handlooms or power looms. Different weaving patterns create distinct silk fabrics like satin, chiffon, taffeta, and brocade, each with unique properties and uses.",
+    bgImage: "/api/placeholder/600/400",
+    icon: FaThLarge,
+  },
+];
+
+export default function SilkTextile() {
+  const [activeItems, setActiveItems] = useState([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const cards = document.querySelectorAll(".timeline-card");
+      const newActiveItems = [];
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          newActiveItems.push(index);
+        }
+      });
+      setActiveItems(newActiveItems);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10 font-serif text-gray-800">
-      <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center text-green-800">
-        Silk Fiber: The Lustrous Thread of Luxurious Heritage
+    <div className="relative flex flex-col items-center px-4 pt-20">
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+        <img
+          src="/api/placeholder/1200/800"
+          alt="silk production background"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
+      <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
+        Silk Fiber Creation Process
       </h1>
 
-      {/* Historical Background */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-green-700 mb-4">
-          Historical Background
+      <div className="w-full max-w-6xl">
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
+
+          {timelineData.map((item, index) => {
+            const isLeft = index % 2 === 0;
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={item.id}
+                className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                } relative`}
+              >
+                {/* Line Progress (Desktop) */}
+                <div
+                  className={`hidden md:flex w-1/2 ${
+                    isLeft ? "justify-end pr-4" : "justify-start pl-4"
+                  }`}
+                >
+                  <div
+                    className={`w-1 ${
+                      activeItems.includes(index)
+                        ? "bg-[#1fa951] h-full"
+                        : "h-0"
+                    } transition-all duration-700`}
+                  />
+                </div>
+
+                {/* Card Content */}
+                <div
+                  className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
+                    activeItems.includes(index)
+                      ? "translate-y-0 opacity-100"
+                      : isLeft
+                      ? "-translate-x-10 opacity-0"
+                      : "translate-x-10 opacity-0"
+                  }`}
+                >
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div className="h-48 sm:h-64 overflow-hidden relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${item.bgImage})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute bottom-4 left-4 bg-black/60 text-white px-2 py-1 rounded-full text-sm">
+                        Step {index + 1}
+                      </div>
+                    </div>
+                    <div className="p-4 sm:p-6">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Icon */}
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                  <div
+                    className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
+                      activeItems.includes(index) ? "scale-100" : "scale-0"
+                    }`}
+                  >
+                    <Icon className="text-white" size={18} />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
+          About Silk Fabric
         </h2>
-        <p className="mb-4">
-          Silk (produced primarily by the Bombyx mori silkworm) has been
-          cultivated for over 5,000 years, with origins tracing back to ancient
-          China where legend attributes its discovery to Empress Leizi. This
-          precious fiber emerged as one of the world's most coveted luxuries,
-          creating trade routes that connected East and West, most notably the
-          historic Silk Road.
+        <p className="mb-4 text-gray-700">
+          Known as the "Queen of Textiles," silk has been prized for over 5,000
+          years as one of the most luxurious natural fibers in the world. Silk
+          production (sericulture) originated in ancient China and remains
+          largely concentrated in Asia, with China, India, and Japan being the
+          primary producers. The resulting fabric is celebrated for its
+          exceptional luster, smooth texture, strength, and natural
+          temperature-regulating properties. Silk fibers are naturally lustrous
+          with a distinctive sheen and feel, and are completely biodegradable
+          and renewable. The unique triangular protein structure of silk fibers
+          reflects light at different angles, creating silk's characteristic
+          shimmer. Silk is incredibly strong - a silk fiber is stronger than
+          steel wire of the same thickness. It's also naturally hypoallergenic
+          and has moisture-wicking properties, making it comfortable in both
+          warm and cool climates. Traditional uses include clothing, bedding,
+          and ceremonial textiles, while modern applications have expanded to
+          include medical sutures, parachutes, bicycle tires, and
+          high-performance textiles. The labor-intensive process of silk
+          production has preserved ancient techniques for millennia, supporting
+          traditional craftsmanship and rural economies across Asia. From
+          elegant evening gowns to practical athletic wear, silk continues to be
+          the gold standard for luxury textiles.
         </p>
-        <div className="flex flex-col md:flex-row md:space-x-8">
-          <div className="md:w-1/2 mb-4 md:mb-0">
-            <p className="mb-2">
-              The production of silk begins with silkworms spinning cocoons made
-              of a single continuous filament that can extend up to 1,500
-              meters. These cocoons are carefully harvested, treated with hot
-              water or steam to dissolve the natural gum (sericin) binding the
-              threads, and then unwound to reveal the lustrous silk fibers.
-              Several strands are twisted together to create stronger threads
-              before being woven into fabric.
-            </p>
-            <p>
-              Historically, the secrets of silk production were closely guarded
-              by the Chinese for nearly 3,000 years, making it one of history's
-              earliest industrial secrets. The knowledge eventually spread to
-              Korea, Japan, India, and later to the Byzantine Empire and Europe,
-              transforming economies and establishing silk as a symbol of
-              wealth, power, and refinement across civilizations.
-            </p>
-          </div>
-          <div className="md:w-1/2">
-            <img
-              src="/api/placeholder/500/300"
-              alt="Traditional silk processing"
-              className="rounded-lg shadow-md"
-            />
-            <p className="text-sm text-center text-gray-600 mt-2">
-              Traditional silk processing in rural communities of China
-            </p>
-          </div>
+        <div className="flex justify-center">
+          <img
+            src="/api/placeholder/800/400"
+            alt="Silk fabric production"
+            className="rounded-lg shadow-md w-full max-w-xl"
+          />
         </div>
-      </section>
-
-      {/* Cultural Significance */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-green-700 mb-4">
-          Cultural Significance
-        </h2>
-        <p className="mb-4">
-          Silk has profoundly shaped cultural, economic, and artistic
-          development across civilizations, particularly in Asia. Its
-          significance extends far beyond its utility as a textile:
-        </p>
-        <ul className="list-disc pl-6 space-y-2 mb-6">
-          <li>
-            Known as the "queen of textiles" for its unmatched luster, softness,
-            and prestige
-          </li>
-          <li>
-            Integral to ceremonial and religious traditions, from imperial robes
-            to sacred manuscripts
-          </li>
-          <li>
-            Central to artistic heritage, particularly in China, Japan, India,
-            and Persia
-          </li>
-          <li>
-            Symbolic of prosperity, refinement, and cultural sophistication
-          </li>
-        </ul>
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded shadow-sm">
-          <p className="italic">
-            "The ethereal shimmer of silk captures within its threads the legacy
-            of countless artisans whose skilled hands have transformed humble
-            cocoons into fabrics of such beauty they once commanded their weight
-            in gold."
-          </p>
-        </div>
-      </section>
-
-      {/* Sustainability & Applications */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-green-700 mb-4">
-          Contemporary Applications & Sustainability
-        </h2>
-        <div className="flex flex-col md:flex-row md:space-x-8">
-          <div className="md:w-1/2 mb-4 md:mb-0">
-            <h3 className="text-xl font-medium mb-2">
-              Ecological Considerations
-            </h3>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>
-                Renewable natural protein fiber with minimal environmental
-                footprint when produced responsibly
-              </li>
-              <li>
-                Biodegradable and compostable at end of life, unlike synthetic
-                alternatives
-              </li>
-              <li>
-                Traditional sericulture practices can support biodiversity in
-                mulberry ecosystems
-              </li>
-              <li>
-                Peace silk and non-violent methods address ethical concerns
-                about traditional production
-              </li>
-              <li>
-                Durability means silk garments can last for generations,
-                reducing consumption
-              </li>
-            </ul>
-          </div>
-          <div className="md:w-1/2">
-            <img
-              src="/api/placeholder/500/300"
-              alt="Modern silk products"
-              className="rounded-lg shadow-md"
-            />
-            <p className="text-sm text-center text-gray-600 mt-2">
-              Contemporary silk products showcasing versatility and luxury
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8">
-          <h3 className="text-xl font-medium mb-2">
-            Modern Market Applications
-          </h3>
-          <p className="mb-4">
-            While synthetic fibers have expanded textile options, silk maintains
-            its position as a premium natural material with unique properties
-            that synthetic alternatives cannot fully replicate. Its natural
-            characteristics make it valuable across diverse sectors:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 mb-6">
-            <li>Luxury fashion, bridal wear, and high-end home textiles</li>
-            <li>
-              Medical applications including surgical sutures and wound
-              dressings
-            </li>
-            <li>
-              Cosmetic products utilizing sericin proteins for skin benefits
-            </li>
-            <li>
-              Technical textiles for parachutes, bicycle tires, and acoustic
-              panels
-            </li>
-            <li>
-              Biomaterials for tissue engineering and regenerative medicine
-            </li>
-          </ul>
-
-          <div className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded shadow-sm">
-            <h4 className="font-semibold mb-2">Asian Heritage & Innovation</h4>
-            <p>
-              China and India remain the centers of global silk production,
-              together accounting for over 70% of the world's raw silk. These
-              countries are now blending traditional craft knowledge with
-              technological innovation, developing enhanced silk varieties with
-              specialized properties for medical, technical, and sustainable
-              applications. Research institutes across Asia are pioneering
-              silk-based biomaterials, advanced textiles, and revitalized
-              heritage techniques to meet evolving market demands while
-              preserving cultural legacies.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Conclusion */}
-      <section className="mb-12">
-        <h2 className="text-3xl font-semibold text-green-700 mb-4">
-          Conclusion
-        </h2>
-        <p>
-          Silk represents an extraordinary convergence of natural wonder and
-          human ingenuity—a fiber that has shaped trade routes, inspired
-          artistic traditions, and connected cultures for millennia. As we
-          balance luxury with sustainability in contemporary markets,
-          responsibly-produced silk offers a compelling model: renewable,
-          biodegradable, and inherently valuable through both its physical
-          properties and cultural significance. The lustrous fiber that once
-          connected East and West continues to bridge past and future,
-          demonstrating that nature's most exquisite materials remain relevant
-          even in our most technologically advanced era.
-        </p>
-      </section>
+      </div>
     </div>
   );
-};
-
-export default SilkTextile;
+}

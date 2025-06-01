@@ -81,21 +81,25 @@ const FirstHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", // Fixed syntax error in original code
+        backgroundColor: "#1FA951", // Fixed syntax error in original
+        zIndex: "30px",
       }}
     >
       {/* Wavy border bottom */}
-      <div ref={waveRef} className="absolute bottom-0 w-full overflow-hidden">
+      {/* <div ref={waveRef} className="absolute bottom-0 w-full overflow-hidden">
         <svg viewBox="0 0 1440 100" className="w-full">
           <path
             fill="white"
             d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"
           ></path>
         </svg>
-      </div>
+      </div> */}
+
+      {/* Dark overlay */}
+      <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
 
       {/* Main content */}
-      <div className="text-center px-4 z-10">
+      <div className="text-center px-4 z-50">
         <h1
           ref={textRef}
           className="text-5xl md:text-6xl font-semibold mb-4 drop-shadow-lg"

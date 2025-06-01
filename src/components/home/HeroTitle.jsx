@@ -67,7 +67,6 @@ const useTypewriter = (text, speed = 80, delay = 0, enableAudio = false) => {
   return { displayText, isTyping };
 };
 
-// Thread Mountains with Drawing Animation
 const ThreadMountains = () => {
   return (
     <svg
@@ -77,21 +76,21 @@ const ThreadMountains = () => {
     >
       <defs>
         <linearGradient id="threadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.9">
+          <stop offset="0%" stopColor="#1fa951" stopOpacity="0.9">
             <animate attributeName="stop-color" 
-              values="#3b82f6;#8b5cf6;#06b6d4;#10b981;#3b82f6" 
+              values="#1fa951;#10b981;#1fa951;#10b981;#1fa951" 
               dur="15s" 
               repeatCount="indefinite" />
           </stop>
-          <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.7">
+          <stop offset="50%" stopColor="#1fa951" stopOpacity="0.7">
             <animate attributeName="stop-color" 
-              values="#8b5cf6;#06b6d4;#10b981;#3b82f6;#8b5cf6" 
+              values="#10b981;#1fa951;#10b981;#1fa951;#10b981" 
               dur="15s" 
               repeatCount="indefinite" />
           </stop>
-          <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.5">
+          <stop offset="100%" stopColor="#1fa951" stopOpacity="0.5">
             <animate attributeName="stop-color" 
-              values="#06b6d4;#10b981;#3b82f6;#8b5cf6;#06b6d4" 
+              values="#1fa951;#10b981;#1fa951;#10b981;#1fa951" 
               dur="15s" 
               repeatCount="indefinite" />
           </stop>
@@ -106,28 +105,28 @@ const ThreadMountains = () => {
         </filter>
       </defs>
 
-      {/* Single Thread Drawing Mountain Range - Bottom of Screen */}
+      {/* Main thread path forming larger mountains */}
       <path
         stroke="url(#threadGradient)"
-        strokeWidth="4"
+        strokeWidth="6"
         fill="none"
         filter="url(#threadGlow)"
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M0,750 L150,720 L300,680 L450,690 L600,670 L750,685 L900,675 L1050,695 L1200,750"
-        strokeDasharray="2500"
-        strokeDashoffset="2500"
+        d="M0,700 L120,580 L200,450 L280,380 L350,320 L420,250 L500,200 L580,250 L650,320 L720,380 L800,450 L880,520 L1000,580 L1200,700"
+        strokeDasharray="3500"
+        strokeDashoffset="3500"
       >
-        {/* Thread drawing animation from left to right */}
+        {/* Thread drawing animation */}
         <animate
           attributeName="stroke-dashoffset"
-          values="2500;0"
+          values="3500;0"
           dur="8s"
           repeatCount="indefinite"
           begin="0s"
         />
         
-        {/* Subtle thread movement after drawing */}
+        {/* Subtle thread movement */}
         <animateTransform
           attributeName="transform"
           type="translate"
@@ -138,9 +137,9 @@ const ThreadMountains = () => {
         />
       </path>
 
-      {/* Thread needle/tip indicator moving along the path */}
+      {/* Moving thread point */}
       <circle
-        r="3"
+        r="4"
         fill="#ffffff"
         opacity="0.9"
         filter="url(#threadGlow)"
@@ -149,7 +148,7 @@ const ThreadMountains = () => {
           dur="8s"
           repeatCount="indefinite"
           begin="0s"
-          path="M0,750 L150,720 L300,680 L450,690 L600,670 L750,685 L900,675 L1050,695 L1200,750"
+          path="M0,700 L120,580 L200,450 L280,380 L350,320 L420,250 L500,200 L580,250 L650,320 L720,380 L800,450 L880,520 L1000,580 L1200,700"
         />
         
         <animate
@@ -161,24 +160,26 @@ const ThreadMountains = () => {
         
         <animate
           attributeName="r"
-          values="3; 5; 3"
+          values="4; 6; 4"
           dur="1.5s"
           repeatCount="indefinite"
         />
       </circle>
 
-      {/* Mountain peak highlights that appear as thread passes */}
+      {/* Mountain peak markers */}
       {[
-        { x: 300, y: 680, delay: '2.5s' },
-        { x: 600, y: 670, delay: '4.5s' },
-        { x: 900, y: 675, delay: '6.5s' }
+        { x: 200, y: 450, delay: '1.5s' },
+        { x: 350, y: 320, delay: '2.5s' },
+        { x: 500, y: 200, delay: '4s' },
+        { x: 650, y: 320, delay: '5.5s' },
+        { x: 800, y: 450, delay: '6.5s' }
       ].map((peak, i) => (
         <g key={`peak-${i}`}>
           <circle
             cx={peak.x}
             cy={peak.y}
-            r="6"
-            fill="#06b6d4"
+            r="8"
+            fill="#1fa951"
             opacity="0"
           >
             <animate
@@ -191,7 +192,7 @@ const ThreadMountains = () => {
             
             <animate
               attributeName="r"
-              values="6; 10; 8"
+              values="8; 12; 10"
               dur="2s"
               begin={peak.delay}
               fill="freeze"
@@ -202,7 +203,7 @@ const ThreadMountains = () => {
           <circle
             cx={peak.x}
             cy={peak.y}
-            r="3"
+            r="4"
             fill="#ffffff"
             opacity="0"
           >
@@ -232,7 +233,7 @@ export default function HeroTitle() {
     }
   }, [isInView]);
 
-  const title = "Welcome to Himalayan Textile";
+  const title = "Welcome to Himalayan Textile Industry  ";
 
   const { displayText: titleText, isTyping } = useTypewriter(
     isVisible ? title : "", 
@@ -248,18 +249,17 @@ export default function HeroTitle() {
   return (
     <div 
       ref={ref}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-700 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center bg-slate-900 relative overflow-hidden"
       onClick={handleEnableAudio}
     >
-      {/* Animated Thread Mountains Background */}
+      {/* Thread Mountains Background */}
       <ThreadMountains />
       
-      {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-slate-900/20"></div>
       
       {/* Main Content */}
       <motion.h1 
-        className="text-4xl lg:text-7xl font-bold text-white text-center px-8 relative z-10"
+        className="text-4xl lg:text-7xl font-bold text-[#1fa951] text-center px-8 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

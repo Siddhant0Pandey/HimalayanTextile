@@ -7,6 +7,9 @@ import img3 from "/assets/img/blog/textile03.jpg";
 import img4 from "/assets/img/blog/textile04.jpg";
 import img5 from "/assets/img/blog/textile05.jpg";
 import img6 from "/assets/img/blog/textile06.jpg";
+import { Link } from "react-router-dom";
+import JournalsContent from "./JournalsContent";
+import JournalsHero from "./JournalsHero";
 
 const blogPosts = [
   {
@@ -295,7 +298,7 @@ function JournalsDetails() {
         </p>
       </div>
 
-      <div className="mt-6 space-y-4 text-black text-sm md:text-base leading-relaxed">
+      <div className="mt-6 mb-6 space-y-4 text-black text-sm md:text-base leading-relaxed">
         <p>{blog.description.description1}</p>
         <p>{blog.description.description2}</p>
 
@@ -318,6 +321,12 @@ function JournalsDetails() {
           )}
         </div>
       </div>
+      <Link
+        to="/journals"
+        className="inline-block bg-[#1FA951] text-white px-6 py-3 rounded-lg text-center w-full sm:w-auto hover:bg-green-600 transition duration-200"
+      >
+        Go back to Blog Page
+      </Link>
     </div>
   );
 }

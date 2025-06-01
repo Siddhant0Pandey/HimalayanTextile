@@ -44,7 +44,7 @@ const blogPosts = [
   },
   {
     id: 6,
-    title: "Global Supply Chains and the Future of Textile Production",
+    title: "Global Trade in Textiles: Shifting to Green Supply  ",
     date: "February 10, 2025",
     author: "Admin",
     image: "/assets/img/blog/textile06.jpg",

@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 
-/**
- * AnimationSection - A sequential image flow animation component
- * Features smooth transitions, responsive design, and polished animations
- * Using the green theme with Roboto Slab font family
- */
 const AnimationSection = () => {
   // Animation state management
   const [currentElement, setCurrentElement] = useState(0);
@@ -312,25 +307,7 @@ const AnimationSection = () => {
           />
         </div>
 
-        {/* Restart button */}
-        {/* <button
-          onClick={resetAnimation}
-          className="absolute bottom-4 right-4 px-3 py-1 rounded-full text-xs font-medium transition-colors"
-          style={{
-            backgroundColor: theme.primary,
-            color: theme.lightText,
-            boxShadow: `0 2px 4px ${theme.secondary}60`,
-          }}
-          aria-label="Restart animation"
-          onMouseOver={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.secondary)
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.backgroundColor = theme.primary)
-          }
-        >
-          Restart
-        </button> */}
+       
       </div>
     </div>
   );
