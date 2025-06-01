@@ -8,7 +8,6 @@ import ProgressIndicator from '../ProgressIndicator/ProgressIndicator'
 import ScrollHint from '../ScrollHint/ScrollHint'
 import HeroTitle from "../home/HeroTitle";
 
-
 export default function Hero({ sharedAudio = null }) {
   const [currentSection, setCurrentSection] = useState(0);
   const containerRef = useRef(null);
@@ -21,7 +20,6 @@ export default function Hero({ sharedAudio = null }) {
   });
 
   return (
-
     <div className="relative">
       {/* Sticky container for the hero sections */}
       <div 
@@ -64,40 +62,6 @@ export default function Hero({ sharedAudio = null }) {
           height: `${sectionsData.length * 100}vh` 
         }}
       />
-
-    <div 
-      ref={containerRef}
-      className="w-full h-screen bg-lightText text-darkText overflow-hidden relative"
-    >
-      {/* <ProgressIndicator
-        sections={sectionsData}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-      /> */}
-
-      <ScrollHint currentSection={currentSection} totalSections={sectionsData.length} />
-
-      <div className="relative h-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSection}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="h-full"
-          >
-            
-            <ContentCard
-              {...sectionsData[currentSection]}
-              isVisible={true}
-              delay={200}
-              audio={sharedAudio}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
     </div>
   );
 }
