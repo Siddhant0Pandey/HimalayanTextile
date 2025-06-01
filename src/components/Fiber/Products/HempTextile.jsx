@@ -21,7 +21,7 @@ const timelineData = [
     title: "Harvesting",
     description:
       "Hemp plants are cut and collected when they reach optimal maturity, usually 70-90 days after planting for fiber production.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step1.png",
     icon: FaTractor,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Field Retting",
     description:
       "Cut hemp stalks are left in the field for 2-3 weeks, allowing dew, rain, and sun to begin breaking down the pectin binding the fibers.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step4.png",
     icon: FaSun,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Water Retting",
     description:
       "Alternatively, stalks are submerged in water (ponds, tanks, or slow-moving streams) to accelerate the breakdown of pectin through bacterial action.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step5.png",
     icon: FaWater,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Drying",
     description:
       "After retting, the stalks are thoroughly dried to stop the decomposition process and prepare for breaking.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step3.png",
     icon: FaWind,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Breaking",
     description:
       "The dried stalks are crushed between fluted rollers to break the woody core (hurd) into small pieces while preserving the long outer fibers.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step6.png",
     icon: FaHammer,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Scutching",
     description:
       "The broken stalks are beaten to separate the broken hurds from the valuable long bast fibers.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step6.1.png",
     icon: FaTools,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Hackling",
     description:
       "Fibers are drawn through metal combs of increasing fineness to remove short fibers and align the long fibers in parallel.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "/public/assets/img/Hemp/step7.png",
     icon: FaCut,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Washing",
     description:
       "Fibers are washed to remove any remaining impurities and prepare them for processing into yarn.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step8.png",
     icon: FaShower,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Softening",
     description:
       "Chemical or mechanical treatments are applied to soften the naturally stiff hemp fibers for textile applications.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step9.png",
     icon: FaIndustry,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "The prepared fibers are spun into yarn of various thicknesses depending on the intended final product.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step10.png",
     icon: FaSync,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Weaving Hemp Fabric",
     description:
       "The spun hemp yarn is woven into fabric using traditional or modern weaving techniques to create durable textiles.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/Hemp/step11.png",
     icon: FaThLarge,
   },
 ];
