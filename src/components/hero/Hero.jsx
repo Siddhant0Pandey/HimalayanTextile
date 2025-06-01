@@ -6,6 +6,7 @@ import {useScrollNavigation} from '../../hooks/useScrollNavigation'
 import {sectionsData} from '../data/sectionsData'
 import ProgressIndicator from '../ProgressIndicator/ProgressIndicator'
 import ScrollHint from '../ScrollHint/ScrollHint'
+import HeroTitle from "../home/HeroTitle";
 
 
 
@@ -45,6 +46,7 @@ export default function Hero({ sharedAudio = null }) {
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="h-full"
           >
+            
             <ContentCard
               {...sectionsData[currentSection]}
               isVisible={true}
