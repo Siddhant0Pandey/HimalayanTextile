@@ -147,8 +147,8 @@ export default function Nettle() {
   };
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden w-full">
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
         <div className="h-full w-full bg-gradient-to-br from-green-50 to-green-100" />
       </div>
 
@@ -158,7 +158,7 @@ export default function Nettle() {
 
       <div className="w-full max-w-6xl">
         <div className="relative">
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
 
           {timelineData.map((item, index) => {
             const isLeft = index % 2 === 0;
@@ -171,7 +171,6 @@ export default function Nettle() {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } relative`}
               >
-                {/* Line Progress (Desktop) */}
                 <div
                   className={`hidden md:flex w-1/2 ${
                     isLeft ? "justify-end pr-4" : "justify-start pl-4"
@@ -186,7 +185,6 @@ export default function Nettle() {
                   />
                 </div>
 
-                {/* Card Content */}
                 <div
                   className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
                     activeItems.includes(index)
@@ -214,16 +212,15 @@ export default function Nettle() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600">{item.description}</p>
+                      <p className="text-black">{item.description}</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Icon */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 z-10">
                   <div
                     className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
                       activeItems.includes(index) ? "scale-100" : "scale-0"
@@ -238,7 +235,6 @@ export default function Nettle() {
         </div>
       </div>
 
-      {/* About Section */}
       <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
           About Nettle Fabric
@@ -269,7 +265,6 @@ export default function Nettle() {
         </div>
       </div>
 
-      {/* Fullscreen Modal */}
       {fullscreenImage && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-full max-h-full">
@@ -287,7 +282,6 @@ export default function Nettle() {
                 className="max-w-full max-h-[90vh] object-contain rounded-lg"
               />
 
-              {/* Image Info Overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
                 <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">
                   {fullscreenImage.title}

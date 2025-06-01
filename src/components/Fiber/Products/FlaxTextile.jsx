@@ -136,8 +136,9 @@ export default function FlaxTextile() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden w-full">
+      {/* Background Image */}
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
         <img
           src={processBg}
           alt="process background"
@@ -145,10 +146,12 @@ export default function FlaxTextile() {
         />
       </div>
 
+      {/* Header */}
       <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
         Flax Fiber Creation Process
       </h1>
 
+      {/* Timeline */}
       <div className="w-full max-w-6xl">
         <div className="relative">
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
@@ -162,9 +165,8 @@ export default function FlaxTextile() {
                 key={item.id}
                 className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                } relative`}
+                } relative w-full`}
               >
-                {/* Line Progress (Desktop) */}
                 <div
                   className={`hidden md:flex w-1/2 ${
                     isLeft ? "justify-end pr-4" : "justify-start pl-4"
@@ -179,7 +181,6 @@ export default function FlaxTextile() {
                   />
                 </div>
 
-                {/* Card Content */}
                 <div
                   className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
                     activeItems.includes(index)
@@ -209,7 +210,6 @@ export default function FlaxTextile() {
                   </div>
                 </div>
 
-                {/* Icon */}
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
                   <div
                     className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
@@ -226,7 +226,7 @@ export default function FlaxTextile() {
       </div>
 
       {/* About Section */}
-      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
+      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12 mt-8 overflow-hidden">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
           About Flax Fabric (Linen)
         </h2>
