@@ -136,7 +136,7 @@ export default function VerticalTimeline() {
                     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                       <div className="h-48 overflow-hidden relative">
                         <div
-                          className="absolute inset-0 bg-cover bg-center"
+                          className={`absolute inset-0 ${index === 0 || index === 2 ? "bg-center" : "bg-cover"}`}
                           style={{ backgroundImage: `url(${item.bgImage})` }}
                         ></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
