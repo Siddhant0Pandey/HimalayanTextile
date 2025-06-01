@@ -12,14 +12,14 @@ export default function HomeHero() {
   const [sharedAudio, setSharedAudio] = useState(null);
 
   return (
-    <SoundPromptWrapper
-      onEnable={(audio) => {
-        setAudioUnlocked(true);
-        setSharedAudio(audio);
-      }}
-    >
+    // <SoundPromptWrapper
+    //   onEnable={(audio) => {
+    //     setAudioUnlocked(true);
+    //     setSharedAudio(audio);
+    //   }}
+    // >
       
       <HeroSection sharedAudio={sharedAudio} />
-    </SoundPromptWrapper>
+    // </SoundPromptWrapper>
   );
 }
