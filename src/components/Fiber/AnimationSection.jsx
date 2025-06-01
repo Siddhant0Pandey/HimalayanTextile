@@ -226,8 +226,8 @@ const AnimationSection = () => {
                 style={{ color: theme.primary }}
               />
               <span
-                className="text-xs font-medium mt-1"
-                style={{ color: theme.darkText }}
+                className="text-xs font-medium mt-1 text-white"
+                // style={{ color: theme.darkText }}
               >
                 Process
               </span>
@@ -239,8 +239,8 @@ const AnimationSection = () => {
                 style={{ color: theme.primary }}
               />
               <span
-                className="text-xs font-medium mt-1"
-                style={{ color: theme.darkText }}
+                className="text-xs font-medium mt-1 text-white"
+                // style={{ color: theme.darkText }}
               >
                 Process
               </span>
@@ -271,8 +271,8 @@ const AnimationSection = () => {
                 style={{ color: theme.primary }}
               />
               <span
-                className="text-xs font-medium mt-1"
-                style={{ color: theme.darkText }}
+                className="text-xs font-medium mt-1 text-white"
+                // style={{ color: theme.darkText }}
               >
                 Result
               </span>
@@ -284,8 +284,8 @@ const AnimationSection = () => {
                 style={{ color: theme.primary }}
               />
               <span
-                className="text-xs font-medium mt-1"
-                style={{ color: theme.darkText }}
+                className="text-xs font-medium mt-1 text-white"
+                // style={{ color: theme.darkText }}
               >
                 Result
               </span>
@@ -306,8 +306,6 @@ const AnimationSection = () => {
             style={{ boxShadow: `0 4px 6px ${theme.secondary}50` }}
           />
         </div>
-
-       
       </div>
     </div>
   );
