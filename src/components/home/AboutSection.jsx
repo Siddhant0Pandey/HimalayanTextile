@@ -188,7 +188,9 @@ const AboutSection = () => {
                   }`}
                   style={{ transitionDelay: '400ms' }}
                 >
-                  Himalayan Textile and Industries Ltd. transforms natural fibers into extraordinary textiles, 
+
+                  Himalayan Textile Industries Ltd. transforms natural fibers into extraordinary textiles, 
+
                   pioneering sustainable practices that honor both tradition and innovation.
                 </p>
               </div>
