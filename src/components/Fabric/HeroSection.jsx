@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { MountainSnow, Wind, Leaf } from "lucide-react";
 

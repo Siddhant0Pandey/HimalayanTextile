@@ -8,7 +8,7 @@ export default function ContentCard({
   description, 
   videoSrc, 
   isVisible, 
-  delay = 0,
+  delay = 1,
   type = "problem",
   audio = null
 }) {
@@ -68,7 +68,7 @@ export default function ContentCard({
       animate={isVisible ? "visible" : "hidden"}
     >
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content - Left Side */}
+        
         <div className="space-y-8">
           <div className="space-y-4">
             <motion.div 

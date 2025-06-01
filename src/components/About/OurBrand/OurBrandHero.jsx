@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-// import bgImg from "../../../public/assets/img/bgImage1.png";
+import bgImg from "/assets/img/brand-hero.jpg";
 
 const OurBrandHero = () => {
   // Create refs for animated elements
@@ -82,22 +83,14 @@ const OurBrandHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#1FA951", 
-        // backgroundImage: `url(${bgImg})`,
+        backgroundImage: `url(${bgImg})`,
       }}
     >
-      {/* Wavy border bottom */}
-      <div ref={waveRef} className="absolute bottom-0 w-full overflow-hidden">
-        <svg viewBox="0 0 1440 100" className="w-full">
-          <path
-            fill="white"
-            d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"
-          ></path>
-        </svg>
-      </div>
+      {/* Dark overlay */}
+      <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
 
       {/* Main content */}
-      <div className="text-center px-4 z-10">
+      <div className="text-center px-4 z-50">
         <h1
           ref={textRef}
           className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg"
@@ -110,11 +103,11 @@ const OurBrandHero = () => {
 
         {/* Badge element */}
         {/* <div
-          ref={badgeRef}
-          className="bg-white text-green-600 text-sm font-bold py-2 px-4 rounded-full inline-block mt-4 cursor-pointer shadow-md"
-        >
-          Explore Our Collection
-        </div> */}
+      ref={badgeRef}
+      className="bg-white text-green-600 text-sm font-bold py-2 px-4 rounded-full inline-block mt-4 cursor-pointer shadow-md"
+    >
+      Explore Our Collection
+    </div> */}
       </div>
     </section>
   );

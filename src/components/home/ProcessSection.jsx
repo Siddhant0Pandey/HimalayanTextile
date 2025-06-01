@@ -191,7 +191,7 @@ export default function ProcessSection() {
         animate={titleInView ? "visible" : "hidden"}
         className="pt-20 pb-16 px-4 sm:px-8 text-center"
       >
-        <h1 className="text-4xl sm:text-6xl font-bold mb-6 text-gray-800">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-6 text-gray-800">  
           From Mountain to Market
         </h1>
         
