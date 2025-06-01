@@ -68,115 +68,37 @@ const useTypewriter = (text, speed = 80, delay = 0, enableAudio = false) => {
 };
 
 const ThreadMountains = () => {
-  const mountainPaths = [
-  // Mountain Range 0 (New Far Left - Distant peaks)
-  {
-    id: 'mountain0',
-    path: "M-200,750 L-160,730 L-120,705 L-80,675 L-40,640 L0,600 L40,555 L80,505 L120,450 L160,395 L200,340 L240,395 L280,450 L320,505 L360,555 L400,600 L440,640 L480,675 L520,705 L560,730 L600,750",
-    duration: "7s",
-    delay: "0s",
-    color: "#111827",
-    dashArray: "3000"
-  },
-  
-  // Mountain Range 1 (Far Left - Rocky peaks with snow caps)
+ const mountainPaths = [
+  // Background distant mountains with sharp peaks
   {
     id: 'mountain1',
-    path: "M200,750 L245,720 L285,680 L310,650 L340,620 L365,590 L385,560 L400,520 L420,480 L440,450 L465,420 L485,450 L510,480 L535,510 L560,540 L585,570 L610,600 L640,630 L670,660 L700,690 L730,720 L760,750",
+    path: "M0,750 L200,750 L350,600 L500,750 L650,750 L800,550 L950,750 L1200,750 L1400,650 L1600,750 L2000,750",
     duration: "8s",
-    delay: "0.5s",
-    color: "#1f2937",
-    dashArray: "3200"
+    delay: "0s",
+    color: "#374151",
+    dashArray: "2800"
   },
   
-  // Mountain Range 2 (Left-Center - Alpine style with multiple jagged peaks)
+  // Mid-ground mountain range with multiple sharp peaks
   {
     id: 'mountain2',
-    path: "M600,750 L630,720 L665,685 L695,645 L720,600 L745,555 L775,510 L800,465 L825,420 L855,375 L885,330 L915,285 L945,240 L975,285 L1005,330 L1035,375 L1065,420 L1095,465 L1125,510 L1155,555 L1185,600 L1215,645 L1245,685 L1275,720 L1300,750",
+    path: "M200,750 L400,750 L550,400 L700,750 L850,750 L1000,300 L1150,750 L1300,750 L1450,350 L1600,750 L1800,750 L1950,500 L2100,750 L2400,750",
     duration: "10s",
     delay: "2s",
-    color: "#374151",
-    dashArray: "4500"
-  },
-  
-  // Mountain Range 3 (Center - Himalayan style main peak)
-  {
-    id: 'mountain3',
-    path: "M1100,750 L1140,710 L1180,665 L1220,615 L1260,560 L1300,500 L1340,435 L1380,365 L1420,290 L1460,210 L1500,130 L1540,80 L1580,45 L1620,80 L1660,130 L1700,210 L1740,290 L1780,365 L1820,435 L1860,500 L1900,560 L1940,615 L1980,665 L2020,710 L2060,750",
-    duration: "12s",
-    delay: "3.5s",
     color: "#4b5563",
-    dashArray: "5800"
-  },
-  
-  // Mountain Range 4 (Right-Center - Rugged peaks with steep faces)
-  {
-    id: 'mountain4',
-    path: "M1800,750 L1835,715 L1870,675 L1905,630 L1940,580 L1975,525 L2010,465 L2045,400 L2080,330 L2115,255 L2150,175 L2185,255 L2220,330 L2255,400 L2290,465 L2325,525 L2360,580 L2395,630 L2430,675 L2465,715 L2500,750",
-    duration: "9s",
-    delay: "5s",
-    color: "#6b7280",
     dashArray: "4200"
   },
   
-  // Mountain Range 5 (Far Right - Rolling foothills)
+  // Foreground mountain with tall central peak
   {
-    id: 'mountain5',
-    path: "M2200,750 L2235,730 L2270,705 L2305,675 L2340,640 L2375,600 L2410,555 L2445,505 L2480,450 L2515,395 L2550,340 L2585,395 L2620,450 L2655,505 L2690,555 L2725,600 L2760,640 L2795,675 L2830,705 L2865,730 L2900,750",
-    duration: "7s",
-    delay: "6.5s",
-    color: "#9ca3af",
-    dashArray: "3600"
-  },
-  
-  // Additional jagged peaks for depth
-  {
-    id: 'mountain6',
-    path: "M900,750 L935,720 L970,685 L1005,645 L1040,600 L1075,550 L1110,495 L1145,435 L1180,370 L1215,300 L1250,225 L1285,145 L1320,225 L1355,300 L1390,370 L1425,435 L1460,495 L1495,550 L1530,600 L1565,645 L1600,685 L1635,720 L1670,750",
-    duration: "11s",
-    delay: "3s",
-    color: "#52525b",
-    dashArray: "5200"
+    id: 'mountain3',
+    path: "M800,750 L1000,750 L1200,200 L1400,750 L1600,750 L1800,100 L2000,750 L2200,750",
+    duration: "12s",
+    delay: "4s",
+    color: "#6b7280",
+    dashArray: "3200"
   }
 ];
-
-// Additional configuration for more realistic mountain rendering
-const mountainConfig = {
-  // Base elevation (y-coordinate for mountain base)
-  baseElevation: 750,
-  
-  // Mountain types with their characteristics
-  mountainTypes: {
-    rocky: {
-      jaggedness: 0.8, // How sharp the peaks are
-      variation: 0.6,   // Height variation between peaks
-      color: "#1f2937"
-    },
-    alpine: {
-      jaggedness: 0.9,
-      variation: 0.8,
-      color: "#374151"
-    },
-    himalayan: {
-      jaggedness: 1.0,
-      variation: 1.0,
-      color: "#4b5563"
-    },
-    foothills: {
-      jaggedness: 0.4,
-      variation: 0.3,
-      color: "#9ca3af"
-    }
-  },
-  
-  // Animation settings for more natural movement
-  animationSettings: {
-    easingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)",
-    staggerDelay: 1.5, // Seconds between each mountain animation start
-    totalDuration: 12   // Total animation cycle duration
-  }
-};
-
   return (
     <div className="absolute bottom-0 left-0 right-0 h-96 overflow-hidden">
       <svg
