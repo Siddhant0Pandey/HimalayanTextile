@@ -2,9 +2,10 @@
 
 
 import { useState } from "react";
-import Hero from "../hero/hero";
+
 import SoundPromptWrapper from "../hero/SoundPromptWrapper";
-import HeroTitle from "./HeroTitle";
+
+import HeroSection from "../hero/HeroSection";
 
 export default function HomeHero() {
   const [audioUnlocked, setAudioUnlocked] = useState(false);
@@ -18,7 +19,7 @@ export default function HomeHero() {
       }}
     >
       
-      <Hero sharedAudio={sharedAudio} />
+      <HeroSection sharedAudio={sharedAudio} />
     </SoundPromptWrapper>
   );
 }
