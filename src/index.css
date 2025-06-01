@@ -14,9 +14,7 @@
   --color-lightText: #eaeeff;
   --color-darkText: #1d1f10;
 }
-@extend {
-  scrollsnaptype: [ "x", "mandatory"];
-}
+
 
 body {
   overflow-x: hidden;
@@ -70,3 +68,19 @@ body {
 }
 
 
+/* horizontal snapping */
+
+.horizontal-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+}
+
+.panel {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+}
