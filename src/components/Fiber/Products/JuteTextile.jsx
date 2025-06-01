@@ -20,104 +20,91 @@ const timelineData = [
   {
     id: 1,
     title: "Planting",
-    description:
-      "Jute seeds are sown closely in warm, humid conditions. Planting typically occurs between March and May, with tropical and subtropical regions like Bangladesh and India being the primary cultivation areas.",
+    description: "Jute seeds are sown closely...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSeedling,
   },
   {
     id: 2,
     title: "Growing",
-    description:
-      "Jute plants grow rapidly, reaching heights of 8-12 feet in just 4-6 months. The plants thrive in hot, humid conditions with temperatures between 20-40°C and high rainfall, developing a straight stem with minimal branching.",
+    description: "Jute plants grow rapidly...",
     bgImage: "/api/placeholder/600/400",
     icon: FaLeaf,
   },
   {
     id: 3,
     title: "Harvesting",
-    description:
-      "Jute is harvested when the plants begin to flower, typically 4-6 months after planting. Harvesting at this stage ensures optimal fiber quality. The plants are cut close to the ground using sickles or other cutting tools.",
+    description: "Jute is harvested when...",
     bgImage: "/api/placeholder/600/400",
     icon: FaTractor,
   },
   {
     id: 4,
     title: "Bundling",
-    description:
-      "After cutting, jute stalks are bundled together and the leaves are removed. The bundles are left in the field for a few days to allow the leaves to shed naturally, making the next steps easier.",
+    description: "After cutting, jute stalks are bundled...",
     bgImage: "/api/placeholder/600/400",
     icon: FaBoxOpen,
   },
   {
     id: 5,
     title: "Retting",
-    description:
-      "Bundles of jute stems are submerged in slow-moving water (ponds, ditches, or tanks) for 10-30 days. This microbial action helps decompose the gummy materials binding the fibers to the woody stem.",
+    description: "Bundles of jute stems are submerged...",
     bgImage: "/api/placeholder/600/400",
     icon: FaWater,
   },
   {
     id: 6,
     title: "Stripping",
-    description:
-      "After retting, farmers manually strip the fibers from the stem. Standing waist-deep in water, they remove non-fibrous matter by pulling and beating the stems, then washing the fibers clean.",
+    description: "After retting, farmers manually strip...",
     bgImage: "/api/placeholder/600/400",
     icon: FaHandsHelping,
   },
   {
     id: 7,
     title: "Drying",
-    description:
-      "The extracted jute fibers are hung on bamboo poles or laid out to dry in the sun for 2-3 days. Proper drying is essential to prevent fiber damage from mold or mildew and to maintain quality.",
+    description: "The extracted jute fibers are hung...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSun,
   },
   {
     id: 8,
     title: "Grading & Sorting",
-    description:
-      "Dried jute fibers are sorted based on color, strength, length, luster, and other quality factors. Higher grades are used for fine textiles, while lower grades go into industrial applications like sacking.",
+    description: "Dried jute fibers are sorted...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSort,
   },
   {
     id: 9,
     title: "Baling",
-    description:
-      "The graded fibers are compressed into compact bales weighing about 150-180 kg each for easier transportation to jute mills. This step standardizes the raw material for industrial processing.",
+    description: "The graded fibers are compressed...",
     bgImage: "/api/placeholder/600/400",
     icon: FaTools,
   },
   {
     id: 10,
     title: "Softening & Batching",
-    description:
-      "At the mill, jute fibers are treated with oil and water emulsion to make them soft, pliable, and easier to process. The batching process conditions the fibers for the next manufacturing stages.",
+    description: "At the mill, jute fibers are treated...",
     bgImage: "/api/placeholder/600/400",
     icon: FaIndustry,
   },
   {
     id: 11,
     title: "Carding & Drawing",
-    description:
-      "The softened fibers pass through a series of machines that card (comb), draw (align), and blend the fibers into continuous ribbons called slivers, preparing them for spinning.",
+    description: "The softened fibers pass through machines...",
     bgImage: "/api/placeholder/600/400",
     icon: FaCut,
   },
   {
     id: 12,
     title: "Spinning",
-    description:
-      "The jute slivers are spun into yarn of various qualities and thicknesses. This process involves drafting (pulling) and twisting the fibers to create continuous threads with appropriate strength.",
+    description: "The jute slivers are spun into yarn...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSync,
   },
   {
     id: 13,
     title: "Weaving",
-    description:
-      "Jute yarn is woven into various fabrics using different techniques. The resulting textiles range from coarse sacking and hessian (burlap) to finer fabrics used for bags, rugs, and home furnishings.",
+    description: "Jute yarn is woven into various fabrics...",
     bgImage: "/api/placeholder/600/400",
     icon: FaThLarge,
   },
@@ -145,7 +132,7 @@ export default function JuteTextile() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden w-full">
       <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
         <img
           src={processBg}
@@ -158,9 +145,9 @@ export default function JuteTextile() {
         Jute Fiber Creation Process
       </h1>
 
-      <div className="w-full max-w-6xl">
+      <div className="w-full max-w-6xl overflow-x-hidden">
         <div className="relative">
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
 
           {timelineData.map((item, index) => {
             const isLeft = index % 2 === 0;
@@ -171,7 +158,7 @@ export default function JuteTextile() {
                 key={item.id}
                 className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                } relative`}
+                } relative w-full`}
               >
                 {/* Line Progress (Desktop) */}
                 <div
@@ -210,7 +197,7 @@ export default function JuteTextile() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
                       <p className="text-gray-600">{item.description}</p>
@@ -235,7 +222,7 @@ export default function JuteTextile() {
       </div>
 
       {/* About Section */}
-      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
+      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12 overflow-x-hidden">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
           About Jute Fabric
         </h2>
@@ -248,7 +235,7 @@ export default function JuteTextile() {
           tensile strength, biodegradability, and versatility. Jute fibers are
           naturally lustrous, with a golden to brownish sheen, and are 100%
           biodegradable and recyclable. Environmentally, jute is exceptionally
-          sustainable - it requires minimal fertilizers and pesticides, enriches
+          sustainable — it requires minimal fertilizers and pesticides, enriches
           the soil, absorbs CO2 rapidly, and releases oxygen during cultivation.
           One hectare of jute plants can absorb up to 15 tons of carbon dioxide
           while releasing 11 tons of oxygen. Traditionally used for sacking and
