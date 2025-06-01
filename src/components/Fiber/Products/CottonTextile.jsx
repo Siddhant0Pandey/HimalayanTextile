@@ -136,8 +136,8 @@ export default function CottonTextile() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 w-full overflow-x-hidden">
+      <div className="absolute inset-0 -z-10 blur-sm overflow-hidden">
         <img
           src={processBg}
           alt="process background"
@@ -190,9 +190,9 @@ export default function CottonTextile() {
                   }`}
                 >
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div className="h-48 sm:h-64 overflow-hidden relative">
+                    <div className="h-48 sm:h-64 overflow-hidden relative max-w-full">
                       <div
-                        className="absolute inset-0 bg-cover bg-center"
+                        className="absolute inset-0 bg-cover bg-center max-w-full"
                         style={{ backgroundImage: `url(${item.bgImage})` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -201,7 +201,7 @@ export default function CottonTextile() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
                       <p className="text-gray-600">{item.description}</p>
