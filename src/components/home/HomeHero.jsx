@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Hero from "../hero/hero";
 import SoundPromptWrapper from "../hero/SoundPromptWrapper";
+import HeroTitle from "./HeroTitle";
 
 export default function HomeHero() {
   const [audioUnlocked, setAudioUnlocked] = useState(false);
@@ -16,6 +17,7 @@ export default function HomeHero() {
         setSharedAudio(audio);
       }}
     >
+      
       <Hero sharedAudio={sharedAudio} />
     </SoundPromptWrapper>
   );

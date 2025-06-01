@@ -1,11 +1,5 @@
 export const sectionsData = [
-  {
-    id: "intro",
-    title: "Himalayan Textiles",
-    description: "Weaving sustainability into every thread. Discover how we're revolutionizing the textile industry with eco-friendly practices and innovative solutions.",
-    type: "intro",
-    videoSrc: "/assets/img/logo/logo1.png"
-  },
+
   {
     id: "environmental",
     title: "Environmental Crisis",

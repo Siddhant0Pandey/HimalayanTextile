@@ -1,26 +1,27 @@
 import React from "react";
-import WhatSetsUsApart from "../components/home/WhatSetsUsApart";
 import CoreValues from "../components/home/CoreValues";
 import MyMap from "../components/map/MyMap";
 import AboutSection from "../components/home/AboutSection";
 import ProductsSection from "../components/home/ProductsSection";
 import ProcessSection from "../components/home/ProcessSection";
 import HomeHero from "../components/home/HomeHero";
+import HeroTitle from "../components/home/HeroTitle";
+import TextileStoryTransition from "../components/home/TextileStoryTransition";
+import WhatSetsUsApartHorizontal from "../components/home/WhatSetsUsApart";
 
 function Home() {
   return (
-    <>
+    <div >
+    <HeroTitle/>
+    <TextileStoryTransition/>
       <HomeHero />
-      <ProcessSection />
-
       <AboutSection />
-
-      <WhatSetsUsApart />
-
-      <ProductsSection />
+      <ProcessSection />
       <CoreValues />
+      <ProductsSection />
+      {/* <WhatSetsUsApartHorizontal /> */}
       <MyMap />
-    </>
+    </div>
   );
 }
 
