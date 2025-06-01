@@ -121,7 +121,9 @@ export default function TextileTransitionPage() {
         {/* First Line */}
         <motion.p 
           ref={line1Ref}
-          className="text-2xl md:text-4xl lg:text-5xl text-gray-800 font-light leading-relaxed"
+
+          className="text-3xl md:text-4xl lg:text-5xl text-gray-800  leading-relaxed font-normal"
+
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -131,7 +133,9 @@ export default function TextileTransitionPage() {
             <motion.span 
               className="text-gray-400"
               animate={{ opacity: [1, 0, 1] }}
+
               transition={{ duration: 0.8, repeat: Infinity }}
+
             >
               |
             </motion.span>
@@ -149,7 +153,9 @@ export default function TextileTransitionPage() {
         {/* Second Line */}
         <motion.p 
           ref={line2Ref}
-          className="text-2xl md:text-4xl lg:text-5xl text-gray-800 font-light leading-relaxed"
+
+          className="text-3xl md:text-4xl lg:text-5xl text-gray-800  leading-relaxed font-normal"
+
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
