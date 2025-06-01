@@ -21,7 +21,7 @@ const timelineData = [
     title: "Egg Stage",
     description:
       "Silkworm moths lay tiny eggs on mulberry leaves. These eggs are carefully collected and stored in controlled conditions. Each female moth can lay 300-500 eggs, which will hatch into silkworms in about 10-14 days under proper temperature and humidity.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/1.png",
     icon: FaEgg,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Larva Hatching",
     description:
       "Silkworm larvae (caterpillars) emerge from eggs and begin feeding exclusively on fresh mulberry leaves. These tiny worms are about 3mm long when they hatch and have voracious appetites, eating continuously to fuel their rapid growth.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/2.png",
     icon: FaBug,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Feeding & Growth",
     description:
       "For 4-6 weeks, silkworms eat mulberry leaves constantly, growing through five molting stages (instars). They increase their body weight by 3,000 times, becoming plump, white caterpillars about 3 inches long before they're ready to spin cocoons.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/3.png",
     icon: FaLeaf,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Cocoon Formation",
     description:
       "Mature silkworms begin spinning their cocoons by secreting liquid silk protein from special glands. They create a protective oval shell around themselves, spinning continuously for 2-3 days to produce up to 1,000 meters of continuous silk fiber.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/4.png",
     icon: FaHome,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Cocoon Selection",
     description:
       "Fresh cocoons are carefully sorted and selected for quality. The best cocoons are firm, well-shaped, and free from stains or defects. Some cocoons are set aside for breeding to continue the lifecycle, while others proceed to silk extraction.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/5.png",
     icon: FaSort,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Killing (Stifling)",
     description:
       "To prevent the pupae from emerging and breaking the silk fibers, cocoons are exposed to hot air or steam at 60-80°C. This stifling process preserves the continuous silk filament while stopping the metamorphosis process.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/6.png",
     icon: FaFire,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Softening",
     description:
       "Stifled cocoons are immersed in hot water (95-97°C) to soften the sericin gum that binds the silk fibers together. This process makes it easier to find the end of the silk filament and begins the unwinding process.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/7.png",
     icon: FaWater,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Reeling",
     description:
       "The softened cocoons are carefully unwound to extract the continuous silk filament. Multiple filaments (4-8) are combined and twisted together to form a single silk thread strong enough for textile production. This requires great skill and precision.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/8.png",
     icon: FaHandsHelping,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Twisting & Winding",
     description:
       "The reeled silk threads are twisted together to create stronger yarn with desired thickness and strength. The yarn is wound onto bobbins and prepared for further processing. Different twist levels create various silk yarn qualities.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/9.png",
     icon: FaTools,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Degumming",
     description:
       "Raw silk yarn undergoes degumming to remove residual sericin gum, which makes the silk softer, more lustrous, and lighter. This process involves boiling the silk in soapy water, reducing its weight by 20-25%.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/10.png",
     icon: FaIndustry,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Dyeing",
     description:
       "The degummed silk is dyed in various colors using natural or synthetic dyes. Silk's protein structure readily accepts dyes, resulting in vibrant, long-lasting colors. The dyeing process requires careful temperature and pH control.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/11.png",
     icon: FaCut,
   },
   {
@@ -109,7 +109,7 @@ const timelineData = [
     title: "Spinning & Preparation",
     description:
       "Dyed silk yarn is prepared for weaving by winding it onto spools, warping beams, or bobbins depending on its intended use. The yarn is inspected for quality and organized according to color and weight specifications.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/12.png",
     icon: FaSync,
   },
   {
@@ -117,7 +117,7 @@ const timelineData = [
     title: "Weaving",
     description:
       "Silk yarn is woven into luxurious fabrics using various techniques on handlooms or power looms. Different weaving patterns create distinct silk fabrics like satin, chiffon, taffeta, and brocade, each with unique properties and uses.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "public/assets/img/silk/13.png",
     icon: FaThLarge,
   },
 ];
@@ -209,7 +209,7 @@ export default function SilkTextile() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
                       <p className="text-gray-600">{item.description}</p>
