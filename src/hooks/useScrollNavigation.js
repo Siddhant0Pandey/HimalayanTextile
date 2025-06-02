@@ -39,21 +39,21 @@ export const useScrollNavigation = ({
   // Wheel event handler with scroll accumulation for better control
   useEffect(() => {
     const handleWheel = (e) => {
-      // Only prevent default if we're going to handle the scroll internally
+     
       const direction = e.deltaY > 0 ? 'down' : 'up';
       
       // Check if we should allow natural scrolling
       if ((direction === 'down' && currentSection === totalSections - 1) ||
           (direction === 'up' && currentSection === 0)) {
-        return; // Don't prevent default, allow natural page scroll
+        return;
       }
       
       e.preventDefault();
       
-      // Accumulate scroll delta for smoother control
+   
       scrollAccumulator.current += Math.abs(e.deltaY);
       
-      // Only trigger section change after accumulating enough scroll
+    
       if (scrollAccumulator.current > 100) {
         handleScroll(direction);
         scrollAccumulator.current = 0;
