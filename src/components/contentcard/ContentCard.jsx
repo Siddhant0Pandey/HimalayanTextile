@@ -45,17 +45,17 @@ export default function ContentCard({
       case "problem":
         return {
           badge: "CHALLENGE",
-          badgeClass: "bg-red-500/20 text-red-300 border border-red-500/30"
+          badgeClass: "bg-red-500/20 text-red-500 border border-red-700/30"
         };
       case "solution":
         return {
           badge: "SOLUTION",
-          badgeClass: "bg-green-500/20 text-green-300 border border-green-500/30"
+          badgeClass: "bg-green-500/20 text-green-700 border border-green-600/30"
         };
       default:
         return {
           badge: "INTRODUCTION",
-          badgeClass: "bg-blue-500/20 text-blue-300 border border-blue-500/30"
+          badgeClass: "bg-blue-500/20 text-blue-700 border border-blue-600/30"
         };
     }
   };
