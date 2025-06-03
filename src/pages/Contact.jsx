@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const containerRef = useRef(null);
@@ -19,7 +20,6 @@ function Contact() {
   });
 
   useEffect(() => {
-    // Simple fade-in animation simulation
     const elements = document.querySelectorAll(".fade-up");
     elements.forEach((el, index) => {
       el.style.opacity = "0";
@@ -41,7 +41,6 @@ function Contact() {
       [name]: value,
     }));
 
-    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -49,7 +48,6 @@ function Contact() {
       }));
     }
 
-    // Clear status message when user starts typing
     if (statusMessage) {
       setStatusMessage("");
     }
@@ -69,20 +67,35 @@ function Contact() {
     return !Object.values(newErrors).some((error) => error);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!validateForm()) {
       setStatusMessage("Please correct the highlighted fields.");
       return;
     }
 
-    // Simulate email sending
     setStatusMessage("Sending...");
+    console.log("Sending form data:", formData);
 
-    setTimeout(() => {
-      setStatusMessage("Message sent successfully!");
-      setFormData({ user_name: "", user_email: "", message: "" });
-      setErrors({ user_name: false, user_email: false, message: false });
-    }, 1500);
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setStatusMessage("Message sent successfully!");
+          setFormData({ user_name: "", user_email: "", message: "" });
+          setErrors({ user_name: false, user_email: false, message: false });
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          setStatusMessage("Failed to send message. Please try again later.");
+        }
+      );
   };
 
   const getInputClassName = (fieldName) => {
@@ -141,7 +154,11 @@ function Contact() {
         </div>
 
         {/* Form */}
-        <div className="bg-white shadow-xl rounded-xl p-8 space-y-6">
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="bg-white shadow-xl rounded-xl p-8 space-y-6"
+        >
           <div className="fade-up">
             <label className="block font-medium mb-1">Name</label>
             <input
@@ -196,8 +213,7 @@ function Contact() {
           </div>
 
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
             className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer font-semibold py-3 rounded-md transition-all"
           >
             Send Message
@@ -216,7 +232,7 @@ function Contact() {
               {statusMessage}
             </p>
           )}
-        </div>
+        </form>
       </div>
 
       {/* Map */}
