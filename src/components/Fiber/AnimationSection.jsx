@@ -206,7 +206,7 @@ const AnimationSection = () => {
         {/* First Image */}
         <div
           className={`${getAnimationClass(1)} ${
-            isSmallScreen ? "w-16 h-16" : "w-32 h-32"
+            isSmallScreen ? "w-20 h-20" : "w-32 h-32"
           } z-10 mt-5`}
         >
           <img
@@ -296,7 +296,7 @@ const AnimationSection = () => {
         {/* Third Image */}
         <div
           className={`${getAnimationClass(5)} ${
-            isSmallScreen ? "w-20 h-20" : "w-32 h-32"
+            isSmallScreen ? "w-22 h-22" : "w-32 h-32"
           } z-10`}
         >
           <img
