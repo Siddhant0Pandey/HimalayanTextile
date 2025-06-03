@@ -60,7 +60,7 @@ export default function YarnOfferings() {
       name: "Cactus Yarn",
       description:
         "Innovative cactus-based yarn crafted from prickly pear fibers. It’s biodegradable, durable, and a water-efficient alternative to synthetics.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/Cactus.png",
       features: ["Biodegradable", "Low water usage", "Vegan alternative"],
     },
     {
@@ -68,7 +68,7 @@ export default function YarnOfferings() {
       name: "Banana Yarn",
       description:
         "Extracted from banana pseudostems, this yarn is strong, lustrous, and perfect for eco-conscious textile products with a silk-like sheen.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/Banana.png",
       features: ["Silky feel", "Sustainable", "High tensile strength"],
     },
     {
@@ -76,7 +76,7 @@ export default function YarnOfferings() {
       name: "Jute Yarn",
       description:
         "Coarse and durable, jute yarn is ideal for crafts, rugs, and rustic textiles. Its natural golden hue adds earthy character to every piece.",
-      image: "assets/img/yarn/paswool.jpg",
+      image: "assets/img/yarn/Jute.png",
       features: ["Coarse texture", "Compostable", "Affordable"],
     },
     {
@@ -170,7 +170,6 @@ export default function YarnOfferings() {
             "-=0.6"
           );
       }
-      
 
       // Immediately make cards visible with no scroll trigger dependency
       // Force cards to be visible first
