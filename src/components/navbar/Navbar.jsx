@@ -212,7 +212,7 @@ function Navbar() {
           {/* Menu Button */}
           <div
             onClick={toggleMenu}
-            className="flex items-center gap-2 cursor-pointer group mr-15"
+            className="flex items-center gap-2 cursor-pointer group"
           >
             {!menuOpen && (
               <span
