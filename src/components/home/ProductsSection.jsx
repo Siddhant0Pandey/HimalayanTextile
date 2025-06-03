@@ -103,7 +103,7 @@ function SimpleCarousel({ items, isFromLeft }) {
 
 function ProductSection({ product, isFromLeft }) {
   return (
-    <div className="w-full py-16 px-4 relative">
+    <div className="w-full py-16 px-4 relative overflow-x-hidden">
    
       <motion.div
         className={`absolute top-8 ${isFromLeft ? 'right-8' : 'left-8'} z-10`}
