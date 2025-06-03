@@ -20,104 +20,104 @@ const timelineData = [
     id: 1,
     title: "Cactus Cultivation",
     description:
-      "Prickly pear cacti (Opuntia ficus-indica) are cultivated on plantations in arid regions...",
-    bgImage: "/api/placeholder/600/400",
+      "Prickly pear cacti (Opuntia ficus-indica) are cultivated on plantations in arid and semi-arid regions due to their low water requirements and resilience. These plants are grown without pesticides or synthetic fertilizers, making them an environmentally friendly raw material.",
+    bgImage: "public/assets/img/cactus/1.png",
     icon: FaSeedling,
   },
   {
     id: 2,
     title: "Harvesting",
     description:
-      "Mature cactus pads are carefully harvested by hand using specialized tools...",
-    bgImage: "/api/placeholder/600/400",
+      "Mature cactus pads are carefully harvested by hand using specialized tools to prevent damage to the plant. The harvesting process is designed to be sustainable, ensuring that the mother plant continues to grow and produce new pads over time.",
+    bgImage: "public/assets/img/cactus/2.png",
     icon: FaCut,
   },
   {
     id: 3,
     title: "Cleaning & Preparation",
     description:
-      "Harvested cactus pads are thoroughly cleaned to remove spines, dirt, and debris...",
-    bgImage: "/api/placeholder/600/400",
+      "Harvested cactus pads are thoroughly cleaned to remove spines, dirt, and debris. This step is essential to ensure the quality of the final product and to prepare the cactus pads for juice extraction and biomass processing.",
+    bgImage: "public/assets/img/cactus/3.png",
     icon: FaLeaf,
   },
   {
     id: 4,
     title: "Juice Extraction",
     description:
-      "The cleaned cactus pieces are crushed and pressed to extract the mucilaginous juice...",
-    bgImage: "/api/placeholder/600/400",
+      "The cleaned cactus pieces are crushed and pressed to extract the mucilaginous juice, which contains natural gums and binders. This juice is a key component used later in the fiber formation process.",
+    bgImage: "public/assets/img/cactus/4.png",
     icon: FaWater,
   },
   {
     id: 5,
     title: "Drying Process",
     description:
-      "The remaining cactus pulp is spread in thin layers and dried under controlled conditions...",
-    bgImage: "/api/placeholder/600/400",
+      "The remaining cactus pulp is spread in thin layers and dried under controlled conditions to reduce moisture content. This drying can be done naturally using solar energy or in low-energy drying units to preserve eco-efficiency.",
+    bgImage: "public/assets/img/cactus/5.png",
     icon: FaSun,
   },
   {
     id: 6,
     title: "Biomass Processing",
     description:
-      "The dried cactus biomass is ground into a fine powder using industrial mills...",
-    bgImage: "/api/placeholder/600/400",
+      "The dried cactus biomass is ground into a fine powder using industrial mills. This powder serves as the base for developing biodegradable and versatile cactus fibers for textile applications.",
+    bgImage: "public/assets/img/cactus/6.png",
     icon: FaFire,
   },
   {
     id: 7,
     title: "Fiber Formation",
     description:
-      "The cactus powder is mixed with the extracted mucilage and other natural binders...",
-    bgImage: "/api/placeholder/600/400",
+      "The cactus powder is mixed with the extracted mucilage and other natural binders to form a fibrous material. This mixture is mechanically processed to align fiber particles and produce continuous filaments.",
+    bgImage: "public/assets/img/cactus/7.png",
     icon: FaHandsHelping,
   },
   {
     id: 8,
     title: "Fiber Spinning",
     description:
-      "The formed cactus fibers are spun into yarn using traditional spinning techniques...",
-    bgImage: "/api/placeholder/600/400",
+      "The formed cactus fibers are spun into yarn using traditional spinning techniques adapted for plant-based fibers. The process ensures the yarn retains the desirable strength and flexibility needed for fabric production.",
+    bgImage: "public/assets/img/cactus/8.png",
     icon: FaSort,
   },
   {
     id: 9,
     title: "Strengthening Treatment",
     description:
-      "The spun cactus yarn undergoes strengthening treatments to improve durability...",
-    bgImage: "/api/placeholder/600/400",
+      "The spun cactus yarn undergoes strengthening treatments to improve its durability and longevity. Natural enzymes or low-impact chemical processes may be used to increase tensile strength while keeping the fiber biodegradable.",
+    bgImage: "public/assets/img/cactus/9.png",
     icon: FaTools,
   },
   {
     id: 10,
     title: "Quality Control",
     description:
-      "Each batch of cactus fiber yarn is tested for strength, elasticity, moisture absorption...",
-    bgImage: "/api/placeholder/600/400",
+      "Each batch of cactus fiber yarn is rigorously tested for strength, elasticity, moisture absorption, and overall texture. Quality checks ensure the fiber meets sustainability and performance standards before dyeing.",
+    bgImage: "public/assets/img/cactus/10.png",
     icon: FaCog,
   },
   {
     id: 11,
     title: "Natural Dyeing",
     description:
-      "Cactus fibers are dyed using eco-friendly dyes derived from plants...",
-    bgImage: "/api/placeholder/600/400",
+      "Cactus fibers are dyed using eco-friendly dyes derived from plants, minerals, and insects. This natural dyeing process avoids harmful synthetic chemicals and reduces water and energy consumption.",
+    bgImage: "public/assets/img/cactus/11.png",
     icon: FaIndustry,
   },
   {
     id: 12,
     title: "Yarn Preparation",
     description:
-      "Dyed cactus yarn is prepared for textile production by winding onto spools...",
-    bgImage: "/api/placeholder/600/400",
+      "Dyed cactus yarn is prepared for textile production by winding onto spools, aligning fiber direction, and organizing the yarns by color, thickness, and strength for efficient weaving or knitting.",
+    bgImage: "public/assets/img/cactus/12.png",
     icon: FaSync,
   },
   {
     id: 13,
     title: "Textile Production",
     description:
-      "Cactus fiber yarn is woven or knitted into sustainable textiles...",
-    bgImage: "/api/placeholder/600/400",
+      "Cactus fiber yarn is woven or knitted into sustainable textiles using modern looms. These fabrics are used in fashion, upholstery, and eco-friendly packaging due to their strength, softness, and biodegradability.",
+    bgImage: "public/assets/img/cactus/13.png",
     icon: FaThLarge,
   },
 ];
@@ -212,7 +212,7 @@ export default function CactusTextile() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
                       <p className="text-gray-600">{item.description}</p>
@@ -243,8 +243,19 @@ export default function CactusTextile() {
         </h2>
         <p className="mb-4 text-gray-700">
           Cactus fiber represents the cutting edge of sustainable textile
-          innovation... (truncated for brevity)
+          innovation. Derived from the resilient prickly pear cactus, this fiber
+          offers an eco-conscious alternative to synthetic and water-intensive
+          natural fibers. It is cultivated without pesticides or synthetic
+          fertilizers, and processed using low-impact, biodegradable methods.
+          The resulting fabric is soft, breathable, durable, and suitable for a
+          variety of applications—from clothing and accessories to home
+          furnishings. By utilizing cactus as a raw material, manufacturers
+          reduce water consumption, lower their carbon footprint, and contribute
+          to a more sustainable fashion industry. This revolutionary approach
+          not only preserves biodiversity and natural resources but also sets a
+          new standard for responsible textile production.
         </p>
+
         <div className="flex justify-center">
           <img
             src="/api/placeholder/800/400"

@@ -15,108 +15,110 @@ import {
   FaThLarge,
 } from "react-icons/fa";
 
+// Inside timelineData (replace the existing descriptions)
 const timelineData = [
   {
     id: 1,
     title: "Sheep Raising",
     description:
-      "Sheep are raised in pastures where they graze on natural grasses and vegetation...",
-    bgImage: "/api/placeholder/600/400",
+      "Sheep are raised in pastures where they graze on natural grasses and vegetation. Healthy, well-fed sheep produce the best quality wool. Farmers monitor their diet, shelter, and health to ensure the fleece grows strong and consistent throughout the year.",
+    bgImage: "public/assets/img/wool/1.png",
     icon: FaSeedling,
   },
   {
     id: 2,
     title: "Wool Shearing",
     description:
-      "Sheep are sheared annually, typically in spring before hot weather arrives...",
-    bgImage: "/api/placeholder/600/400",
+      "Sheep are sheared annually, typically in spring before hot weather arrives. This humane and painless process involves carefully removing the fleece in one large piece using electric clippers, ensuring both animal welfare and fiber quality.",
+    bgImage: "public/assets/img/wool/2.png",
     icon: FaCut,
   },
   {
     id: 3,
     title: "Fleece Sorting",
     description:
-      "Raw fleeces are sorted by quality, with different parts of the sheep producing different grades...",
-    bgImage: "/api/placeholder/600/400",
+      "Raw fleeces are sorted by quality, with different parts of the sheep producing different grades of wool. High-quality wool from the back and sides is separated from coarser fiber found on the legs or belly. This ensures uniformity in processing.",
+    bgImage: "public/assets/img/wool/3.png",
     icon: FaLeaf,
   },
   {
     id: 4,
     title: "Wool Scouring",
     description:
-      "Raw wool contains lanolin, dirt, and vegetable matter that must be removed...",
-    bgImage: "/api/placeholder/600/400",
+      "Raw wool contains lanolin (natural grease), dirt, and vegetable matter that must be removed. Scouring involves washing the wool in a series of detergent and water baths to clean it without damaging the delicate fiber.",
+    bgImage: "public/assets/img/wool/4.png",
     icon: FaWater,
   },
   {
     id: 5,
     title: "Drying Process",
     description:
-      "After scouring, the clean wool is dried using controlled temperature and humidity...",
-    bgImage: "/api/placeholder/600/400",
+      "After scouring, the clean wool is dried using controlled temperature and humidity systems. This ensures the fibers retain their natural crimp and resilience while preventing shrinkage or damage.",
+    bgImage: "public/assets/img/wool/5.png",
     icon: FaSun,
   },
   {
     id: 6,
     title: "Wool Carbonizing",
     description:
-      "Vegetable matter remaining in the wool is removed through carbonizing...",
-    bgImage: "/api/placeholder/600/400",
+      "Vegetable matter remaining in the wool is removed through carbonizing — a chemical process where wool is treated with acid and then heated to carbonize the impurities. This step is important for producing smooth, high-quality yarn.",
+    bgImage: "public/assets/img/wool/6.png",
     icon: FaFire,
   },
   {
     id: 7,
     title: "Wool Combing",
     description:
-      "Wool fibers are combed to align them parallel and remove shorter fibers...",
-    bgImage: "/api/placeholder/600/400",
+      "Wool fibers are combed to align them parallel and remove shorter fibers and any residual impurities. This results in a smoother, more lustrous fiber that’s ideal for spinning into fine yarns, especially in worsted yarn production.",
+    bgImage: "public/assets/img/wool/7.png",
     icon: FaHandsHelping,
   },
   {
     id: 8,
     title: "Wool Carding",
     description:
-      "For woolen processing, wool is carded using wire-covered rollers...",
-    bgImage: "/api/placeholder/600/400",
+      "For woolen processing, wool is carded using wire-covered rollers that separate and fluff the fibers. This creates a loose, airy web of fibers known as a batt, which is ideal for spinning soft, warm yarns.",
+    bgImage: "public/assets/img/wool/8.png",
     icon: FaSort,
   },
   {
     id: 9,
     title: "Wool Spinning",
     description:
-      "Prepared wool is spun into yarn using spinning frames or wheels...",
-    bgImage: "/api/placeholder/600/400",
+      "Prepared wool is spun into yarn using spinning frames or traditional spinning wheels. The fibers are twisted together to form a continuous thread, with adjustments made for thickness, ply, and twist direction based on the intended end use.",
+    bgImage: "public/assets/img/wool/9.png",
     icon: FaTools,
   },
   {
     id: 10,
     title: "Quality Control",
     description:
-      "Spun wool yarn undergoes rigorous testing for tensile strength, twist level, evenness, and moisture content...",
-    bgImage: "/api/placeholder/600/400",
+      "Spun wool yarn undergoes rigorous testing for tensile strength, twist level, evenness, and moisture content. Any irregularities are corrected to ensure that the yarn meets industry standards for durability and consistency.",
+    bgImage: "public/assets/img/wool/10.png",
     icon: FaCog,
   },
   {
     id: 11,
     title: "Dyeing Process",
-    description: "Wool yarn is dyed using various methods and colorants...",
-    bgImage: "/api/placeholder/600/400",
+    description:
+      "Wool yarn is dyed using various methods and colorants, including natural and synthetic dyes. The process can occur before or after spinning, depending on the desired color pattern. Dyeing is followed by rinsing and setting the color for permanence.",
+    bgImage: "public/assets/img/wool/11.png",
     icon: FaIndustry,
   },
   {
     id: 12,
     title: "Yarn Finishing",
     description:
-      "Dyed wool yarn is wound onto bobbins, cones, or prepared in hanks...",
-    bgImage: "/api/placeholder/600/400",
+      "Dyed wool yarn is wound onto bobbins, cones, or prepared in hanks, then finished by steaming or washing to relax the twist and set the yarn. This final preparation ensures it is ready for weaving, knitting, or other textile production.",
+    bgImage: "public/assets/img/wool/12.png",
     icon: FaSync,
   },
   {
     id: 13,
     title: "Textile Production",
     description:
-      "Wool yarn is woven or knitted into fabrics using traditional or modern techniques...",
-    bgImage: "/api/placeholder/600/400",
+      "Wool yarn is woven or knitted into fabrics using traditional looms or modern machines. Depending on the product, these fabrics may go through additional finishing processes like fulling, brushing, or pressing to enhance their properties.",
+    bgImage: "public/assets/img/wool/13.png",
     icon: FaThLarge,
   },
 ];
@@ -208,7 +210,7 @@ export default function WoolFiber() {
                       </div>
                     </div>
                     <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
                         {item.title}
                       </h3>
                       <p className="text-gray-600">{item.description}</p>
@@ -238,8 +240,20 @@ export default function WoolFiber() {
           About Wool Fiber
         </h2>
         <p className="mb-4 text-gray-700">
-          Wool fiber represents one of humanity's oldest and most versatile...
+          Wool fiber represents one of humanity's oldest and most versatile
+          materials, with a history that dates back thousands of years.
+          Harvested from sheep, wool is a natural, renewable, and biodegradable
+          fiber known for its warmth, durability, and resilience. Unlike
+          synthetic materials, wool can absorb moisture while still providing
+          insulation, making it ideal for a wide range of climates and
+          applications. Its crimped structure gives it natural elasticity,
+          allowing wool garments to stretch and recover their shape. Wool also
+          resists wrinkles, odors, and flames, making it a preferred choice for
+          clothing, upholstery, and industrial textiles. From traditional
+          handspun yarn to advanced textile innovations, wool continues to play
+          a vital role in sustainable fashion and eco-conscious living.
         </p>
+
         <div className="flex justify-center">
           <img
             src="/api/placeholder/800/400"
