@@ -8,6 +8,7 @@ const countries = [
   { name: "India", lat: 28.6139, lng: 77.209, type: "export" },
   { name: "China", lat: 39.9042, lng: 116.4074, type: "export" },
   { name: "Japan", lat: 35.6895, lng: 139.6917, type: "export" },
+  { name: "Australia", lat: -33.8688, lng: 151.2093, type: "export" }, // Sydney
 ];
 
 const MapView = () => {

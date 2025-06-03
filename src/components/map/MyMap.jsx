@@ -55,6 +55,8 @@ const MyMap = () => {
     { lat: 41.8719, lng: 12.5674, name: "Italy" },
     { lat: 35.6762, lng: 139.6503, name: "Japan" },
     { lat: 37.5665, lng: 126.978, name: "South Korea" },
+    { name: "Australia", lat: -22.8688, lng: 138.2093 }, // Sydney
+    { name: "India", lat: 18.6139, lng: 77.209 },
   ];
 
   const handleMarkerClick = (countryName) => {
