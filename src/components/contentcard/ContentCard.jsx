@@ -4,13 +4,11 @@ import { useTypewriter } from "../../hooks/useTypewriter";
 import VideoContainer from "../VideoContainer";
 
 export default function ContentCard({ 
-  title, 
-  description, 
+  title = "Transforming Textile Manufacturing",
+  description = "Discover how modern technology is revolutionizing the textile industry with sustainable practices and innovative solutions.",
   videoSrc, 
-  isVisible, 
-
+  isVisible = true,
   delay = 0,
-
   type = "problem",
   audio = null
 }) {
@@ -64,27 +62,27 @@ export default function ContentCard({
 
   return (
     <motion.div
-      className="min-h-screen flex items-center px-8 lg:px-16"
+      className="h-screen flex items-start justify-center pt-8 px-8 lg:px-16 sticky top-0"
       variants={cardVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
     >
-      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-
-        <div className="space-y-8">
+      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start h-full">
+        
+        <div className="space-y-8 flex flex-col justify-center h-full">
           <div className="space-y-4">
             <motion.div 
               className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${typeConfig.badgeClass}`}
             >
               {typeConfig.badge}
             </motion.div>
-            
+
             <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
               {titleText}
               <span className="animate-pulse">|</span>
             </h2>
           </div>
-          
+
           <div className="space-y-6">
             <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
               {descText}
@@ -92,8 +90,6 @@ export default function ContentCard({
                 <span className="animate-pulse">|</span>
               )}
             </p>
-            
-            
           </div>
         </div>
 
