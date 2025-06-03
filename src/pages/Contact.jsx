@@ -32,7 +32,6 @@ function Contact() {
       }, index * 200);
     });
   }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
