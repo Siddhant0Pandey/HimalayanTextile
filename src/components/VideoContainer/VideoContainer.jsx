@@ -14,7 +14,7 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type }) {
         }}
         transition={{ 
           duration: 1, 
-          delay: (delay + 10) / 1000,
+          delay: 1,
           ease: "easeOut"
         }}
       >
