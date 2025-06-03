@@ -93,22 +93,7 @@ export default function ContentCard({
               )}
             </p>
             
-            {/* Stats */}
-            {/* <motion.div 
-              className="grid grid-cols-2 gap-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible ? 1 : 0 }}
-              transition={{ delay: (delay + 2000) / 1000 }}
-            >
-              <div className="text-center p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <div className="text-2xl font-bold text-blue-400">2.1B</div>
-                <div className="text-sm text-gray-400">Tons of waste yearly</div>
-              </div>
-              <div className="text-center p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <div className="text-2xl font-bold text-green-400">95%</div>
-                <div className="text-sm text-gray-400">Reduction possible</div>
-              </div>
-            </motion.div> */}
+            
           </div>
         </div>
 

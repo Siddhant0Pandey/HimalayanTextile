@@ -89,7 +89,7 @@ const ProcessCard = ({ step, index }) => {
   };
 
   return (
-    <div className="relative flex items-center mb-16 last:mb-0">
+    <div className="relative flex items-center mb-16 last:mb-0 overflow-x-hidden">
       {/* Timeline line */}
       <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-300 -z-10">
         {index < processSteps.length - 1 && (
