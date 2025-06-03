@@ -87,7 +87,7 @@ const MapContainerComponent = ({ countries, onMarkerClick }) => {
         scrollWheelZoom={false} // ❌ disable zoom on scroll
         doubleClickZoom={true} // ✅ allow double-click zoom
         touchZoom={true} // ✅ allow pinch zoom
-        dragging={true} // ✅ allow dragging
+        dragging={false} // ✅ allow dragging
         keyboard={false}
         zoomControl={true} // ✅ show zoom buttons
         style={{ width: "100%", height: "100%" }}
