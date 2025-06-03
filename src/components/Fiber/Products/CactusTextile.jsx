@@ -20,7 +20,7 @@ const timelineData = [
     id: 1,
     title: "Cactus Cultivation",
     description:
-      "Prickly pear cacti (Opuntia ficus-indica) are cultivated on plantations in arid regions. These drought-resistant plants require minimal water and can thrive in poor soil conditions. Each cactus pad (cladode) takes 6-8 months to mature and reach optimal size for harvesting.",
+      "Prickly pear cacti (Opuntia ficus-indica) are cultivated on plantations in arid regions...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSeedling,
   },
@@ -28,7 +28,7 @@ const timelineData = [
     id: 2,
     title: "Harvesting",
     description:
-      "Mature cactus pads are carefully harvested by hand using specialized tools to avoid the spines. Only the older, thicker pads are selected as they contain the highest concentration of mucilage and fiber. Harvesting is typically done in the early morning when moisture content is optimal.",
+      "Mature cactus pads are carefully harvested by hand using specialized tools...",
     bgImage: "/api/placeholder/600/400",
     icon: FaCut,
   },
@@ -36,7 +36,7 @@ const timelineData = [
     id: 3,
     title: "Cleaning & Preparation",
     description:
-      "Harvested cactus pads are thoroughly cleaned to remove spines, dirt, and debris. The outer waxy layer is scraped off, and any diseased or damaged portions are removed. The pads are then cut into smaller, manageable pieces for processing.",
+      "Harvested cactus pads are thoroughly cleaned to remove spines, dirt, and debris...",
     bgImage: "/api/placeholder/600/400",
     icon: FaLeaf,
   },
@@ -44,7 +44,7 @@ const timelineData = [
     id: 4,
     title: "Juice Extraction",
     description:
-      "The cleaned cactus pieces are crushed and pressed to extract the mucilaginous juice rich in natural polymers. This viscous liquid contains the binding agents necessary for fiber formation and will be processed separately for use in the textile creation process.",
+      "The cleaned cactus pieces are crushed and pressed to extract the mucilaginous juice...",
     bgImage: "/api/placeholder/600/400",
     icon: FaWater,
   },
@@ -52,7 +52,7 @@ const timelineData = [
     id: 5,
     title: "Drying Process",
     description:
-      "The remaining cactus pulp is spread in thin layers and dried under controlled conditions, either by solar drying or using specialized dehydrators. This process removes excess moisture while preserving the fibrous structure of the plant material.",
+      "The remaining cactus pulp is spread in thin layers and dried under controlled conditions...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSun,
   },
@@ -60,7 +60,7 @@ const timelineData = [
     id: 6,
     title: "Biomass Processing",
     description:
-      "The dried cactus biomass is ground into a fine powder using industrial mills. This powder contains cellulose fibers and other organic compounds that will be transformed into textile fibers through chemical and mechanical processes.",
+      "The dried cactus biomass is ground into a fine powder using industrial mills...",
     bgImage: "/api/placeholder/600/400",
     icon: FaFire,
   },
@@ -68,7 +68,7 @@ const timelineData = [
     id: 7,
     title: "Fiber Formation",
     description:
-      "The cactus powder is mixed with the extracted mucilage and other natural binders to create a fiber-forming solution. This mixture is processed through specialized equipment to form continuous fibers with the desired thickness and strength properties.",
+      "The cactus powder is mixed with the extracted mucilage and other natural binders...",
     bgImage: "/api/placeholder/600/400",
     icon: FaHandsHelping,
   },
@@ -76,7 +76,7 @@ const timelineData = [
     id: 8,
     title: "Fiber Spinning",
     description:
-      "The formed cactus fibers are spun into yarn using traditional spinning techniques adapted for plant-based materials. Multiple fibers are twisted together to create stronger threads suitable for textile production, with varying thicknesses for different applications.",
+      "The formed cactus fibers are spun into yarn using traditional spinning techniques...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSort,
   },
@@ -84,7 +84,7 @@ const timelineData = [
     id: 9,
     title: "Strengthening Treatment",
     description:
-      "The spun cactus yarn undergoes strengthening treatments to improve durability and reduce brittleness. This may involve treatment with natural oils, moisture conditioning, or other eco-friendly processes to enhance the fiber's textile properties.",
+      "The spun cactus yarn undergoes strengthening treatments to improve durability...",
     bgImage: "/api/placeholder/600/400",
     icon: FaTools,
   },
@@ -92,7 +92,7 @@ const timelineData = [
     id: 10,
     title: "Quality Control",
     description:
-      "Each batch of cactus fiber yarn is tested for strength, elasticity, moisture absorption, and other quality parameters. Consistent quality is ensured through rigorous testing protocols before the yarn proceeds to dyeing and finishing processes.",
+      "Each batch of cactus fiber yarn is tested for strength, elasticity, moisture absorption...",
     bgImage: "/api/placeholder/600/400",
     icon: FaCog,
   },
@@ -100,7 +100,7 @@ const timelineData = [
     id: 11,
     title: "Natural Dyeing",
     description:
-      "Cactus fibers are dyed using eco-friendly dyes, often derived from other plant sources to maintain the sustainable nature of the product. The natural fiber structure accepts dyes well, creating vibrant colors while maintaining the material's biodegradable properties.",
+      "Cactus fibers are dyed using eco-friendly dyes derived from plants...",
     bgImage: "/api/placeholder/600/400",
     icon: FaIndustry,
   },
@@ -108,7 +108,7 @@ const timelineData = [
     id: 12,
     title: "Yarn Preparation",
     description:
-      "Dyed cactus yarn is prepared for textile production by winding onto spools, creating warps, or organizing into batches according to color and weight specifications. The yarn is inspected one final time to ensure consistency and quality.",
+      "Dyed cactus yarn is prepared for textile production by winding onto spools...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSync,
   },
@@ -116,7 +116,7 @@ const timelineData = [
     id: 13,
     title: "Textile Production",
     description:
-      "Cactus fiber yarn is woven or knitted into sustainable textiles using eco-friendly production methods. The resulting fabrics are breathable, moisture-wicking, and biodegradable, suitable for clothing, accessories, and home textiles with a unique texture and environmental benefits.",
+      "Cactus fiber yarn is woven or knitted into sustainable textiles...",
     bgImage: "/api/placeholder/600/400",
     icon: FaThLarge,
   },
@@ -144,19 +144,22 @@ export default function CactusTextile() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden max-w-full">
+      {/* Background Image */}
+      <div className="absolute top-0 left-0 h-full w-full -z-10 overflow-hidden">
         <img
           src="/api/placeholder/1200/800"
           alt="cactus fiber production background"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover max-w-none"
         />
       </div>
 
+      {/* Heading */}
       <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
         Cactus Fiber Creation Process
       </h1>
 
+      {/* Timeline */}
       <div className="w-full max-w-6xl">
         <div className="relative">
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
@@ -172,7 +175,7 @@ export default function CactusTextile() {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } relative`}
               >
-                {/* Line Progress (Desktop) */}
+                {/* Line Progress */}
                 <div
                   className={`hidden md:flex w-1/2 ${
                     isLeft ? "justify-end pr-4" : "justify-start pl-4"
@@ -187,7 +190,7 @@ export default function CactusTextile() {
                   />
                 </div>
 
-                {/* Card Content */}
+                {/* Card */}
                 <div
                   className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
                     activeItems.includes(index)
@@ -240,29 +243,7 @@ export default function CactusTextile() {
         </h2>
         <p className="mb-4 text-gray-700">
           Cactus fiber represents the cutting edge of sustainable textile
-          innovation, transforming the prickly pear cactus (Opuntia
-          ficus-indica) into luxurious, eco-friendly fabric. This revolutionary
-          material combines ancient agricultural knowledge with modern textile
-          technology to create one of the most environmentally responsible
-          fibers available today. Cactus leather and textiles require
-          significantly less water than traditional materials - using 96% less
-          water than cotton and producing zero toxic waste. The cactus plants
-          are incredibly sustainable, regenerating from the same root system
-          without replanting, and can be harvested every 6-8 months without
-          harming the plant. The resulting fiber is naturally breathable,
-          moisture-wicking, and surprisingly soft to the touch, with excellent
-          durability and flexibility. Cactus textiles are completely
-          biodegradable, breaking down naturally at the end of their lifecycle
-          without harming the environment. The material has natural
-          antimicrobial properties and UV resistance, making it ideal for both
-          fashion and technical applications. From luxury handbags and shoes to
-          clothing and automotive interiors, cactus fiber is revolutionizing
-          sustainable fashion. Major brands are increasingly adopting this
-          innovative material as consumers demand more environmentally conscious
-          alternatives. The production process also supports rural communities
-          in arid regions, providing sustainable livelihoods while preserving
-          traditional farming practices and contributing to desertification
-          prevention.
+          innovation... (truncated for brevity)
         </p>
         <div className="flex justify-center">
           <img
