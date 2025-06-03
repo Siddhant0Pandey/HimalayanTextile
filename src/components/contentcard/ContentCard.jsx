@@ -43,12 +43,12 @@ export default function ContentCard({
       case "problem":
         return {
           badge: "CHALLENGE",
-          badgeClass: "bg-red-500/20 text-red-500 border border-red-700/30"
+          badgeClass: "bg-red-500/20 text-red-100 border border-red-200/70"
         };
       case "solution":
         return {
           badge: "SOLUTION",
-          badgeClass: "bg-green-500/20 text-green-700 border border-green-600/30"
+          badgeClass: "bg-green-500/20 text-green-100 border border-green-100/70"
         };
       default:
         return {
@@ -62,29 +62,29 @@ export default function ContentCard({
 
   return (
     <motion.div
-      className="h-screen flex items-start justify-center pt-8 px-8 lg:px-16 sticky top-0"
+      className="h-screen flex items-start justify-center pt-8 px-8 lg:px-16  top-0 relative"
       variants={cardVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
     >
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start h-full">
         
-        <div className="space-y-8 flex flex-col justify-center h-full">
+        <div className="space-y-8 flex flex-col justify-center h-full ">
           <div className="space-y-4">
             <motion.div 
-              className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${typeConfig.badgeClass}`}
+              className={`inline-block px-4 py-2 rounded-full  text-sm font-medium ${typeConfig.badgeClass}`}
             >
               {typeConfig.badge}
             </motion.div>
 
-            <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
+            <h2 className="text-4xl lg:text-6xl font-bold leading-tight text-lightText">
               {titleText}
               <span className="animate-pulse">|</span>
             </h2>
           </div>
 
           <div className="space-y-6">
-            <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+            <p className="text-xl lg:text-2xl text-light leading-relaxed">
               {descText}
               {descText.length < description.length && (
                 <span className="animate-pulse">|</span>
