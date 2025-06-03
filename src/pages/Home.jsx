@@ -11,9 +11,9 @@ import WhatSetsUsApartHorizontal from "../components/home/WhatSetsUsApart";
 
 function Home() {
   return (
-    <div >
-    <HeroTitle/>
-    <TextileStoryTransition/>
+    <div>
+      <HeroTitle />
+      <TextileStoryTransition />
       <HomeHero />
       <AboutSection />
       <ProcessSection />
