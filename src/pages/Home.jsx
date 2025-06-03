@@ -8,13 +8,14 @@ import HomeHero from "../components/home/HomeHero";
 import HeroTitle from "../components/home/HeroTitle";
 import TextileStoryTransition from "../components/home/TextileStoryTransition";
 import WhatSetsUsApartHorizontal from "../components/home/WhatSetsUsApart";
+import HeroSection from "../components/hero/HeroSection";
 
 function Home() {
   return (
     <div >
     <HeroTitle/>
     <TextileStoryTransition/>
-      <HomeHero />
+      <HeroSection />
       <AboutSection />
       <ProcessSection />
       <CoreValues />
