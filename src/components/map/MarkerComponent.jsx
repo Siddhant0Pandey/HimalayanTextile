@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 
 const NEPAL_COORDS = [28.3949, 84.124];
 
-const getIcon = (type, currentRotation = 0, scale = 1) => {
+const getIcon = (type, rotation = 0, scale = 1) => {
   const iconUrl =
     type === "export"
       ? "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
@@ -16,11 +16,11 @@ const getIcon = (type, currentRotation = 0, scale = 1) => {
     className: "flying-pin-marker",
     html: `
       <div style="
-        transform: rotate(${currentRotation}deg) scale(${scale});
+        transform: rotate(${rotation}deg) scale(${scale});
         transition: transform 0.2s ease-out;
         filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
       ">
-        <img src="${iconUrl}" style="height:41px; width:25px;" />
+        <img src="${iconUrl}" style="height: 41px; width: 25px;" />
       </div>
     `,
     iconSize: [25 * scale, 41 * scale],
@@ -29,7 +29,6 @@ const getIcon = (type, currentRotation = 0, scale = 1) => {
   });
 };
 
-// Calculate bearing between two points
 const getBearing = (startLat, startLng, endLat, endLng) => {
   const y = Math.sin(endLng - startLng) * Math.cos(endLat);
   const x =
@@ -46,9 +45,6 @@ const MarkerComponent = ({
 }) => {
   const markerRef = useRef(null);
   const [animatedPosition, setAnimatedPosition] = useState(NEPAL_COORDS);
-  const [rotation, setRotation] = useState(0);
-  const [scale, setScale] = useState(1);
-  const [opacity, setOpacity] = useState(1);
   const [flightPath, setFlightPath] = useState([NEPAL_COORDS]);
   const [showMarker, setShowMarker] = useState(false);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
@@ -56,18 +52,15 @@ const MarkerComponent = ({
   useEffect(() => {
     if (!shouldAnimate || !inView) return;
 
-    // Reset states
     setFlightPath([NEPAL_COORDS]);
     setShowMarker(false);
     setAnimatedPosition(NEPAL_COORDS);
-    setRotation(0);
-    setScale(1);
-    setOpacity(0);
 
     const startLat = NEPAL_COORDS[0];
     const startLng = NEPAL_COORDS[1];
     const targetLat = country.lat;
     const targetLng = country.lng;
+
     const distance = Math.sqrt(
       Math.pow(targetLat - startLat, 2) + Math.pow(targetLng - startLng, 2)
     );
@@ -97,8 +90,8 @@ const MarkerComponent = ({
       setAnimatedPosition(newPos);
       setFlightPath((prev) => [...prev, newPos]);
 
-      // Animate rotation and scale using GSAP
-      if (markerRef.current) {
+      // GSAP animation
+      if (markerRef.current?._icon) {
         gsap.to(markerRef.current._icon, {
           rotate: bearing + "deg",
           scale: 1 + 0.3 * Math.sin(progress * Math.PI),
@@ -106,21 +99,20 @@ const MarkerComponent = ({
         });
       }
 
-      setOpacity(1);
-
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         setAnimatedPosition([targetLat, targetLng]);
         setShowMarker(true);
-
-        gsap.to(markerRef.current._icon, {
-          scale: 1.2,
-          duration: 0.2,
-          onComplete: () => {
-            gsap.to(markerRef.current._icon, { scale: 1, duration: 0.2 });
-          },
-        });
+        if (markerRef.current?._icon) {
+          gsap.to(markerRef.current._icon, {
+            scale: 1.2,
+            duration: 0.2,
+            onComplete: () => {
+              gsap.to(markerRef.current._icon, { scale: 1, duration: 0.2 });
+            },
+          });
+        }
       }
     };
 
@@ -144,8 +136,7 @@ const MarkerComponent = ({
         <Marker
           ref={markerRef}
           position={animatedPosition}
-          icon={getIcon(country.type, rotation, scale)}
-          opacity={opacity}
+          icon={getIcon(country.type)}
           eventHandlers={{
             click: () => onClick(country.name),
           }}

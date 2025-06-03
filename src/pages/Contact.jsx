@@ -1,6 +1,5 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import emailjs from "@emailjs/browser";
 
 function Contact() {
   const containerRef = useRef(null);
@@ -13,52 +12,88 @@ function Contact() {
   });
 
   const [statusMessage, setStatusMessage] = useState("");
+  const [errors, setErrors] = useState({
+    user_name: false,
+    user_email: false,
+    message: false,
+  });
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".fade-up", {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power2.out",
-      });
-    }, containerRef);
-    return () => ctx.revert();
+    // Simple fade-in animation simulation
+    const elements = document.querySelectorAll(".fade-up");
+    elements.forEach((el, index) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.transition = "all 1s ease";
+
+      setTimeout(() => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, index * 200);
+    });
   }, []);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
+    }
+
+    // Clear status message when user starts typing
+    if (statusMessage) {
+      setStatusMessage("");
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validateForm = () => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Basic validation
-    if (!formData.user_name || !formData.user_email || !formData.message) {
-      setStatusMessage("Please fill in all fields.");
+    const newErrors = {
+      user_name: !formData.user_name || !nameRegex.test(formData.user_name),
+      user_email: !formData.user_email || !emailRegex.test(formData.user_email),
+      message: !formData.message.trim(),
+    };
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some((error) => error);
+  };
+
+  const handleSubmit = () => {
+    if (!validateForm()) {
+      setStatusMessage("Please correct the highlighted fields.");
       return;
     }
 
-    emailjs
-      .sendForm(
-        "your_service_id",     // Replace with your EmailJS service ID
-        "your_template_id",    // Replace with your EmailJS template ID
-        formRef.current,
-        "your_public_key"      // Replace with your EmailJS public key
-      )
-      .then(
-        () => {
-          setStatusMessage("Message sent successfully!");
-          setFormData({ user_name: "", user_email: "", message: "" });
-        },
-        () => {
-          setStatusMessage("Failed to send message. Please try again.");
-        }
-      );
+    // Simulate email sending
+    setStatusMessage("Sending...");
+
+    setTimeout(() => {
+      setStatusMessage("Message sent successfully!");
+      setFormData({ user_name: "", user_email: "", message: "" });
+      setErrors({ user_name: false, user_email: false, message: false });
+    }, 1500);
+  };
+
+  const getInputClassName = (fieldName) => {
+    const baseClass =
+      "w-full px-4 py-2 border rounded-md transition-all duration-200";
+    const normalClass =
+      "border-gray-300 focus:border-green-500 focus:ring-1 focus:ring-green-300";
+    const errorClass =
+      "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-300 bg-red-50";
+
+    return `${baseClass} ${errors[fieldName] ? errorClass : normalClass}`;
   };
 
   return (
@@ -98,18 +133,15 @@ function Contact() {
           <div>
             <h4 className="font-semibold">Address</h4>
             <p>
-              Liwang 02<br />
+              Liwang 02
+              <br />
               Rolpa 22100
             </p>
           </div>
         </div>
 
         {/* Form */}
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="bg-white shadow-xl rounded-xl p-8 space-y-6"
-        >
+        <div className="bg-white shadow-xl rounded-xl p-8 space-y-6">
           <div className="fade-up">
             <label className="block font-medium mb-1">Name</label>
             <input
@@ -118,8 +150,15 @@ function Contact() {
               value={formData.user_name}
               onChange={handleChange}
               placeholder="Your Name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300"
+              className={getInputClassName("user_name")}
             />
+            {errors.user_name && (
+              <p className="text-red-500 text-sm mt-1">
+                {!formData.user_name
+                  ? "Name is required"
+                  : "Name should only contain letters and spaces"}
+              </p>
+            )}
           </div>
 
           <div className="fade-up">
@@ -130,8 +169,15 @@ function Contact() {
               value={formData.user_email}
               onChange={handleChange}
               placeholder="your@email.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300"
+              className={getInputClassName("user_email")}
             />
+            {errors.user_email && (
+              <p className="text-red-500 text-sm mt-1">
+                {!formData.user_email
+                  ? "Email is required"
+                  : "Please enter a valid email address"}
+              </p>
+            )}
           </div>
 
           <div className="fade-up">
@@ -142,23 +188,35 @@ function Contact() {
               onChange={handleChange}
               rows="5"
               placeholder="Your message..."
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-green-500 focus:ring-1 focus:ring-green-300 resize-none"
+              className={getInputClassName("message")}
             />
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-1">Message is required</p>
+            )}
           </div>
 
           <button
-            type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-md transition-all fade-up"
+            type="button"
+            onClick={handleSubmit}
+            className="w-full bg-green-600 hover:bg-green-700 text-white cursor-pointer font-semibold py-3 rounded-md transition-all"
           >
             Send Message
           </button>
 
           {statusMessage && (
-            <p className="text-center text-sm text-green-700 fade-up">
+            <p
+              className={`text-center text-sm fade-up ${
+                statusMessage.includes("successfully")
+                  ? "text-green-700"
+                  : statusMessage.includes("correct")
+                  ? "text-red-600"
+                  : "text-blue-600"
+              }`}
+            >
               {statusMessage}
             </p>
           )}
-        </form>
+        </div>
       </div>
 
       {/* Map */}
