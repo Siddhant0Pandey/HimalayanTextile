@@ -109,19 +109,19 @@ function Navbar() {
       borderColor: "#1fa951",
     },
     "/fiber": {
-          bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
     "/yarn": {
-         bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
     "/our-story": {
-         bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",

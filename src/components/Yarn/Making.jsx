@@ -78,7 +78,7 @@ export default function Making() {
       icon: <SettingsIcon color={theme.primary} />,
       color: theme.light,
       accent: theme.primary,
-      videoSrc: "public/assets/img/yarn/vido2.mp4",
+      videoSrc: "/assets/img/yarn/vido2.mp4",
       features: [
         "High production volume",
         "Consistent yarn thickness",
@@ -95,7 +95,7 @@ export default function Making() {
       icon: <HandsIcon color={theme.secondary} />,
       color: theme.light,
       accent: theme.secondary,
-      videoSrc: "public/assets/img/yarn/vide.mp4",
+      videoSrc: "/assets/img/yarn/vide.mp4",
       features: [
         "Unique character and texture",
         "Artisanal quality",
