@@ -10,7 +10,7 @@ export const sectionsData = [
   {
     id: "natural-fibers",
     title: "Natural Fiber Innovation",
-    description: "We source premium organic cotton, hemp, and bamboo fibers, reducing environmental impact by 70% while maintaining superior quality and durability.",
+    description: "We source premium organic nettle, hemp, and bamboo fibers, reducing environmental impact by 70% while maintaining superior quality and durability.",
     type: "solution",
     videoSrc:  "/assets/videos/natural.mp4"
   },
