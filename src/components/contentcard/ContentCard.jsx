@@ -80,7 +80,7 @@ export default function ContentCard({
             <h2 className="text-4xl lg:text-6xl font-bold leading-tight text-lightText">
               {titleText}
               <span className="animate-pulse">|</span>
-            </h2>
+            </h2> 
           </div>
 
           <div className="space-y-6">
