@@ -34,25 +34,31 @@ export default function HeroSection({ sharedAudio = null }) {
 
         <ScrollHint currentSection={currentSection} totalSections={sectionsData.length} />
 
-        <div className="relative h-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSection}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="h-full"
-            >
-              <ContentCard
-                {...sectionsData[currentSection]}
-                isVisible={true}
-                delay={150}
-                audio={sharedAudio}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+       <div className="relative h-full">
+  <AnimatePresence mode="wait">
+    {sectionsData.map((section, index) => (
+      currentSection === index && (
+        <motion.div
+          key={index}
+          data-index={index} // ✅ Important!
+          className="h-full"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <ContentCard
+            {...section}
+            isVisible={true}
+            delay={150}
+            audio={sharedAudio}
+          />
+        </motion.div>
+      )
+    ))}
+  </AnimatePresence>
+</div>
+
       </div>
       
       <div 
