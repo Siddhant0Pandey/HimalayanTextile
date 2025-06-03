@@ -16,7 +16,7 @@ export default function HeroSection({ sharedAudio = null }) {
         const containerHeight = containerRef.current.offsetHeight;
         const viewportHeight = window.innerHeight;
         
-        // Calculate how much we've scrolled through the hero section
+      
         const scrollTop = Math.max(0, -rect.top);
         const maxScroll = containerHeight - viewportHeight;
         
@@ -25,7 +25,7 @@ export default function HeroSection({ sharedAudio = null }) {
         const progress = Math.min(scrollTop / maxScroll, 1);
         setScrollProgress(progress);
         
-        // Calculate which section should be active
+  
         const sectionProgress = progress * sectionsData.length;
         const newCurrentSection = Math.min(
           Math.floor(sectionProgress), 
@@ -37,12 +37,12 @@ export default function HeroSection({ sharedAudio = null }) {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    handleScroll(); 
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate individual card transforms
+
   const getCardTransform = (index) => {
     const totalSections = sectionsData.length;
     const progressPerSection = 1 / totalSections;
@@ -50,7 +50,7 @@ export default function HeroSection({ sharedAudio = null }) {
     const sectionEnd = (index + 1) * progressPerSection;
     
     if (scrollProgress < sectionStart) {
-      // Card hasn't appeared yet
+    
       return {
         y: 100,
         scale: 0.8,
@@ -58,7 +58,7 @@ export default function HeroSection({ sharedAudio = null }) {
         zIndex: totalSections - index
       };
     } else if (scrollProgress >= sectionStart && scrollProgress < sectionEnd) {
-      // Card is currently active/transitioning
+     
       const sectionProgress = (scrollProgress - sectionStart) / progressPerSection;
       return {
         y: 0,
@@ -67,7 +67,7 @@ export default function HeroSection({ sharedAudio = null }) {
         zIndex: totalSections - index
       };
     } else {
-      // Card has been passed
+    
       return {
         y: -50,
         scale: 0.9,
@@ -84,7 +84,7 @@ export default function HeroSection({ sharedAudio = null }) {
         className="relative w-full"
         style={{ height: `${sectionsData.length * 100}vh` }}
       >
-        {/* Fixed container for cards */}
+ 
         <div className="sticky top-0 w-full h-screen overflow-hidden">
           {sectionsData.map((section, index) => {
             const transform = getCardTransform(index);
@@ -108,7 +108,7 @@ export default function HeroSection({ sharedAudio = null }) {
                 <ContentCard
                   {...section}
                   isVisible={isVisible}
-                  delay={0} // Remove delay for immediate response
+                  delay={0} 
                   audio={sharedAudio}
                   stackedMode={true}
                 />
@@ -117,9 +117,6 @@ export default function HeroSection({ sharedAudio = null }) {
           })}
         </div>
 
-       
-
-        {/* Scroll Progress Indicator */}
       </div>
     </div>
   );
