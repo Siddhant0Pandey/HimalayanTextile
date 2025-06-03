@@ -144,8 +144,8 @@ export default function SilkTextile() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden">
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
         <img
           src="/api/placeholder/1200/800"
           alt="silk production background"
@@ -172,7 +172,6 @@ export default function SilkTextile() {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } relative`}
               >
-                {/* Line Progress (Desktop) */}
                 <div
                   className={`hidden md:flex w-1/2 ${
                     isLeft ? "justify-end pr-4" : "justify-start pl-4"
@@ -187,7 +186,6 @@ export default function SilkTextile() {
                   />
                 </div>
 
-                {/* Card Content */}
                 <div
                   className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
                     activeItems.includes(index)
@@ -217,7 +215,6 @@ export default function SilkTextile() {
                   </div>
                 </div>
 
-                {/* Icon */}
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
                   <div
                     className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
@@ -233,33 +230,13 @@ export default function SilkTextile() {
         </div>
       </div>
 
-      {/* About Section */}
       <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
           About Silk Fabric
         </h2>
         <p className="mb-4 text-gray-700">
           Known as the "Queen of Textiles," silk has been prized for over 5,000
-          years as one of the most luxurious natural fibers in the world. Silk
-          production (sericulture) originated in ancient China and remains
-          largely concentrated in Asia, with China, India, and Japan being the
-          primary producers. The resulting fabric is celebrated for its
-          exceptional luster, smooth texture, strength, and natural
-          temperature-regulating properties. Silk fibers are naturally lustrous
-          with a distinctive sheen and feel, and are completely biodegradable
-          and renewable. The unique triangular protein structure of silk fibers
-          reflects light at different angles, creating silk's characteristic
-          shimmer. Silk is incredibly strong - a silk fiber is stronger than
-          steel wire of the same thickness. It's also naturally hypoallergenic
-          and has moisture-wicking properties, making it comfortable in both
-          warm and cool climates. Traditional uses include clothing, bedding,
-          and ceremonial textiles, while modern applications have expanded to
-          include medical sutures, parachutes, bicycle tires, and
-          high-performance textiles. The labor-intensive process of silk
-          production has preserved ancient techniques for millennia, supporting
-          traditional craftsmanship and rural economies across Asia. From
-          elegant evening gowns to practical athletic wear, silk continues to be
-          the gold standard for luxury textiles.
+          years as one of the most luxurious natural fibers in the world...
         </p>
         <div className="flex justify-center">
           <img

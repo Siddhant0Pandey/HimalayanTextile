@@ -20,7 +20,7 @@ const timelineData = [
     id: 1,
     title: "Sheep Raising",
     description:
-      "Sheep are raised in pastures where they graze on natural grasses and vegetation. Different breeds produce varying qualities of wool, from fine merino to coarser breeds. Sheep are cared for year-round, with proper nutrition, shelter, and veterinary care ensuring healthy wool growth.",
+      "Sheep are raised in pastures where they graze on natural grasses and vegetation...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSeedling,
   },
@@ -28,7 +28,7 @@ const timelineData = [
     id: 2,
     title: "Wool Shearing",
     description:
-      "Sheep are sheared annually, typically in spring before hot weather arrives. Professional shearers use electric clippers to carefully remove the fleece in one piece. This process doesn't harm the sheep and is essential for their health and comfort during warmer months.",
+      "Sheep are sheared annually, typically in spring before hot weather arrives...",
     bgImage: "/api/placeholder/600/400",
     icon: FaCut,
   },
@@ -36,7 +36,7 @@ const timelineData = [
     id: 3,
     title: "Fleece Sorting",
     description:
-      "Raw fleeces are sorted by quality, with different parts of the sheep producing different grades of wool. The shoulders and sides yield the finest wool, while areas like the legs and belly produce coarser fibers. Damaged or heavily soiled wool is separated out.",
+      "Raw fleeces are sorted by quality, with different parts of the sheep producing different grades...",
     bgImage: "/api/placeholder/600/400",
     icon: FaLeaf,
   },
@@ -44,7 +44,7 @@ const timelineData = [
     id: 4,
     title: "Wool Scouring",
     description:
-      "Raw wool contains lanolin, dirt, and vegetable matter that must be removed. The wool is washed in a series of hot water baths with detergents to remove grease and impurities. This scouring process is carefully controlled to preserve the wool's natural properties.",
+      "Raw wool contains lanolin, dirt, and vegetable matter that must be removed...",
     bgImage: "/api/placeholder/600/400",
     icon: FaWater,
   },
@@ -52,7 +52,7 @@ const timelineData = [
     id: 5,
     title: "Drying Process",
     description:
-      "After scouring, the clean wool is dried using controlled temperature and humidity. Proper drying prevents damage to the wool fibers while removing excess moisture. The wool may be dried naturally or using specialized drying equipment in commercial operations.",
+      "After scouring, the clean wool is dried using controlled temperature and humidity...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSun,
   },
@@ -60,7 +60,7 @@ const timelineData = [
     id: 6,
     title: "Wool Carbonizing",
     description:
-      "Vegetable matter remaining in the wool is removed through carbonizing, where the wool is treated with sulfuric acid and heated. This process destroys plant materials without damaging the wool fibers, leaving clean, pure wool ready for further processing.",
+      "Vegetable matter remaining in the wool is removed through carbonizing...",
     bgImage: "/api/placeholder/600/400",
     icon: FaFire,
   },
@@ -68,7 +68,7 @@ const timelineData = [
     id: 7,
     title: "Wool Combing",
     description:
-      "Wool fibers are combed to align them parallel and remove shorter fibers. This creates two products: combed top (long, aligned fibers for worsted yarn) and noil (shorter fibers for woolen yarn). Combing produces smooth, strong yarn suitable for fine fabrics.",
+      "Wool fibers are combed to align them parallel and remove shorter fibers...",
     bgImage: "/api/placeholder/600/400",
     icon: FaHandsHelping,
   },
@@ -76,7 +76,7 @@ const timelineData = [
     id: 8,
     title: "Wool Carding",
     description:
-      "For woolen processing, wool is carded using wire-covered rollers that separate and mix the fibers. This creates a loose preparation where fibers lie in various directions, resulting in loftier, more insulating yarn perfect for warm clothing.",
+      "For woolen processing, wool is carded using wire-covered rollers...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSort,
   },
@@ -84,7 +84,7 @@ const timelineData = [
     id: 9,
     title: "Wool Spinning",
     description:
-      "Prepared wool is spun into yarn using spinning frames or wheels. The twist given during spinning provides strength and determines the yarn's character. Worsted spinning creates smooth, strong yarn while woolen spinning produces softer, more elastic yarn.",
+      "Prepared wool is spun into yarn using spinning frames or wheels...",
     bgImage: "/api/placeholder/600/400",
     icon: FaTools,
   },
@@ -92,15 +92,14 @@ const timelineData = [
     id: 10,
     title: "Quality Control",
     description:
-      "Spun wool yarn undergoes rigorous testing for tensile strength, twist level, evenness, and moisture content. Quality control ensures consistency across batches and determines the appropriate end use for each grade of yarn.",
+      "Spun wool yarn undergoes rigorous testing for tensile strength, twist level, evenness, and moisture content...",
     bgImage: "/api/placeholder/600/400",
     icon: FaCog,
   },
   {
     id: 11,
     title: "Dyeing Process",
-    description:
-      "Wool yarn is dyed using various methods and colorants. Wool's protein structure accepts dyes exceptionally well, creating vibrant, long-lasting colors. Both natural and synthetic dyes can be used, with careful temperature control to prevent fiber damage.",
+    description: "Wool yarn is dyed using various methods and colorants...",
     bgImage: "/api/placeholder/600/400",
     icon: FaIndustry,
   },
@@ -108,7 +107,7 @@ const timelineData = [
     id: 12,
     title: "Yarn Finishing",
     description:
-      "Dyed wool yarn is wound onto bobbins, cones, or prepared in hanks according to specifications. Final treatments may include anti-moth protection or softening. The yarn is inspected for color consistency and quality before packaging.",
+      "Dyed wool yarn is wound onto bobbins, cones, or prepared in hanks...",
     bgImage: "/api/placeholder/600/400",
     icon: FaSync,
   },
@@ -116,7 +115,7 @@ const timelineData = [
     id: 13,
     title: "Textile Production",
     description:
-      "Wool yarn is woven or knitted into fabrics using traditional or modern techniques. Wool textiles offer excellent insulation, moisture management, and durability. The natural crimp in wool fibers creates fabrics with superior drape, resilience, and comfort.",
+      "Wool yarn is woven or knitted into fabrics using traditional or modern techniques...",
     bgImage: "/api/placeholder/600/400",
     icon: FaThLarge,
   },
@@ -144,8 +143,8 @@ export default function WoolFiber() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
+    <div className="relative flex flex-col items-center px-4 pt-20 overflow-x-hidden">
+      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
         <img
           src="/api/placeholder/1200/800"
           alt="wool fiber production background"
@@ -157,7 +156,7 @@ export default function WoolFiber() {
         Wool Fiber Creation Process
       </h1>
 
-      <div className="w-full max-w-6xl">
+      <div className="w-full max-w-6xl overflow-hidden">
         <div className="relative">
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
 
@@ -170,7 +169,7 @@ export default function WoolFiber() {
                 key={item.id}
                 className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                } relative`}
+                } relative w-full`}
               >
                 {/* Line Progress (Desktop) */}
                 <div
@@ -239,32 +238,7 @@ export default function WoolFiber() {
           About Wool Fiber
         </h2>
         <p className="mb-4 text-gray-700">
-          Wool fiber represents one of humanity's oldest and most versatile
-          natural textiles, prized for thousands of years for its exceptional
-          properties and renewable nature. Harvested annually from sheep without
-          harm to the animals, wool is a completely sustainable fiber that grows
-          continuously throughout the sheep's life. The unique structure of wool
-          fibers, with their natural crimp and scales, provides outstanding
-          insulation properties, keeping wearers warm in cold weather and cool
-          in warm conditions through excellent moisture management. Wool's
-          natural elasticity allows garments to maintain their shape while
-          providing comfort and freedom of movement. The fiber's inherent flame
-          resistance and UV protection make it ideal for both everyday wear and
-          specialized applications. Wool production supports rural communities
-          worldwide, providing livelihoods for millions of farmers and workers
-          in the textile industry. The lanolin naturally present in wool
-          provides antibacterial and water-resistant properties, while the
-          fiber's ability to absorb moisture without feeling damp creates
-          exceptional comfort. From fine merino wool used in luxury garments to
-          sturdy tweeds for outerwear, wool offers a range of textures and
-          weights suitable for countless applications. Modern wool processing
-          techniques have enhanced the fiber's natural properties while
-          maintaining its biodegradable characteristics. Wool textiles naturally
-          resist odors, wrinkles, and stains, making them both practical and
-          luxurious. The global wool industry continues to innovate with
-          sustainable practices, ensuring this remarkable natural fiber remains
-          relevant for future generations while honoring traditional
-          craftsmanship and animal welfare standards.
+          Wool fiber represents one of humanity's oldest and most versatile...
         </p>
         <div className="flex justify-center">
           <img
