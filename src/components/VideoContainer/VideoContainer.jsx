@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function VideoContainer({ videoSrc, isVisible, delay, type }) {
   return (
-    <div className="relative h-screen">
+    <div className="absolute h-screen w-full left-0 top-0 -z-10">
       <motion.div
         className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
         initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
@@ -14,7 +14,7 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type }) {
         }}
         transition={{ 
           duration: 1, 
-          delay: (delay + 1000) / 1000,
+          delay: (delay + 10) / 1000,
           ease: "easeOut"
         }}
       >
