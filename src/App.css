@@ -1,3 +1,16 @@
+/* :root {
+  --vh: 1vh;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+} */
+
+
+
+
 .text-stroke {
   -webkit-text-stroke: 1px #fff   ;
   color: transparent;

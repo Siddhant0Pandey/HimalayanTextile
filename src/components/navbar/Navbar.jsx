@@ -109,19 +109,19 @@ function Navbar() {
       borderColor: "#1fa951",
     },
     "/fiber": {
-          bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
     "/yarn": {
-         bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
     },
     "/our-story": {
-         bg: "bg-transparent",
+      bg: "bg-transparent",
       textColor: "#1fa951",
       logo: "/assets/img/logo/logodark.png",
       borderColor: "#1fa951",
@@ -212,7 +212,7 @@ function Navbar() {
           {/* Menu Button */}
           <div
             onClick={toggleMenu}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-2 cursor-pointer group mr-15"
           >
             {!menuOpen && (
               <span
