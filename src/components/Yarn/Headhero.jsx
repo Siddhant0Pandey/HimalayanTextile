@@ -181,7 +181,7 @@ export default function AnimatedHeadhero() {
             className="overflow-hidden rounded-2xl shadow-xl"
           >
             <img
-              src="assets/img/Fiber/hemp.jpg"
+              src="assets/img/yarn/yakwool.jpg"
               alt="Woman Weaving"
               className="w-full h-full object-cover"
             />
