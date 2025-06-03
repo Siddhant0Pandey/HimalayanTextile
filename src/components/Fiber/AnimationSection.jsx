@@ -38,11 +38,11 @@ const AnimationSection = () => {
         alt: "Starting point of the process",
       },
       {
-        url: "/assets/img/Fiber/raw.png",
+        url: "/assets/img/Fiber/wool.png",
         alt: "Middle stage of the process",
       },
       {
-        url: "/assets/img/Fiber/raw3.png",
+        url: "/assets/img/Fiber/wool1.png",
         alt: "Final outcome of the process",
       },
     ],
