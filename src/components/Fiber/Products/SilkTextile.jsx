@@ -236,8 +236,31 @@ export default function SilkTextile() {
         </h2>
         <p className="mb-4 text-gray-700">
           Known as the "Queen of Textiles," silk has been prized for over 5,000
-          years as one of the most luxurious natural fibers in the world...
+          years as one of the most luxurious and coveted natural fibers in the
+          world. Originating in ancient China, silk production—also known as
+          sericulture—was a closely guarded secret for centuries, contributing
+          to the development of the famed Silk Road that linked East and West
+          through trade, culture, and innovation. The allure of silk lies in its
+          unmatched combination of softness, strength, and natural sheen.
+          Produced by the domesticated silkworm (*Bombyx mori*), the fiber is
+          harvested from cocoons spun with continuous protein filaments that can
+          measure up to 900 meters in length. Silk's natural
+          temperature-regulating properties make it a versatile textile for both
+          warm and cool climates, offering breathable comfort while feeling
+          exceptionally smooth against the skin. It is also hypoallergenic,
+          making it ideal for sensitive skin. Beyond its physical qualities,
+          silk has played a profound cultural and economic role across
+          civilizations—from royal garments in Asia and Europe to ceremonial
+          attire and high fashion in the modern era. Today, silk continues to be
+          associated with elegance, craftsmanship, and exclusivity. While
+          traditional hand-reeled silk remains a hallmark of luxury, innovations
+          in sustainable silk farming and cruelty-free alternatives (such as
+          Ahimsa or "peace silk") are helping to evolve the industry for a more
+          ethical future. Whether used in haute couture, home décor, or medical
+          sutures, silk stands as a timeless symbol of refinement, artistry, and
+          natural wonder.
         </p>
+
         <div className="flex justify-center">
           <img
             src="/api/placeholder/800/400"
