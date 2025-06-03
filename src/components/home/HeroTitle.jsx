@@ -79,14 +79,14 @@ const RealisticMountains = () => {
     // Background mountains - most distant, lighter, softer
     {
       id: 'bg-mountain-1',
-      path: "M-100,620 L180,600 L320,550 L450,580 L600,520 L750,560 L900,500 L1050,540 L1200,480 L1350,520 L1500,460 L1650,500 L1800,540 L1920,560 L2200,580 L2500,600 L2600,800 L-100,800 Z",
+      path: "M0,620 L180,600 L320,550 L450,580 L600,520 L750,560 L900,500 L1050,540 L1200,480 L1350,520 L1500,460 L1650,500 L1800,540 L1920,560 L2000,580 L2000,800 L0,800 Z",
       color: "#e2e8f0",
       opacity: 0.5,
       transform: "translateY(20px)"
     },
     {
       id: 'bg-mountain-2', 
-      path: "M-100,680 L150,650 L280,620 L420,640 L560,600 L700,630 L840,580 L980,610 L1120,560 L1260,590 L1400,540 L1540,570 L1680,620 L1820,640 L1960,660 L2100,680 L2500,700 L2600,800 L-100,800 Z",
+      path: "M0,680 L150,650 L280,620 L420,640 L560,600 L700,630 L840,580 L980,610 L1120,560 L1260,590 L1400,540 L1540,570 L1680,620 L1820,640 L1960,660 L2000,680 L2000,800 L0,800 Z",
       color: "#cbd5e1",
       opacity: 0.6,
       transform: "translateY(15px)"
@@ -95,14 +95,14 @@ const RealisticMountains = () => {
     // Mid-ground mountains - more defined
     {
       id: 'mid-mountain-1',
-      path: "M-100,720 L120,690 L240,660 L360,680 L480,640 L600,660 L720,620 L840,650 L960,600 L1080,630 L1200,580 L1320,610 L1440,640 L1560,660 L1680,680 L1800,700 L1920,720 L2500,740 L2600,800 L-100,800 Z",
+      path: "M0,720 L120,690 L240,660 L360,680 L480,640 L600,660 L720,620 L840,650 L960,600 L1080,630 L1200,580 L1320,610 L1440,640 L1560,660 L1680,680 L1800,700 L1920,720 L2000,740 L2000,800 L0,800 Z",
       color: "#729a78",
       opacity: 0.7,
       transform: "translateY(10px)"
     },
     {
       id: 'mid-mountain-2',
-      path: "M-100,760 L100,730 L200,710 L300,740 L400,700 L500,720 L600,680 L700,710 L800,670 L900,700 L1000,660 L1100,690 L1200,720 L1300,740 L1400,760 L1500,740 L1600,760 L1700,780 L1800,760 L1900,780 L2000,760 L2100,780 L2500,800 L2600,800 L-100,800 Z",
+      path: "M0,760 L100,730 L200,710 L300,740 L400,700 L500,720 L600,680 L700,710 L800,670 L900,700 L1000,660 L1100,690 L1200,720 L1300,740 L1400,760 L1500,740 L1600,760 L1700,780 L1800,760 L1900,780 L2000,760 L2000,800 L0,800 Z",
       color: "#1fa951",
       opacity: 0.8,
       transform: "translateY(5px)"
@@ -111,14 +111,14 @@ const RealisticMountains = () => {
     // Foreground mountains - darkest, most defined
     {
       id: 'fg-mountain-1',
-      path: "M-100,790 L80,760 L160,740 L240,760 L320,730 L400,750 L480,720 L560,740 L640,710 L720,730 L800,700 L880,720 L960,740 L1040,760 L1120,740 L1200,760 L1280,780 L1360,760 L1440,780 L1520,790 L1600,780 L1680,790 L1760,780 L1840,790 L1920,780 L2000,790 L2500,800 L2600,800 L-100,800 Z",
+      path: "M0,790 L80,760 L160,740 L240,760 L320,730 L400,750 L480,720 L560,740 L640,710 L720,730 L800,700 L880,720 L960,740 L1040,760 L1120,740 L1200,760 L1280,780 L1360,760 L1440,780 L1520,790 L1600,780 L1680,790 L1760,780 L1840,790 L1920,780 L2000,790 L2000,800 L0,800 Z",
       color: "#F0F7F4",
       opacity: 0.9,
       transform: "translateY(2px)"
     },
     {
       id: 'fg-mountain-2',
-      path: "M-100,800 L60,785 L120,790 L180,785 L240,790 L300,785 L360,790 L420,785 L480,790 L540,785 L600,790 L660,785 L720,790 L780,785 L840,790 L900,785 L960,790 L1020,785 L1080,790 L1140,785 L1200,790 L1260,785 L1320,790 L1380,785 L1440,790 L1500,785 L1560,790 L1620,785 L1680,790 L1740,785 L1800,790 L1860,785 L1920,790 L1980,785 L2040,790 L2100,785 L2160,790 L2500,795 L2600,800 L-100,800 Z",
+      path: "M0,800 L60,785 L120,790 L180,785 L240,790 L300,785 L360,790 L420,785 L480,790 L540,785 L600,790 L660,785 L720,790 L780,785 L840,790 L900,785 L960,790 L1020,785 L1080,790 L1140,785 L1200,790 L1260,785 L1320,790 L1380,785 L1440,790 L1500,785 L1560,790 L1620,785 L1680,790 L1740,785 L1800,790 L1860,785 L1920,790 L1980,785 L2000,795 L2000,800 L0,800 Z",
       color: "#729a78",
       opacity: 1,
       transform: "translateY(0px)"
@@ -133,10 +133,10 @@ const RealisticMountains = () => {
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
     >
       <svg
-        className="absolute inset-0 w-full h-full min-w-full"
-        viewBox="0 0 2500 800"
-        preserveAspectRatio="xMidYEnd slice"
-        style={{ width: '100%', minWidth: '100vw' }}
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 2000 800"
+        preserveAspectRatio="none"
+        style={{ display: 'block' }}
       >
         <defs>
           {/* Mountain gradients for depth */}
@@ -246,7 +246,7 @@ const RealisticMountains = () => {
         {Array.from({ length: 15 }, (_, i) => (
           <motion.ellipse
             key={`mist-${i}`}
-            cx={150 + i * 160}
+            cx={150 + i * 120}
             cy={550 + Math.sin(i) * 40}
             rx={60 + Math.random() * 30}
             ry={15 + Math.random() * 10}
@@ -292,7 +292,7 @@ const RealisticMountains = () => {
             }}
           >
             <path
-              d={`M${300 + i * 200},${420 + i * 15} Q${305 + i * 200},${415 + i * 15} ${310 + i * 200},${420 + i * 15} Q${315 + i * 200},${415 + i * 15} ${320 + i * 200},${420 + i * 15}`}
+              d={`M${300 + i * 150},${420 + i * 15} Q${305 + i * 150},${415 + i * 15} ${310 + i * 150},${420 + i * 15} Q${315 + i * 150},${415 + i * 15} ${320 + i * 150},${420 + i * 15}`}
               stroke="rgba(0,0,0,0.08)"
               strokeWidth="1"
               fill="none"
@@ -326,7 +326,7 @@ export default function HeroTitle() {
   }, [isInView]);
 
   const welcomeText = "Welcome to the";
-  const title = "Himalayan Textile Industry";
+  const title = "Himalayan Textile Industries";
 
   const { displayText: welcomeDisplayText, isTyping: welcomeTyping } = useTypewriter(
     isVisible ? welcomeText : "", 
