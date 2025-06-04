@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import { Marker, Popup, Polyline } from "react-leaflet";
 import { useInView } from "react-intersection-observer";
@@ -7,10 +8,13 @@ import { gsap } from "gsap";
 const NEPAL_COORDS = [28.3949, 84.124];
 
 const getIcon = (type, rotation = 0, scale = 1) => {
-  const iconUrl =
+  const iconUrl = "/assets/img/hempp.svg"; // Local path to your SVG
+
+  // Optional: Customize filter based on type (e.g., export vs import)
+  const colorFilter =
     type === "export"
-      ? "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
-      : "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png";
+      ? "hue-rotate(80deg) saturate(2)" // green
+      : "hue-rotate(0deg) saturate(1)"; // default/red
 
   return L.divIcon({
     className: "flying-pin-marker",
@@ -18,9 +22,9 @@ const getIcon = (type, rotation = 0, scale = 1) => {
       <div style="
         transform: rotate(${rotation}deg) scale(${scale});
         transition: transform 0.2s ease-out;
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) ${colorFilter};
       ">
-        <img src="${iconUrl}" style="height: 41px; width: 25px;" />
+        <img src="${iconUrl}" style="height: 69px; width: 25px; scale:1.5" />
       </div>
     `,
     iconSize: [25 * scale, 41 * scale],
@@ -64,7 +68,7 @@ const MarkerComponent = ({
     const distance = Math.sqrt(
       Math.pow(targetLat - startLat, 2) + Math.pow(targetLng - startLng, 2)
     );
-    const duration = Math.max(1500, distance * 30);
+    const duration = Math.max(1500, distance * 50);
 
     const bearing = getBearing(
       startLat * (Math.PI / 180),
@@ -76,34 +80,33 @@ const MarkerComponent = ({
     let progress = 0;
     const startTime = Date.now();
 
+    // Inside the animate function:
+
     const animate = () => {
       const elapsed = Date.now() - startTime;
       progress = Math.min(elapsed / duration, 1);
-      const flightProgress = 1 - Math.pow(1 - progress, 2);
 
-      const arcHeight = Math.sin(progress * Math.PI) * (distance * 0.3);
+      const flightProgress = 1 - Math.pow(1 - progress, 2);
+      const arcHeight = Math.sin(progress * Math.PI) * distance * 0.3;
+
       const currentLat = startLat + (targetLat - startLat) * flightProgress;
       const currentLng = startLng + (targetLng - startLng) * flightProgress;
       const arcLat = currentLat + arcHeight * 0.1;
 
       const newPos = [arcLat, currentLng];
       setAnimatedPosition(newPos);
-      setFlightPath((prev) => [...prev, newPos]);
 
-      // GSAP animation
-      if (markerRef.current?._icon) {
-        gsap.to(markerRef.current._icon, {
-          rotate: bearing + "deg",
-          scale: 1 + 0.3 * Math.sin(progress * Math.PI),
-          duration: 0.2,
-        });
+      if (progress < 1) {
+        setFlightPath((prev) => [...prev, newPos]); // Add positions only while animating
       }
+
+      // ... rest of your animation logic
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        setAnimatedPosition([targetLat, targetLng]);
         setShowMarker(true);
+        // Remove setFlightPath here to prevent extra dot
         if (markerRef.current?._icon) {
           gsap.to(markerRef.current._icon, {
             scale: 1.2,
@@ -125,8 +128,8 @@ const MarkerComponent = ({
         <Polyline
           positions={flightPath}
           pathOptions={{
-            color: "#ff6b6b",
-            weight: 3,
+            color: "#729a78",
+            weight: 2,
             opacity: 0.8,
             dashArray: "6, 8",
           }}
