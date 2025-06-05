@@ -1,66 +1,126 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ContentCard from '../contentcard/ContentCard'
-import {useScrollNavigation} from '../../hooks/useScrollNavigation'
-import {sectionsData} from '../data/sectionsData'
-import ProgressIndicator from '../ProgressIndicator/ProgressIndicator'
-import ScrollHint from '../ScrollHint/ScrollHint'
-import HeroTitle from "../home/HeroTitle";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import ContentCard from '../contentcard/ContentCard';
+import { sectionsData } from '../data/sectionsData';
 
 export default function HeroSection({ sharedAudio = null }) {
   const [currentSection, setCurrentSection] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef(null);
 
-  useScrollNavigation({
-    containerRef,
-    currentSection,
-    setCurrentSection,
-    totalSections: sectionsData.length
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const containerHeight = containerRef.current.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate how much we've scrolled through the hero section
+        const scrollTop = Math.max(0, -rect.top);
+        const maxScroll = containerHeight - viewportHeight;
+        
+        if (maxScroll <= 0) return;
+        
+        const progress = Math.min(scrollTop / maxScroll, 1);
+        setScrollProgress(progress);
+        
+        // Calculate which section should be active
+        const sectionProgress = progress * sectionsData.length;
+        const newCurrentSection = Math.min(
+          Math.floor(sectionProgress), 
+          sectionsData.length - 1
+        );
+        
+        setCurrentSection(newCurrentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate individual card transforms
+  const getCardTransform = (index) => {
+    const totalSections = sectionsData.length;
+    const progressPerSection = 1 / totalSections;
+    const sectionStart = index * progressPerSection;
+    const sectionEnd = (index + 1) * progressPerSection;
+    
+    if (scrollProgress < sectionStart) {
+      // Card hasn't appeared yet
+      return {
+        y: 100,
+        scale: 0.8,
+        opacity: 0,
+        zIndex: totalSections - index
+      };
+    } else if (scrollProgress >= sectionStart && scrollProgress < sectionEnd) {
+      // Card is currently active/transitioning
+      const sectionProgress = (scrollProgress - sectionStart) / progressPerSection;
+      return {
+        y: 0,
+        scale: 1 - sectionProgress * 0.1,
+        opacity: 1 - sectionProgress * 0.3,
+        zIndex: totalSections - index
+      };
+    } else {
+      // Card has been passed
+      return {
+        y: -50,
+        scale: 0.9,
+        opacity: 0,
+        zIndex: totalSections - index
+      };
+    }
+  };
 
   return (
-    <div className="relative">
-   
+    <div className="relative w-full">
       <div 
         ref={containerRef}
-        className="sticky top-0 w-full h-screen bg-highlight text-darkText overflow-hidden z-10"
+        className="relative w-full"
+        style={{ height: `${sectionsData.length * 100}vh` }}
       >
-        {/* <ProgressIndicator
-          sections={sectionsData}
-          currentSection={currentSection}
-          onSectionChange={setCurrentSection}
-        /> */}
-
-        <ScrollHint currentSection={currentSection} totalSections={sectionsData.length} />
-
-        <div className="relative h-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSection}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="h-full"
-            >
-              <ContentCard
-                {...sectionsData[currentSection]}
-                isVisible={true}
-                delay={150}
-                audio={sharedAudio}
-              />
-            </motion.div>
-          </AnimatePresence>
+        {/* Fixed container for cards */}
+        <div className="sticky top-0 w-full h-screen overflow-hidden">
+          {sectionsData.map((section, index) => {
+            const transform = getCardTransform(index);
+            const isVisible = index <= currentSection;
+            
+            return (
+              <motion.div
+                key={`card-${index}`}
+                className="absolute inset-0 w-full h-full"
+                style={{ zIndex: transform.zIndex }}
+                animate={{
+                  y: `${transform.y}px`,
+                  scale: transform.scale,
+                  opacity: transform.opacity,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut"
+                }}
+              >
+                <ContentCard
+                  {...section}
+                  isVisible={isVisible}
+                  delay={0} // Remove delay for immediate response
+                  audio={sharedAudio}
+                  stackedMode={true}
+                />
+              </motion.div>
+            );
+          })}
         </div>
+
+       
+
+        {/* Scroll Progress Indicator */}
       </div>
-      
-      <div 
-        className="h-screen bg-transparent" 
-        style={{ 
-          height: `${sectionsData.length * 100}vh` 
-        }}
-      />
     </div>
   );
 }

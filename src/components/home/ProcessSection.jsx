@@ -116,7 +116,7 @@ const ProcessCard = ({ step, index }) => {
             <div className="flex">
               <div className="w-32 h-32 relative overflow-hidden flex-shrink-0">
                 <img 
-                  src={step.image} 
+                  src={step.image}  
                   alt={step.name}
                   className="w-full h-full object-cover"
                 />
