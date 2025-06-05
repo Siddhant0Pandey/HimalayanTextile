@@ -18,14 +18,15 @@ const MyMap = () => {
     if (titleInView && !titleAnimated.current) {
       titleAnimated.current = true;
 
-      const tl = gsap.timeline();
-      tl.from(titleRef.current.querySelectorAll("h1, .legend-item"), {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power4.out",
-      });
+      gsap
+        .timeline()
+        .from(titleRef.current.querySelectorAll("h1, .legend-item"), {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power4.out",
+        });
     }
   }, [titleInView]);
 
@@ -54,6 +55,8 @@ const MyMap = () => {
     { lat: 41.8719, lng: 12.5674, name: "Italy" },
     { lat: 35.6762, lng: 139.6503, name: "Japan" },
     { lat: 37.5665, lng: 126.978, name: "South Korea" },
+    { name: "Australia", lat: -22.8688, lng: 138.2093 }, // Sydney
+    { name: "India", lat: 18.6139, lng: 77.209 },
   ];
 
   const handleMarkerClick = (countryName) => {
@@ -62,21 +65,29 @@ const MyMap = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-gray-100 pt-16">
+      {/* Title Section */}
       <div
         ref={titleRef}
-        className="w-full p-6 bg-white shadow-md text-center z-10 opacity-100"
+        className="w-full px-4 py-6 md:px-10 bg-white shadow-md text-center z-10"
       >
-        <h1 className="text-[clamp(2rem,5vw,7rem)] uppercase font-extrabold leading-[1] text-darkText">
+        <h1 className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-tight text-darkText">
           Global Trade Flows
         </h1>
       </div>
 
-      <div ref={mapRef} className="relative opacity-0 h-[80vh] w-full">
+      {/* Map Section */}
+      <div
+        ref={mapRef}
+        className="relative opacity-0 w-full"
+        style={{ height: "calc(var(--vh, 1vh) * 85)" }} // Adjust for your design
+      >
         <MapContainerComponent
           countries={countries}
           onMarkerClick={handleMarkerClick}
         />
-        <CountryInfo countryName={selectedCountry} />
+        <div className="absolute bottom-4 left-4 right-4 sm:left-8 sm:right-8 z-[1000]">
+          <CountryInfo countryName={selectedCountry} />
+        </div>
       </div>
     </div>
   );

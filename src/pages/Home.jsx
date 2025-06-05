@@ -12,10 +12,12 @@ import HeroSection from "../components/hero/HeroSection";
 
 function Home() {
   return (
+
     <div >
     <HeroTitle/>
     <TextileStoryTransition/>
       <HeroSection />
+
       <AboutSection />
       <ProcessSection />
       <CoreValues />

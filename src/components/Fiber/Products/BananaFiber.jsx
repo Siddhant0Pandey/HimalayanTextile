@@ -20,104 +20,104 @@ const timelineData = [
     id: 1,
     title: "Banana Plantation",
     description:
-      "Banana plants (Musa species) are cultivated in tropical regions worldwide. These fast-growing plants produce fruit within 9-12 months and generate substantial agricultural waste in the form of pseudostems after harvesting. Each plant produces only one bunch of bananas before being cut down.",
-    bgImage: "/api/placeholder/600/400",
+      "Banana plants (Musa species) thrive in tropical climates and are grown globally for their fruit. The plants grow rapidly, reaching maturity within 9–12 months. While the fruit is the primary product, the plant’s pseudostem contains fibrous material that is often discarded—yet it holds tremendous potential for sustainable fiber production.",
+    bgImage: "public/assets/img/banana/1.png",
     icon: FaSeedling,
   },
   {
     id: 2,
     title: "Pseudostem Harvesting",
     description:
-      "After banana fruit is harvested, the pseudostems (false trunks) are cut down as they would naturally die. These thick, fibrous stems, normally considered agricultural waste, are collected immediately to prevent decomposition and maximize fiber quality.",
-    bgImage: "/api/placeholder/600/400",
+      "Once banana fruits are harvested, the pseudostems (the trunk-like structures made of tightly packed leaf sheaths) are cut down. These are normally treated as waste, but here they serve as the raw material for fiber extraction, making the entire process more eco-conscious and circular.",
+    bgImage: "public/assets/img/cactus/2.png",
     icon: FaCut,
   },
   {
     id: 3,
     title: "Cleaning & Sorting",
     description:
-      "Harvested banana pseudostems are cleaned to remove dirt, leaves, and damaged portions. The stems are sorted by quality and size, with the outer layers being the strongest for fiber extraction. Any rotting or diseased sections are carefully removed.",
-    bgImage: "/api/placeholder/600/400",
+      "The harvested pseudostems are cleaned to remove surface impurities, leaves, and excess moisture. They are then sorted based on diameter and quality to prepare them for mechanical processing, ensuring consistent fiber output in later stages.",
+    bgImage: "public/assets/img/cactus/3.png",
     icon: FaLeaf,
   },
   {
     id: 4,
     title: "Fiber Extraction",
     description:
-      "The pseudostems are processed through decorticating machines that scrape away the pulpy material, leaving behind strong natural fibers. Traditional hand-scraping methods are also used in smaller operations. The extracted fibers vary in fineness depending on the layer of the stem.",
-    bgImage: "/api/placeholder/600/400",
+      "Using decorticating machines or manual tools, the outer layers of the pseudostem are scraped to separate long fibers. These machines crush the stem and pull out fibrous strands, which are collected for further processing. This step is key to unlocking the value from the plant waste.",
+    bgImage: "public/assets/img/cactus/4.png",
     icon: FaWater,
   },
   {
     id: 5,
     title: "Washing & Drying",
     description:
-      "Extracted banana fibers are thoroughly washed in clean water to remove remaining plant juices and impurities. The clean fibers are then spread out to dry naturally in the sun or using controlled drying methods to achieve optimal moisture content.",
-    bgImage: "/api/placeholder/600/400",
+      "The raw banana fibers are washed thoroughly to remove any remaining sap, dirt, or organic residues. Once clean, the fibers are sun-dried in controlled conditions to prevent mildew and ensure strength retention, contributing to their natural luster and durability.",
+    bgImage: "public/assets/img/cactus/5.png",
     icon: FaSun,
   },
   {
     id: 6,
     title: "Fiber Grading",
     description:
-      "Dried banana fibers are sorted and graded based on length, strength, and fineness. Fine fibers from inner layers are used for delicate textiles, while coarser outer fibers are suitable for stronger applications like ropes and mats.",
-    bgImage: "/api/placeholder/600/400",
+      "After drying, the fibers are graded manually based on characteristics like length, fineness, color, and strength. Grading ensures uniformity in the final product and allows premium-quality fibers to be reserved for textiles, while coarser grades may be used in composites or handicrafts.",
+    bgImage: "public/assets/img/cactus/6.png",
     icon: FaFire,
   },
   {
     id: 7,
     title: "Combing & Alignment",
     description:
-      "Banana fibers are combed using specialized tools to align them parallel and remove any remaining impurities or short fibers. This process ensures uniform length and smoothness, preparing the fibers for the spinning process.",
-    bgImage: "/api/placeholder/600/400",
+      "Fibers are combed using fine tools to remove short, uneven strands and align the long fibers parallel to each other. This step improves fiber texture and is crucial for producing smooth, strong yarn, ready for spinning or blending with other natural fibers.",
+    bgImage: "public/assets/img/cactus/7.png",
     icon: FaHandsHelping,
   },
   {
     id: 8,
     title: "Fiber Spinning",
     description:
-      "Aligned banana fibers are spun into yarn using traditional spinning wheels or modern spinning machines. The natural lignin in banana fibers provides strength, while their flexibility allows for various yarn weights suitable for different textile applications.",
-    bgImage: "/api/placeholder/600/400",
+      "The aligned banana fibers are spun into yarn using traditional hand-spinning wheels or mechanized spindles. Spinning converts loose fiber into a continuous thread, which is flexible yet strong enough to be woven or knitted into fabrics.",
+    bgImage: "public/assets/img/cactus/8.png",
     icon: FaSort,
   },
   {
     id: 9,
     title: "Yarn Treatment",
     description:
-      "Spun banana yarn undergoes treatment processes to enhance its properties. This may include natural softening treatments, strengthening with plant-based binders, or moisture conditioning to improve workability and durability.",
-    bgImage: "/api/placeholder/600/400",
+      "To improve the yarn's performance, treatments such as softening, anti-bacterial washing, or moisture-wicking finishes may be applied. This enhances the banana yarn’s suitability for clothing, upholstery, or interior decor applications.",
+    bgImage: "public/assets/img/cactus/9.png",
     icon: FaTools,
   },
   {
     id: 10,
     title: "Quality Testing",
     description:
-      "Each batch of banana fiber yarn is rigorously tested for tensile strength, elongation, moisture regain, and uniformity. Quality control ensures consistent performance and helps determine the best applications for each grade of yarn.",
-    bgImage: "/api/placeholder/600/400",
+      "Each yarn batch is tested for tensile strength, moisture resistance, and color fastness. Consistent quality is essential for textile production, ensuring the banana fiber yarn meets modern sustainability and durability standards.",
+    bgImage: "public/assets/img/cactus/10.png",
     icon: FaCog,
   },
   {
     id: 11,
     title: "Natural Dyeing",
     description:
-      "Banana yarn accepts natural dyes exceptionally well due to its porous structure. Eco-friendly dyes from plants, minerals, or other sustainable sources are used to create vibrant colors while maintaining the fiber's biodegradable properties.",
-    bgImage: "/api/placeholder/600/400",
+      "Banana fiber’s high cellulose content allows it to absorb natural dyes beautifully. Using plant-based and non-toxic dyes, the yarn is colored in earthy tones—highlighting both the aesthetic and environmental values of the material.",
+    bgImage: "public/assets/img/cactus/11.png",
     icon: FaIndustry,
   },
   {
     id: 12,
     title: "Yarn Finishing",
     description:
-      "Dyed banana yarn is wound onto bobbins, prepared into hanks, or organized according to specifications. Final inspection ensures color consistency and yarn quality before proceeding to textile manufacturing processes.",
-    bgImage: "/api/placeholder/600/400",
+      "Dyed yarns are wound onto bobbins and carefully inspected for uniformity in thickness and color. Any inconsistencies are corrected before the yarn is packaged for weaving, knitting, or braiding into fabric structures.",
+    bgImage: "public/assets/img/cactus/12.png",
     icon: FaSync,
   },
   {
     id: 13,
     title: "Textile Manufacturing",
     description:
-      "Banana fiber yarn is woven or knitted into sustainable textiles using traditional or modern techniques. The resulting fabrics are lightweight, breathable, and naturally antimicrobial, perfect for clothing, home textiles, and specialty applications with excellent drape and texture.",
-    bgImage: "/api/placeholder/600/400",
+      "In the final stage, banana fiber yarn is crafted into rugs, garments, accessories, or eco-textiles. Weaving or knitting is done using either traditional looms or modern techniques, resulting in a durable, biodegradable, and elegant fabric ideal for sustainable living.",
+    bgImage: "public/assets/img/cactus/13.png",
     icon: FaThLarge,
   },
 ];
@@ -144,134 +144,121 @@ export default function BanaanaFiber() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center px-4 pt-20">
-      <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm">
-        <img
-          src="/api/placeholder/1200/800"
-          alt="banana fiber production background"
-          className="h-full w-full object-cover"
-        />
-      </div>
+    <div className="overflow-x-hidden">
+      <div className="relative flex flex-col items-center px-4 pt-20">
+        <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
+          <img
+            src="/api/placeholder/1200/800"
+            alt="banana fiber production background"
+            className="h-full w-full object-cover"
+          />
+        </div>
 
-      <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
-        Banana Fiber Creation Process
-      </h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
+          Banana Fiber Creation Process
+        </h1>
 
-      <div className="w-full max-w-6xl">
-        <div className="relative">
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
+        <div className="w-full max-w-6xl">
+          <div className="relative">
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1fa951] z-0" />
 
-          {timelineData.map((item, index) => {
-            const isLeft = index % 2 === 0;
-            const Icon = item.icon;
+            {timelineData.map((item, index) => {
+              const isLeft = index % 2 === 0;
+              const Icon = item.icon;
 
-            return (
-              <div
-                key={item.id}
-                className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
-                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                } relative`}
-              >
-                {/* Line Progress (Desktop) */}
+              return (
                 <div
-                  className={`hidden md:flex w-1/2 ${
-                    isLeft ? "justify-end pr-4" : "justify-start pl-4"
-                  }`}
+                  key={item.id}
+                  className={`timeline-card mb-16 flex flex-col-reverse md:flex-row items-center ${
+                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                  } relative`}
                 >
                   <div
-                    className={`w-1 ${
-                      activeItems.includes(index)
-                        ? "bg-[#1fa951] h-full"
-                        : "h-0"
-                    } transition-all duration-700`}
-                  />
-                </div>
-
-                {/* Card Content */}
-                <div
-                  className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
-                    activeItems.includes(index)
-                      ? "translate-y-0 opacity-100"
-                      : isLeft
-                      ? "-translate-x-10 opacity-0"
-                      : "translate-x-10 opacity-0"
-                  }`}
-                >
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                    <div className="h-48 sm:h-64 overflow-hidden relative">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{ backgroundImage: `url(${item.bgImage})` }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                      <div className="absolute bottom-4 left-4 bg-black/60 text-white px-2 py-1 rounded-full text-sm">
-                        Step {index + 1}
-                      </div>
-                    </div>
-                    <div className="p-4 sm:p-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Icon */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
-                  <div
-                    className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
-                      activeItems.includes(index) ? "scale-100" : "scale-0"
+                    className={`hidden md:flex w-1/2 ${
+                      isLeft ? "justify-end pr-4" : "justify-start pl-4"
                     }`}
                   >
-                    <Icon className="text-white" size={18} />
+                    <div
+                      className={`w-1 ${
+                        activeItems.includes(index)
+                          ? "bg-[#1fa951] h-full"
+                          : "h-0"
+                      } transition-all duration-700`}
+                    />
+                  </div>
+
+                  <div
+                    className={`w-full md:w-5/12 transform transition-all duration-700 ease-in-out ${
+                      activeItems.includes(index)
+                        ? "translate-y-0 opacity-100"
+                        : isLeft
+                        ? "-translate-x-10 opacity-0"
+                        : "translate-x-10 opacity-0"
+                    }`}
+                  >
+                    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                      <div className="h-48 sm:h-64 overflow-hidden relative">
+                        <div
+                          className="absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${item.bgImage})` }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="absolute bottom-4 left-4 bg-black/60 text-white px-2 py-1 rounded-full text-sm">
+                          Step {index + 1}
+                        </div>
+                      </div>
+                      <div className="p-4 sm:p-6">
+                        <h3 className="text-xl sm:text-2xl font-bold mb-2 text-black">
+                          {item.title}
+                        </h3>
+                        <p className="text-gray-600">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <div
+                      className={`flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#1fa951] shadow-lg transition-all duration-500 ${
+                        activeItems.includes(index) ? "scale-100" : "scale-0"
+                      }`}
+                    >
+                      <Icon className="text-white" size={18} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      {/* About Section */}
-      <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12">
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
-          About Banana Fiber
-        </h2>
-        <p className="mb-4 text-gray-700">
-          Banana fiber represents one of nature's most remarkable examples of
-          zero-waste agriculture, transforming what was once considered
-          agricultural waste into premium sustainable textiles. Extracted from
-          the pseudostems of banana plants after fruit harvest, this
-          eco-friendly fiber utilizes materials that would otherwise be
-          discarded or burned, creating valuable products while reducing
-          environmental impact. Banana fiber is naturally strong, lightweight,
-          and biodegradable, with excellent moisture-wicking properties and
-          natural antimicrobial characteristics. The fiber production process
-          supports rural farming communities by providing additional income
-          streams from banana cultivation, turning waste into wealth. With its
-          silk-like appearance and cotton-like feel, banana fiber creates
-          textiles that are surprisingly soft and luxurious while being
-          completely sustainable. The material requires no additional water or
-          land resources since it uses existing agricultural byproducts, making
-          it one of the most environmentally responsible fiber choices
-          available. Banana textiles are naturally UV-resistant and have
-          excellent drape qualities, making them ideal for both casual and
-          formal wear. The fiber's natural golden-yellow color reduces the need
-          for chemical dyeing, though it accepts natural dyes beautifully when
-          color variation is desired. From traditional Japanese washi paper to
-          modern fashion garments, banana fiber has a rich history and promising
-          future in sustainable textile production. Major fashion brands are
-          increasingly incorporating banana fiber into their sustainable
-          collections, recognizing its superior environmental credentials and
-          unique aesthetic qualities.
-        </p>
-        <div className="flex justify-center">
-          <img
-            src="/api/placeholder/800/400"
-            alt="Banana fiber production"
-            className="rounded-lg shadow-md w-full max-w-xl"
-          />
+        <div className="w-full max-w-4xl bg-white/90 p-4 sm:p-6 rounded-lg shadow-lg mb-12 mt-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-[#1fa951]">
+            About Banana Fiber
+          </h2>
+          <p className="mb-4 text-gray-700">
+            Banana fiber represents one of nature's most remarkable examples of
+            zero-waste agriculture, transforming what was once considered
+            agricultural waste into a premium sustainable textile. Extracted
+            from the pseudostem of the banana plant, this fiber is not only
+            biodegradable but also naturally strong, lightweight, and
+            breathable. The production process is largely mechanical, requiring
+            minimal chemical treatment—making it environmentally safer than most
+            synthetic alternatives. Banana fiber’s versatility allows it to be
+            used in textiles, rugs, home decor, paper, and even automotive
+            components. Its natural golden sheen, durability, and eco-friendly
+            origin have earned it a spot in modern sustainable design and
+            ethical fashion. As global demand for green alternatives grows,
+            banana fiber stands out as an innovative, circular solution to the
+            textile industry’s environmental challenges.
+          </p>
+
+          <div className="flex justify-center">
+            <img
+              src="/api/placeholder/800/400"
+              alt="Banana fiber production"
+              className="rounded-lg shadow-md w-full max-w-xl"
+            />
+          </div>
         </div>
       </div>
     </div>
