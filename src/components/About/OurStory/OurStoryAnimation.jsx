@@ -16,7 +16,7 @@ const OurStoryAnimation = () => {
         trigger: "#scroll-section",
         start: "top top",
         end: "bottom bottom",
-        scrub: 1, // Slows down the scroll-based animation
+        scrub: 1,
       },
       motionPath: {
         path: pathRef.current,
@@ -62,31 +62,30 @@ const OurStoryAnimation = () => {
           preserveAspectRatio="xMidYMid slice"
         />
 
-        {/* Refined S-Shaped Path with Balanced Curves */}
+        {/* Gentle S-Shaped Path */}
         <path
           ref={pathRef}
           d="
-            M 150 100
-            C 600 100, 900 200, 1250 300
-            C 1000 400, 600 600, 150 500
-            C 600 600, 1000 800, 1250 800
+            M 150 150
+            C 400 200, 600 400, 850 400
+            C 1100 400, 1150 700, 1250 850
           "
           fill="none"
           stroke="#4CAF50"
-          strokeWidth="6"
+          strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray="10,6"
         />
 
-        {/* Truck Image */}
+        {/* Truck Image — Centered on Path */}
         <image
           ref={carRef}
-          href="/assets/img/truck.png"
+          href="/truck.png"
           width="50"
-          height="30"
-          x="0"
-          y="0"
+          height="50"
+          x="-25"
+          y="-85"
         />
       </svg>
     </div>
