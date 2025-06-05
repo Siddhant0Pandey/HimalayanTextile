@@ -148,13 +148,13 @@ export default function BanaanaFiber() {
       <div className="relative flex flex-col items-center px-4 pt-20">
         <div className="absolute top-0 left-0 h-full w-full -z-10 blur-sm overflow-hidden">
           <img
-            src="/api/placeholder/1200/800"
+            src="assets\img\hero-section1.jpg"
             alt="banana fiber production background"
             className="h-full w-full object-cover"
           />
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#1fa951]">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#00fe5d]">
           Banana Fiber Creation Process
         </h1>
 
@@ -253,11 +253,11 @@ export default function BanaanaFiber() {
           </p>
 
           <div className="flex justify-center">
-            <img
+            {/* <img
               src="/api/placeholder/800/400"
               alt="Banana fiber production"
               className="rounded-lg shadow-md w-full max-w-xl"
-            />
+            /> */}
           </div>
         </div>
       </div>
