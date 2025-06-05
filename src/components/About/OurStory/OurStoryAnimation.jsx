@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 const OurStoryAnimation = () => {
   const carRef = useRef(null);
   const pathRef = useRef(null);
+  const textRef1 = useRef(null);
+  const textRef2 = useRef(null);
 
   useEffect(() => {
     const animation = gsap.to(carRef.current, {
@@ -21,12 +23,48 @@ const OurStoryAnimation = () => {
       motionPath: {
         path: pathRef.current,
         align: pathRef.current,
-        alignOrigin: [0.5, 0.5],
+        alignOrigin: [0.5, 1],
         autoRotate: true,
       },
       duration: 1,
       ease: "none",
     });
+
+    gsap.fromTo(
+      textRef1.current,
+      {
+        opacity: 0,
+        x: 200,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: "#scroll-section",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      textRef2.current,
+      {
+        opacity: 0,
+        x: -200,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: "#scroll-section",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      }
+    );
 
     return () => {
       animation.scrollTrigger?.kill();
@@ -42,17 +80,15 @@ const OurStoryAnimation = () => {
         viewBox="0 0 1400 1000"
         style={{ position: "sticky", top: 0 }}
       >
-        {/* Kathmandu Map at Top Left */}
         <image
           href="/assets/img/ktm.png"
           x="0"
           y="0"
           width="300"
-          height="300"
+          height="340"
           preserveAspectRatio="xMidYMid slice"
         />
 
-        {/* India Map at Bottom Right */}
         <image
           href="/assets/img/ind.png"
           x="1100"
@@ -62,14 +98,9 @@ const OurStoryAnimation = () => {
           preserveAspectRatio="xMidYMid slice"
         />
 
-        {/* Gentle S-Shaped Path */}
         <path
           ref={pathRef}
-          d="
-            M 150 150
-            C 400 200, 600 400, 850 400
-            C 1100 400, 1150 700, 1250 850
-          "
+          d="M 150 150 Q 250 200 400 400 Q 600 600 850 500 Q 1100 400 1200 750"
           fill="none"
           stroke="#4CAF50"
           strokeWidth="4"
@@ -78,16 +109,43 @@ const OurStoryAnimation = () => {
           strokeDasharray="10,6"
         />
 
-        {/* Truck Image — Centered on Path */}
         <image
           ref={carRef}
           href="/truck.png"
-          width="50"
-          height="50"
+          width="70"
+          height="70"
           x="-25"
-          y="-85"
+          y="38"
         />
       </svg>
+
+      <div
+        ref={textRef1}
+        style={{
+          position: "absolute",
+          top: "30%",
+          left: "40%",
+          fontSize: "2rem",
+          color: "#4CAF50",
+          opacity: 0,
+        }}
+      >
+        Journey Begins Here
+      </div>
+
+      <div
+        ref={textRef2}
+        style={{
+          position: "absolute",
+          top: "80%",
+          left: "10%",
+          fontSize: "2rem",
+          color: "#4CAF50",
+          opacity: 0,
+        }}
+      >
+        Our Story Reaches Here
+      </div>
     </div>
   );
 };

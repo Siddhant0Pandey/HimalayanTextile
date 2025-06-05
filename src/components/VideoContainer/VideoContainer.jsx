@@ -1,9 +1,93 @@
 /* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 
-export default function VideoContainer({ videoSrc, isVisible, delay, type }) {
+export default function VideoContainer({ videoSrc, isVisible, delay, type, fullWidth = false }) {
+  if (fullWidth) {
+    return (
+      <div className="absolute inset-0 w-full h-full">
+        <motion.div
+          className="relative w-full h-full overflow-hidden"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ 
+            opacity: isVisible ? 1 : 0, 
+            scale: isVisible ? 1 : 1.05,
+          }}
+          transition={{ 
+            duration: 0.8, 
+            delay: delay / 1000,
+            ease: "easeOut"
+          }}
+        >
+          {videoSrc ? (
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          ) : (
+            <div className="w-full h-full relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div 
+                  className="text-6xl filter drop-shadow-2xl"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 2, -2, 0]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
+                    delay: delay / 1000
+                  }}
+                >
+                  {type === "problem" ? "⚠️" : type === "solution" ? "🌱" : "✨"}
+                </motion.div>
+              </div>
+              
+              {/* Subtle floating particles */}
+              <motion.div
+                className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/30 rounded-full"
+                animate={{ 
+                  y: [0, -15, 0],
+                  opacity: [0.3, 0.7, 0.3]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity,
+                  delay: delay / 1000 + 1
+                }}
+              />
+              <motion.div
+                className="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-white/40 rounded-full"
+                animate={{ 
+                  y: [0, 10, 0],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  delay: delay / 1000 + 2
+                }}
+              />
+            </div>
+          )}
+
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Original layout for non-full-width mode (keeping your existing code)
   return (
-    <div className="relative h-screen">
+    <div className="absolute h-screen w-full left-0 top-0 -z-10">
       <motion.div
         className="relative rounded-2xl overflow-hidden shadow-2xl h-full"
         initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
@@ -14,7 +98,7 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type }) {
         }}
         transition={{ 
           duration: 1, 
-          delay: (delay + 1000) / 1000,
+          delay: 1,
           ease: "easeOut"
         }}
       >
