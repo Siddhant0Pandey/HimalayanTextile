@@ -84,7 +84,7 @@ export default function HeroSection({ sharedAudio = null }) {
         className="relative w-full"
         style={{ height: `${sectionsData.length * 100}vh` }}
       >
- 
+
         <div className="sticky top-0 w-full h-screen overflow-hidden">
           {sectionsData.map((section, index) => {
             const transform = getCardTransform(index);
