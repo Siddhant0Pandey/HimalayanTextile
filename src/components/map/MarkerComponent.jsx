@@ -8,13 +8,12 @@ import { gsap } from "gsap";
 const NEPAL_COORDS = [28.3949, 84.124];
 
 const getIcon = (type, rotation = 0, scale = 1) => {
-  const iconUrl = "/assets/img/hempp.svg"; // Local path to your SVG
+  const iconUrl = "/assets/img/hempp.svg";
 
-  // Optional: Customize filter based on type (e.g., export vs import)
   const colorFilter =
     type === "export"
       ? "hue-rotate(80deg) saturate(2)" // green
-      : "hue-rotate(0deg) saturate(1)"; // default/red
+      : "hue-rotate(0deg) saturate(1)"; 
 
   return L.divIcon({
     className: "flying-pin-marker",
@@ -97,16 +96,14 @@ const MarkerComponent = ({
       setAnimatedPosition(newPos);
 
       if (progress < 1) {
-        setFlightPath((prev) => [...prev, newPos]); // Add positions only while animating
+        setFlightPath((prev) => [...prev, newPos]); 
       }
 
-      // ... rest of your animation logic
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
         setShowMarker(true);
-        // Remove setFlightPath here to prevent extra dot
         if (markerRef.current?._icon) {
           gsap.to(markerRef.current._icon, {
             scale: 1.2,
