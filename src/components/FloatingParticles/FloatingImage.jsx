@@ -15,7 +15,7 @@ export const FloatingTextileImage = () => {
       content: cottonImg,
       size: 'w-90 h-90'
     },
-    {
+    { 
       id: 2,
       x: -15,
       y: 20,
@@ -40,16 +40,16 @@ export const FloatingTextileImage = () => {
 
   const generateFloatingPath = (baseX, baseY, elementId) => {
     const positions = [];
-    const numPoints = 8; // More points for smoother movement
+    const numPoints = 8; 
     
     for (let i = 0; i < numPoints; i++) {
       const progress = i / (numPoints - 1);
-      // Create a gentle wave-like path across the screen
+     
       const waveX = Math.sin(progress * Math.PI * 2 + elementId) * 15;
       const waveY = Math.cos(progress * Math.PI * 1.5 + elementId * 0.5) * 10;
       
       positions.push({
-        x: (baseX + progress * 60) % 100, // Move across screen width
+        x: (baseX + progress * 60) % 100, 
         y: baseY + waveY + (Math.sin(progress * Math.PI + elementId) * 8)
       });
     }
@@ -82,11 +82,11 @@ export const FloatingTextileImage = () => {
               y: [0, -2, 0, 2, 0, -1, 0, 1] // Additional floating bob
             }}
             transition={{
-              duration: 12 + element.id * 2, // Much slower movement
+              duration: 12 + element.id * 2, 
               delay: element.delay,
               repeat: Infinity,
               repeatType: "loop",
-              ease: "linear", // Smooth continuous movement
+              ease: "linear", 
               times: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1]
             }}
           >
