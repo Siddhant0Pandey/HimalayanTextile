@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -481,30 +482,32 @@ export default function YarnOfferings() {
           We invite you to explore our collection of premium yarns and discover
           the perfect material for your next creative project.
         </p>
-        <button
-          ref={buttonRef}
-          className="px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 flex items-center mx-auto gap-2"
-          style={{
-            backgroundColor: "#1fa951",
-            color: "#edfeee",
-          }}
-        >
-          Interested
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <Link to={"/contact"}>
+          <button
+            ref={buttonRef}
+            className="px-8 py-4 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 flex items-center mx-auto gap-2"
+            style={{
+              backgroundColor: "#1fa951",
+              color: "#edfeee",
+            }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button>
+            Interested
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </button>
+        </Link>
       </div>
     </section>
   );
