@@ -109,7 +109,7 @@ const Footer = () => {
             },
             {
               title: 'Support',
-              links: ['contact', 'FAQs', 'Privacy Policy'],
+              links: ['contact'],
             },
           ].map((section, idx) => (
             <div key={idx} className="footer-column space-y-4">
