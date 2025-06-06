@@ -134,7 +134,7 @@ export default function TextileTransitionPage() {
       onClick={handleEnableAudio}
     >
  
-      <FloatingTextileImage />
+      {/* <FloatingTextileImage /> */}
       <FloatingTextileElements />
       <TextilePattern isVisible={line1Visible} />
       <WeavingAnimation isActive={line2Visible} />
@@ -156,7 +156,7 @@ export default function TextileTransitionPage() {
         <motion.div className="relative">
           <motion.p 
             ref={line1Ref}
-            className="text-3xl md:text-4xl lg:text-5xl text-gray-800 leading-relaxed font-normal relative z-10"
+            className="text-5xl lg:text-5xl font-bold text-emerald-800 mb-8 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -190,7 +190,7 @@ export default function TextileTransitionPage() {
             whileTap={{ scale: 0.9 }}
             className="cursor-pointer"
           >
-          <svg className="w-12 h-12 text-green-500" viewBox="0 0 500 499" fill="currentColor">
+          <svg className="w-12 h-12 text-green-800" viewBox="0 0 500 499" fill="currentColor">
             <g transform="translate(0,499) scale(0.1,-0.1)">
               <path d="M2490 4158 c-7 -18 -23 -47 -35 -63 -12 -17 -26 -46 -30 -65 -4 -19
   -20 -55 -35 -80 -15 -25 -30 -64 -33 -87 -3 -23 -14 -55 -26 -72 -12 -16 -21
@@ -279,7 +279,7 @@ export default function TextileTransitionPage() {
                 {Array.from({ length: 8 }, (_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-2 h-2 bg-green-400 rounded-full"
+                    className="absolute w-2 h-2 bg-green-800 rounded-full"
                     initial={{ scale: 0, x: 0, y: 0 }}
                     animate={{
                       scale: [0, 1, 0],
@@ -298,7 +298,7 @@ export default function TextileTransitionPage() {
         <motion.div className="relative">
           <motion.p 
             ref={line2Ref}
-            className="text-3xl md:text-4xl lg:text-5xl text-gray-800 leading-relaxed font-normal relative z-10"
+            className="text-5xl lg:text-5xl font-bold text-emerald-800 mb-8 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}

@@ -89,67 +89,71 @@ const ProcessCard = ({ step, index }) => {
   };
 
   return (
-    <div className="relative flex items-center mb-16 last:mb-0 overflow-x-hidden">
-      {/* Timeline line */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-300 -z-10">
-        {index < processSteps.length - 1 && (
-          <motion.div
-            className="w-full bg-gray-400"
-            initial={{ height: 0 }}
-            animate={isInView ? { height: "100%" } : { height: 0 }}
-            transition={{ duration: 0.8, delay: (index * 0.2) + 0.5 }}
-          />
-        )}
-      </div>
+   <div className="relative flex flex-col md:flex-row items-center mb-16 last:mb-0 overflow-x-hidden">
+  {/* Timeline line */}
+  <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-300 -z-10">
+    {index < processSteps.length - 1 && (
+      <motion.div
+        className="w-full bg-gray-400"
+        initial={{ height: 0 }}
+        animate={isInView ? { height: "100%" } : { height: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.2 + 0.5 }}
+      />
+    )}
+  </div>
 
-      {/* Content */}
-      <div className={`flex items-center w-full ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-        {/* Card */}
-        <motion.div
-          ref={cardRef}
-          variants={cardVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className={`w-5/12 ${isEven ? 'pr-8' : 'pl-8'}`}
-        >
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
-            <div className="flex">
-              <div className="w-32 h-32 relative overflow-hidden flex-shrink-0">
-                <img 
-                  src={step.image}  
-                  alt={step.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/10" />
-              </div>
-              
-              <motion.div 
-                variants={textVariants}
-                className="flex-1 p-6"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl font-bold text-gray-400">{step.step}</span>
-                  <StepIcon size={20} className="text-gray-600" />
-                  <h3 className="text-lg font-semibold text-gray-800">{step.name}</h3>
-                </div>
-                <p className="text-gray-600 text-sm leading-relaxed">{step.story}</p>
-              </motion.div>
-            </div>
+  {/* Content */}
+  <div
+    className={`flex flex-col md:flex-row items-center w-full ${
+      isEven ? "md:flex-row" : "md:flex-row-reverse"
+    }`}
+  >
+    {/* Card */}
+    <motion.div
+      ref={cardRef}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className={`w-full md:w-6/12 lg:w-5/12 ${
+        isEven ? "md:pr-8" : "md:pl-8"
+      } mb-8 md:mb-0`}
+    >
+      <div className="bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
+        <div className="flex flex-col sm:flex-row">
+          <div className="w-full sm:w-32 h-32 relative overflow-hidden flex-shrink-0">
+            <img
+              src={step.image}
+              alt={step.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/10" />
           </div>
-        </motion.div>
-        
-        {/* Timeline dot */}
-        <motion.div 
-          variants={timelineDotVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-600 rounded-full border-4 border-white shadow-lg z-10"
-        />
-        
-        {/* Empty space on the other side */}
-        <div className="w-5/12"></div>
+
+          <motion.div variants={textVariants} className="flex-1 p-4 sm:p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-xl sm:text-2xl font-bold text-gray-400">{step.step}</span>
+              <StepIcon size={20} className="text-gray-600" />
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800">{step.name}</h3>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">{step.story}</p>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </motion.div>
+
+    {/* Timeline Dot */}
+    <motion.div
+      variants={timelineDotVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-800 rounded-full border-4 border-white shadow-lg z-10"
+    />
+
+    {/* Spacer to balance layout */}
+    <div className="hidden md:block w-full md:w-6/12 lg:w-5/12" />
+  </div>
+</div>
+  
   );
 };
 
