@@ -64,7 +64,7 @@ export default function ContentCard({
   if (stackedMode) {
     return (
       <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl">
-        {/* Full-width Video Background */}
+     
         <VideoContainer 
           videoSrc={videoSrc} 
           isVisible={isVisible} 
@@ -133,7 +133,7 @@ export default function ContentCard({
     );
   }
 
-  // Original layout for non-stacked mode
+
   return (
     <motion.div
       className="h-screen flex items-start justify-center pt-8 px-8 lg:px-16 top-0 relative"
