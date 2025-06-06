@@ -79,7 +79,7 @@ const MyMap = () => {
       <div
         ref={mapRef}
         className="relative opacity-0 w-full"
-        style={{ height: "calc(var(--vh, 1vh) * 85)" }} // Adjust for your design
+        style={{ height: "calc(var(--vh, 1vh) * 85)" }} 
       >
         <MapContainerComponent
           countries={countries}
