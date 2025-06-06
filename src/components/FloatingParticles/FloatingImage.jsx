@@ -35,8 +35,6 @@ export const FloatingTextileImage = () => {
     },
   ];
 
-  console.log('Cotton image path:', cottonImg);
-  console.log('Flax image path:', flaxImg);
 
   const generateFloatingPath = (baseX, baseY, elementId) => {
     const positions = [];
