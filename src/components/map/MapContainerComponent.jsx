@@ -8,7 +8,7 @@ const MapContainerComponent = ({ countries, onMarkerClick }) => {
   const [mapHeight, setMapHeight] = useState("100vh");
   const mapRef = useRef(null);
 
-  // Update height ONLY for mobile devices
+  
   useEffect(() => {
     const setAccurateMobileHeight = () => {
       const isMobile = window.innerWidth < 768;
@@ -84,12 +84,12 @@ const MapContainerComponent = ({ countries, onMarkerClick }) => {
         ref={mapRef}
         center={[20, 0]}
         zoom={2}
-        scrollWheelZoom={false} // ❌ disable zoom on scroll
-        doubleClickZoom={true} // ✅ allow double-click zoom
-        touchZoom={true} // ✅ allow pinch zoom
-        dragging={false} // ✅ allow dragging
+        scrollWheelZoom={false} 
+        doubleClickZoom={true}
+        touchZoom={true} 
+        dragging={false} 
         keyboard={false}
-        zoomControl={true} // ✅ show zoom buttons
+        zoomControl={true} 
         style={{ width: "100%", height: "100%" }}
         whenReady={(map) => {
           mapRef.current = map.target;
