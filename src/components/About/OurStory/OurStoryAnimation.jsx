@@ -35,16 +35,14 @@ const OurStoryAnimation = () => {
       motionPath: {
         path: pathRef.current,
         align: pathRef.current,
-        alignOrigin: [0.5, 0.5],
+        alignOrigin: [0.5, 1], // Bottom-center of truck aligns to path
         autoRotate: true,
       },
       ease: "none",
       duration: 1,
     });
 
-    // Sequential Text animations
-
-    // First text: fade in, fade out
+    // Text 1 animation
     gsap
       .timeline({
         scrollTrigger: {
@@ -61,7 +59,7 @@ const OurStoryAnimation = () => {
       )
       .to(textRef1.current, { opacity: 0, y: -50, duration: 1 });
 
-    // Second text: fade in, fade out
+    // Text 2 animation
     gsap
       .timeline({
         scrollTrigger: {
@@ -86,7 +84,7 @@ const OurStoryAnimation = () => {
 
   return (
     <div id="scroll-section" style={{ height: "200vh", position: "relative" }}>
-      {/* DESKTOP SVG */}
+      {/* DESKTOP VIEW */}
       {!isMobile && (
         <svg
           viewBox="0 0 1400 1000"
@@ -128,13 +126,13 @@ const OurStoryAnimation = () => {
             href="/truck.png"
             width="120"
             height="120"
-            x="-25"
-            y="38"
+            x="0"
+            y="0" // <-- No offset, alignOrigin handles alignment
           />
         </svg>
       )}
 
-      {/* MOBILE SVG */}
+      {/* MOBILE VIEW */}
       {isMobile && (
         <svg
           viewBox="0 0 400 1200"
@@ -176,8 +174,8 @@ const OurStoryAnimation = () => {
             href="/truck.png"
             width="100"
             height="100"
-            x="-25"
-            y="38"
+            x="0"
+            y="0" // <-- No offset, alignOrigin handles alignment
           />
         </svg>
       )}
