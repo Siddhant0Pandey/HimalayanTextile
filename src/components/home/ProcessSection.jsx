@@ -27,7 +27,7 @@ const processSteps = [
   },
   { 
     name: "Fabric", 
-    image: "/assets/img/extra/nettle.jpg", 
+    image: "/assets/img/extra/Knitted-Fabric.png", 
     story: "Master weavers craft sustainable textiles using generations of inherited wisdom",
     icon: Sparkles,
     step: "04"
@@ -153,7 +153,7 @@ const ProcessCard = ({ step, index }) => {
     <div className="hidden md:block w-full md:w-6/12 lg:w-5/12" />
   </div>
 </div>
-  
+
   );
 };
 
