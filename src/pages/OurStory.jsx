@@ -10,7 +10,6 @@ function OurStory() {
       <OurStoryHero />
       <OurStoryTimeline />
       <OurStoryFounderMsg />
-      <OurStoryAnimation />
     </div>
   );
 }
