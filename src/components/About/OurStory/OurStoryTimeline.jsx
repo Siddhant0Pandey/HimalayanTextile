@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import OurStoryAnimation from "./OurStoryAnimation";
 
 const timelineData = [
   {
@@ -296,11 +297,16 @@ const OurStoryTimeline = () => {
   return (
     <div ref={containerRef} className="relative">
       {timelineData.map((item, index) => (
-        <TimelineSection key={item.year} item={item} index={index} />
+        <React.Fragment key={item.year}>
+          <TimelineSection item={item} index={index} />
+
+          {/* Insert custom component after 2007 (index 2) */}
+          {index === 2 && <OurStoryAnimation />}
+        </React.Fragment>
       ))}
 
-      {/* Final section with refined spacing */}
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-gray-900 flex items-center justify-center px-6 py-20">
+      {/* Final section */}
+      <div className="min-h-screen bg-emerald-800 flex items-center justify-center px-6 py-20">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -317,7 +323,7 @@ const OurStoryTimeline = () => {
           </p>
           <div className="pt-8">
             <motion.div
-              className="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"
+              className="w-24 h-1 bg-gradient-to-r from-green-800 to-emerald-500 mx-auto rounded-full"
               initial={{ width: 0 }}
               whileInView={{ width: 96 }}
               transition={{ duration: 1, delay: 0.5 }}
