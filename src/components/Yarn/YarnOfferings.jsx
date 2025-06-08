@@ -72,14 +72,14 @@ export default function YarnOfferings() {
       image: "assets/img/yarn/Banana.png",
       features: ["Silky feel", "Sustainable", "High tensile strength"],
     },
-    {
-      id: 7,
-      name: "Jute Yarn",
-      description:
-        "Coarse and durable, jute yarn is ideal for crafts, rugs, and rustic textiles. Its natural golden hue adds earthy character to every piece.",
-      image: "assets/img/yarn/Jute.png",
-      features: ["Coarse texture", "Compostable", "Affordable"],
-    },
+    // {
+    //   id: 7,
+    //   name: "Jute Yarn",
+    //   description:
+    //     "Coarse and durable, jute yarn is ideal for crafts, rugs, and rustic textiles. Its natural golden hue adds earthy character to every piece.",
+    //   image: "assets/img/yarn/Jute.png",
+    //   features: ["Coarse texture", "Compostable", "Affordable"],
+    // },
     {
       id: 8,
       name: "Wool Yarn",
