@@ -99,8 +99,8 @@ const OurStoryAnimation = () => {
         >
           <image
             href="/assets/img/lumbini.png"
-            x="0"
-            y="0"
+            x="40"
+            y="20"
             width="300"
             height="340"
             preserveAspectRatio="xMidYMid slice"
@@ -149,8 +149,8 @@ const OurStoryAnimation = () => {
             href="/assets/img/lumbini.png"
             x="100"
             y="50"
-            width="200"
-            height="200"
+            width="600"
+            height="300"
             preserveAspectRatio="xMidYMid slice"
           />
           <image
@@ -163,7 +163,7 @@ const OurStoryAnimation = () => {
           />
           <path
             ref={pathRef}
-            d="M 200 250 L 200 950"
+            d="M 300 250 L 200 950"
             fill="none"
             stroke="#4CAF50"
             strokeWidth="6"
