@@ -1,417 +1,329 @@
-import React, { useRef, useEffect, useState } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useInView,
-  AnimatePresence,
-} from "framer-motion";
-import { Camera, Leaf, Users, Factory, Globe, Home } from "lucide-react";
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const timelineData = [
   {
-    year: 1995,
+    year: "1995",
     title: "Humble Beginnings",
     description:
-      "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn, using locally sourced, natural fibers.",
-    icon: Leaf,
-    color: "from-green-500 to-emerald-600",
+      "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn using locally sourced natural fibers.",
+    image:
+      "https://images.unsplash.com/photo-1516975369741-5c6ae9cf5fba?w=800&h=600&fit=crop&crop=center",
+    color: "#edfeee",
   },
   {
-    year: 2000,
+    year: "2000",
     title: "Yarn Extraction Process Developed",
     description:
       "Improved traditional methods of fiber extraction and yarn making, laying the foundation for sustainable production.",
-    icon: Factory,
-    color: "from-green-500 to-emerald-600",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    year: 2007,
+    year: "2007",
     title: "Handloom Weaving Introduced",
     description:
       "Started handwoven fabric production, employing and empowering over 50 local women in rural Nepal.",
-    icon: Users,
-    color: "from-green-500 to-emerald-600",
+    image:
+      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop&crop=center",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    year: 2011,
-    title: "Machine-Spun Yarn & Fabric Production in Kathmandu",
+    year: "2011",
+    title: "Machine Production in Kathmandu",
     description:
-      "Established machine spinning and weaving units in Kathmandu to scale up production of natural yarns and fabrics, combining traditional knowledge with modern technology.",
-    icon: Factory,
-    color: "from-green-500 to-emerald-600",
+      "Established machine spinning and weaving units in Kathmandu, combining traditional knowledge with modern technology.",
+    image:
+      "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&h=600&fit=crop&crop=center",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    year: 2017,
+    year: "2017",
     title: "Export to India Begins",
     description:
-      "Launched exports of yarn and handloom fabric to India, marking the company's first step into international trade.",
-    icon: Globe,
-    color: "from-green-500 to-emerald-600",
+      "Launched exports of yarn and handloom fabric to India, marking the first step into international trade.",
+    image:
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    year: 2023,
-    title: "Global Expansion in Home Textiles",
+    year: "2023",
+    title: "Global Expansion",
     description:
-      "Began exporting eco-friendly home textile products—such as rugs, fabrics, and accessories—to global markets under a sustainable and ethical model.",
-    icon: Home,
-    color: "from-green-500 to-emerald-600",
+      "Began exporting eco-friendly home textile products to global markets under a sustainable and ethical model.",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+    color: "from-green-600 to-emerald-800",
   },
 ];
 
-const TimelineEvent = ({ event, index, isLast }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { threshold: 0.3, once: false });
-  const [digits, setDigits] = useState(["0", "0", "0", "0"]);
-  const isLeft = index % 2 === 0;
+const TimelineSection = ({ item, index, progress }) => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress: sectionScrollProgress } = useScroll({
+    target: sectionRef,
+    offset: ["-40% end", "end start"],
+  });
 
-  // Animate year digits like a clock
-  useEffect(() => {
-    if (isInView) {
-      const yearStr = event.year.toString();
-      const targetDigits = yearStr.padStart(4, "0").split("");
+  // Smooth spring animations for better performance
+  const smoothProgress = useSpring(sectionScrollProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
-      // Reset to 0000 first
-      setDigits(["0", "0", "0", "0"]);
+  // Keep original year animation unchanged
+  const yearOpacity = useTransform(smoothProgress, [0.05, 0.25], [0, 1]);
+  const yearScale = useTransform(smoothProgress, [0.05, 0.25], [0.7, 1]);
+  const yearY = useTransform(smoothProgress, [0.05, 0.25], [100, 0]);
 
-      // Then animate each digit
-      targetDigits.forEach((digit, i) => {
-        setTimeout(() => {
-          setDigits((prev) => {
-            const newDigits = [...prev];
-            newDigits[i] = digit;
-            return newDigits;
-          });
-        }, i * 150 + 200);
-      });
-    } else {
-      setDigits(["0", "0", "0", "0"]);
-    }
-  }, [isInView, event.year]);
+  // Enhanced title animations - typewriter effect
+  const titleOpacity = useTransform(smoothProgress, [0.2, 0.5], [0, 1]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  // Enhanced description animations - typewriter effect
+  const descriptionOpacity = useTransform(smoothProgress, [0.3, 0.7], [0, 1]);
 
-  const photoVariants = {
-    hidden: {
-      scale: 0,
-      rotate: -180,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1,
-      rotate: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 12,
-        duration: 0.8,
-      },
-    },
-  };
+  const imageOpacity = useTransform(smoothProgress, [0.4, 0.7], [0, 1]);
+  const imageScale = useTransform(smoothProgress, [0.4, 0.7], [1.2, 1]);
+  const imageY = useTransform(smoothProgress, [0.4, 0.7], [120, 0]);
 
-  const textVariants = {
-    hidden: {
-      x: isLeft ? -100 : 100,
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      x: 0,
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 10,
-        delay: 0.4,
-      },
-    },
-  };
-
-  const yearVariants = {
-    hidden: {
-      scale: 0.5,
-      opacity: 0,
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-      },
-    },
-  };
-
-  const digitVariants = {
-    initial: {
-      y: 50,
-      rotateX: 90,
-      opacity: 0,
-    },
-    animate: {
-      y: 0,
-      rotateX: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-      },
-    },
-  };
-
-  const IconComponent = event.icon;
+  // Split text into characters for typing effect
+  const titleChars = item.title.split("");
+  const descriptionChars = item.description.split("");
 
   return (
-    <motion.div
-      ref={ref}
-      className={`flex items-center mb-32 h-[100vh] ${
-        isLeft ? "flex-row" : "flex-row-reverse"
-      }`}
-      variants={containerVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+    <div
+      ref={sectionRef}
+      className={`min-h-[240vh] flex flex-col justify-center items-center px-12 md:px-8 py-20 relative overflow-hidden bg-highlight ${item.color}`}
     >
-      {/* Content Side */}
-      <motion.div
-        className={`w-5/12 ${isLeft ? "pr-12 text-right" : "pl-12 text-left"}`}
-        variants={textVariants}
-      >
-        <motion.h3
-          className="text-2xl font-bold text-gray-800 mb-4"
-          variants={textVariants}
-        >
-          {event.title}
-        </motion.h3>
-        <motion.p
-          className="text-gray-600 leading-relaxed text-lg"
-          variants={textVariants}
-        >
-          {event.description}
-        </motion.p>
-      </motion.div>
-
-      {/* Timeline Center */}
-      <div className="w-2/12 flex flex-col items-center relative">
-        {/* Year Display */}
-        <motion.div
-          className="bg-white rounded-2xl shadow-2xl p-6 mb-6 border-4 border-gray-100"
-          variants={yearVariants}
-        >
-          <div className="flex space-x-1">
-            {digits.map((digit, i) => (
-              <motion.div
-                key={`${event.year}-${i}`}
-                className="w-12 h-16 bg-gradient-to-br from-emerald-800 to-emerald-900 rounded-lg flex items-center justify-center text-white text-2xl font-bold shadow-lg"
-                variants={digitVariants}
-                initial="initial"
-                animate="animate"
-                style={{ perspective: "1000px" }}
-              >
-                <motion.span
-                  key={digit}
-                  initial={{ rotateX: 90, opacity: 0 }}
-                  animate={{ rotateX: 0, opacity: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 25,
-                    delay: i * 0.1,
-                  }}
-                >
-                  {digit}
-                </motion.span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Timeline Line */}
-        <div className="w-1 bg-gradient-to-b from-gray-300 to-gray-400 h-24 rounded-full relative">
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-emerald-800 rounded-full"
-            initial={{ height: 0 }}
-            animate={isInView ? { height: "100%" } : { height: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          />
-        </div>
-
-        {!isLast && (
-          <div className="w-1 bg-gradient-to-b from-gray-300 to-gray-400 h-32 rounded-full" />
-        )}
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[#edfeee]"></div>
       </div>
 
-      {/* Photo Side */}
-      <motion.div
-        className={`w-5/12 ${isLeft ? "pl-12" : "pr-12"}`}
-        variants={photoVariants}
-      >
+      <div className="max-w-5xl mx-auto text-center relative z-10 space-y-8 ">
+        {/* Year section - keeping original animation */}
         <motion.div
-          className={`relative w-80 h-60 bg-gradient-to-br ${event.color} rounded-3xl shadow-2xl overflow-hidden`}
-          whileHover={{ scale: 1.05, rotateY: 5 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          style={{ opacity: yearOpacity, scale: yearScale, y: yearY }}
+          className="mb-12"
         >
-          {/* Photo Placeholder */}
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{
-              backgroundImage: `url('/assets/img/bgImage1.png')`,
-            }}
-          >
-            <motion.div
-              // className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 flex flex-col items-center"
-              initial={{ scale: 0 }}
-              animate={isInView ? { scale: 1 } : { scale: 0 }}
-              transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+          <div className="overflow-hidden">
+            <motion.h1
+              className="text-7xl md:text-8xl lg:text-9xl font-black text-green-600 mb-6 tracking-tight leading-none"
               style={{
-                backgroundImage: `url('/assets/img/bgImage1.png')`,
+                y: useTransform(smoothProgress, [0.1, 0.5], [200, 0]),
+                rotateX: useTransform(smoothProgress, [0.1, 0.5], [90, 0]),
               }}
             >
-              {/* <IconComponent size={48} className="text-white mb-4" /> */}
-              {/* <motion.div
-                className="flex items-center space-x-2 text-white"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ delay: 1.2 }}
+              <motion.span
+                style={{
+                  display: "inline-block",
+                  y: useTransform(smoothProgress, [0.15, 0.45], [100, 0]),
+                }}
+                className="pt-24 pb-6"
               >
-                {/* <Camera size={20} /> */}
-              {/* <span className="text-sm font-medium">Photo</span> */}
-              {/* </motion.div> */}
-            </motion.div>
+                {item.year.split("").map((digit, i) => (
+                  <motion.span
+                    key={i}
+                    style={{
+                      display: "inline-block",
+                      y: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.4 + i * 0.05],
+                        [150, 0]
+                      ),
+                      opacity: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.3 + i * 0.05],
+                        [0, 1]
+                      ),
+                      rotateY: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.4 + i * 0.05],
+                        [180, 0]
+                      ),
+                    }}
+                    className="origin-center"
+                  >
+                    {digit}
+                  </motion.span>
+                ))}
+              </motion.span>
+            </motion.h1>
           </div>
-
-          {/* Corner Badge */}
-          {/* <motion.div
-            className="absolute top-4 right-4 bg-white bg-opacity-25 backdrop-blur-sm rounded-full px-3 py-1"
-            initial={{ scale: 0, rotate: 180 }}
-            animate={
-              isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 180 }
-            }
-            transition={{ delay: 1, type: "spring", stiffness: 200 }}
-          >
-            <span className="text-white text-sm font-bold">{event.year}</span>
-          </motion.div> */}
-
-          {/* Decorative Elements */}
-          {/* <motion.div
-            className="absolute -top-4 -left-4 w-16 h-16 bg-white bg-opacity-10 rounded-full"
-            animate={
-              isInView
-                ? {
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 180, 360],
-                  }
-                : {}
-            }
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "reverse",
+          <motion.div
+            className="w-32 h-1 bg-white mx-auto rounded-full opacity-80"
+            style={{
+              scaleX: useTransform(smoothProgress, [0.3, 0.6], [0, 1]),
+              opacity: useTransform(smoothProgress, [0.3, 0.6], [0, 0.8]),
             }}
-          /> */}
-          {/* <motion.div
-            className="absolute -bottom-4 -right-4 w-12 h-12 bg-white bg-opacity-10 rounded-full"
-            animate={
-              isInView
-                ? {
-                    scale: [1, 1.3, 1],
-                    rotate: [360, 180, 0],
-                  }
-                : {}
-            }
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: 1,
-            }}
-          /> */}
+          />
         </motion.div>
-      </motion.div>
-    </motion.div>
+
+        {/* Title section with typing animation */}
+        <motion.div className="mb-16 pb-12 overflow-hidden">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight">
+            {item.title.split("").map((char, charIndex) => (
+              <motion.span
+                key={charIndex}
+                className="inline-block"
+                style={{
+                  opacity: useTransform(
+                    smoothProgress,
+                    [0.15 + charIndex * 0.008, 0.18 + charIndex * 0.008],
+                    [0, 1]
+                  ),
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+            <motion.span
+              className="inline-block w-1 h-8 md:h-10 lg:h-12 bg-green-600 ml-1"
+              style={{
+                opacity: useTransform(
+                  smoothProgress,
+                  [0.15 + item.title.length * 0.008, 0.4],
+                  [0, 1]
+                ),
+              }}
+              animate={{
+                opacity: [1, 0, 1],
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </h2>
+        </motion.div>
+
+        <div className="flex">
+          {/* Description section with typing animation */}
+          <motion.div className="mb-16 pb-12 overflow-hidden flex-1">
+            <p className="text-lg md:text-xl lg:text-2xl text-green-600 text-opacity-90 leading-relaxed max-w-4xl mx-auto">
+              {item.description.split("").map((char, charIndex) => (
+                <motion.span
+                  key={charIndex}
+                  className="inline-block "
+                  style={{
+                    opacity: useTransform(
+                      smoothProgress,
+                      [0.25 + charIndex * 0.003, 0.28 + charIndex * 0.003],
+                      [0, 1]
+                    ),
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+              <motion.span
+                className="inline-block w-0.5 h-5 md:h-6 lg:h-7 bg-green-600 bg-opacity-90 ml-1"
+                style={{
+                  opacity: useTransform(
+                    smoothProgress,
+                    [0.25 + item.description.length * 0.003, 0.6],
+                    [0, 1]
+                  ),
+                }}
+                animate={{
+                  opacity: [1, 0, 1],
+                }}
+                transition={{
+                  duration: 1.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </p>
+          </motion.div>
+
+          {/* Image section with refined spacing and effects */}
+          <motion.div
+            style={{ opacity: imageOpacity, scale: imageScale, y: imageY }}
+            className="relative flex-1 top-70"
+          >
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl max-w-3xl mx-auto">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-56 md:h-72 lg:h-80 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            </div>
+
+            {/* Decorative elements with better positioning */}
+            <div className="absolute -top-6 -left-6 w-8 h-8 bg-white bg-opacity-20 rounded-full blur-sm"></div>
+            <div className="absolute -bottom-8 -right-8 w-12 h-12 bg-white bg-opacity-15 rounded-full blur-sm"></div>
+            <div className="absolute top-4 -right-4 w-6 h-6 bg-white bg-opacity-25 rounded-full blur-sm"></div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll indicator with refined animation */}
+      {index < timelineData.length - 1 && (
+        <motion.div
+          animate={{
+            x: [0, 12, 0],
+            opacity: [0.6, 1, 0.6],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute right-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center backdrop-blur-sm">
+            <motion.div
+              className="w-1 h-3 bg-white bg-opacity-70 rounded-full mt-2"
+              animate={{ height: [12, 8, 12] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      )}
+    </div>
   );
 };
 
 const OurStoryTimeline = () => {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <div className="min-h-screen  overflow-hidden bg-light">
-      {/* Animated Background */}
-      <motion.div
-        className="fixed inset-0 opacity-30"
-        style={{ y: backgroundY }}
-      >
-        <div className="absolute top-20 left-20 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
-        <div className="absolute top-40 right-20 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" />
-        <div className="absolute bottom-20 left-1/2 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000" />
-      </motion.div>
+    <div ref={containerRef} className="relative">
+      {timelineData.map((item, index) => (
+        <TimelineSection key={item.year} item={item} index={index} />
+      ))}
 
-      <div ref={containerRef} className="relative z-10">
-        {/* Header */}
+      {/* Final section with refined spacing */}
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 to-gray-900 flex items-center justify-center px-6 py-20">
         <motion.div
-          className="text-center py-20"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, type: "spring", stiffness: 80 }}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center text-white max-w-4xl mx-auto space-y-8"
         >
-          <motion.h1
-            className="text-6xl font-bold bg-gradient-to-r from-green-800 via-emerald-800 to-cyan-800 bg-clip-text text-transparent mb-6"
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-          >
-            Our Journey
-          </motion.h1>
-          <motion.p
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
-            From humble beginnings in rural Nepal to global sustainable textile
-            innovation
-          </motion.p>
-        </motion.div>
-
-        {/* Timeline */}
-        <div className="max-w-7xl mx-auto px-8 pb-20">
-          {timelineData.map((event, index) => (
-            <TimelineEvent
-              key={event.year}
-              event={event}
-              index={index}
-              isLast={index === timelineData.length - 1}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            The Journey Continues
+          </h2>
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed">
+            From rural Nepal to global markets, our commitment to sustainable
+            and ethical textile production drives us forward into the future.
+          </p>
+          <div className="pt-8">
+            <motion.div
+              className="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
             />
-          ))}
-        </div>
-
-        {/* Footer */}
-        <motion.div
-          className="text-center pb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="text-gray-500 text-lg">The journey continues...</div>
+          </div>
         </motion.div>
       </div>
     </div>
