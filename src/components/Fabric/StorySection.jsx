@@ -143,20 +143,13 @@ export default function HimalayanTextiles() {
           </h3>
           <div className="space-y-6 text-lg">
             <p>
-              Nestled in the foothills of the Himalayas, Himalayan Textile is a
-              collective of skilled artisans preserving centuries-old textile
-              heritage. What began as a small workshop has evolved into a
-              thriving hub for sustainable craftsmanship.
-            </p>
-            <p>
-              We work hand-in-hand with local shepherds, farmers, and foragers
-              to ethically source premium materials—from high-altitude sheep
-              wool to naturally dyed herbs and minerals.
-            </p>
-            <p>
-              Our mission is to celebrate and protect the cultural wisdom woven
-              into every strand. With every creation, Himalayan Textile shares a
-              living story of the mountains.
+              Nestled in the foothills of the Himalayas, Himalayan Textile
+              Industries blends centuries-old craftsmanship with eco-friendly
+              innovation. We produce high-quality, sustainable textiles made
+              from natural fibers sourced from the pristine Himalayas.
+              <br /> Our mission is to revolutionize the fabric industry while
+              preserving the cultural wisdom woven into every strand, creating
+              products that are both planet-positive and beautifully crafted.
             </p>
           </div>
         </div>
