@@ -1,152 +1,421 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
-  FaYarn,
-  FaPaintBrush,
-  FaGlobe,
-  FaCog,
-  FaLeaf,
-  FaChevronDown,
-  FaMicrochip,
-  FaHandsHelping,
-  FaIndustry,
-} from "react-icons/fa";
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  AnimatePresence,
+} from "framer-motion";
+import { Camera, Leaf, Users, Factory, Globe, Home } from "lucide-react";
 
 const timelineData = [
   {
-    id: 1,
-    date: "1985 – Humble Beginnings",
+    year: 1995,
+    title: "Humble Beginnings",
     description:
-      "Founded as a small weaving unit, we began with a simple vision: to weave quality and trust into every thread.",
-    icon: FaYarn, // Represents weaving/thread
+      "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn, using locally sourced, natural fibers.",
+    icon: Leaf,
+    color: "from-green-500 to-emerald-600",
   },
   {
-    id: 2,
-    date: "1992 – Expanding Our Threads",
+    year: 2000,
+    title: "Yarn Extraction Process Developed",
     description:
-      "We expanded into dyeing and finishing processes, introducing eco-friendly practices that set us apart early on.",
-    icon: FaPaintBrush, // Represents dyeing and finishing
+      "Improved traditional methods of fiber extraction and yarn making, laying the foundation for sustainable production.",
+    icon: Factory,
+    color: "from-green-500 to-emerald-600",
   },
   {
-    id: 3,
-    date: "2001 – Global Footprint",
+    year: 2007,
+    title: "Handloom Weaving Introduced",
     description:
-      "Our first international export shipment marked a major milestone, establishing our presence in European and Middle Eastern markets.",
-    icon: FaGlobe, // Represents global expansion
+      "Started handwoven fabric production, employing and empowering over 50 local women in rural Nepal.",
+    icon: Users,
+    color: "from-green-500 to-emerald-600",
   },
   {
-    id: 4,
-    date: "2008 – Technology Meets Tradition",
+    year: 2011,
+    title: "Machine-Spun Yarn & Fabric Production in Kathmandu",
     description:
-      "We modernized our manufacturing units with cutting-edge textile machinery while preserving the artistry of traditional craftsmanship.",
-    icon: FaCog, // Represents technology/innovation
+      "Established machine spinning and weaving units in Kathmandu to scale up production of natural yarns and fabrics, combining traditional knowledge with modern technology.",
+    icon: Factory,
+    color: "from-green-500 to-emerald-600",
   },
   {
-    id: 5,
-    date: "2015 – Sustainability First",
+    year: 2017,
+    title: "Export to India Begins",
     description:
-      "We launched our sustainable fabric line, using organic cotton and recycled fibers, reinforcing our commitment to the environment.",
-    icon: FaLeaf, // Represents sustainability and eco-friendliness
+      "Launched exports of yarn and handloom fabric to India, marking the company's first step into international trade.",
+    icon: Globe,
+    color: "from-green-500 to-emerald-600",
   },
   {
-    id: 6,
-    date: "2020 – Smart Textiles & Innovation",
+    year: 2023,
+    title: "Global Expansion in Home Textiles",
     description:
-      "Ventured into smart textiles and performance fabrics, merging comfort with innovation for next-gen consumers.",
-    icon: FaMicrochip, // Represents smart textiles/technology
-  },
-  {
-    id: 7,
-    date: "2024 – Community & Culture",
-    description:
-      "Initiated skill development programs to empower local artisans, reinforcing our dedication to social responsibility and cultural heritage.",
-    icon: FaHandsHelping, // Represents community/social responsibility
-  },
-  {
-    id: 8,
-    date: "Today",
-    description:
-      "From local roots to global reach, we continue to evolve—blending heritage, innovation, and sustainability to shape the future of textiles.",
-    icon: FaIndustry, // Represents modern industry and growth
+      "Began exporting eco-friendly home textile products—such as rugs, fabrics, and accessories—to global markets under a sustainable and ethical model.",
+    icon: Home,
+    color: "from-green-500 to-emerald-600",
   },
 ];
 
-export default function OurStoryTimeline() {
-  const [visibleItems, setVisibleItems] = useState([]);
+const TimelineEvent = ({ event, index, isLast }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { threshold: 0.3, once: false });
+  const [digits, setDigits] = useState(["0", "0", "0", "0"]);
+  const isLeft = index % 2 === 0;
 
+  // Animate year digits like a clock
   useEffect(() => {
-    const handleScroll = () => {
-      const cards = document.querySelectorAll(".timeline-card");
-      const newVisible = [];
+    if (isInView) {
+      const yearStr = event.year.toString();
+      const targetDigits = yearStr.padStart(4, "0").split("");
 
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.75) {
-          newVisible.push(index);
-        }
+      // Reset to 0000 first
+      setDigits(["0", "0", "0", "0"]);
+
+      // Then animate each digit
+      targetDigits.forEach((digit, i) => {
+        setTimeout(() => {
+          setDigits((prev) => {
+            const newDigits = [...prev];
+            newDigits[i] = digit;
+            return newDigits;
+          });
+        }, i * 150 + 200);
       });
+    } else {
+      setDigits(["0", "0", "0", "0"]);
+    }
+  }, [isInView, event.year]);
 
-      setVisibleItems(newVisible);
-    };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger once on mount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const photoVariants = {
+    hidden: {
+      scale: 0,
+      rotate: -180,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12,
+        duration: 0.8,
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: {
+      x: isLeft ? -100 : 100,
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 10,
+        delay: 0.4,
+      },
+    },
+  };
+
+  const yearVariants = {
+    hidden: {
+      scale: 0.5,
+      opacity: 0,
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
+  const digitVariants = {
+    initial: {
+      y: 50,
+      rotateX: 90,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      rotateX: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 20,
+      },
+    },
+  };
+
+  const IconComponent = event.icon;
 
   return (
-    <div className="bg-highlight py-16 px-4">
-      <h1 className="text-4xl font-bold text-center mb-16 text-[#1FA951]">
-        Our Journey
-      </h1>
-      <div className="relative max-w-5xl mx-auto">
-        {/* Vertical line */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-green-400 rounded-md z-0" />
+    <motion.div
+      ref={ref}
+      className={`flex items-center mb-32 h-[100vh] ${
+        isLeft ? "flex-row" : "flex-row-reverse"
+      }`}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      {/* Content Side */}
+      <motion.div
+        className={`w-5/12 ${isLeft ? "pr-12 text-right" : "pl-12 text-left"}`}
+        variants={textVariants}
+      >
+        <motion.h3
+          className="text-2xl font-bold text-gray-800 mb-4"
+          variants={textVariants}
+        >
+          {event.title}
+        </motion.h3>
+        <motion.p
+          className="text-gray-600 leading-relaxed text-lg"
+          variants={textVariants}
+        >
+          {event.description}
+        </motion.p>
+      </motion.div>
 
-        {timelineData.map((item, index) => {
-          const isLeft = index % 2 === 0;
-          const Icon = item.icon;
-          const isVisible = visibleItems.includes(index);
-
-          return (
-            <div
-              key={item.id}
-              className={`timeline-card relative flex flex-col md:flex-row items-center justify-between my-16 ${
-                isLeft ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-            >
-              {/* Spacer for line */}
-              <div className="hidden md:block md:w-1/2" />
-
-              {/* Card Content */}
-              <div
-                className={`relative z-10 bg-white/90 backdrop-blur-lg rounded-full shadow-xl overflow-hidden w-full md:w-[45%] transition-all duration-700 ease-in-out transform ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : isLeft
-                    ? "-translate-x-10 opacity-0"
-                    : "translate-x-10 opacity-0"
-                }`}
+      {/* Timeline Center */}
+      <div className="w-2/12 flex flex-col items-center relative">
+        {/* Year Display */}
+        <motion.div
+          className="bg-white rounded-2xl shadow-2xl p-6 mb-6 border-4 border-gray-100"
+          variants={yearVariants}
+        >
+          <div className="flex space-x-1">
+            {digits.map((digit, i) => (
+              <motion.div
+                key={`${event.year}-${i}`}
+                className="w-12 h-16 bg-gradient-to-br from-emerald-800 to-emerald-900 rounded-lg flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+                variants={digitVariants}
+                initial="initial"
+                animate="animate"
+                style={{ perspective: "1000px" }}
               >
-                <div className="p-8 px-18">
-                  <h3 className="text-2xl font-semibold mb-2">{item.date}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </div>
+                <motion.span
+                  key={digit}
+                  initial={{ rotateX: 90, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                    delay: i * 0.1,
+                  }}
+                >
+                  {digit}
+                </motion.span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-              {/* Icon in center */}
-              <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-                <div className="w-14 h-14 flex items-center justify-center bg-green-500 text-white rounded-full border-4 border-white shadow-lg ring-2 ring-green-300">
-                  <Icon size={20} />
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {/* Timeline Line */}
+        <div className="w-1 bg-gradient-to-b from-gray-300 to-gray-400 h-24 rounded-full relative">
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-emerald-800 rounded-full"
+            initial={{ height: 0 }}
+            animate={isInView ? { height: "100%" } : { height: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          />
+        </div>
+
+        {!isLast && (
+          <div className="w-1 bg-gradient-to-b from-gray-300 to-gray-400 h-32 rounded-full" />
+        )}
       </div>
 
-      {/* <div className="mt-12 text-center animate-bounce">
-        <FaChevronDown size={28} className="text-green-500" />
-      </div> */}
+      {/* Photo Side */}
+      <motion.div
+        className={`w-5/12 ${isLeft ? "pl-12" : "pr-12"}`}
+        variants={photoVariants}
+      >
+        <motion.div
+          className={`relative w-80 h-60 bg-gradient-to-br ${event.color} rounded-3xl shadow-2xl overflow-hidden`}
+          whileHover={{ scale: 1.05, rotateY: 5 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          {/* Photo Placeholder */}
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              backgroundImage: `url('/assets/img/bgImage1.png')`,
+            }}
+          >
+            <motion.div
+              // className="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 flex flex-col items-center"
+              initial={{ scale: 0 }}
+              animate={isInView ? { scale: 1 } : { scale: 0 }}
+              transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+              style={{
+                backgroundImage: `url('/assets/img/bgImage1.png')`,
+              }}
+            >
+              {/* <IconComponent size={48} className="text-white mb-4" /> */}
+              {/* <motion.div
+                className="flex items-center space-x-2 text-white"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 1.2 }}
+              >
+                {/* <Camera size={20} /> */}
+              {/* <span className="text-sm font-medium">Photo</span> */}
+              {/* </motion.div> */}
+            </motion.div>
+          </div>
+
+          {/* Corner Badge */}
+          {/* <motion.div
+            className="absolute top-4 right-4 bg-white bg-opacity-25 backdrop-blur-sm rounded-full px-3 py-1"
+            initial={{ scale: 0, rotate: 180 }}
+            animate={
+              isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: 180 }
+            }
+            transition={{ delay: 1, type: "spring", stiffness: 200 }}
+          >
+            <span className="text-white text-sm font-bold">{event.year}</span>
+          </motion.div> */}
+
+          {/* Decorative Elements */}
+          {/* <motion.div
+            className="absolute -top-4 -left-4 w-16 h-16 bg-white bg-opacity-10 rounded-full"
+            animate={
+              isInView
+                ? {
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360],
+                  }
+                : {}
+            }
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          /> */}
+          {/* <motion.div
+            className="absolute -bottom-4 -right-4 w-12 h-12 bg-white bg-opacity-10 rounded-full"
+            animate={
+              isInView
+                ? {
+                    scale: [1, 1.3, 1],
+                    rotate: [360, 180, 0],
+                  }
+                : {}
+            }
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: 1,
+            }}
+          /> */}
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const OurStoryTimeline = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  return (
+    <div className="min-h-screen  overflow-hidden bg-light">
+      {/* Animated Background */}
+      <motion.div
+        className="fixed inset-0 opacity-30"
+        style={{ y: backgroundY }}
+      >
+        <div className="absolute top-20 left-20 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
+        <div className="absolute top-40 right-20 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" />
+        <div className="absolute bottom-20 left-1/2 w-72 h-72  rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-2000" />
+      </motion.div>
+
+      <div ref={containerRef} className="relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center py-20"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, type: "spring", stiffness: 80 }}
+        >
+          <motion.h1
+            className="text-6xl font-bold bg-gradient-to-r from-green-800 via-emerald-800 to-cyan-800 bg-clip-text text-transparent mb-6"
+            initial={{ scale: 0.5 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+          >
+            Our Journey
+          </motion.h1>
+          <motion.p
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            From humble beginnings in rural Nepal to global sustainable textile
+            innovation
+          </motion.p>
+        </motion.div>
+
+        {/* Timeline */}
+        <div className="max-w-7xl mx-auto px-8 pb-20">
+          {timelineData.map((event, index) => (
+            <TimelineEvent
+              key={event.year}
+              event={event}
+              index={index}
+              isLast={index === timelineData.length - 1}
+            />
+          ))}
+        </div>
+
+        {/* Footer */}
+        <motion.div
+          className="text-center pb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-gray-500 text-lg">The journey continues...</div>
+        </motion.div>
+      </div>
     </div>
   );
-}
+};
+
+export default OurStoryTimeline;
