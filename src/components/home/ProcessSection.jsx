@@ -7,7 +7,7 @@ const processSteps = [
   { 
     name: "Raw Fiber", 
     image: "/assets/img/Fiber/fibre.jpg", 
-    story: "High in the Himalayas, wild nettle grows naturally in pristine mountain conditions",
+    story: "High in the Himalayas, natural fiber grows naturally in pristine mountain conditions",
     icon: Leaf,
     step: "01"
   },
@@ -116,7 +116,7 @@ const ProcessCard = ({ step, index }) => {
       animate={isInView ? "visible" : "hidden"}
       className={`w-full md:w-6/12 lg:w-5/12 ${
         isEven ? "md:pr-8" : "md:pl-8"
-      } mb-8 md:mb-0`}
+      } mb-8 md:mb-0 overflow-x-hidden`}
     >
       <div className="bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
         <div className="flex flex-col sm:flex-row">
