@@ -81,7 +81,7 @@ const FirstHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('assets/img/hero-section2.jpg')", // Fixed syntax error in original
+        backgroundImage: "url('assets/img/fabric/hero.jpg')", // Fixed syntax error in original
         zIndex: "30px",
       }}
     >

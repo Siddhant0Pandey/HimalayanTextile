@@ -28,7 +28,7 @@ export default function HimalayanTextiles() {
       title: "Hemp Fabric",
       description:
         "Exceptionally durable and breathable, hemp is one of the most sustainable textiles. Its cultivation requires little water and no pesticides, making it a top choice for eco-conscious fashion rooted in Himalayan soil.",
-      image: "assets/img/fabric/Hemp.png",
+      image: "assets/img/fabric/hemp.jpg",
     },
     {
       title: "Cotton Fabric",
@@ -40,7 +40,7 @@ export default function HimalayanTextiles() {
       title: "Nettle Fabric",
       description:
         "Harvested from wild nettle plants in Himalayan forests, this fabric is strong, breathable, and naturally textured. Traditionally spun, nettle blends sustainability with cultural heritage.",
-      image: "assets/img/fabric/Nettle.png",
+      image: "assets/img/fabric/nettle.jpg",
     },
     {
       title: "Flax Fabric",
@@ -89,7 +89,7 @@ export default function HimalayanTextiles() {
             <div className="w-full md:w-1/2 mb-8 md:mb-0">
               <div className="relative overflow-hidden rounded-lg">
                 <img
-                  src="/assets/img/yarn/paswool.jpg"
+                  src="/assets/img/fabric/main.jpg"
                   alt="Textile craftsmanship"
                   className="w-full h-auto rounded-lg"
                 />
