@@ -64,7 +64,7 @@ const NavBarSection = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('assets/img/hero-section.jpg')", // ✅ Corrected syntax
+        backgroundImage: "url('assets/img/yarn/hero_yarn.jpg')", // ✅ Corrected syntax
       }}
     >
       <div className="absolute bg-black top-0 left-0 opacity-50 z-40 w-full h-full"></div>
