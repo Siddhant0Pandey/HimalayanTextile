@@ -76,8 +76,8 @@ const NavBarSection = () => {
         >
           Yarn
         </h1>
-        <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
-          Made for Goodness. Made for Performance.
+        <p ref={subtitleRef} className="text-lg md:text-xl font-semibold mb-6">
+          Spinning a Sustainable Future with Himalayan Yarns.
         </p>
 
         {/* <div
