@@ -2,12 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 
 const AnimationSection = () => {
-  // Animation state management
   const [currentElement, setCurrentElement] = useState(0);
   const [animationActive, setAnimationActive] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  // Theme colors
   const theme = {
     primary: "#1fa951",
     secondary: "#729a78",
@@ -16,68 +14,56 @@ const AnimationSection = () => {
     darkText: "#1d1f10",
   };
 
-  // Image collections
   const imageCollections = {
     desktop: [
       {
-        url: "/assets/img/Fiber/raw4.png",
+        url: "/assets/img/Fiber/raw01.png",
         alt: "Starting point of the process",
       },
       {
-        url: "/assets/img/Fiber/raw5.png",
+        url: "/assets/img/Fiber/raw02.png",
         alt: "Middle stage of the process",
       },
       {
-        url: "/assets/img/Fiber/raw8.png",
+        url: "/assets/img/Fiber/raw03.png",
         alt: "Final outcome of the process",
       },
     ],
     mobile: [
       {
-        url: "/assets/img/Fiber/raw1.png",
+        url: "/assets/img/Fiber/raw01.png",
         alt: "Starting point of the process",
       },
       {
-        url: "/assets/img/Fiber/wool.png",
+        url: "/assets/img/Fiber/raw02.png",
         alt: "Middle stage of the process",
       },
       {
-        url: "/assets/img/Fiber/wool1.png",
+        url: "/assets/img/Fiber/raw03.png",
         alt: "Final outcome of the process",
       },
     ],
   };
 
-  // Handle responsive behavior
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
     };
 
-    // Initial check
     handleResize();
-
-    // Set up listener
     window.addEventListener("resize", handleResize);
-
-    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset and restart animation
   const resetAnimation = useCallback(() => {
     setCurrentElement(0);
     setAnimationActive(false);
-
-    // Small delay before reactivating animation
     setTimeout(() => setAnimationActive(true), 100);
   }, []);
 
-  // Manage sequential animation
   useEffect(() => {
     if (!animationActive) return;
 
-    // Animation timeline with progressive delays
     const timers = [
       setTimeout(() => setCurrentElement(1), 800),
       setTimeout(() => setCurrentElement(2), 2200),
@@ -87,22 +73,18 @@ const AnimationSection = () => {
       setTimeout(resetAnimation, 10000),
     ];
 
-    // Cleanup all timers on unmount or when animation restarts
     return () => timers.forEach((timer) => clearTimeout(timer));
   }, [animationActive, resetAnimation]);
 
-  // Select appropriate image set
   const imageData = isSmallScreen
     ? imageCollections.mobile
     : imageCollections.mobile;
 
-  // Animation styles
   const getAnimationClass = (elementIndex) => {
     const baseClasses = "transition-all duration-1000 ease-in-out absolute";
     const activeState = currentElement >= elementIndex;
 
     if (isSmallScreen) {
-      // Mobile animations (vertical flow)
       switch (elementIndex) {
         case 1:
           return `${baseClasses} ${
@@ -138,7 +120,6 @@ const AnimationSection = () => {
           return baseClasses;
       }
     } else {
-      // mobile animations (horizontal flow)
       switch (elementIndex) {
         case 1:
           return `${baseClasses} ${
@@ -181,13 +162,10 @@ const AnimationSection = () => {
       className={`w-full ${
         isSmallScreen ? "h-128" : "h-96"
       } relative overflow-hidden rounded-xl shadow-lg`}
-      style={{
-        fontFamily: '"Roboto Slab", sans-serif',
-      }}
+      style={{ fontFamily: '"Roboto Slab", sans-serif' }}
     >
-      <h1></h1>
       <div className="w-full h-full flex items-center justify-center relative">
-        {/* Progress Indicator */}
+        {/* Progress Bar */}
         <div className="absolute top-4 left-0 right-0 flex justify-center">
           <div
             className="h-1 w-48 rounded-full overflow-hidden"
@@ -212,7 +190,7 @@ const AnimationSection = () => {
           <img
             src={imageData[0].url}
             alt={imageData[0].alt}
-            className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition-transform"
+            className="w-full h-full object-contain rounded-lg transform hover:scale-105 transition-transform"
             style={{ boxShadow: `0 4px 6px ${theme.secondary}50` }}
           />
         </div>
@@ -225,10 +203,7 @@ const AnimationSection = () => {
                 className="w-6 h-6 animate-bounce"
                 style={{ color: theme.primary }}
               />
-              <span
-                className="text-xs font-medium mt-1 text-white"
-                // style={{ color: theme.darkText }}
-              >
+              <span className="text-xs font-medium mt-1 text-white">
                 Process
               </span>
             </div>
@@ -238,10 +213,7 @@ const AnimationSection = () => {
                 className="w-6 h-6 animate-pulse"
                 style={{ color: theme.primary }}
               />
-              <span
-                className="text-xs font-medium mt-1 text-white"
-                // style={{ color: theme.darkText }}
-              >
+              <span className="text-xs font-medium mt-1 text-white">
                 Process
               </span>
             </div>
@@ -257,7 +229,7 @@ const AnimationSection = () => {
           <img
             src={imageData[1].url}
             alt={imageData[1].alt}
-            className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition-transform"
+            className="w-full h-full object-contain rounded-lg transform hover:scale-105 transition-transform"
             style={{ boxShadow: `0 4px 6px ${theme.secondary}50` }}
           />
         </div>
@@ -270,10 +242,7 @@ const AnimationSection = () => {
                 className="w-6 h-6 animate-bounce"
                 style={{ color: theme.primary }}
               />
-              <span
-                className="text-xs font-medium mt-1 text-white"
-                // style={{ color: theme.darkText }}
-              >
+              <span className="text-xs font-medium mt-1 text-white">
                 Result
               </span>
             </div>
@@ -283,10 +252,7 @@ const AnimationSection = () => {
                 className="w-6 h-6 animate-pulse"
                 style={{ color: theme.primary }}
               />
-              <span
-                className="text-xs font-medium mt-1 text-white"
-                // style={{ color: theme.darkText }}
-              >
+              <span className="text-xs font-medium mt-1 text-white">
                 Result
               </span>
             </div>
@@ -302,7 +268,7 @@ const AnimationSection = () => {
           <img
             src={imageData[2].url}
             alt={imageData[2].alt}
-            className="w-full h-full object-cover rounded-lg transform hover:scale-105 transition-transform"
+            className="w-full h-full object-contain rounded-lg transform hover:scale-105 transition-transform"
             style={{ boxShadow: `0 4px 6px ${theme.secondary}50` }}
           />
         </div>
