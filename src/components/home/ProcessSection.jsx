@@ -6,7 +6,7 @@ import { Leaf, Droplets, Wind, Sparkles } from 'lucide-react';
 const processSteps = [
   { 
     name: "Raw Fiber", 
-    image: "/assets/img/Fiber/fibre.jpg", 
+    image: "/assets/img/Fiber/rawfiber.png", 
     story: "High in the Himalayas, natural fiber grows naturally in pristine mountain conditions",
     icon: Leaf,
     step: "01"
@@ -20,14 +20,14 @@ const processSteps = [
   },
   { 
     name: "Yarn", 
-    image: "/assets/img/fabrics.jpg", 
+    image: "/assets/img/yarn/rawyarn.png", 
     story: "Ancient spinning techniques transform clean fibers into strong, durable threads",
     icon: Wind,
     step: "03"
   },
   { 
     name: "Fabric", 
-    image: "/assets/img/extra/Knitted-Fabric.png", 
+    image: "/assets/img/fabric/fabric.png", 
     story: "Master weavers craft sustainable textiles using generations of inherited wisdom",
     icon: Sparkles,
     step: "04"
