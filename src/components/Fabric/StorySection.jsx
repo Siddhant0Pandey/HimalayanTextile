@@ -34,7 +34,7 @@ export default function HimalayanTextiles() {
       title: "Cotton Fabric",
       description:
         "A staple of comfort, cotton from the Himalayan foothills is prized for its softness and purity. Naturally breathable and gentle on the skin, it’s perfect for both everyday wear and artisanal handloom creations.",
-      image: "assets/img/fabric/Cotton.png",
+      image: "assets/img/fabric/Cottonn.jpg",
     },
     {
       title: "Nettle Fabric",
@@ -46,7 +46,7 @@ export default function HimalayanTextiles() {
       title: "Flax Fabric",
       description:
         "Derived from the flax plant, this linen-like fabric carries a natural texture and resilience. Its cooling properties make it ideal for warm climates, while its rustic feel brings timeless charm to any garment.",
-      image: "assets/img/fabric/Flax.png",
+      image: "assets/img/fabric/flax.jpg",
     },
     {
       title: "Cactus Fabric",
@@ -70,13 +70,13 @@ export default function HimalayanTextiles() {
       title: "Wool Fabric",
       description:
         "Sourced from Himalayan highland sheep, wool fabric offers exceptional warmth and softness. Naturally insulating and moisture-wicking, it’s a staple for traditional winter wear.",
-      image: "assets/img/fabric/Wool.png",
+      image: "assets/img/fabric/wool.jpg",
     },
     {
       title: "Silk Fabric",
       description:
         "Lustrous and refined, Himalayan silk reflects generations of heritage. Carefully hand-reared and woven, this fabric embodies luxury, tradition, and the artistry of mountain communities.",
-      image: "assets/img/fabric/Silk.png",
+      image: "assets/img/fabric/silk.jpg",
     },
   ];
 

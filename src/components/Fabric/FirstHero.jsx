@@ -106,8 +106,8 @@ const FirstHero = () => {
         >
           Fabric
         </h1>
-        <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
-          Made for Goodness. Made for Performance.
+        <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6 ">
+          Crafting a Greener Tomorrow with Himalayan Fibers
         </p>
 
         {/* Badge element */}
