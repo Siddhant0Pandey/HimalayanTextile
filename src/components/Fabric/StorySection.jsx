@@ -1,7 +1,28 @@
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function HimalayanTextiles() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    };
+    handleResize(); // Run on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleDescription = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
   const collections = [
     {
       title: "Hemp Fabric",
@@ -149,17 +170,30 @@ export default function HimalayanTextiles() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((item, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div
+                key={index}
+                className="group cursor-pointer"
+                onClick={() => isMobile && toggleDescription(index)}
+              >
                 <div className="relative rounded-lg overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-auto transform transition-transform duration-500 group-hover:scale-110"
+                    className={`w-full h-auto transform transition-transform duration-500 ${
+                      !isMobile && "group-hover:scale-110"
+                    }`}
                   />
-                  <div className="absolute inset-0 bg-[#1d1f10]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center px-4 text-center">
-                    <p className="text-[#edfeee] text-sm md:text-base">
-                      {item.description}
-                    </p>
+                  {/* Overlay */}
+                  <div
+                    className={`absolute inset-0 bg-[#1d1f10]/70 px-4 text-center text-[#edfeee] flex items-center justify-center transition-opacity duration-500 ${
+                      isMobile
+                        ? openIndexes.includes(index)
+                          ? "opacity-100"
+                          : "opacity-0"
+                        : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  >
+                    <p className="text-sm md:text-base">{item.description}</p>
                   </div>
                 </div>
                 <h4 className="text-xl font-semibold text-[#1fa951] mt-4">
