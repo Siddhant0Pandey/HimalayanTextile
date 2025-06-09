@@ -40,6 +40,6 @@ export const sectionsData = [
     title: "Safe, Earth-Born Clothing",
     description: "The company prioritizes natural clothing for children, expanding to adults and communities. Its products are toxin-free, breathable, and safe, promoting well-being while protecting ecosystems.",
     type: "solution",
-    videoSrc: "/assets/videos/safe.mp4"
+    videoSrc: "/assets/videos/fabricclothes2.mp4"
   }
 ];
