@@ -13,7 +13,7 @@ const processSteps = [
   },
   { 
     name: "Degummed", 
-    image: "/assets/img/extra/nettle.jpg", 
+    image: "/assets/img/extra/degummed.png", 
     story: "Traditional water processing removes natural impurities while preserving fiber strength",
     icon: Droplets,
     step: "02"
