@@ -12,7 +12,7 @@ const Footer = () => {
       // Animate Footer Brand
       gsap.from('.footer-brand', {
         scale: 0.8,
-        opacity: 0,
+        opacity: 1,
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
