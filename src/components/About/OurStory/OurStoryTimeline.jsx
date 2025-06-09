@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import OurStoryAnimation from "./OurStoryAnimation";
 import TextileParticles from "./TextileParicles";
+const endProgress = 0.6;
 const timelineData = [
   {
     year: "1995",
@@ -13,7 +14,6 @@ const timelineData = [
     image:
       "https://images.unsplash.com/photo-1516975369741-5c6ae9cf5fba?w=800&h=600&fit=crop&crop=center",
     color: "#edfeee",
-    bgImg2: "/about.png",
   },
   {
     year: "2000",
@@ -59,7 +59,6 @@ const timelineData = [
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
     color: "from-green-600 to-emerald-800",
-    bgImg: "/newyork.png",
   },
 ];
 
@@ -207,29 +206,49 @@ const TimelineSection = ({ item, index, progress }) => {
 
         <div className="flex">
           {/* Description section with typing animation */}
-          <motion.div className="mb-16 pb-12 overflow-hidden flex-1 z-10">
-            <p className="text-lg md:text-xl lg:text-2xl text-green-600 text-opacity-90 leading-relaxed max-w-4xl mx-auto">
-              {item.description.split("").map((char, charIndex) => (
-                <motion.span
-                  key={charIndex}
-                  className="inline-block "
-                  style={{
-                    opacity: useTransform(
-                      smoothProgress,
-                      [0.25 + charIndex * 0.003, 0.28 + charIndex * 0.003],
-                      [0, 1]
-                    ),
-                  }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
+          <motion.div className="mb-16 pb-12 overflow-hidden flex-1">
+            <p
+              className="text-lg md:text-xl lg:text-xl text-green-600 text-opacity-90 leading-normal max-w-4xl mx-auto"
+              style={{
+                wordBreak: "normal",
+                overflowWrap: "normal",
+                whiteSpace: "normal",
+              }}
+            >
+              {(() => {
+                const words = item.description.split(" ");
+                const startProgress = 0.25;
+                const endProgress = 0.6;
+                const totalWords = words.length;
+                const wordInterval = (endProgress - startProgress) / totalWords;
+
+                return words.map((word, wordIndex) => (
+                  <motion.span
+                    key={wordIndex}
+                    className="inline-block whitespace-nowrap mr-1"
+                    style={{
+                      opacity: useTransform(
+                        smoothProgress,
+                        [
+                          startProgress + wordIndex * wordInterval,
+                          startProgress +
+                            wordIndex * wordInterval +
+                            wordInterval * 0.6,
+                        ],
+                        [0, 1]
+                      ),
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ));
+              })()}
               <motion.span
                 className="inline-block w-0.5 h-5 md:h-6 lg:h-7 bg-green-600 bg-opacity-90 ml-1"
                 style={{
                   opacity: useTransform(
                     smoothProgress,
-                    [0.25 + item.description.length * 0.003, 0.6],
+                    [endProgress, 0.8],
                     [0, 1]
                   ),
                 }}

@@ -1,31 +1,52 @@
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function HimalayanTextiles() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [openIndexes, setOpenIndexes] = useState([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    };
+    handleResize(); // Run on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleDescription = (index) => {
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
+  };
+
   const collections = [
     {
       title: "Hemp Fabric",
       description:
         "Exceptionally durable and breathable, hemp is one of the most sustainable textiles. Its cultivation requires little water and no pesticides, making it a top choice for eco-conscious fashion rooted in Himalayan soil.",
-      image: "assets/img/fabric/Hemp.png",
+      image: "assets/img/fabric/hemp.jpg",
     },
     {
       title: "Cotton Fabric",
       description:
         "A staple of comfort, cotton from the Himalayan foothills is prized for its softness and purity. Naturally breathable and gentle on the skin, it’s perfect for both everyday wear and artisanal handloom creations.",
-      image: "assets/img/fabric/Cotton.png",
+      image: "assets/img/fabric/Cottonn.jpg",
     },
     {
       title: "Nettle Fabric",
       description:
         "Harvested from wild nettle plants in Himalayan forests, this fabric is strong, breathable, and naturally textured. Traditionally spun, nettle blends sustainability with cultural heritage.",
-      image: "assets/img/fabric/Nettle.png",
+      image: "assets/img/fabric/nettle.jpg",
     },
     {
       title: "Flax Fabric",
       description:
         "Derived from the flax plant, this linen-like fabric carries a natural texture and resilience. Its cooling properties make it ideal for warm climates, while its rustic feel brings timeless charm to any garment.",
-      image: "assets/img/fabric/Flax.png",
+      image: "assets/img/fabric/flax.jpg",
     },
     {
       title: "Cactus Fabric",
@@ -49,13 +70,13 @@ export default function HimalayanTextiles() {
       title: "Wool Fabric",
       description:
         "Sourced from Himalayan highland sheep, wool fabric offers exceptional warmth and softness. Naturally insulating and moisture-wicking, it’s a staple for traditional winter wear.",
-      image: "assets/img/fabric/Wool.png",
+      image: "assets/img/fabric/wool.jpg",
     },
     {
       title: "Silk Fabric",
       description:
         "Lustrous and refined, Himalayan silk reflects generations of heritage. Carefully hand-reared and woven, this fabric embodies luxury, tradition, and the artistry of mountain communities.",
-      image: "assets/img/fabric/Silk.png",
+      image: "assets/img/fabric/silk.jpg",
     },
   ];
 
@@ -68,7 +89,7 @@ export default function HimalayanTextiles() {
             <div className="w-full md:w-1/2 mb-8 md:mb-0">
               <div className="relative overflow-hidden rounded-lg">
                 <img
-                  src="/assets/img/yarn/paswool.jpg"
+                  src="/assets/img/fabric/main.jpg"
                   alt="Textile craftsmanship"
                   className="w-full h-auto rounded-lg"
                 />
@@ -122,20 +143,13 @@ export default function HimalayanTextiles() {
           </h3>
           <div className="space-y-6 text-lg">
             <p>
-              Nestled in the foothills of the Himalayas, Himalayan Textile is a
-              collective of skilled artisans preserving centuries-old textile
-              heritage. What began as a small workshop has evolved into a
-              thriving hub for sustainable craftsmanship.
-            </p>
-            <p>
-              We work hand-in-hand with local shepherds, farmers, and foragers
-              to ethically source premium materials—from high-altitude sheep
-              wool to naturally dyed herbs and minerals.
-            </p>
-            <p>
-              Our mission is to celebrate and protect the cultural wisdom woven
-              into every strand. With every creation, Himalayan Textile shares a
-              living story of the mountains.
+              Nestled in the foothills of the Himalayas, Himalayan Textile
+              Industries blends centuries-old craftsmanship with eco-friendly
+              innovation. We produce high-quality, sustainable textiles made
+              from natural fibers sourced from the pristine Himalayas.
+              <br /> Our mission is to revolutionize the fabric industry while
+              preserving the cultural wisdom woven into every strand, creating
+              products that are both planet-positive and beautifully crafted.
             </p>
           </div>
         </div>
@@ -149,17 +163,30 @@ export default function HimalayanTextiles() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((item, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div
+                key={index}
+                className="group cursor-pointer"
+                onClick={() => isMobile && toggleDescription(index)}
+              >
                 <div className="relative rounded-lg overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-auto transform transition-transform duration-500 group-hover:scale-110"
+                    className={`w-full h-auto transform transition-transform duration-500 ${
+                      !isMobile && "group-hover:scale-110"
+                    }`}
                   />
-                  <div className="absolute inset-0 bg-[#1d1f10]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center px-4 text-center">
-                    <p className="text-[#edfeee] text-sm md:text-base">
-                      {item.description}
-                    </p>
+                  {/* Overlay */}
+                  <div
+                    className={`absolute inset-0 bg-[#1d1f10]/70 px-4 text-center text-[#edfeee] flex items-center justify-center transition-opacity duration-500 ${
+                      isMobile
+                        ? openIndexes.includes(index)
+                          ? "opacity-100"
+                          : "opacity-0"
+                        : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  >
+                    <p className="text-sm md:text-base">{item.description}</p>
                   </div>
                 </div>
                 <h4 className="text-xl font-semibold text-[#1fa951] mt-4">

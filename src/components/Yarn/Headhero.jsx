@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-
+import { Link } from "react-router-dom";
 export default function AnimatedHeadhero() {
   const headingRef = useRef(null);
   const textRef = useRef(null);
@@ -129,34 +129,35 @@ export default function AnimatedHeadhero() {
           stands apart lies in its origin and purpose. Each skein is made from
           carefully selected natural fibers, hand-spun by skilled artisans using
           traditional{" "}
-          <span className="text-blue-700 font-bold">Himalayan techniques</span>{" "}
+          <span className="text-green-600 font-bold">Himalayan techniques</span>{" "}
           . Our yarn is not only soft and durable, but it also carries the
           essence of sustainable craftsmanship—ethically sourced,
           environmentally conscious, and deeply rooted in cultural heritage.
           It’s more than just a material; it’s a meaningful thread connecting
           people, planet, and tradition.
         </p>
-
-        <button
-          ref={btnRef}
-          className="mt-8 bg-green-600 text-white text-lg px-6 py-3 rounded-full hover:bg-green-700 transition shadow-lg flex items-center gap-2"
-        >
-          Interested
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        <Link to={"/contact"}>
+          <button
+            ref={btnRef}
+            className="mt-8 bg-green-600 text-white text-lg px-6 py-3 rounded-full hover:bg-green-700 transition shadow-lg flex items-center gap-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button>
+            Interested
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </button>
+        </Link>
       </div>
 
       <div className="mt-12 md:mt-0 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto md:mx-0">
@@ -166,7 +167,7 @@ export default function AnimatedHeadhero() {
             className="overflow-hidden rounded-2xl shadow-xl"
           >
             <img
-              src="assets/img/Fiber/hemp.jpg"
+              src="assets/img/yarn/yarns.jpg"
               alt="Yarn Box"
               className="w-full h-full object-cover"
             />
@@ -181,7 +182,7 @@ export default function AnimatedHeadhero() {
             className="overflow-hidden rounded-2xl shadow-xl"
           >
             <img
-              src="assets/img/yarn/yakwool.jpg"
+              src="assets/img/yarn/master.jpg"
               alt="Woman Weaving"
               className="w-full h-full object-cover"
             />
