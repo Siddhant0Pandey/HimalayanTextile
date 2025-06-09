@@ -9,23 +9,20 @@ const Footer = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Optional: Save styles to avoid conflicts
-      ScrollTrigger.saveStyles(['.footer-brand', '.footer-column', '.footer-badge']);
-
-      // Section 1: Brand Logo and Intro Text
+      // Animate Footer Brand
       gsap.from('.footer-brand', {
         scale: 0.8,
-        opacity: 0,
+        opacity: 1,
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '.footer-brand',
           start: 'top bottom',
-          lazy: false,
+          toggleActions: 'play none none none',
         },
       });
 
-      // Section 2: Navigation Columns
+      // Animate Footer Columns
       gsap.from('.footer-column', {
         y: 100,
         opacity: 0,
@@ -35,11 +32,11 @@ const Footer = () => {
         scrollTrigger: {
           trigger: '.footer-columns',
           start: 'top 80%',
-          lazy: false,
+          toggleActions: 'play none none none',
         },
       });
 
-      // Section 3: Footer Badge
+      // Animate Footer Badge
       gsap.from('.footer-badge', {
         y: 50,
         opacity: 0,
@@ -49,11 +46,11 @@ const Footer = () => {
         scrollTrigger: {
           trigger: '.footer-badge',
           start: 'top 85%',
-          lazy: false,
+          toggleActions: 'play none none none',
         },
       });
 
-      // Floating animation for background shapes
+      // Floating Background Shapes
       gsap.to('.floating-shape', {
         y: 20,
         repeat: -1,
@@ -62,10 +59,21 @@ const Footer = () => {
         ease: 'sine.inOut',
       });
 
-      // Ensure layout is fully ready before refresh
-      setTimeout(() => {
+      // Wait until everything is rendered
+      const refreshTrigger = () => {
         ScrollTrigger.refresh();
-      }, 100);
+      };
+
+      if (document.readyState === 'complete') {
+        requestAnimationFrame(refreshTrigger);
+      } else {
+        window.addEventListener('load', refreshTrigger);
+      }
+
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        window.removeEventListener('load', refreshTrigger);
+      };
     }, footerRef);
 
     return () => ctx.revert();
@@ -76,14 +84,14 @@ const Footer = () => {
       ref={footerRef}
       className="relative bg-black text-white w-full mt-auto overflow-hidden"
     >
-      {/* Optional Floating Background */}
+      {/* Floating Background */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
         <div className="floating-shape w-32 h-32 bg-white/5 rounded-full blur-2xl absolute top-10 left-10"></div>
         <div className="floating-shape w-24 h-24 bg-white/10 rounded-full blur-2xl absolute bottom-10 right-10"></div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 space-y-20">
-        {/* Section 1: Brand Intro */}
+        {/* Brand Section */}
         <div className="footer-brand text-center space-y-4">
           <img
             src="/assets/img/logo/logo1.png"
@@ -96,12 +104,12 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Section 2: Navigation Columns */}
+        {/* Navigation Columns */}
         <div className="footer-columns grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center">
           {[
             {
               title: 'Products',
-              links: ['fibre', 'yarn', 'fabric', 'cotton', 'wool'],
+              links: ['fibre', 'yarn', 'fabric'],
             },
             {
               title: 'Company',
@@ -109,7 +117,7 @@ const Footer = () => {
             },
             {
               title: 'Support',
-              links: ['contact', 'FAQs', 'Privacy Policy'],
+              links: ['contact'],
             },
           ].map((section, idx) => (
             <div key={idx} className="footer-column space-y-4">
@@ -118,7 +126,7 @@ const Footer = () => {
                 {section.links.map((link, i) => (
                   <li key={i}>
                     <a
-                      href={`${link}`}
+                      href={`/${link}`}
                       className="hover:text-[#1fa951] capitalize transition duration-300"
                     >
                       {link}
@@ -130,7 +138,7 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Section 3: Footer Badge */}
+        {/* Footer Badge */}
         <div className="footer-badge border-t border-gray-800 pt-10 text-center text-gray-500 text-sm">
           &copy; 2025 Himalayan Textiles. All rights reserved. | Sustainable
           Threads for a Better World.
