@@ -109,7 +109,7 @@ const Footer = () => {
           {[
             {
               title: 'Products',
-              links: ['fibre', 'yarn', 'fabric', 'cotton', 'wool'],
+              links: ['fibre', 'yarn', 'fabric'],
             },
             {
               title: 'Company',
