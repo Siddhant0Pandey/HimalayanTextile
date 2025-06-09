@@ -218,63 +218,7 @@ const AboutSection = () => {
           </div>
 
           {/* Interactive Core Values Carousel */}
-          <div 
-            className={`mb-20 transition-all duration-1000 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
-            }`}
-            style={{ transitionDelay: '600ms' }}
-          >
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-              <p className="text-lg text-gray-600">The principles that guide every thread we weave</p>
-            </div>
-
-            <div className="relative max-w-4xl mx-auto">
-              {/* Navigation dots */}
-              <div className="flex justify-center space-x-3 mb-8">
-                {coreValues.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveValue(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      activeValue === index ? 'bg-emerald-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Value cards carousel */}
-              <div className="relative h-80 overflow-hidden rounded-2xl">
-                {coreValues.map((value, index) => {
-                  const Icon = value.icon;
-                  return (
-                    <div
-                      key={index}
-                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                        activeValue === index 
-                          ? 'translate-x-0 opacity-100 scale-100' 
-                          : index < activeValue 
-                            ? '-translate-x-full opacity-0 scale-95' 
-                            : 'translate-x-full opacity-0 scale-95'
-                      }`}
-                    >
-                      <div className="bg-white rounded-2xl p-12 shadow-2xl border border-gray-100 h-full flex items-center">
-                        <div className="flex items-center space-x-8 w-full">
-                          <div className={`flex-shrink-0 w-24 h-24 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center transform transition-transform duration-500 hover:scale-110`}>
-                            <Icon className="w-12 h-12 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-3xl font-bold text-gray-900 mb-4">{value.title}</h3>
-                            <p className="text-lg text-gray-600 leading-relaxed">{value.description}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+         
 
           {/* Call to Action with Animated Elements */}
           <div 
