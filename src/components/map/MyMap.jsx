@@ -43,6 +43,7 @@ const MyMap = () => {
   }, [mapInView]);
 
   const countries = [
+    {  lat: 18.6139, lng: 76.209, name: "India" },
     { lat: 40.7128, lng: -74.006, name: "United States" },
     { lat: 45.4215, lng: -75.6972, name: "Canada" },
     { lat: 50.8503, lng: 4.3517, name: "Belgium" },
@@ -52,11 +53,10 @@ const MyMap = () => {
     { lat: 52.52, lng: 13.405, name: "Germany" },
     { lat: -34.9011, lng: -56.1645, name: "Uruguay" },
     { lat: -14.235, lng: -51.9253, name: "Brazil" },
-    { lat: 41.8719, lng: 12.5674, name: "Italy" },
+    { lat: 40.8719, lng: 12.5674, name: "Italy" },
     { lat: 35.6762, lng: 139.6503, name: "Japan" },
     { lat: 37.5665, lng: 126.978, name: "South Korea" },
-    { name: "Australia", lat: -22.8688, lng: 138.2093 }, // Sydney
-    { name: "India", lat: 18.6139, lng: 77.209 },
+    {  lat: -22.8688, lng: 138.2093,name: "Australia" },
   ];
 
   const handleMarkerClick = (countryName) => {
@@ -65,7 +65,7 @@ const MyMap = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-gray-100 pt-16">
-      {/* Title Section */}
+     
       <div
         ref={titleRef}
         className="w-full px-4 py-6 md:px-10 bg-white shadow-md text-center z-10"
