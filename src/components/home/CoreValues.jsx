@@ -63,7 +63,7 @@ const CoreValues = () => {
     });
   }, []);
 
-  const bgImg =" url('assets/img/denseforest.jpg')"
+  const bgImg =" url('assets/img/bg/ourvalue.jpg')"
   return (
    <section
   className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-cover bg-center overflow-hidden"
