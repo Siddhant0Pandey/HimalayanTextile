@@ -49,10 +49,10 @@ const AboutSection = () => {
   }, []);
 
   const sustainabilityStats = [
-    { icon: Leaf, value: "100%", label: "Organic Materials", color: "from-green-500 to-emerald-500" },
-    { icon: Droplet, value: "85%", label: "Water Saved", color: "from-emerald-500 to-cyan-500" },
-    { icon: Recycle, value: "90%", label: "Waste Recycled", color: "from-emerald-500 to-teal-500" },
-    { icon: Globe, value: "15+", label: "Global Markets", color: "from-teal-500 to-green-500" }
+    { icon: Leaf, value: "100%", label: "Organic Materials", color: "from-green-500 to-green-500" },
+    { icon: Droplet, value: "85%", label: "Water Saved", color: "from-emerald-500 to-emerald-500" },
+    { icon: Recycle, value: "90%", label: "Waste Recycled", color: "from-emerald-500 to-emerald-500" },
+    { icon: Globe, value: "15+", label: "Global Markets", color: "from-green-500 to-green-500" }
   ];
 
   const coreValues = [
@@ -135,7 +135,7 @@ const AboutSection = () => {
             >
               <span className="text-gray-900">Weaving </span>
               <span 
-                className="bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 bg-clip-text text-transparent"
+                className="text-emerald-800"
                 style={{
                   backgroundSize: '200% 200%',
                   animation: isVisible ? 'gradientShift 3s ease-in-out infinite' : 'none'
@@ -283,7 +283,7 @@ const AboutSection = () => {
             }`}
             style={{ transitionDelay: '800ms' }}
           >
-            <div className="relative bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600 rounded-3xl p-16 text-center overflow-hidden">
+            <div className="relative bg-emerald-700  rounded-3xl p-16 text-center overflow-hidden">
               {/* Animated background elements */}
               <div className="absolute inset-0">
                 {[...Array(8)].map((_, i) => (
