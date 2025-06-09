@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import OurStoryAnimation from "./OurStoryAnimation";
 import TextileParticles from "./TextileParicles";
+
 const endProgress = 0.6;
 const timelineData = [
   {
@@ -64,6 +65,20 @@ const timelineData = [
 
 const TimelineSection = ({ item, index, progress }) => {
   const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 640);
+      setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   const { scrollYProgress: sectionScrollProgress } = useScroll({
     target: sectionRef,
     offset: ["-40% end", "end start"],
@@ -91,30 +106,27 @@ const TimelineSection = ({ item, index, progress }) => {
   const imageScale = useTransform(smoothProgress, [0.4, 0.7], [1.2, 1]);
   const imageY = useTransform(smoothProgress, [0.4, 0.7], [120, 0]);
 
-  // Split text into characters for typing effect
-  const titleChars = item.title.split("");
-  const descriptionChars = item.description.split("");
-
   return (
     <div
       ref={sectionRef}
-      className={`min-h-[100vh] flex flex-col justify-center items-center px-12 pb-80 md:px-8 py-20 relative overflow-hidden bg-highlight ${item.color}`}
+      className={`min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 relative overflow-hidden bg-highlight ${item.color}`}
     >
       <TextileParticles />
+
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[#edfeee]"></div>
       </div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 space-y-8 ">
-        {/* Year section - keeping original animation */}
+      <div className="max-w-7xl w-full mx-auto relative z-10">
+        {/* Year section - keeping original animation with responsive sizing */}
         <motion.div
           style={{ opacity: yearOpacity, scale: yearScale, y: yearY }}
-          className="mb-12"
+          className="mb-8 sm:mb-10 md:mb-12 text-center"
         >
           <div className="overflow-hidden">
             <motion.h1
-              className="text-7xl md:text-8xl lg:text-9xl font-black text-green-600 mb-6 tracking-tight leading-none"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-green-600 mb-4 sm:mb-6 tracking-tight leading-none"
               style={{
                 y: useTransform(smoothProgress, [0.1, 0.5], [200, 0]),
                 rotateX: useTransform(smoothProgress, [0.1, 0.5], [90, 0]),
@@ -125,7 +137,7 @@ const TimelineSection = ({ item, index, progress }) => {
                   display: "inline-block",
                   y: useTransform(smoothProgress, [0.15, 0.45], [100, 0]),
                 }}
-                className="pt-24 pb-6"
+                className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-4 sm:pb-6"
               >
                 {item.year.split("").map((digit, i) => (
                   <motion.span
@@ -157,7 +169,7 @@ const TimelineSection = ({ item, index, progress }) => {
             </motion.h1>
           </div>
           <motion.div
-            className="w-32 h-1 bg-white mx-auto rounded-full opacity-80"
+            className="w-16 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-white mx-auto rounded-full opacity-80"
             style={{
               scaleX: useTransform(smoothProgress, [0.3, 0.6], [0, 1]),
               opacity: useTransform(smoothProgress, [0.3, 0.6], [0, 0.8]),
@@ -166,8 +178,8 @@ const TimelineSection = ({ item, index, progress }) => {
         </motion.div>
 
         {/* Title section with typing animation */}
-        <motion.div className="mb-16 pb-12 overflow-hidden z-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight">
+        <motion.div className="mb-8 sm:mb-12 md:mb-16 pb-6 sm:pb-8 md:pb-12 overflow-hidden text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight px-2">
             {item.title.split("").map((char, charIndex) => (
               <motion.span
                 key={charIndex}
@@ -184,7 +196,7 @@ const TimelineSection = ({ item, index, progress }) => {
               </motion.span>
             ))}
             <motion.span
-              className="inline-block w-1 h-8 md:h-10 lg:h-12 bg-green-600 ml-1"
+              className="inline-block w-0.5 sm:w-1 h-6 sm:h-8 md:h-10 lg:h-12 bg-green-600 ml-1"
               style={{
                 opacity: useTransform(
                   smoothProgress,
@@ -204,14 +216,15 @@ const TimelineSection = ({ item, index, progress }) => {
           </h2>
         </motion.div>
 
-        <div className="flex">
+        {/* Main content - responsive layout */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Description section with typing animation */}
-          <motion.div className="mb-16 pb-12 overflow-hidden flex-1">
+          <motion.div className="mb-8 sm:mb-12 md:mb-16 pb-6 sm:pb-8 md:pb-12 overflow-hidden flex-1 w-full lg:w-auto">
             <p
-              className="text-lg md:text-xl lg:text-xl text-green-600 text-opacity-90 leading-normal max-w-4xl mx-auto"
+              className="text-base sm:text-lg md:text-xl lg:text-xl text-green-600 text-opacity-90 leading-relaxed sm:leading-normal max-w-4xl mx-auto lg:mx-0 text-center lg:text-left px-2"
               style={{
                 wordBreak: "normal",
-                overflowWrap: "normal",
+                overflowWrap: "break-word",
                 whiteSpace: "normal",
               }}
             >
@@ -225,7 +238,7 @@ const TimelineSection = ({ item, index, progress }) => {
                 return words.map((word, wordIndex) => (
                   <motion.span
                     key={wordIndex}
-                    className="inline-block whitespace-nowrap mr-1"
+                    className="inline-block mr-1"
                     style={{
                       opacity: useTransform(
                         smoothProgress,
@@ -244,7 +257,7 @@ const TimelineSection = ({ item, index, progress }) => {
                 ));
               })()}
               <motion.span
-                className="inline-block w-0.5 h-5 md:h-6 lg:h-7 bg-green-600 bg-opacity-90 ml-1"
+                className="inline-block w-0.5 h-4 sm:h-5 md:h-6 lg:h-7 bg-green-600 bg-opacity-90 ml-1"
                 style={{
                   opacity: useTransform(
                     smoothProgress,
@@ -264,34 +277,30 @@ const TimelineSection = ({ item, index, progress }) => {
             </p>
           </motion.div>
 
-          {/* Image section with refined spacing and effects */}
-          <div className="z-30">
-            <img src={item.bgImg2} alt="" />
-            <img src={item.bgImg} alt="" className="h-[60vh] z-30" />
-          </div>
+          {/* Image section with responsive sizing */}
           <motion.div
             style={{ opacity: imageOpacity, scale: imageScale, y: imageY }}
-            className="relative flex-1 top-70 z-10"
+            className="relative flex-1 w-full lg:w-auto max-w-lg lg:max-w-3xl mx-auto"
           >
-            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl max-w-3xl mx-auto z-10">
+            <div className="relative overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl  ">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-56 md:h-72 lg:h-80 object-cover"
+                className="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
 
-            {/* Decorative elements with better positioning */}
-            <div className="absolute -top-6 -left-6 w-8 h-8 bg-white bg-opacity-20 rounded-full blur-sm"></div>
-            <div className="absolute -bottom-8 -right-8 w-12 h-12 bg-white bg-opacity-15 rounded-full blur-sm"></div>
-            <div className="absolute top-4 -right-4 w-6 h-6 bg-white bg-opacity-25 rounded-full blur-sm"></div>
+            {/* Decorative elements with responsive positioning */}
+            <div className="absolute -top-3 sm:-top-4 md:-top-6 -left-3 sm:-left-4 md:-left-6 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 bg-white bg-opacity-20 rounded-full blur-sm"></div>
+            <div className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 -right-4 sm:-right-6 md:-right-8 w-6 sm:w-8 md:w-12 h-6 sm:h-8 md:h-12 bg-white bg-opacity-15 rounded-full blur-sm"></div>
+            <div className="absolute top-2 sm:top-3 md:top-4 -right-2 sm:-right-3 md:-right-4 w-3 sm:w-4 md:w-6 h-3 sm:h-4 md:h-6 bg-white bg-opacity-25 rounded-full blur-sm"></div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator with refined animation */}
-      {index < timelineData.length - 1 && (
+      {/* Scroll indicator with refined animation - hide on mobile for better UX */}
+      {index < timelineData.length - 1 && !isMobile && (
         <motion.div
           animate={{
             x: [0, 12, 0],
@@ -302,12 +311,12 @@ const TimelineSection = ({ item, index, progress }) => {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute right-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <div className="w-6 h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center backdrop-blur-sm">
+          <div className="w-4 sm:w-5 md:w-6 h-8 sm:h-9 md:h-10 border-2 border-white border-opacity-50 rounded-full flex justify-center backdrop-blur-sm">
             <motion.div
-              className="w-1 h-3 bg-white bg-opacity-70 rounded-full mt-2"
-              animate={{ height: [12, 8, 12] }}
+              className="w-0.5 sm:w-1 h-2 sm:h-2.5 md:h-3 bg-white bg-opacity-70 rounded-full mt-1.5 sm:mt-2"
+              animate={{ height: [8, 6, 8] }}
               transition={{ duration: 2.5, repeat: Infinity }}
             />
           </div>
@@ -331,27 +340,27 @@ const OurStoryTimeline = () => {
         </React.Fragment>
       ))}
 
-      {/* Final section */}
-      <div className="min-h-screen bg-emerald-800 flex items-center justify-center px-6 py-20">
+      {/* Final section - fully responsive */}
+      <div className="min-h-screen bg-emerald-800 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center text-white max-w-4xl mx-auto space-y-8"
+          className="text-center text-white max-w-5xl mx-auto space-y-6 sm:space-y-8"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-2">
             The Journey Continues
           </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed px-2">
             From rural Nepal to global markets, our commitment to sustainable
             and ethical textile production drives us forward into the future.
           </p>
-          <div className="pt-8">
+          <div className="pt-4 sm:pt-6 md:pt-8">
             <motion.div
-              className="w-24 h-1 bg-gradient-to-r from-green-800 to-emerald-500 mx-auto rounded-full"
+              className="w-16 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-green-800 to-emerald-500 mx-auto rounded-full"
               initial={{ width: 0 }}
-              whileInView={{ width: 96 }}
+              whileInView={{ width: "6rem" }}
               transition={{ duration: 1, delay: 0.5 }}
               viewport={{ once: true }}
             />
