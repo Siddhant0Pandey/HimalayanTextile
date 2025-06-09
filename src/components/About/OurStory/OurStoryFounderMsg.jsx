@@ -35,8 +35,8 @@ function OurStoryFounderMsg() {
         },
       });
     } else {
-      controlsLeft.start({ x: -100, opacity: 0, scale: 0.95 });
-      controlsRight.start({ x: 100, opacity: 0, scale: 0.95 });
+      controlsLeft.start({ x: 0, opacity: 0, scale: 0.95 });
+      controlsRight.start({ x: 0, opacity: 0, scale: 0.95 });
     }
   }, [isInView, controlsLeft, controlsRight]);
 
@@ -89,7 +89,7 @@ function OurStoryFounderMsg() {
         <motion.div
           className="right md:w-1/2"
           animate={controlsRight}
-          initial={{ x: 100, opacity: 0, scale: 0.95 }}
+          initial={{ x: 0, opacity: 0, scale: 0.95 }}
         >
           <img
             src="/assets/img/founder.png"
