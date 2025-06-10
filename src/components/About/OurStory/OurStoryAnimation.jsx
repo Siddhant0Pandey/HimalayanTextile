@@ -224,7 +224,7 @@ const OurStoryAnimation = () => {
           {/* Perfect S-shaped path for mobile */}
           <path
             ref={pathRef}
-            d="M 207 320 C 300 340, 350 380, 280 430 C 210 480, 160 520, 230 550 C 300 580, 250 570, 207 570"
+            d="M 140 160 C 300 340, 350 380, 280 430 C 210 480, 160 520, 230 550 C 300 580, 250 570, 207 640"
             fill="none"
             stroke="url(#mobilePathGradient)"
             strokeWidth="4"
@@ -234,10 +234,10 @@ const OurStoryAnimation = () => {
           />
 
           {/* Path markers */}
-          <circle cx="207" cy="320" r="6" fill="#4CAF50" opacity="0.8" />
-          <circle cx="280" cy="430" r="4" fill="#66BB6A" opacity="0.6" />
-          <circle cx="230" cy="550" r="4" fill="#2E7D32" opacity="0.6" />
-          <circle cx="207" cy="570" r="6" fill="#4CAF50" opacity="0.8" />
+          <circle cx="139" cy="160" r="6" fill="#4CAF50" opacity="0.8" />
+          {/* <circle cx="280" cy="430" r="4" fill="#66BB6A" opacity="0.6" />
+          <circle cx="230" cy="550" r="4" fill="#2E7D32" opacity="0.6" /> */}
+          <circle cx="206" cy="640" r="6" fill="#4CAF50" opacity="0.8" />
 
           <image
             ref={carRef}
