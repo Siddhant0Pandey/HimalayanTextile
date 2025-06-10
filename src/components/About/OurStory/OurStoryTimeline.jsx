@@ -179,24 +179,32 @@ const TimelineSection = ({ item, index, progress }) => {
 
         {/* Title section with typing animation */}
         <motion.div className="mb-8 sm:mb-12 md:mb-16 pb-6 sm:pb-8 md:pb-12 overflow-hidden text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight px-2">
-            {item.title.split("").map((char, charIndex) => (
-              <motion.span
-                key={charIndex}
-                className="inline-block"
-                style={{
-                  opacity: useTransform(
-                    smoothProgress,
-                    [0.15 + charIndex * 0.008, 0.18 + charIndex * 0.008],
-                    [0, 1]
-                  ),
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight px-2 whitespace-pre-wrap break-words">
+            {item.title.split(" ").map((word, wordIndex) => (
+              <motion.span key={wordIndex} className="inline-block mr-1">
+                {word.split("").map((char, charIndex) => {
+                  const index = wordIndex * 10 + charIndex; // Adjust to stagger animation
+                  return (
+                    <motion.span
+                      key={charIndex}
+                      className="inline-block"
+                      style={{
+                        opacity: useTransform(
+                          smoothProgress,
+                          [0.15 + index * 0.008, 0.18 + index * 0.008],
+                          [0, 1]
+                        ),
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  );
+                })}
+                <span className="inline-block">&nbsp;</span>
               </motion.span>
             ))}
             <motion.span
-              className="inline-block w-0.5 sm:w-1 h-6 sm:h-8 md:h-10 lg:h-12 bg-green-600 ml-1"
+              className="inline-block w-0.5 sm:w-1 h-6 sm:h-8 md:h-10 lg:h-12 bg-green-600 ml-1 align-middle"
               style={{
                 opacity: useTransform(
                   smoothProgress,
