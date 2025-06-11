@@ -167,7 +167,6 @@ export default function ContentCard({
           </div>
         </div>
 
-        {/* Video Content - Right Side */}
         <VideoContainer 
           videoSrc={videoSrc} 
           isVisible={isVisible} 
