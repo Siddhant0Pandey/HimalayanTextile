@@ -60,7 +60,7 @@ export const yarnTypes = [
       name: "Wool Yarn",
       description:
         "Warm and resilient, wool yarn offers excellent elasticity and insulation. Sourced from Himalayan sheep, it's perfect for winter garments.",
-      image: "assets/img/yarn/Wool Yarn.jpg",
+      image: "assets/img/yarnphoto/Wool Yarn.jpg",
       features: ["Insulating", "Elastic", "Moisture-wicking"],
     },
     {
@@ -68,7 +68,7 @@ export const yarnTypes = [
       name: "Silk Yarn",
       description:
         "Lustrous and breathable, silk yarn is handspun using traditional methods. Its smooth texture and sheen make it a luxury fiber for fine textiles.",
-      image: "assets/img/yarn/SILK YARN.jpg",
+      image: "assets/img/yarnphoto/SILK YARN.jpg",
       features: ["Shiny finish", "Temperature regulating", "Biodegradable"],
     },
   ];
