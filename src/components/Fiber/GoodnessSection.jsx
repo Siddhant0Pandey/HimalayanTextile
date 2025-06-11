@@ -35,7 +35,7 @@ const GoodnessSection = () => {
 
   return (
     <section
-      className="py-16 px-4 md:px-12 bg-white"
+      className="lg:py-24 py-16 px-4 md:px-12 bg-white"
       style={{ fontFamily: '"Roboto Slab", sans-serif' }}
     >
       <div className="max-w-6xl mx-auto text-center">

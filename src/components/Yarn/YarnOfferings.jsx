@@ -131,10 +131,9 @@ export default function YarnOfferings() {
               });
             }
           });
-        }, 1500); // Wait for main animation to complete
+        }, 1500); 
       }
 
-      // Process section reveal animation
       if (processRef.current) {
         gsap.from(processRef.current, {
           backgroundColor: "#edfeee",
