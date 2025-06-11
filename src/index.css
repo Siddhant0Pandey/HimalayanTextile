@@ -6,7 +6,7 @@
 
 @theme {
   --font-display: "Roboto Slab", sans-serif;
-
+--color-darkBg:#0A0B0D;
   --color-primary: #1fa951;
   --color-secondary: #729a78;
   --color-light: #edfeee;

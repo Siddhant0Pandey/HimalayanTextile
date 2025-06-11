@@ -9,7 +9,7 @@ const AnimatedTitle = ({ children }) => {
 
   return (
     <h1
-      className={`text-3xl font-bold text-center mb-12 text-[#1fa951] transition-all duration-1000 transform ${
+      className={`text-3xl md:text-4xl font-bold text-center mb-2 text-[#1fa951] transition-all duration-1000 transform ${
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"
       }`}
     >

@@ -81,7 +81,7 @@ const HeroSection = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('assets/img/hero-section1.jpg')", // Fixed syntax error in original code
+        backgroundImage: "url('assets/img/Fiber/fiberbg.jpg')", 
         zIndex: "30px",
       }}
     >
@@ -107,7 +107,7 @@ const HeroSection = () => {
           Fibres
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
-          Made for Goodness. Made for Performance.
+          Earth-Friendly Fibers from the Heart of the Himalayas
         </p>
 
         {/* Badge element */}
