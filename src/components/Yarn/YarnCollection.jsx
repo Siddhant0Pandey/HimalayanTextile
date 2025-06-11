@@ -62,7 +62,7 @@ const YarnCollection = () => {
         <div className="text-center max-w-4xl mx-auto">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-6xl font-light mb-6 tracking-tight"
+            className="text-4xl md:text-6xl font-normal mb-6 tracking-tight"
             style={{ 
               color: 'var(--color-primary)',
               lineHeight: '1.1'
@@ -76,7 +76,7 @@ const YarnCollection = () => {
           ></div>
           <p
             ref={subheadingRef}
-            className="text-lg md:text-xl font-light leading-relaxed"
+            className="text-lg md:text-xl font-normal leading-relaxed"
             style={{ 
               color: 'var(--color-darkText)',
               maxWidth: '600px',
@@ -116,7 +116,7 @@ const YarnCollection = () => {
                     className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ backgroundColor: 'rgba(31, 169, 81, 0.85)' }}
                   >
-                    <span className="text-white text-lg font-light tracking-wide">
+                    <span className="text-white text-lg font-normal tracking-wide">
                       Explore {yarn.name}
                     </span>
                   </div>
@@ -125,13 +125,13 @@ const YarnCollection = () => {
                 {/* Content */}
                 <div className="p-8 flex flex-col flex-grow">
                   <h3
-                    className="text-2xl font-light mb-4 tracking-wide"
+                    className="text-2xl font-normal mb-4 tracking-wide"
                     style={{ color: 'var(--color-primary)' }}
                   >
                     {yarn.name}
                   </h3>
                   <p 
-                    className="mb-6 leading-relaxed font-light flex-grow"
+                    className="mb-6 leading-relaxed font-normal flex-grow"
                     style={{ color: 'var(--color-darkText)' }}
                   >
                     {yarn.description}

@@ -102,10 +102,10 @@ function YarnProcess() {
         {/* Minimal Header */}
         <div className="text-center mb-24">
           <div className="w-12 h-px mx-auto mb-8" style={{ backgroundColor: '#1fa951' }}></div>
-          <h1 className="text-5xl font-light mb-6 tracking-tight" style={{ color: '#1d1f10' }}>
+          <h1 className="text-5xl font-normal mb-6 tracking-tight" style={{ color: '#1d1f10' }}>
             From Fiber to Yarn
           </h1>
-          <p className="text-lg max-w-2xl mx-auto font-light leading-relaxed" style={{ color: '#729a78' }}>
+          <p className="text-lg max-w-2xl mx-auto font-normal leading-relaxed" style={{ color: '#729a78' }}>
             A refined 5-step process transforming natural fibers into premium yarn through precision and care.
           </p>
         </div>
@@ -138,7 +138,7 @@ function YarnProcess() {
               </h3>
               
               {/* Duration */}
-              <p className="text-xs font-light" style={{ color: '#729a78' }}>
+              <p className="text-xs font-normal" style={{ color: '#729a78' }}>
                 {step.duration}
               </p>
             </div>
@@ -160,10 +160,10 @@ function YarnProcess() {
         {/* Active Step Details */}
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-light mb-4" style={{ color: '#1d1f10' }}>
+            <h2 className="text-3xl font-normal mb-4" style={{ color: '#1d1f10' }}>
               {processSteps[activeStep].title}
             </h2>
-            <p className="text-lg font-light leading-relaxed" style={{ color: '#729a78' }}>
+            <p className="text-lg font-normal leading-relaxed" style={{ color: '#729a78' }}>
               {processSteps[activeStep].description}
             </p>
           </div>
@@ -177,7 +177,7 @@ function YarnProcess() {
                 style={{ backgroundColor: '#edfeee' }}
               >
                 <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: '#1fa951' }}></div>
-                <span className="font-light" style={{ color: '#1d1f10' }}>{detail}</span>
+                <span className="font-normal" style={{ color: '#1d1f10' }}>{detail}</span>
               </div>
             ))}
           </div>
