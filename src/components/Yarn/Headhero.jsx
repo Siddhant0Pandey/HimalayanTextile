@@ -121,15 +121,15 @@ export default function AnimatedHeadhero() {
       style={{ opacity: 0 }}
     >
       <div className="max-w-xl">
-        <h1 ref={headingRef} className="text-5xl font-bold text-black">
+        <h1 ref={headingRef} className="text-5xl font-normal text-black">
           Why <span className="text-green-600">Our Yarn?</span>
         </h1>
         <p className="mt-6 text-lg text-gray-700">
-          <span className="text-green-600 font-semibold">Why Our Yarn</span>{" "}
+          <span className="text-green-600 font-normal">Why Our Yarn</span>{" "}
           stands apart lies in its origin and purpose. Each skein is made from
           carefully selected natural fibers, hand-spun by skilled artisans using
           traditional{" "}
-          <span className="text-green-600 font-bold">Himalayan techniques</span>{" "}
+          <span className="text-green-600 font-normal">Himalayan techniques</span>{" "}
           . Our yarn is not only soft and durable, but it also carries the
           essence of sustainable craftsmanship—ethically sourced,
           environmentally conscious, and deeply rooted in cultural heritage.
