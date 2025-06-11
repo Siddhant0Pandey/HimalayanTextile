@@ -30,12 +30,13 @@ const OurBrandMain = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-darkText">
           Dangiz
         </h2>
-        <p className="text-base md:text-lg mb-6 text-darkText">
-          The Dangiz is a diversified conglomerate with a presence in multiple
-          industries, each driven by a commitment to innovation, quality, and
-          sustainability. Our vision is to create value and positively impact
-          the lives of people by delivering excellence across sectors. Here's an
-          overview of the businesses that form the backbone of the Dangi Group.
+        <p className="text-base md:text-md mb-6 text-darkText">
+          Dangiz is a sustainable lifestyle brand by Himalayan Textile
+          Industries, a sister concern of the Dangi Group. We create natural
+          fabric utility products that combine functionality, simplicity, and
+          eco-conscious design. Driven by a commitment to quality and
+          sustainability, Dangiz aims to bring meaningful, everyday solutions
+          that positively impact lives and the planet.
         </p>
         <a
           href="https://dangiz.com/"
