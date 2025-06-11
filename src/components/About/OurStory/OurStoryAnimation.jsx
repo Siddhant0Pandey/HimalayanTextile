@@ -226,7 +226,7 @@ const OurStoryAnimation = () => {
             d="M 140 160 C 300 340, 350 380, 280 430 C 210 480, 160 520, 230 550 C 300 580, 250 570, 207 640"
             fill="none"
             stroke="url(#mobilePathGradient)"
-            strokeWidth="4"
+            strokeWidth="1.6"
             strokeDasharray="12,8"
             filter="url(#mobileGlow)"
             strokeLinecap="round"
