@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function MinimalisticCTA() {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,32 +36,37 @@ export default function MinimalisticCTA() {
         </p>
         
         {/* CTA Button */}
-        <button
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          className="group px-10 py-4 rounded-full text-lg font-medium transition-all duration-500 ease-out flex items-center mx-auto gap-3 border-2 hover:shadow-xl transform hover:-translate-y-1"
-          style={{
-            backgroundColor: isHovered ? 'transparent' : theme.primary,
-            color: isHovered ? theme.primary : theme.light,
-            borderColor: theme.primary,
-          }}
-        >
-          <span>Interested</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={`h-5 w-5 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button>
+<Link
+  to="/contact"
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => setIsHovered(false)}
+  className="group px-10 py-4 rounded-full text-lg font-medium transition-all duration-500 ease-out flex items-center mx-auto gap-3 border-2 hover:shadow-xl transform hover:-translate-y-1 no-underline focus:outline-none"
+  style={{
+    backgroundColor: isHovered ? 'transparent' : theme.primary,
+    color: isHovered ? theme.primary : theme.light,
+    borderColor: theme.primary,
+    display: 'inline-flex', 
+    textDecoration: 'none' 
+  }}
+  role="button" 
+>
+  <span>Interested</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={`h-5 w-5 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M14 5l7 7m0 0l-7 7m7-7H3"
+    />
+  </svg>
+</Link>
+
         
         {/* Subtle accent line */}
         <div className="mt-16 flex justify-center">
