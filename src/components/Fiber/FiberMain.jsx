@@ -79,7 +79,7 @@ const fiberData = [
 
 const FiberMain = () => {
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-gradient-to-b from-gray-50 to-gray-100">
+    <div className="min-h-screen py-6 lg:py-16 md:py-12  bg-gradient-to-b from-gray-50 to-gray-100">
       <style jsx="true">{`
         @keyframes shine {
           0% {
@@ -98,7 +98,12 @@ const FiberMain = () => {
         }
       `}</style>
 
+<div className="pb-12"> 
+  
       <AnimatedTitle>Natural Fibre Collection</AnimatedTitle>
+      <p className=" text-gray-500 text-center">Exploring the Beauty and Versatility of Natural Fibres</p>
+      
+</div>  
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {fiberData.map((fiber, index) => (

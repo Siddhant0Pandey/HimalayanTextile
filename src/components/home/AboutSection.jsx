@@ -165,7 +165,7 @@ const AboutSection = () => {
             </div>
 
             <h1
-              className={`text-5xl lg:text-7xl font-bold mb-6 transition-all duration-1200 ${
+              className={`text-4xl lg:text-6xl font-bold mb-6 transition-all duration-1200 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
@@ -189,7 +189,7 @@ const AboutSection = () => {
             </h1>
 
             <p
-              className={`text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 ${
+              className={`text-xl lg:text-1xl text-gray-600 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-8 opacity-0"
@@ -245,7 +245,7 @@ const AboutSection = () => {
                 return (
                   <div
                     key={index}
-                    className={`group relative overflow-hidden transition-all duration-800 mb-12 ${
+                    className={`group relative overflow-hidden transition-all duration-800 mb-4 ${
                       isVisible
                         ? "translate-y-0 opacity-100 scale-100"
                         : "translate-y-12 opacity-0 scale-75"
@@ -284,9 +284,6 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Interactive Core Values Carousel */}
-
-          {/* Call to Action with Animated Elements */}
           <div
             className={`relative transition-all duration-1000 ${
               isVisible
