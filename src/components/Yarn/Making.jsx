@@ -139,17 +139,6 @@ export default function Making() {
       className="min-h-screen"
       style={{ backgroundColor: theme.bg }}
     >
-      {/* Grid Background */}
-      {/* <div 
-        className="fixed inset-0 opacity-20"
-        style={{
-          backgroundImage: `
-            linear-gradient(${theme.surface} 1px, transparent 1px),
-            linear-gradient(90deg, ${theme.surface} 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}
-      /> */}
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
         {/* Header */}
@@ -176,8 +165,8 @@ export default function Making() {
           >
             The Art of
             <br />
-            <span className="bg-gradient-to-r bg-clip-text text-transparent font-normal" style={{
-              backgroundImage: `linear-gradient(to right, ${theme.accent}, ${theme.secondary})`
+            <span className="text-[#1fa951] font-normal" style={{
+              // backgroundImage: `linear-gradient(to right, ${theme.accent}, ${theme.secondary})`
             }}>
               Yarn Making
             </span>

@@ -81,20 +81,11 @@ const FirstHero = () => {
       ref={heroRef}
       className="relative w-full h-[70vh] bg-cover bg-center text-white flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('assets/img/fabric/hero.jpg')", // Fixed syntax error in original
+        backgroundImage: "url('assets/img/fabric/hero.jpg')", 
         zIndex: "30px",
       }}
     >
-      {/* Wavy border bottom */}
-      {/* <div ref={waveRef} className="absolute bottom-0 w-full overflow-hidden">
-        <svg viewBox="0 0 1440 100" className="w-full">
-          <path
-            fill="white"
-            d="M0,0 C360,100 1080,0 1440,100 L1440,0 L0,0 Z"
-          ></path>
-        </svg>
-      </div> */}
-
+     
       {/* Dark overlay */}
       <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
 
@@ -107,16 +98,10 @@ const FirstHero = () => {
           Fabric
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6 ">
-          Weaving a Greener Future with Himalayan Textile
+          Weaving a Greener Future with Himalayan Textile
         </p>
 
-        {/* Badge element */}
-        {/* <div
-          ref={badgeRef}
-          className="bg-white text-green-600 text-sm font-bold py-2 px-4 rounded-full inline-block mt-4 cursor-pointer shadow-md"
-        >
-          Explore Our Collection
-        </div> */}
+       
       </div>
     </section>
   );
