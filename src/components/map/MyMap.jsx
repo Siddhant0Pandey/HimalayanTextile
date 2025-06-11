@@ -64,15 +64,18 @@ const MyMap = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col bg-gray-100 pt-16">
+    <div className="w-full min-h-screen flex flex-col bg-gray-100 ">
      
       <div
         ref={titleRef}
         className="w-full px-4 py-6 md:px-10 bg-white shadow-md text-center z-10"
       >
-        <h1 className="text-[clamp(2rem,5vw,6rem)] uppercase font-extrabold leading-tight text-darkText">
+        <h1 className="text-[clamp(2rem,3vw,4rem)]  font-extrabold leading-tight text-darkText">
           Global Trade Flows
         </h1>
+         <p className="text-gray-600 text-lg">
+            Discover our growing trade around the world
+          </p>
       </div>
 
       {/* Map Section */}
