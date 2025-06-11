@@ -149,7 +149,6 @@ const OurStoryAnimation = () => {
             filter="url(#glow)"
             strokeLinecap="round"
           />
-
           {/* Path dots for extra visual appeal */}
           <circle cx="190" cy="368" r="8" fill="#4CAF50" opacity="0.8" />
           {/* <circle cx="3000" cy="400" r="5" fill="#66BB6A" opacity="0.7" />
