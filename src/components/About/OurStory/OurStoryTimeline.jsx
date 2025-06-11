@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import OurStoryAnimation from "./OurStoryAnimation";
 import TextileParticles from "./TextileParicles";
+import OurStoryAnimation2 from "./OurStoryAnimation2";
 
 const endProgress = 0.6;
 const timelineData = [
@@ -345,6 +346,7 @@ const OurStoryTimeline = () => {
 
           {/* Insert custom component after 2007 (index 2) */}
           {index === 2 && <OurStoryAnimation />}
+          {index === 4 && <OurStoryAnimation2/>}
         </React.Fragment>
       ))}
 
