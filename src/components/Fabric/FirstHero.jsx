@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-const FirstHero = () => {
+const   FirstHero = () => {
   // Create refs for animated elements
   const heroRef = useRef(null);
   const textRef = useRef(null);
