@@ -23,7 +23,6 @@ function Home() {
       <ProcessSection />
       <CoreValues />
       <ProductsSection />
-    <AnimatedMapPins/>
       {/* <WhatSetsUsApartHorizontal /> */}
       <MyMap />
       
