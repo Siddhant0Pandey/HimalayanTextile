@@ -1,3 +1,5 @@
+'use client'; // If using Next.js App Router
+
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -36,7 +38,7 @@ const Footer = () => {
         },
       });
 
-      // Animate Footer Badge
+      // ✅ Fix: Use .footer-columns as the trigger for badge animation
       gsap.from('.footer-badge', {
         y: 50,
         opacity: 0,
@@ -44,8 +46,8 @@ const Footer = () => {
         duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: '.footer-badge',
-          start: 'top 85%',
+          trigger: '.footer-columns',
+          start: 'bottom bottom',
           toggleActions: 'play none none none',
         },
       });
@@ -59,19 +61,11 @@ const Footer = () => {
         ease: 'sine.inOut',
       });
 
-      // Wait until everything is rendered
-      const refreshTrigger = () => {
-        ScrollTrigger.refresh();
-      };
-
-      if (document.readyState === 'complete') {
-        requestAnimationFrame(refreshTrigger);
-      } else {
-        window.addEventListener('load', refreshTrigger);
-      }
+      // Ensure ScrollTrigger refreshes after full page load
+      const refreshTrigger = () => ScrollTrigger.refresh();
+      window.addEventListener('load', refreshTrigger);
 
       return () => {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         window.removeEventListener('load', refreshTrigger);
       };
     }, footerRef);

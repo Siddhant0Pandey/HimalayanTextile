@@ -3,6 +3,7 @@ import HeroSection from "../components/Fiber/HeroSection";
 import GoodnessSection from "../components/Fiber/GoodnessSection";
 import FiberMain from "../components/Fiber/FiberMain";
 import AnimationSection from "../components/Fiber/AnimationSection";
+import MinimalisticCTA from "../components/Yarn/MinimalisticCTA";
 
 const Fibers = () => {
   return (
@@ -11,6 +12,7 @@ const Fibers = () => {
       <GoodnessSection />
       <AnimationSection />
       <FiberMain />
+      <MinimalisticCTA/>
     </div>
   );
 };

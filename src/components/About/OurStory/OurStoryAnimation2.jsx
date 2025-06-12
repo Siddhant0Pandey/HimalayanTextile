@@ -49,7 +49,7 @@ const OurStoryAnimation2 = () => {
 
       if (!car || !path || !section) return;
 
-      // Kill any existing animations first
+      // Kill any existing animations
       gsap.killTweensOf(car);
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.vars.trigger === section) {
@@ -57,13 +57,12 @@ const OurStoryAnimation2 = () => {
         }
       });
 
-      // Clear any existing transforms
+      // Clear transforms
       gsap.set(car, { clearProps: "all" });
 
-      // Set initial position at the start of the path
       gsap.set(car, {
         motionPath: {
-          path: path,
+          path,
           align: path,
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
@@ -73,10 +72,9 @@ const OurStoryAnimation2 = () => {
         immediateRender: true,
       });
 
-      // Create the scroll-triggered animation
       motionTween = gsap.to(car, {
         motionPath: {
-          path: path,
+          path,
           align: path,
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
@@ -88,19 +86,6 @@ const OurStoryAnimation2 = () => {
           start: "top top",
           end: "bottom bottom",
           scrub: 1,
-          markers: false,
-          onRefresh: () => {
-            // gsap.set(car, {
-            //   motionPath: {
-            //     path: path,
-            //     align: path,
-            //     alignOrigin: [0.5, 0.5],
-            //     autoRotate: true,
-            //     start: 0,
-            //     end: 0,
-            //   },
-            // });
-          },
         },
         duration: 1,
         ease: "none",
@@ -109,7 +94,6 @@ const OurStoryAnimation2 = () => {
 
     initAnimation();
 
-    // Cleanup function
     return () => {
       if (motionTween) {
         motionTween.scrollTrigger?.kill();
@@ -119,19 +103,15 @@ const OurStoryAnimation2 = () => {
     };
   }, [isMobile]);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
-
     const debouncedResize = debounce(handleResize, 100);
     window.addEventListener("resize", debouncedResize);
-
     return () => window.removeEventListener("resize", debouncedResize);
   }, []);
 
-  // Simple debounce function
   const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
@@ -151,7 +131,6 @@ const OurStoryAnimation2 = () => {
       style={{ height: "200vh", position: "relative" }}
       className="bg-highlight"
     >
-      {/* DESKTOP VIEW */}
       {!isMobile && (
       
           <svg
@@ -185,6 +164,37 @@ const OurStoryAnimation2 = () => {
                 </feMerge>
               </filter>
             </defs>
+        <svg
+          viewBox="0 0 1920 1080"
+          preserveAspectRatio="xMidYMid meet"
+          style={{
+            width: "100vw",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+            zIndex: 0,
+          }}
+        >
+          <defs>
+            <linearGradient
+              id="pathGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#4CAF50" />
+              <stop offset="50%" stopColor="#2E7D32" />
+              <stop offset="100%" stopColor="#4CAF50" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
             <image
               href="/Maps/nep.png"
@@ -230,7 +240,7 @@ const OurStoryAnimation2 = () => {
               }}
             />
           </svg>
-        
+        </svg>
       )}
 
       {/* MOBILE VIEW */}
@@ -296,6 +306,27 @@ const OurStoryAnimation2 = () => {
           />
         </svg>
       )}
+          <circle cx="1560" cy="200" r="8" fill="#4CAF50" opacity="0.8" />
+          <circle cx="180" cy="870" r="8" fill="#4CAF50" opacity="0.8" />
+         
+          <g ref={carRef}>
+            <g transform="translate(0, 60)">
+              <image
+                href="/assets/truck3.png"
+                width="120"
+                height="120"
+                x="-60"
+                y="60"
+                className="truck"
+                style={{
+                  transformOrigin: "center center",
+                  transformBox: "fill-box",
+                }}
+              />
+            </g>
+          </g>
+       
+    
     </div>
   );
 };
