@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const AnimatedMapPins = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const mapRef = useRef(null);
-  const isInView = useInView(mapRef, { 
+  const isInView = useInView(mapRef, {
     threshold: 0.3, // Trigger when 30% of the map is visible
-    once: false // Allow re-triggering when scrolling back into view
+    once: false, // Allow re-triggering when scrolling back into view
   });
 
   const MAP_IMAGE_URL = "/assets/MAP.png";
@@ -48,9 +48,9 @@ const AnimatedMapPins = () => {
   };
 
   return (
-    <section className='w-full min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-6 lg:py-12'>
+    <section className="w-full min-h-[50vh] md:h-[80vh] lg:min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-6 lg:py-1">
       {/* Title */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
@@ -62,24 +62,24 @@ const AnimatedMapPins = () => {
         <p className="text-gray-600 text-lg">
           Discover our growing trading region around the world
         </p>
-      </motion.div>
-    
+      </motion.div> */}
+
       <div className="flex items-center justify-center p-4">
         <div className="relative w-full max-w-6xl" ref={mapRef}>
           {/* World Map Container */}
-          <div className="relative w-full h-auto rounded-2xl shadow-2xl overflow-hidden bg-highlight  ">
+          <div className="relative w-full h-auto rounded-2xl shadow-2xl overflow-hidden bg-highlight">
             {/* World Map Image */}
             <img
               src={MAP_IMAGE_URL}
               alt="World Map"
               className="w-full h-auto block"
-              style={{ maxHeight: '80vh' }}
+              style={{ maxHeight: "80vh" }}
             />
-            
+
             <div className="absolute inset-0">
               {countries.map((country, index) => {
                 const isHovered = hoveredCountry?.name === country.name;
-                
+
                 return (
                   <motion.div
                     key={`${country.name}-${isInView}`} // Force re-render when isInView changes
@@ -87,24 +87,28 @@ const AnimatedMapPins = () => {
                     style={{
                       left: `${country.left}%`,
                       top: `${country.top}%`,
-                      transform: 'translate(-50%, -100%)',
+                      transform: "translate(-50%, -100%)",
                     }}
                     initial={{ y: -100, opacity: 0, scale: 0 }}
-                    animate={isInView ? { 
-                      y: 0, 
-                      opacity: 1, 
-                      scale: 1,
-                      transition: {
-                        delay: index * 0.15,
-                        duration: 0.8,
-                        type: "spring",
-                        damping: 12,
-                        stiffness: 100
-                      }
-                    } : { y: -100, opacity: 0, scale: 0 }}
-                    whileHover={{ 
+                    animate={
+                      isInView
+                        ? {
+                            y: 0,
+                            opacity: 1,
+                            scale: 1,
+                            transition: {
+                              delay: index * 0.15,
+                              duration: 0.8,
+                              type: "spring",
+                              damping: 12,
+                              stiffness: 100,
+                            },
+                          }
+                        : { y: -100, opacity: 0, scale: 0 }
+                    }
+                    whileHover={{
                       scale: 1.3,
-                      transition: { duration: 0.2 }
+                      transition: { duration: 0.2 },
                     }}
                     whileTap={{ scale: 0.9 }}
                     onMouseEnter={() => handleMouseEnter(country)}
@@ -115,45 +119,47 @@ const AnimatedMapPins = () => {
                     <motion.div
                       className="absolute w-6 h-3 bg-black rounded-full opacity-20 blur-sm"
                       style={{
-                        bottom: '-8px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
+                        bottom: "-8px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
                       }}
                       initial={{ opacity: 0 }}
-                      animate={isInView ? { 
-                        opacity: 0.2,
-                        transition: { delay: index * 0.15 + 0.5 }
-                      } : { opacity: 0 }}
+                      animate={
+                        isInView
+                          ? {
+                              opacity: 0.2,
+                              transition: { delay: index * 0.15 + 0.5 },
+                            }
+                          : { opacity: 0 }
+                      }
                     />
-                    
+
                     {/* Hemp Pin */}
-                    <motion.div
-                      className="w-8 h-8 rounded-full flex items-center justify-center shadow-lg bg-white"
-                    >
+                    <motion.div className="w-8 h-8 rounded-full flex items-center justify-center shadow-lg bg-white">
                       <img
                         src={PIN_SVG}
                         alt={`Hemp pin for ${country.name}`}
                         className="w-6 h-6"
                       />
                     </motion.div>
-                    
+
                     {/* Country Name Tooltip - Shows on hover */}
                     <AnimatePresence>
                       {isHovered && (
                         <motion.div
                           className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 z-50"
                           initial={{ opacity: 0, y: -10, scale: 0.8 }}
-                          animate={{ 
-                            opacity: 1, 
+                          animate={{
+                            opacity: 1,
                             y: 0,
                             scale: 1,
-                            transition: { duration: 0.2 }
+                            transition: { duration: 0.2 },
                           }}
-                          exit={{ 
-                            opacity: 0, 
-                            y: -10, 
+                          exit={{
+                            opacity: 0,
+                            y: -10,
                             scale: 0.8,
-                            transition: { duration: 0.15 }
+                            transition: { duration: 0.15 },
                           }}
                         >
                           <div className="bg-emerald-800 text-white px-3 py-1 rounded-md shadow-lg text-sm font-medium whitespace-nowrap">
@@ -163,24 +169,32 @@ const AnimatedMapPins = () => {
                         </motion.div>
                       )}
                     </AnimatePresence>
-                    
+
                     {/* Ripple Effect */}
                     <motion.div
                       className="absolute w-12 h-12 border-2 border-green-400 rounded-full"
                       style={{
-                        top: '-2px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
+                        top: "-2px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
                       }}
-                      animate={isInView ? {
-                        scale: [1, 1.8, 1],
-                        opacity: [0.6, 0, 0.6],
-                      } : { scale: 1, opacity: 0 }}
-                      transition={isInView ? {
-                        duration: 2.5,
-                        repeat: Infinity,
-                        delay: index * 0.15 + 1.2,
-                      } : {}}
+                      animate={
+                        isInView
+                          ? {
+                              scale: [1, 1.8, 1],
+                              opacity: [0.6, 0, 0.6],
+                            }
+                          : { scale: 1, opacity: 0 }
+                      }
+                      transition={
+                        isInView
+                          ? {
+                              duration: 2.5,
+                              repeat: Infinity,
+                              delay: index * 0.15 + 1.2,
+                            }
+                          : {}
+                      }
                     />
                   </motion.div>
                 );
@@ -213,13 +227,9 @@ const AnimatedMapPins = () => {
                       transition={{ delay: 0.2, type: "spring" }}
                       className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg"
                     >
-                      <img
-                        src={PIN_SVG}
-                        alt="Hemp icon"
-                        className="w-8 h-8"
-                      />
+                      <img src={PIN_SVG} alt="Hemp icon" className="w-8 h-8" />
                     </motion.div>
-                    
+
                     <motion.h2
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -228,7 +238,7 @@ const AnimatedMapPins = () => {
                     >
                       {selectedCountry.name}
                     </motion.h2>
-                    
+
                     {/* <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -242,10 +252,10 @@ const AnimatedMapPins = () => {
                         Click to learn more about our trade flow in this region
                       </p>
                     </motion.div> */}
-                    
+
                     <motion.button
                       initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}  
+                      animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.5 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -258,7 +268,7 @@ const AnimatedMapPins = () => {
                 </motion.div>
               </motion.div>
             )}
-          </AnimatePresence> 
+          </AnimatePresence>
         </div>
       </div>
     </section>
