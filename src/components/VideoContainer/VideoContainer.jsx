@@ -15,12 +15,13 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
           transition={{ 
             duration: 1.2, 
             delay: delay / 1000,
-            ease: [0.25, 0.46, 0.45, 0.94] // Smooth easing
+            ease: [0.25, 0.46, 0.45, 0.94] 
           }}
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
-            transform: 'translateZ(0)', // Hardware acceleration
+            transform: 'translateZ(0)',
+            willChange: 'transform, opacity'
           }}
         >
           {videoSrc ? (
@@ -39,6 +40,7 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
               style={{
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden',
+                willChange: 'transform'
               }}
             >
               <source src={videoSrc} type="video/mp4" />
@@ -59,6 +61,9 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
                   repeat: Infinity,
                   ease: "linear"
                 }}
+                style={{
+                  willChange: 'background'
+                }}
               >
                 <motion.div 
                   className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-blue-600/20"
@@ -69,6 +74,9 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
                     duration: 4,
                     repeat: Infinity,
                     ease: "linear"
+                  }}
+                  style={{
+                    willChange: 'transform'
                   }}
                 />
               </motion.div>
@@ -87,30 +95,34 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
                     delay: delay / 1000,
                     ease: "easeInOut"
                   }}
+                  style={{
+                    willChange: 'transform'
+                  }}
                 >
                   {type === "problem" ? "⚠️" : type === "solution" ? "🌱" : "✨"}
                 </motion.div>
               </div>
               
-              {/* Enhanced floating particles */}
-              {[...Array(6)].map((_, i) => (
+              {/* Optimized floating particles - reduced count */}
+              {[...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className={`absolute w-${i % 2 === 0 ? '2' : '1'} h-${i % 2 === 0 ? '2' : '1'} bg-white/${30 + i * 5} rounded-full`}
+                  className={`absolute w-2 h-2 bg-white/40 rounded-full`}
                   style={{
-                    top: `${20 + i * 12}%`,
-                    left: `${15 + i * 15}%`,
+                    top: `${30 + i * 20}%`,
+                    left: `${20 + i * 20}%`,
+                    willChange: 'transform, opacity'
                   }}
                   animate={{ 
-                    y: [0, -20 - i * 3, 0],
-                    x: [0, 10 - i * 2, 0],
-                    opacity: [0.3, 0.8, 0.3],
-                    scale: [1, 1.2, 1]
+                    y: [0, -15, 0],
+                    x: [0, 8, 0],
+                    opacity: [0.4, 0.8, 0.4],
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{ 
-                    duration: 3 + i * 0.5, 
+                    duration: 4 + i * 0.5, 
                     repeat: Infinity,
-                    delay: delay / 1000 + i * 0.3,
+                    delay: delay / 1000 + i * 0.5,
                     ease: "easeInOut"
                   }}
                 />
@@ -118,20 +130,23 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
             </div>
           )}
 
-          {/* Enhanced gradient overlays */}
+          {/* Simplified gradient overlays */}
           <motion.div 
             className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"
             animate={{
               opacity: [0.7, 0.5, 0.7]
             }}
             transition={{
-              duration: 4,
+              duration: 6,
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            style={{
+              willChange: 'opacity'
+            }}
           />
           
-          {/* Subtle vignette effect */}
+          {/* Static vignette effect */}
           <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/20" />
         </motion.div>
       </div>
@@ -156,6 +171,7 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
         style={{
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
+          willChange: 'transform, opacity'
         }}
       >
         <div className="h-full bg-gradient-to-br from-blue-900 to-purple-900 flex items-center justify-center">
@@ -172,6 +188,9 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
                 duration: 2,
                 ease: "easeOut"
               }}
+              style={{
+                willChange: 'transform'
+              }}
             >
               <source src={videoSrc} type="video/mp4" />
             </motion.video>
@@ -187,22 +206,28 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
                   ]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 6,
                   repeat: Infinity,
                   ease: "linear"
+                }}
+                style={{
+                  willChange: 'background'
                 }}
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div 
                   className="text-6xl"
                   animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 10, -10, 0]
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, -5, 0]
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
                     ease: "easeInOut"
+                  }}
+                  style={{
+                    willChange: 'transform'
                   }}
                 >
                   {type === "problem" ? "⚠️" : type === "solution" ? "🌱" : "🏔️"}
@@ -213,46 +238,55 @@ export default function VideoContainer({ videoSrc, isVisible, delay, type, fullW
         </div>
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        
+        {/* Simplified glow effect */}
         <motion.div 
           className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-20"
           animate={{
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.15, 0.25, 0.15]
           }}
           transition={{
-            duration: 3,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut"
+          }}
+          style={{
+            willChange: 'opacity'
           }}
         />
       </motion.div>
 
-      {/* Enhanced floating elements */}
+      {/* Simplified floating elements */}
       <motion.div
-        className="absolute -top-4 -right-4 w-8 h-8 bg-green-400/80 rounded-full backdrop-blur-sm"
+        className="absolute -top-4 -right-4 w-6 h-6 bg-green-400/60 rounded-full backdrop-blur-sm"
         animate={{ 
-          y: [0, -15, 0],
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360]
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity,
-          delay: (delay + 1500) / 1000,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400/80 rounded-full backdrop-blur-sm"
-        animate={{ 
-          y: [0, 15, 0],
-          scale: [1, 0.8, 1],
-          rotate: [0, -180, -360]
+          y: [0, -10, 0],
+          scale: [1, 1.1, 1]
         }}
         transition={{ 
           duration: 5, 
           repeat: Infinity,
+          delay: (delay + 1500) / 1000,
+          ease: "easeInOut"
+        }}
+        style={{
+          willChange: 'transform'
+        }}
+      />
+      <motion.div
+        className="absolute -bottom-4 -left-4 w-4 h-4 bg-blue-400/60 rounded-full backdrop-blur-sm"
+        animate={{ 
+          y: [0, 10, 0],
+          scale: [1, 0.9, 1]
+        }}
+        transition={{ 
+          duration: 6, 
+          repeat: Infinity,
           delay: (delay + 2000) / 1000,
           ease: "easeInOut"
+        }}
+        style={{
+          willChange: 'transform'
         }}
       />
     </div>
