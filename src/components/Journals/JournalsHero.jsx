@@ -98,7 +98,7 @@ const JournalsHero = () => {
           Our Journals
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "The Fabric of Thought and Innovation"
+          The Fabric of Thought and Innovation
         </p>
 
         {/* Badge element */}
