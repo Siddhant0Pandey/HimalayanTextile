@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { rotate } from "three/tsl";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -49,7 +48,6 @@ const OurStoryAnimation2 = () => {
 
       if (!car || !path || !section) return;
 
-      // Kill any existing animations first
       gsap.killTweensOf(car);
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.vars.trigger === section) {
@@ -57,10 +55,8 @@ const OurStoryAnimation2 = () => {
         }
       });
 
-      // Clear any existing transforms
       gsap.set(car, { clearProps: "all" });
 
-      // Set initial position at the start of the path
       gsap.set(car, {
         motionPath: {
           path: path,
@@ -73,7 +69,6 @@ const OurStoryAnimation2 = () => {
         immediateRender: true,
       });
 
-      // Create the scroll-triggered animation
       motionTween = gsap.to(car, {
         motionPath: {
           path: path,
@@ -89,18 +84,6 @@ const OurStoryAnimation2 = () => {
           end: "bottom bottom",
           scrub: 1,
           markers: false,
-          onRefresh: () => {
-            // gsap.set(car, {
-            //   motionPath: {
-            //     path: path,
-            //     align: path,
-            //     alignOrigin: [0.5, 0.5],
-            //     autoRotate: true,
-            //     start: 0,
-            //     end: 0,
-            //   },
-            // });
-          },
         },
         duration: 1,
         ease: "none",
@@ -109,7 +92,6 @@ const OurStoryAnimation2 = () => {
 
     initAnimation();
 
-    // Cleanup function
     return () => {
       if (motionTween) {
         motionTween.scrollTrigger?.kill();
@@ -119,7 +101,6 @@ const OurStoryAnimation2 = () => {
     };
   }, [isMobile]);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       ScrollTrigger.refresh();
@@ -131,7 +112,6 @@ const OurStoryAnimation2 = () => {
     return () => window.removeEventListener("resize", debouncedResize);
   }, []);
 
-  // Simple debounce function
   const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
@@ -197,9 +177,9 @@ const OurStoryAnimation2 = () => {
           <path
             ref={desktopPathRef}
             d="M 1560 200 
-     C 1400 280, 1200 380, 980 480 
-     C 800 560, 620 620, 440 700 
-     C 300 760, 200 800, 180 870"
+               C 1300 100, 1000 450, 850 500 
+               C 600 600, 500 400, 400 600 
+               C 250 800, 200 850, 180 870"
             fill="none"
             stroke="url(#pathGradient)"
             strokeWidth="3"
@@ -217,10 +197,7 @@ const OurStoryAnimation2 = () => {
             height="120"
             x="-60"
             y="40"
-            style={{
-              transformOrigin: "20px 20px",
-              transform: rotate(85),
-            }}
+            style={{ transformOrigin: "20px 20px" }}
           />
         </svg>
       )}
@@ -261,11 +238,13 @@ const OurStoryAnimation2 = () => {
           </defs>
 
           <image href="/Maps/nep.png" x="250" y="40" width="160" height="200" />
-          <image href="/Maps/ind.png" x="50" y="590" width="160" height="200" />
+          <image href="/Maps/ind.png" x="50" y="710" width="160" height="200" />
 
           <path
             ref={mobilePathRef}
-            d="M 310 140 C 260 200, 220 300, 180 400 C 150 500, 120 600, 100 680"
+            d="M 310 140 
+               C 260 100, 220 250, 200 350 
+               C 160 500, 180 700, 100 800"
             fill="none"
             stroke="url(#mobilePathGradient)"
             strokeWidth="2"
@@ -275,8 +254,7 @@ const OurStoryAnimation2 = () => {
           />
 
           <circle cx="310" cy="140" r="6" fill="#4CAF50" opacity="0.8" />
-          <circle cx="100" cy="680" r="6" fill="#4CAF50" opacity="0.8" />
-
+          <circle cx="100" cy="800" r="6" fill="#4CAF50" opacity="0.8" />
           <image
             ref={carRef}
             href="/assets/img/truck4.png"
