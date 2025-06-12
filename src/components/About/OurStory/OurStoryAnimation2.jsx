@@ -153,7 +153,7 @@ const OurStoryAnimation2 = () => {
     >
       {/* DESKTOP VIEW */}
       {!isMobile && (
-        <>
+      
           <svg
             viewBox="0 0 1920 1080"
             preserveAspectRatio="xMidYMid meet"
@@ -230,7 +230,7 @@ const OurStoryAnimation2 = () => {
               }}
             />
           </svg>
-        </>
+        
       )}
 
       {/* MOBILE VIEW */}
