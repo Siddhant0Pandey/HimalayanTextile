@@ -107,7 +107,7 @@ function OurStoryFounderMsg() {
           initial={{ x: 0, opacity: 0, scale: 0.95 }}
         >
           <img
-            src="/assets/img/founder.png"
+            src="/assets/img/Chairman's & Ceo.jpg"
             alt="Founder"
             className="rounded-xl shadow-xl object-cover  w-[100%] h-[50%]"
             style={{ objectPosition: "60% center" }} // Ensures image tries to fill height
