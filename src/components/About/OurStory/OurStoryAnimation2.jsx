@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { rotate } from "three/tsl";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -131,6 +132,38 @@ const OurStoryAnimation2 = () => {
       className="bg-highlight"
     >
       {!isMobile && (
+        <>
+          <svg
+            viewBox="0 0 1920 1080"
+            preserveAspectRatio="xMidYMid meet"
+            style={{
+              width: "100vw",
+              height: "100vh",
+              position: "sticky",
+              top: 0,
+              zIndex: 0,
+            }}
+          >
+            <defs>
+              <linearGradient
+                id="pathGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#4CAF50" />
+                <stop offset="50%" stopColor="#2E7D32" />
+                <stop offset="100%" stopColor="#4CAF50" />
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
         <svg
           viewBox="0 0 1920 1080"
           preserveAspectRatio="xMidYMid meet"
@@ -163,26 +196,116 @@ const OurStoryAnimation2 = () => {
             </filter>
           </defs>
 
-          <image
-            href="/Maps/nep.png"
-            x="1400"
-            y="50"
-            width="420"
-            height="300"
-          />
-          <image href="/Maps/ind.png" x="50" y="750" width="400" height="320" />
+            <image
+              href="/Maps/nep.png"
+              x="1400"
+              y="50"
+              width="420"
+              height="300"
+            />
+            <image
+              href="/Maps/ind.png"
+              x="50"
+              y="750"
+              width="400"
+              height="320"
+            />
+
+            <path
+              ref={desktopPathRef}
+              d="M 1560 200 
+     C 1400 280, 1200 380, 980 480 
+     C 800 560, 620 620, 440 700 
+     C 300 760, 200 800, 180 870"
+              fill="none"
+              stroke="url(#pathGradient)"
+              strokeWidth="3"
+              strokeDasharray="15,10"
+              filter="url(#glow)"
+              strokeLinecap="round"
+            />
+
+            <circle cx="1560" cy="200" r="8" fill="#4CAF50" opacity="0.8" />
+            <circle cx="180" cy="870" r="8" fill="#4CAF50" opacity="0.8" />
+            <image
+              ref={carRef}
+              href="/assets/img/truck4.png"
+              width="120"
+              height="120"
+              x="-60"
+              y="40"
+              style={{
+                transformOrigin: "20px 20px",
+                transform: rotate(85),
+              }}
+            />
+          </svg>
+        </>
+      )}
+
+      {/* MOBILE VIEW */}
+      {isMobile && (
+        <svg
+          viewBox="0 0 414 896"
+          preserveAspectRatio="xMidYMid meet"
+          style={{
+            width: "100vw",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+            zIndex: 0,
+          }}
+        >
+          <defs>
+            <linearGradient
+              id="mobilePathGradient"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#4CAF50" />
+              <stop offset="30%" stopColor="#66BB6A" />
+              <stop offset="70%" stopColor="#2E7D32" />
+              <stop offset="100%" stopColor="#4CAF50" />
+            </linearGradient>
+            <filter id="mobileGlow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <image href="/Maps/nep.png" x="250" y="40" width="160" height="200" />
+          <image href="/Maps/ind.png" x="50" y="590" width="160" height="200" />
 
           <path
-            ref={desktopPathRef}
-            d="M 1560 200 C 1400 280, 1200 380, 980 480 C 800 560, 620 620, 440 700 C 300 760, 200 800, 180 870"
+            ref={mobilePathRef}
+            d="M 310 140 C 260 200, 220 300, 180 400 C 150 500, 120 600, 100 680"
             fill="none"
-            stroke="url(#pathGradient)"
-            strokeWidth="3"
-            strokeDasharray="15,10"
-            filter="url(#glow)"
+            stroke="url(#mobilePathGradient)"
+            strokeWidth="2"
+            strokeDasharray="12,8"
+            filter="url(#mobileGlow)"
             strokeLinecap="round"
           />
 
+          <circle cx="310" cy="140" r="6" fill="#4CAF50" opacity="0.8" />
+          <circle cx="100" cy="680" r="6" fill="#4CAF50" opacity="0.8" />
+
+          <image
+            ref={carRef}
+            href="/assets/img/truck4.png"
+            width="80"
+            height="80"
+            x="-40"
+            y="-40"
+            style={{ transformOrigin: "center center" }}
+          />
+        </svg>
+      )}
           <circle cx="1560" cy="200" r="8" fill="#4CAF50" opacity="0.8" />
           <circle cx="180" cy="870" r="8" fill="#4CAF50" opacity="0.8" />
          

@@ -84,7 +84,7 @@ const OurStoryHero = () => {
       <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
 
       {/* Wavy border bottom */}
-        {/* <div
+      {/* <div
           ref={waveRef}
           className="absolute bottom-0 w-full overflow-hidden z-20"
         >
@@ -105,7 +105,7 @@ const OurStoryHero = () => {
           Our Story
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "Crafted by hands, cherished by hearts."
+          Crafted by hands, cherished by hearts.
         </p>
 
         {/* Badge (optional) */}
