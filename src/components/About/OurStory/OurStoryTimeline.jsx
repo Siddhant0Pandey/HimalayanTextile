@@ -22,7 +22,7 @@ const timelineData = [
     title: "Yarn Extraction Process Developed",
     description:
       "Improved traditional methods of fiber extraction and yarn making, laying the foundation for sustainable production.",
-    image: "/assets/img/factory.png",
+    image: "/assets/factory.png",
     color: "from-green-600 to-emerald-800",
   },
   {
