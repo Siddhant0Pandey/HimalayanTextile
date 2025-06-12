@@ -223,14 +223,14 @@ export default function TextileTransitionPage() {
         {/* First Section - Problems */}
         <motion.div className="relative min-h-[200px] flex items-center justify-center">
           <motion.div
-            className="relative bg-white/60 backdrop-blur-sm rounded-3xl p-12 border border-white/30 shadow-xl"
+            className="relative bg-white backdrop-blur-sm rounded-3xl p-12 border border-white/30 shadow-xl"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <motion.p 
               ref={line1Ref}
-              className="text-4xl lg:text-5xl font-light text-slate-800 leading-relaxed max-w-2xl"
+              className="text-4xl lg:text-5xl font-light text-darkText leading-relaxed max-w-2xl"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
