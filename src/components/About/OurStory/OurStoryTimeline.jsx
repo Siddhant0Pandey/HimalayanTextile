@@ -13,8 +13,7 @@ const timelineData = [
     title: "Humble Beginnings",
     description:
       "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn using locally sourced natural fibers.",
-    image:
-      "https://images.unsplash.com/photo-1516975369741-5c6ae9cf5fba?w=800&h=600&fit=crop&crop=center",
+    image: "/assets/img/factory.png",
     color: "#edfeee",
   },
   {
@@ -295,7 +294,7 @@ const TimelineSection = ({ item, index, progress }) => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover"
+                className="w-full h-38 sm:h-56 md:h-64 lg:h-72 xl:h-60 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
@@ -346,7 +345,7 @@ const OurStoryTimeline = () => {
 
           {/* Insert custom component after 2007 (index 2) */}
           {index === 2 && <OurStoryAnimation />}
-          {index === 4 && <OurStoryAnimation2/>}
+          {index === 4 && <OurStoryAnimation2 />}
         </React.Fragment>
       ))}
 
