@@ -181,8 +181,8 @@ const AnimationSection = () => {
     <div
       className={`w-full ${
         isSmallScreen ? "h-[32rem]" : "h-80"
-      } relative overflow-hidden border border-gray-700`}
-      style={{ backgroundColor: theme.darkBg }}
+      } relative overflow-hidden `}
+      style={{ backgroundColor: theme.highlight }}
     >
       <div className="w-full h-full flex items-center justify-center relative">
         {/* Minimal Progress Indicator */}
@@ -221,7 +221,7 @@ const AnimationSection = () => {
         {/* First Arrow */}
         <div className={`${getAnimationClass(2)} z-20`}>
           {isSmallScreen ? (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center ">
               <div className="w-6 h-6 flex items-center justify-center">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
@@ -229,7 +229,7 @@ const AnimationSection = () => {
                 </svg>
               </div>
               <span
-                className="text-sm mt-2 text-gray-600"
+                className="text-sm mt-2 text-[#1fa951]"
               >
                 Process
               </span>
@@ -243,7 +243,7 @@ const AnimationSection = () => {
                 </svg>
               </div>
               <span
-                className="text-sm mt-2 text-gray-600"
+                className="text-sm mt-2 text-[#1fa951]"
               >
                 Process
               </span>
@@ -276,7 +276,7 @@ const AnimationSection = () => {
                 </svg>
               </div>
               <span
-                className="text-sm mt-2 text-gray-600"
+                className="text-sm mt-2 text-[#1fa951]"
               >
                 Result
               </span>
@@ -290,7 +290,7 @@ const AnimationSection = () => {
                 </svg>
               </div>
               <span
-                className="text-sm mt-2 text-gray-600"
+                className="text-sm mt-2 text-[#1fa951]"
               >
                 Result
               </span>
