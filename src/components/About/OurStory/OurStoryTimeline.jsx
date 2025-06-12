@@ -14,7 +14,7 @@ const timelineData = [
     title: "Humble Beginnings",
     description:
       "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn using locally sourced natural fibers.",
-    image: "/assets/img/factory.png",
+    image: "/assets/img/1995.jpg",
     color: "#edfeee",
   },
   {
@@ -22,8 +22,7 @@ const timelineData = [
     title: "Yarn Extraction Process Developed",
     description:
       "Improved traditional methods of fiber extraction and yarn making, laying the foundation for sustainable production.",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center",
+    image: "/assets/img/factory.png",
     color: "from-green-600 to-emerald-800",
   },
   {
