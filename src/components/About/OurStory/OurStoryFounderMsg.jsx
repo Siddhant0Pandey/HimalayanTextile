@@ -64,7 +64,7 @@ function OurStoryFounderMsg() {
       >
         {/* Left Content (Text) - Always on left */}
         <motion.div
-          className="left w-[65%] md:w-1/2 text-xs md:text-lg md:leading-relaxed flex flex-col text-justify leading-relaxed"
+          className="left w-[65%] md:w-1/2 text-xs md:text-lg md:leading-relaxed flex flex-col  leading-relaxed"
           animate={controlsLeft}
           initial={{ x: -100, opacity: 0, scale: 0.95 }}
         >
@@ -110,7 +110,7 @@ function OurStoryFounderMsg() {
           <img
             src="/assets/img/Chairman's & Ceo.jpg"
             alt="Founder"
-            className="rounded-lg md:rounded-xl shadow-xl object-cover w-full h-[200px] md:h-[400px] lg:h-[500px]"
+            className="rounded-lg md:rounded-xl shadow-xl object-cover w-full h-[200px] md:h-[400px] lg:h-[500px] grayscale-100 hover:grayscale-0 transition duration-1000"
             style={{ objectPosition: "60% center" }}
           />
         </motion.div>
