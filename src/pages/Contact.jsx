@@ -225,7 +225,7 @@ function Contact() {
                   ? "text-green-700"
                   : statusMessage.includes("correct")
                   ? "text-red-600"
-                  : "text-blue-600"
+                  : "text-emerald-600"
               }`}
             >
               {statusMessage}
