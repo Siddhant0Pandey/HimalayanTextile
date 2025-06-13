@@ -21,7 +21,7 @@ const timelineData = [
     title: "Planting",
     description:
       "Flax seeds are sown densely in cool soil during early spring. In most regions, planting typically occurs between March and May, with cooler climates being ideal for flax cultivation.",
-    bgImage: "public/assets/img/flax/1.png",
+    bgImage: "assets/img/flax/1.png",
     icon: FaSeedling,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Growing",
     description:
       "Flax plants grow rapidly, reaching about 3-4 feet tall in just 100 days. The plants produce beautiful blue flowers that last only a day, and seed-containing bolls develop afterward.",
-    bgImage: "public/assets/img/flax/2.png",
+    bgImage: "assets/img/flax/2.png",
     icon: FaLeaf,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Harvesting",
     description:
       "Unlike most crops, flax is typically pulled from the ground rather than cut to preserve the full length of the valuable fibers. Harvesting occurs when the stems begin to turn yellow and the seed bolls are ripening.",
-    bgImage: "public/assets/img/flax/3.png",
+    bgImage: "assets/img/flax/3.png",
     icon: FaTractor,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Retting",
     description:
       "Harvested flax undergoes retting, a process where bundles are submerged in water or laid in fields to allow bacteria and moisture to break down the pectin that binds the fibers to the woody stem.",
-    bgImage: "public/assets/img/flax/4.png",
+    bgImage: "assets/img/flax/4.png",
     icon: FaWater,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Breaking",
     description:
       "After retting and drying, the flax stems are broken using a flax break, which cracks the woody core without damaging the fibers, making it easier to separate them from the stem.",
-    bgImage: "public/assets/img/flax/5.png",
+    bgImage: "assets/img/flax/5.png",
     icon: FaTools,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Scutching",
     description:
       "The broken flax stems are scutched (beaten) to remove the broken woody parts (shives) from the fibers. This can be done by hand or machine, scraping away the unwanted material.",
-    bgImage: "public/assets/img/flax/6.png",
+    bgImage: "assets/img/flax/6.png",
     icon: FaHandsHelping,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Hackling",
     description:
       "The scutched fibers are drawn through metal combs called hackles, separating the short fibers (tow) from the long, valuable fibers (line). This process aligns and refines the fibers.",
-    bgImage: "public/assets/img/flax/7.png",
+    bgImage: "assets/img/flax/7.png",
     icon: FaSort,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Sorting",
     description:
       "Flax fibers are sorted based on quality, length, and fineness. The highest quality long fibers (line flax) are used for fine linen, while shorter fibers (tow) are used for coarser products.",
-    bgImage: "public/assets/img/flax/8.png",
+    bgImage: "assets/img/flax/8.png",
     icon: FaWind,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Spinning Preparation",
     description:
       "Before spinning, flax fibers are often softened by beating or by chemical processes. The fibers are then formed into continuous ribbons called slivers.",
-    bgImage: "public/assets/img/flax/9.png",
+    bgImage: "assets/img/flax/9.png",
     icon: FaTools,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Drawing & Roving",
     description:
       "Multiple slivers are combined and drawn out to create a more uniform thickness and increase fiber alignment before being slightly twisted into roving, preparing the fibers for spinning.",
-    bgImage: "public/assets/img/flax/10.png",
+    bgImage: "assets/img/flax/10.png",
     icon: FaIndustry,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "The prepared flax roving is spun into yarn through various methods. Traditionally, flax was wet-spun to produce a smoother, stronger yarn, though dry spinning is also used for certain applications.",
-    bgImage: "public/assets/img/flax/11.png",
+    bgImage: "assets/img/flax/11.png",
     icon: FaSync,
   },
   {
@@ -109,7 +109,7 @@ const timelineData = [
     title: "Weaving Linen Fabric",
     description:
       "The spun flax yarn is woven on looms into linen fabric using different weave patterns. The resulting textile is known for its exceptional coolness, absorbency, and natural luster.",
-    bgImage: "public/assets/img/flax/12.png",
+    bgImage: "assets/img/flax/12.png",
     icon: FaThLarge,
   },
 ];

@@ -21,7 +21,7 @@ const timelineData = [
     title: "Cactus Cultivation",
     description:
       "Prickly pear cacti (Opuntia ficus-indica) are cultivated on plantations in arid and semi-arid regions due to their low water requirements and resilience. These plants are grown without pesticides or synthetic fertilizers, making them an environmentally friendly raw material.",
-    bgImage: "public/assets/img/cactus/1.png",
+    bgImage: "assets/img/cactus/1.png",
     icon: FaSeedling,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Harvesting",
     description:
       "Mature cactus pads are carefully harvested by hand using specialized tools to prevent damage to the plant. The harvesting process is designed to be sustainable, ensuring that the mother plant continues to grow and produce new pads over time.",
-    bgImage: "public/assets/img/cactus/2.png",
+    bgImage: "assets/img/cactus/2.png",
     icon: FaCut,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Cleaning & Preparation",
     description:
       "Harvested cactus pads are thoroughly cleaned to remove spines, dirt, and debris. This step is essential to ensure the quality of the final product and to prepare the cactus pads for juice extraction and biomass processing.",
-    bgImage: "public/assets/img/cactus/3.png",
+    bgImage: "assets/img/cactus/3.png",
     icon: FaLeaf,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Juice Extraction",
     description:
       "The cleaned cactus pieces are crushed and pressed to extract the mucilaginous juice, which contains natural gums and binders. This juice is a key component used later in the fiber formation process.",
-    bgImage: "public/assets/img/cactus/4.png",
+    bgImage: "assets/img/cactus/4.png",
     icon: FaWater,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Drying Process",
     description:
       "The remaining cactus pulp is spread in thin layers and dried under controlled conditions to reduce moisture content. This drying can be done naturally using solar energy or in low-energy drying units to preserve eco-efficiency.",
-    bgImage: "public/assets/img/cactus/5.png",
+    bgImage: "assets/img/cactus/5.png",
     icon: FaSun,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Biomass Processing",
     description:
       "The dried cactus biomass is ground into a fine powder using industrial mills. This powder serves as the base for developing biodegradable and versatile cactus fibers for textile applications.",
-    bgImage: "public/assets/img/cactus/6.png",
+    bgImage: "assets/img/cactus/6.png",
     icon: FaFire,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Fiber Formation",
     description:
       "The cactus powder is mixed with the extracted mucilage and other natural binders to form a fibrous material. This mixture is mechanically processed to align fiber particles and produce continuous filaments.",
-    bgImage: "public/assets/img/cactus/7.png",
+    bgImage: "assets/img/cactus/7.png",
     icon: FaHandsHelping,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Fiber Spinning",
     description:
       "The formed cactus fibers are spun into yarn using traditional spinning techniques adapted for plant-based fibers. The process ensures the yarn retains the desirable strength and flexibility needed for fabric production.",
-    bgImage: "public/assets/img/cactus/8.png",
+    bgImage: "assets/img/cactus/8.png",
     icon: FaSort,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Strengthening Treatment",
     description:
       "The spun cactus yarn undergoes strengthening treatments to improve its durability and longevity. Natural enzymes or low-impact chemical processes may be used to increase tensile strength while keeping the fiber biodegradable.",
-    bgImage: "public/assets/img/cactus/9.png",
+    bgImage: "assets/img/cactus/9.png",
     icon: FaTools,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Quality Control",
     description:
       "Each batch of cactus fiber yarn is rigorously tested for strength, elasticity, moisture absorption, and overall texture. Quality checks ensure the fiber meets sustainability and performance standards before dyeing.",
-    bgImage: "public/assets/img/cactus/10.png",
+    bgImage: "assets/img/cactus/10.png",
     icon: FaCog,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Natural Dyeing",
     description:
       "Cactus fibers are dyed using eco-friendly dyes derived from plants, minerals, and insects. This natural dyeing process avoids harmful synthetic chemicals and reduces water and energy consumption.",
-    bgImage: "public/assets/img/cactus/11.png",
+    bgImage: "assets/img/cactus/11.png",
     icon: FaIndustry,
   },
   {
@@ -109,7 +109,7 @@ const timelineData = [
     title: "Yarn Preparation",
     description:
       "Dyed cactus yarn is prepared for textile production by winding onto spools, aligning fiber direction, and organizing the yarns by color, thickness, and strength for efficient weaving or knitting.",
-    bgImage: "public/assets/img/cactus/12.png",
+    bgImage: "assets/img/cactus/12.png",
     icon: FaSync,
   },
   {
@@ -117,7 +117,7 @@ const timelineData = [
     title: "Textile Production",
     description:
       "Cactus fiber yarn is woven or knitted into sustainable textiles using modern looms. These fabrics are used in fashion, upholstery, and eco-friendly packaging due to their strength, softness, and biodegradability.",
-    bgImage: "public/assets/img/cactus/13.png",
+    bgImage: "assets/img/cactus/13.png",
     icon: FaThLarge,
   },
 ];

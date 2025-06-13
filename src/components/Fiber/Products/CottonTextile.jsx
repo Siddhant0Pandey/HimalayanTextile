@@ -21,7 +21,7 @@ const timelineData = [
     title: "Planting",
     description:
       "Cotton seeds are planted in warm soil when temperatures reach 60°F (16°C). In the United States, planting typically occurs between March and June.",
-    bgImage: "public/assets/img/cotton/1.png",
+    bgImage: "assets/img/cotton/1.png",
     icon: FaSeedling,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Growing",
     description:
       "Cotton plants grow for 5-6 months, developing fruit called bolls that contain seeds surrounded by cotton fibers. Each plant can produce up to 100 bolls.",
-    bgImage: "public/assets/img/cotton/2.png",
+    bgImage: "assets/img/cotton/2.png",
     icon: FaLeaf,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Harvesting",
     description:
       "When bolls burst open revealing fluffy white cotton, they're harvested either by hand-picking or more commonly with mechanical cotton pickers that strip the cotton from the plants.",
-    bgImage: "public/assets/img/cotton/3.png",
+    bgImage: "assets/img/cotton/3.png",
     icon: FaTractor,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Ginning",
     description:
       "The harvested cotton goes through a cotton gin, which separates the fibers (lint) from the seeds. This crucial invention by Eli Whitney revolutionized cotton processing.",
-    bgImage: "public/assets/img/cotton/4.png",
+    bgImage: "assets/img/cotton/4.png",
     icon: FaTools,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Baling",
     description:
       "The separated cotton lint is compressed into bales weighing approximately 500 pounds (227 kg) each, which are then wrapped, tied, and tagged for identification.",
-    bgImage: "public/assets/img/cotton/5.png",
+    bgImage: "assets/img/cotton/5.png",
     icon: FaHandsHelping,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Classing",
     description:
       "Cotton fibers are graded based on color, length, strength, micronaire (fineness), and cleanliness to determine quality and value.",
-    bgImage: "public/assets/img/cotton/6.png",
+    bgImage: "assets/img/cotton/6.png",
     icon: FaSort,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Opening & Cleaning",
     description:
       "Bales are opened and the cotton passes through machinery that removes impurities like dirt, leaves, and other plant materials.",
-    bgImage: "public/assets/img/cotton/7.png",
+    bgImage: "assets/img/cotton/7.png",
     icon: FaWind,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Carding",
     description:
       "Cotton fibers are passed through wire brushes that align them into a thin web, which is then condensed into a continuous untwisted strand called a sliver.",
-    bgImage: "public/assets/img/cotton/8.png",
+    bgImage: "assets/img/cotton/8.png",
     icon: FaTools,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Combing",
     description:
       "For finer yarns, the cotton sliver is combed to remove shorter fibers and further straighten the remaining longer fibers.",
-    bgImage: "public/assets/img/cotton/9.png",
+    bgImage: "assets/img/cotton/9.png",
     icon: FaSort,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Drawing & Roving",
     description:
       "Multiple slivers are combined and drawn out to create a more uniform thickness and increase fiber parallelization before being slightly twisted into roving.",
-    bgImage: "public/assets/img/cotton/10.png",
+    bgImage: "assets/img/cotton/10.png",
     icon: FaIndustry,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "Roving is drawn out and twisted to create yarn of desired thickness. This can be done through various methods including ring spinning, open-end spinning, or air-jet spinning.",
-    bgImage: "public/assets/img/cotton/11.png",
+    bgImage: "assets/img/cotton/11.png",
     icon: FaSync,
   },
   {
@@ -109,7 +109,7 @@ const timelineData = [
     title: "Weaving Cotton Fabric",
     description:
       "The spun cotton yarn is woven on looms into various types of fabric with different weave patterns, creating materials for clothing, bedding, and other textile products.",
-    bgImage: "public/assets/img/cotton/12.png",
+    bgImage: "assets/img/cotton/12.png",
     icon: FaThLarge,
   },
 ];
@@ -245,7 +245,7 @@ export default function CottonTextile() {
         </p>
         <div className="flex justify-center">
           <img
-            src="public/assets/img/Fiber/Cotton.jpg"
+            src="assets/img/Fiber/Cotton.jpg"
             alt="Cotton fabric production"
             className="rounded-lg shadow-md w-full max-w-xl"
           />
