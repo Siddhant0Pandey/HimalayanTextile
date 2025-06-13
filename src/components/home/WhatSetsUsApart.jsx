@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const panels = [
   {
-    image: "/assets/img/extra/nettle-leaf.jpg",
+    image: "/assets/img/Fiber/rawfiber.png",
     description: "100% Himalayan Nettle Fiber",
     reason:
       "Harvested from wild Himalayan nettle, our fiber is organic, traceable, and supports local communities."
@@ -115,7 +115,7 @@ export default function WhatSetsUsApartHorizontal() {
       {/* Parallax Background */}
       <div
         ref={bgRef}
-        className="absolute top-0 left-0 w-[150vw] h-full bg-gradient-to-r from-[#e0f7ec] to-[#f4f7f5] opacity-80 pointer-events-none"
+        className="absolute top-0 left-0 w-[200vw] h-full bg-gradient-to-r from-[#e0f7ec] to-[#f4f7f5] opacity-80 pointer-events-none"
         style={{
           backgroundImage: "url('/assets/img/parallax-texture.jpg')",
           backgroundSize: "cover",
