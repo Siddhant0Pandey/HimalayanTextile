@@ -15,7 +15,7 @@ const WelcomePanel = () => (
     <div className="w-full lg:hidden block">
       <div className="w-full rounded-lg overflow-hidden shadow-lg animate-float">
         <img
-          src="/assets/img/materials.jpg"
+          src="/assets/img/yarn/yarns.jpg"
           alt="Materials"
           className="w-full h-auto object-cover"
         />
