@@ -86,7 +86,7 @@ const App = () => {
       title: "SDG 14: Life Below Water",
       description:
         "By avoiding water pollution and harmful chemicals, we protect aquatic ecosystems, supporting marine biodiversity.",
-      image: "/assets/img/sdg14.jpg",
+      image: "/assets/img/sdg14.jpeg",
     },
     {
       title: "SDG 15: Life on Land",

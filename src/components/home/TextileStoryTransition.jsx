@@ -1,12 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { FloatingTextileImage } from '../FloatingParticles/FloatingImage';
-import { FloatingTextileElements } from '../FloatingParticles/FloatingTextileParticle';
-import { WeavingAnimation } from '../FloatingParticles/WeavingAnimation';
-import { TextilePattern } from '../bgPattern/TextilePattern';
-import { TextileSVGElements } from '../bgPattern/TextileSVGElement';
-
 
 const useTypewriter = (text, speed = 80, delay = 0, enableAudio = false) => {
   const [displayText, setDisplayText] = useState('');
@@ -26,7 +20,6 @@ const useTypewriter = (text, speed = 80, delay = 0, enableAudio = false) => {
         if (index < text.length) {
           setDisplayText(text.slice(0, index + 1));
           
-          // Play typewriter sound
           if (enableAudio && audioContextRef.current) {
             playTypewriterSound();
           }
@@ -72,39 +65,114 @@ const useTypewriter = (text, speed = 80, delay = 0, enableAudio = false) => {
   return { displayText, isTyping };
 };
 
+// Floating Textile Threads Component
+const FloatingThreads = ({ isVisible }) => {
+  const threads = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    delay: i * 0.3,
+    duration: 8 + Math.random() * 4,
+    startX: Math.random() * 100,
+    startY: Math.random() * 100,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {threads.map((thread) => (
+        <motion.div
+          key={thread.id}
+          className="absolute w-px h-20 bg-gradient-to-b from-emerald-300/60 to-transparent"
+          initial={{ 
+            x: `${thread.startX}vw`, 
+            y: `${thread.startY}vh`,
+            opacity: 0,
+            rotate: Math.random() * 360
+          }}
+          animate={isVisible ? {
+            x: `${(thread.startX + 20) % 100}vw`,
+            y: `${(thread.startY + 30) % 100}vh`,
+            opacity: [0, 0.6, 0],
+            rotate: thread.id * 30
+          } : {}}
+          transition={{
+            duration: thread.duration,
+            delay: thread.delay,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Woven Pattern Background
+const WovenPattern = ({ isActive }) => {
+  return (
+    <motion.div 
+      className="absolute inset-0 pointer-events-none"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isActive ? 0.1 : 0 }}
+      transition={{ duration: 2 }}
+    >
+      <svg width="100%" height="100%" className="absolute inset-0">
+        <defs>
+          <pattern id="weave" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="none"/>
+            <path d="M0,0 L20,20 M20,0 L40,20 M0,20 L20,40 M20,20 L40,40" stroke="currentColor" strokeWidth="0.5" className="text-emerald-800/20"/>
+            <path d="M0,20 L20,0 M20,40 L40,20 M20,20 L40,0 M0,40 L20,20" stroke="currentColor" strokeWidth="0.5" className="text-emerald-600/20"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#weave)"/>
+      </svg>
+    </motion.div>
+  );
+};
+
+
 export default function TextileTransitionPage() {
   const [enableAudio, setEnableAudio] = useState(false);
   const [line1Visible, setLine1Visible] = useState(false);
   const [line2Visible, setLine2Visible] = useState(false);
-  const [showTextileElements, setShowTextileElements] = useState(false);
+ 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
+  const containerRef = useRef(null);
   
-  const line1InView = useInView(line1Ref, { threshold: 0.5 });
-  const line2InView = useInView(line2Ref, { threshold: 0.5 });
+  const line1InView = useInView(line1Ref, { threshold: 0.3 });
+  const line2InView = useInView(line2Ref, { threshold: 0.3 });
 
   useEffect(() => {
     if (line1InView) {
       setLine1Visible(true);
+      // setTimeout(() => setShowProblems(true), 1500);
     }
   }, [line1InView]);
 
   useEffect(() => {
     if (line2InView) {
       setLine2Visible(true);
-      setTimeout(() => setShowTextileElements(true), 2000);
+      // setTimeout(() => setShowSolutions(true), 1500);
     }
   }, [line2InView]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({ 
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100
+        });
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => container.removeEventListener('mousemove', handleMouseMove);
+    }
   }, []);
 
   const handleEnableAudio = () => {
@@ -116,244 +184,211 @@ export default function TextileTransitionPage() {
 
   const { displayText: text1, isTyping: typing1 } = useTypewriter(
     line1Visible ? line1 : "", 
-    90, 
-    500,
+    70, 
+    300,
     enableAudio
   );
 
   const { displayText: text2, isTyping: typing2 } = useTypewriter(
     line2Visible ? line2 : "", 
-    90, 
-    500,
+    70, 
+    300,
     enableAudio
   );
 
   return (
     <div 
-      className="min-h-screen bg-gradient-to-br from-white via-green-50 to-green-100 flex flex-col items-center justify-center px-8 py-16 relative overflow-hidden"
+      ref={containerRef}
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 flex flex-col items-center justify-center px-6 py-16 relative overflow-hidden"
       onClick={handleEnableAudio}
     >
- 
-      {/* <FloatingTextileImage /> */}
-      <FloatingTextileElements />
-      <TextilePattern isVisible={line1Visible} />
-      <WeavingAnimation isActive={line2Visible} />
-      {/* <TextileSVGElements isVisible={showTextileElements} /> */}
+      {/* Background Elements */}
+      <FloatingThreads isVisible={line1Visible} />
+      <WovenPattern isActive={line2Visible} />
       
-     
+      {/* Interactive Glow Effect */}
       <motion.div
-        className="fixed w-96 h-96 bg-gradient-radial from-green-200/20 to-transparent rounded-full pointer-events-none z-0"
-        animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
+        className="fixed w-80 h-80 rounded-full pointer-events-none z-0 opacity-30"
+        style={{
+          background: `radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)`,
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          transform: 'translate(-50%, -50%)',
         }}
-        transition={{ type: "spring", damping: 30, stiffness: 200 }}
+        transition={{ type: "spring", damping: 40, stiffness: 100 }}
       />
 
-      <div className="max-w-4xl mx-auto text-center space-y-32 relative z-10">
+      <div className="max-w-5xl mx-auto text-center space-y-24 relative z-10">
         
-        {/* First Line */}
-        <motion.div className="relative">
-          <motion.p 
-            ref={line1Ref}
-            className="text-5xl lg:text-5xl font-bold text-emerald-800 mb-8 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            whileHover={{ scale: 1.02 }}
-          >
-            {text1}
-            {typing1 && (
-              <motion.span 
-                className="text-green-500"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-              >
-                |
-              </motion.span>
-            )}
-          </motion.p>
-          
-          {/* Problem indicators */}
-          
-        </motion.div>
-
-      {/* Enhanced Hemp Leaf SVG Divider */}
-        <motion.div 
-          className="flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: line1Visible ? 1 : 0, scale: line1Visible ? 1 : 0.8 }}
-          transition={{ duration: 1, delay: 2 }}
-        >
+        {/* First Section - Problems */}
+        <motion.div className="relative min-h-[200px] flex items-center justify-center">
           <motion.div
-            whileHover={{ scale: 1.2, rotate: 15 }}
-            whileTap={{ scale: 0.9 }}
-            className="cursor-pointer"
+            className="relative bg-white backdrop-blur-sm rounded-3xl p-12 border border-white/30 shadow-xl"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-          <svg className="w-12 h-12 text-green-800" viewBox="0 0 500 499" fill="currentColor">
-            <g transform="translate(0,499) scale(0.1,-0.1)">
-              <path d="M2490 4158 c-7 -18 -23 -47 -35 -63 -12 -17 -26 -46 -30 -65 -4 -19
-  -20 -55 -35 -80 -15 -25 -30 -64 -33 -87 -3 -23 -14 -55 -26 -72 -12 -16 -21
-  -43 -21 -61 0 -17 -11 -52 -25 -78 -16 -29 -25 -64 -25 -92 0 -25 -7 -54 -15
-  -64 -8 -11 -15 -38 -15 -60 -1 -23 -8 -59 -17 -81 -9 -22 -17 -61 -18 -86 -2
-  -25 -7 -61 -14 -80 -9 -28 -24 -261 -24 -374 0 -102 16 -342 24 -356 5 -10 9
-  -28 9 -40 0 -33 -24 -8 -39 40 -6 22 -25 51 -42 65 -17 14 -35 42 -40 62 -7
-  22 -19 39 -35 46 -15 7 -32 28 -41 49 -8 21 -29 49 -47 63 -18 14 -39 38 -45
-  54 -7 16 -23 34 -36 40 -13 6 -36 29 -51 51 -14 22 -35 43 -45 46 -10 4 -35
-  26 -54 50 -20 23 -48 48 -63 54 -15 7 -37 26 -49 43 -12 18 -37 37 -55 42 -18
-  6 -42 25 -53 42 -12 20 -34 36 -55 43 -20 6 -46 24 -57 40 -12 15 -34 32 -50
-  35 -15 4 -44 20 -63 35 -19 16 -46 32 -60 36 -14 4 -39 16 -56 26 -41 25 -45
-  24 -33 -7 5 -15 9 -43 8 -63 -1 -20 5 -50 14 -68 9 -18 17 -49 17 -71 0 -21 7
-  -47 15 -58 8 -10 15 -36 15 -57 0 -21 9 -55 20 -77 11 -22 20 -52 20 -68 0
-  -15 11 -43 25 -62 14 -19 25 -45 25 -59 0 -13 11 -43 24 -65 13 -23 27 -55 30
-  -73 4 -18 21 -49 37 -69 16 -20 29 -49 29 -64 0 -16 11 -37 29 -54 15 -15 33
-  -45 40 -66 6 -21 22 -47 34 -57 13 -10 29 -33 36 -51 8 -18 29 -48 47 -66 19
-  -19 34 -40 34 -48 0 -8 18 -29 40 -47 22 -17 40 -38 40 -46 0 -24 -55 -18 -88
-  10 -19 16 -42 25 -63 25 -19 0 -45 9 -59 20 -15 12 -41 20 -65 20 -22 0 -51 7
-  -65 15 -14 8 -41 15 -60 15 -19 0 -46 7 -60 15 -14 8 -44 14 -68 15 -24 0 -53
-  5 -64 11 -12 6 -51 13 -87 15 -36 2 -95 6 -131 8 -36 3 -78 4 -95 4 -16 -1
-  -47 -1 -67 -2 -33 0 -36 -2 -23 -16 7 -8 18 -27 24 -43 6 -15 25 -34 45 -44
-  21 -10 39 -27 45 -44 6 -18 22 -33 45 -43 20 -8 41 -28 51 -45 9 -17 30 -37
-  49 -45 19 -8 40 -24 46 -36 6 -12 28 -28 47 -36 19 -9 46 -28 59 -44 14 -16
-  38 -31 54 -35 15 -3 35 -17 44 -30 8 -13 29 -26 46 -30 17 -4 46 -19 63 -34
-  18 -16 46 -31 62 -35 17 -4 47 -18 67 -32 21 -13 48 -24 61 -24 13 0 38 -11
-  57 -25 19 -14 48 -25 65 -25 17 0 40 -7 51 -15 10 -8 35 -15 54 -15 19 0 50
-  -9 68 -20 18 -11 49 -20 68 -20 20 0 50 -6 67 -14 35 -16 115 -27 190 -26 58
-  1 63 -24 6 -27 -63 -4 -119 -15 -125 -24 -3 -5 -18 -9 -33 -9 -16 0 -34 -7
-  -41 -15 -7 -8 -25 -15 -40 -15 -15 0 -33 -7 -40 -15 -7 -8 -23 -15 -36 -15
-  -13 0 -28 -9 -34 -20 -6 -12 -21 -20 -35 -20 -14 0 -25 -5 -25 -11 0 -5 -15
-  -16 -32 -24 -18 -7 -39 -23 -46 -34 -7 -12 -21 -21 -31 -21 -11 0 -23 -9 -26
-  -20 -3 -11 -17 -23 -31 -26 -13 -3 -24 -10 -24 -15 0 -5 -27 -37 -60 -71 -33
-  -33 -60 -65 -60 -71 0 -5 -7 -15 -15 -21 -13 -9 -11 -11 10 -13 42 -4 127 -3
-  170 2 22 2 74 6 115 10 41 3 77 10 78 15 2 6 17 10 33 10 17 0 40 5 52 12 12
-  6 33 12 46 13 14 0 26 6 29 13 2 7 16 12 32 12 15 0 33 7 40 15 7 8 23 15 36
-  15 13 0 28 9 34 20 6 12 21 20 35 20 14 0 30 9 37 20 7 11 23 20 35 20 12 0
-  27 9 33 20 6 11 19 20 29 20 10 0 26 11 35 25 9 14 23 25 31 25 8 0 22 11 31
-  25 9 14 22 25 30 25 7 0 20 11 29 23 8 13 27 29 41 35 l25 12 -8 -233 c-4
-  -127 -8 -263 -8 -302 l0 -70 44 -3 43 -3 -6 138 c-23 526 -23 524 32 465 15
-  -16 35 -31 45 -35 9 -3 22 -18 29 -32 6 -14 19 -25 29 -25 10 0 23 -9 29 -20
-  6 -11 17 -20 25 -20 7 0 22 -11 33 -25 11 -14 27 -25 36 -25 9 0 25 -9 36 -20
-  11 -11 29 -20 40 -20 10 0 24 -9 30 -20 6 -11 19 -20 30 -20 10 0 25 -7 34
-  -15 8 -8 26 -15 39 -15 14 0 30 -7 37 -15 7 -8 25 -15 40 -15 15 0 33 -7 40
-  -15 7 -8 25 -15 41 -15 15 0 30 -4 33 -9 3 -5 25 -11 48 -15 24 -3 59 -8 78
-  -11 19 -3 48 -5 64 -5 16 -1 36 -5 44 -9 9 -5 26 -5 40 0 16 6 29 6 38 -2 9
-  -7 19 -7 30 -1 10 6 27 6 39 2 30 -11 44 0 34 28 -5 12 -13 22 -18 22 -6 0
-  -17 13 -25 29 -9 16 -24 31 -36 34 -11 3 -20 13 -20 25 0 13 -9 22 -24 26 -14
-  3 -27 15 -31 25 -3 10 -17 22 -30 25 -13 3 -26 15 -30 25 -3 11 -19 24 -36 30
-  -16 5 -32 17 -35 26 -3 8 -16 15 -28 15 -12 0 -27 9 -34 20 -7 11 -22 20 -35
-  20 -12 0 -28 9 -35 20 -8 13 -23 20 -42 20 -17 0 -30 5 -30 10 0 6 -15 10 -34
-  10 -18 0 -39 7 -46 15 -7 8 -27 15 -46 15 -18 0 -36 5 -40 11 -3 6 -17 9 -30
-  6 -13 -2 -32 1 -41 8 -15 11 -15 13 4 23 11 6 43 10 71 10 29 -1 58 4 67 12 9
-  7 28 10 49 7 23 -4 42 1 62 14 16 10 46 19 66 19 21 0 52 9 70 20 18 11 49 20
-  68 20 19 0 49 9 65 20 17 11 41 20 54 20 13 0 36 11 53 25 16 14 41 25 55 25
-  15 0 40 11 57 24 17 13 42 27 56 31 14 4 34 16 45 26 11 10 38 26 60 35 22 9
-  57 32 78 50 20 19 45 34 55 34 10 0 28 13 40 30 12 16 37 37 54 46 17 9 46 30
-  64 48 17 17 54 51 82 76 62 56 59 54 121 119 54 58 55 74 4 73 -115 -3 -281
-  -13 -293 -18 -14 -6 -55 -12 -200 -32 -30 -4 -67 -16 -81 -25 -17 -12 -36 -16
-  -52 -12 -16 4 -39 -1 -65 -14 -23 -12 -54 -21 -70 -21 -16 0 -40 -8 -53 -18
-  -13 -11 -41 -22 -61 -25 -20 -3 -50 -15 -66 -27 -16 -12 -38 -20 -48 -18 -16
-  3 -14 7 13 23 18 10 37 32 44 47 6 16 24 37 40 48 15 11 33 36 39 55 6 19 27
-  47 46 61 22 17 34 35 34 50 0 13 15 41 34 61 18 21 39 56 46 78 7 22 23 51 35
-  65 12 14 26 42 29 63 4 20 11 37 15 37 12 0 41 64 41 90 0 12 11 36 25 54 14
-  18 25 44 25 57 0 13 9 41 20 62 11 20 20 52 20 69 0 18 9 48 20 66 11 18 20
-  49 20 70 0 20 9 51 19 68 10 17 21 53 25 80 3 27 8 71 12 97 l6 48 -28 -7
-  c-16 -4 -43 -19 -59 -35 -17 -16 -46 -34 -65 -40 -19 -6 -48 -24 -65 -39 -16
-  -15 -41 -31 -55 -35 -14 -4 -37 -20 -52 -36 -15 -16 -45 -37 -65 -48 -21 -11
-  -44 -29 -50 -40 -7 -11 -27 -28 -45 -37 -18 -9 -52 -35 -74 -58 -23 -23 -75
-  -73 -115 -113 -111 -109 -249 -265 -249 -283 0 -6 -15 -27 -34 -47 -18 -21
-  -37 -49 -41 -63 -4 -14 -20 -38 -35 -55 -16 -16 -32 -47 -35 -67 -10 -53 -29
-  -49 -21 5 34 224 37 688 6 783 -7 19 -9 47 -5 63 4 20 0 42 -14 70 -13 24 -21
-  60 -21 88 0 30 -7 60 -20 81 -12 19 -20 50 -20 75 0 23 -9 59 -20 80 -11 20
-  -20 53 -20 73 0 22 -9 48 -24 67 -13 18 -26 51 -29 75 -3 24 -16 60 -30 80
-  -13 20 -27 54 -31 75 -4 22 -20 57 -37 79 -16 23 -29 48 -29 57 0 9 -4 22 -9
-  29 -6 10 -12 4 -21 -20z" fill="currentColor"/>
-
-            </g>
-          </svg>
+            <motion.p 
+              ref={line1Ref}
+              className="text-4xl lg:text-5xl font-light text-darkText leading-relaxed max-w-2xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              {text1}
+              {typing1 && (
+                <motion.span 
+                  className="text-red-500 font-normal"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
+              )}
+            </motion.p>
+            
+            {/* Decorative Problem Accent */}
+            <motion.div
+              className="absolute -top-4 -right-4 w-8 h-8 bg-red-400 rounded-full"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                boxShadow: ["0 0 0 0 rgba(239, 68, 68, 0.7)", "0 0 0 20px rgba(239, 68, 68, 0)", "0 0 0 0 rgba(239, 68, 68, 0)"]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
           </motion.div>
           
-          {/* Particle burst effect */}
-          <AnimatePresence>
-            {line1Visible && (
-              <>
-                {Array.from({ length: 8 }, (_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-2 h-2 bg-green-800 rounded-full"
-                    initial={{ scale: 0, x: 0, y: 0 }}
-                    animate={{
-                      scale: [0, 1, 0],
-                      x: Math.cos(i * 45 * Math.PI / 180) * 60,
-                      y: Math.sin(i * 45 * Math.PI / 180) * 60,
-                    }}
-                    transition={{ delay: 2.5 + i * 0.1, duration: 1.5 }}
-                  />
-                ))}
-              </>
-            )}
-          </AnimatePresence>
+          {/* <ProblemVisualization isVisible={showProblems} /> */}
         </motion.div>
 
-        {/* Second Line */}
-        <motion.div className="relative">
-          <motion.p 
-            ref={line2Ref}
-            className="text-5xl lg:text-5xl font-bold text-emerald-800 mb-8 leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            whileHover={{ scale: 1.02 }}
-          >
-            {text2}
-            {typing2 && (
-              <motion.span 
-                className="text-green-500"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-              >
-                |
-              </motion.span>
-            )}
-          </motion.p>
-        
-        </motion.div>
-
-        {/* Enhanced Arrow with ripple effect */}
-        <motion.div
-          className="text-center relative"
+        {/* Elegant Transition Element */}
+        <motion.div 
+          className="flex items-center justify-center relative"
           initial={{ opacity: 0 }}
-          animate={{ opacity: line2Visible ? 1 : 0 }}
+          animate={{ opacity: line1Visible ? 1 : 0 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          <motion.div className="flex items-center space-x-4">
+            {/* Decorative Lines */}
+            <motion.div 
+              className="w-16 h-px bg-gradient-to-r from-transparent to-emerald-400"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: line1Visible ? 1 : 0 }}
+              transition={{ duration: 1, delay: 2.5 }}
+            />
+            
+            {/* Central Hemp Leaf */}
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.2, rotate: 15 }}
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white text-xl"><img src="/assets/img/hempp.svg" alt='hemp image'/></span>
+              </div>
+              
+              {/* Ripple Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-full border-2 border-emerald-300"
+                animate={{
+                  scale: [1, 2.5],
+                  opacity: [0.6, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeOut"
+                }}
+              />
+            </motion.div>
+            
+            <motion.div 
+              className="w-16 h-px bg-gradient-to-l from-transparent to-emerald-400"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: line1Visible ? 1 : 0 }}
+              transition={{ duration: 1, delay: 2.5 }}
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Second Section - Solution */}
+        <motion.div className="relative min-h-[200px] flex items-center justify-center">
+          <motion.div
+            className="relative bg-emerald-50/80 backdrop-blur-sm rounded-3xl p-12 border border-emerald-200/50 shadow-xl"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: line2Visible ? 1 : 0, y: line2Visible ? 0 : 50, scale: line2Visible ? 1 : 0.9 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          >
+            <motion.p 
+              ref={line2Ref}
+              className="text-4xl lg:text-5xl font-light text-emerald-800 leading-relaxed max-w-3xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <motion.span
+                className="font-semibold text-emerald-600"
+                animate={{ color: ["#059669", "#10b981", "#059669"] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                Himalayan Textile
+              </motion.span>{" "}
+              {text2.replace("Himalayan Textile ", "")}
+              {typing2 && (
+                <motion.span 
+                  className="text-emerald-500 font-normal"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
+              )}
+            </motion.p>
+            
+            {/* Success Indicator */}
+            <motion.div
+              className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center"
+              animate={{ 
+                scale: [1, 1.1, 1],
+                boxShadow: ["0 0 0 0 rgba(16, 185, 129, 0.7)", "0 0 0 15px rgba(16, 185, 129, 0)", "0 0 0 0 rgba(16, 185, 129, 0)"]
+              }}
+              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+            >
+              <span className="text-white text-sm">✓</span>
+            </motion.div>
+          </motion.div>
+          
+          {/* <SolutionVisualization isVisible={showSolutions} /> */}
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: line2Visible ? 1 : 0, y: line2Visible ? 0 : 30 }}
           transition={{ duration: 0.8, delay: 3 }}
         >
           <motion.div
-            className="relative inline-block"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200/50 shadow-lg cursor-pointer"
+            whileHover={{ 
+              scale: 1.05, 
+              backgroundColor: "rgba(16, 185, 129, 0.1)",
+              borderColor: "rgba(16, 185, 129, 0.3)"
+            }}
+            whileTap={{ scale: 0.98 }}
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: 4 }}
           >
+            <span className="text-gray-600 font-medium">Discover Our Solutions</span>
             <motion.svg 
-              className="w-8 h-8 text-gray-400 cursor-pointer hover:text-green-500 transition-colors duration-300 relative z-10"
+              className="w-5 h-5 text-emerald-500"
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={{ x: [0, 3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </motion.svg>
-            
-            {/* Ripple effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full border-2 border-green-300"
-              animate={{
-                scale: [1, 2, 1],
-                opacity: [0.5, 0, 0.5],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: 0.5,
-              }}
-            />
           </motion.div>
         </motion.div>
       </div>

@@ -38,7 +38,7 @@ const Footer = () => {
         },
       });
 
-      // ✅ Fix: Use .footer-columns as the trigger for badge animation
+      // Footer badge animation
       gsap.from('.footer-badge', {
         y: 50,
         opacity: 0,
@@ -100,36 +100,82 @@ const Footer = () => {
 
         {/* Navigation Columns */}
         <div className="footer-columns grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center">
-          {[
-            {
-              title: 'Products',
-              links: ['fibre', 'yarn', 'fabric'],
-            },
-            {
-              title: 'Company',
-              links: ['about', 'our-story', 'our-brand'],
-            },
-            {
-              title: 'Support',
-              links: ['contact'],
-            },
-          ].map((section, idx) => (
-            <div key={idx} className="footer-column space-y-4">
-              <h3 className="text-xl font-semibold">{section.title}</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                {section.links.map((link, i) => (
-                  <li key={i}>
-                    <a
-                      href={`/${link}`}
-                      className="hover:text-[#1fa951] capitalize transition duration-300"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Products Column */}
+          <div className="footer-column space-y-4">
+            <h3 className="text-xl font-semibold">Products</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a
+                  href="/fiber"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Fiber
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/yarn"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Yarn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/fabric"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Fabric
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Company Column */}
+          <div className="footer-column space-y-4">
+            <h3 className="text-xl font-semibold">Company</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a
+                  href="/about"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/our-story"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Our Story
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/our-brand"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Our Brand
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support Column */}
+          <div className="footer-column space-y-4">
+            <h3 className="text-xl font-semibold">Support</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a
+                  href="/contact"
+                  className="hover:text-[#1fa951] capitalize transition duration-300"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Footer Badge */}
