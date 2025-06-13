@@ -14,7 +14,7 @@ const fiberData = [
   {
     id: 2,
     title: "Cotton Fibre",
-    imageSrc: "assets/img/Fiber/Cotton.jpg",
+    imageSrc: "assets/img/Fiber/cotton2.jpg",
     description:
       "Soft and breathable cotton is a versatile natural fibre. Its comfort and absorbency make it ideal for everyday clothing and personal care products.",
     link: "/cotton",
