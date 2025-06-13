@@ -76,28 +76,21 @@ function OurStoryFounderMsg() {
           </p>
 
           <p className="mb-1 md:mb-4">
-            Himalayan Textile Industries was founded in 1995 by my mother, Nanda
-            Dangi, and my father, Kamal Dangi, with a vision to create
-            sustainable, natural fiber textiles while preserving traditional
-            artisan crafts. Over the years, we have grown beyond hand-spun yarn
-            and handloom fabric to incorporate machine-spun yarn and power loom
-            production—combining heritage with innovation.
+            Today, we are proud to be Nepal's No. 1 hand-spun yarn manufacturer
+            and exporter, offering a diverse range of earth-friendly products
+            including handloom fabrics, fashion accessories, home textiles, and
+            carpets.
           </p>
 
           <p className="mb-1 md:mb-4">
-            Textile manufacturing is the second largest polluter on the planet
-            after oil. Just as the world is transitioning from fossil fuels to
-            green energy, we are committed to replacing synthetic fibers like
-            polyester with natural, eco-friendly fibers. Every fiber we produce
-            is rooted in our love for the Earth and our commitment to reducing
-            environmental impact.
+            Textile manufacturing is the second largest polluter after oil. We
+            are committed to replacing synthetic fibers with natural,
+            eco-friendly fibers.
           </p>
 
           <p className="mb-2 md:mb-6">
             At Himalayan Textile Industries, we believe in creating products
-            that not only look and feel good but also protect our planet and
-            empower our communities. Thank you for joining us on this journey
-            toward a more sustainable and beautiful future.
+            that protect our planet and empower our communities.
           </p>
 
           <div className="font-semibold text-gray-600 lg:text-lg text-[10px] ">
