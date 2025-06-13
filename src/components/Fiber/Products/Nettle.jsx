@@ -20,7 +20,7 @@ const timelineData = [
     title: "Peeling of Nettle Bark",
     description:
       "Carefully stripping the outer bark from nettle stalks to expose the valuable fibers beneath.",
-    bgImage: "public/assets/img/nettle/1.png",
+    bgImage: "assets/img/nettle/1.png",
     icon: FaLeaf,
   },
   {
@@ -28,7 +28,7 @@ const timelineData = [
     title: "Drying Bark",
     description:
       "Initial drying process to remove moisture and prepare the bark for further processing.",
-    bgImage: "public/assets/img/nettle/2.1.png",
+    bgImage: "assets/img/nettle/2.1.png",
     icon: FaSun,
   },
   {
@@ -36,7 +36,7 @@ const timelineData = [
     title: "Retting",
     description:
       "Controlled decomposition process that separates the fibrous material from the woody core.",
-    bgImage: "public/assets/img/nettle/3.1.png",
+    bgImage: "assets/img/nettle/3.1.png",
     icon: FaWater,
   },
   {
@@ -44,7 +44,7 @@ const timelineData = [
     title: "Washing",
     description:
       "Thorough cleaning to remove impurities and residues from the retting process.",
-    bgImage: "public/assets/img/nettle/4.1.png",
+    bgImage: "assets/img/nettle/4.1.png",
     icon: FaWater,
   },
   {
@@ -52,7 +52,7 @@ const timelineData = [
     title: "Beating with Wooden Club",
     description:
       "First mechanical softening of the fibers to break down their rigid structure.",
-    bgImage: "public/assets/img/nettle/5.1.png",
+    bgImage: "assets/img/nettle/5.1.png",
     icon: FaHammer,
   },
   {
@@ -60,7 +60,7 @@ const timelineData = [
     title: "Drying in the Sun",
     description:
       "Broken fibers are dried in direct sunlight for a full day to prepare for further processing.",
-    bgImage: "public/assets/img/nettle/6.1.png",
+    bgImage: "assets/img/nettle/6.1.png",
     icon: FaCloudSun,
   },
   {
@@ -68,7 +68,7 @@ const timelineData = [
     title: "Second Washing",
     description:
       "Additional washing to further remove impurities and prepare for final softening.",
-    bgImage: "public/assets/img/nettle/7.1.png",
+    bgImage: "assets/img/nettle/7.1.png",
     icon: FaShower,
   },
   {
@@ -76,7 +76,7 @@ const timelineData = [
     title: "Second Beating",
     description:
       "Additional beating with wooden clubs to achieve optimal fiber softness and flexibility.",
-    bgImage: "public/assets/img/nettle/8.png",
+    bgImage: "assets/img/nettle/8.png",
     icon: FaTools,
   },
   {
@@ -84,7 +84,7 @@ const timelineData = [
     title: "Hackling",
     description:
       "Combing the fibers to align them and remove any remaining short fibers or debris.",
-    bgImage: "public/assets/img/nettle/9.png",
+    bgImage: "assets/img/nettle/9.png",
     icon: FaCut,
   },
   {
@@ -92,7 +92,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "Transforming the prepared fibers into strong, consistent yarn ready for weaving.",
-    bgImage: "public/assets/img/nettle/10.jpg",
+    bgImage: "assets/img/nettle/10.jpg",
     icon: FaSync,
   },
   {
@@ -100,7 +100,7 @@ const timelineData = [
     title: "Weaving Nettle Fabric",
     description:
       "Traditional methods combined with careful attention to detail create durable, sustainable nettle fabric.",
-    bgImage: "public/assets/img/nettle/11.jpg",
+    bgImage: "assets/img/nettle/11.jpg",
     icon: FaThLarge,
   },
 ];
