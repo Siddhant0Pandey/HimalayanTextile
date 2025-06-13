@@ -82,7 +82,7 @@ const AnimatedMapPins = () => {
 
                 return (
                   <motion.div
-                    key={`${country.name}-${isInView}`} // Force re-render when isInView changes
+                    key={`${country.name}-${isInView}`} 
                     className="absolute cursor-pointer hover:z-50"
                     style={{
                       left: `${country.left}%`,
@@ -174,8 +174,8 @@ const AnimatedMapPins = () => {
                     <motion.div
                       className="absolute w-12 h-12 border-2 border-green-400 rounded-full"
                       style={{
-                        top: "-2px",
-                        left: "50%",
+                        top: "2px",
+                        left: "10%",
                         transform: "translateX(-50%)",
                       }}
                       animate={

@@ -111,7 +111,7 @@ const AboutSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50 overflow-hidden"
+      className="relative min-h-screen bg-highlight overflow-hidden"
     >
       {/* Interactive Background */}
       <div className="absolute inset-0">

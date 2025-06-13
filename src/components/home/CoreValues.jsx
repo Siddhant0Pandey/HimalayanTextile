@@ -63,14 +63,19 @@ const CoreValues = () => {
     });
   }, []);
 
-  const bgImg =" url('assets/img/bg/ourvalue.jpg')"
+  // const bgImg =" url('assets/img/bg/corevalue.jpg')"
   return (
    <section
   className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-cover bg-center overflow-hidden"
-  style={{ backgroundImage: bgImg }}
+  // style={{ backgroundImage: bgImg }}
 >
+
+  <div
+    className="absolute inset-0 bg-cover bg-center  z-0 blur-xs"
+    style={{ backgroundImage: "url('assets/img/bg/corevalue.jpg')" }}
+  />
   {/* Top blurry gradient */}
-  <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-100 to-transparent z-10 pointer-events-none" />
+  {/* <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-100 to-transparent z-10 pointer-events-none" />   */}
 
   {/* Main content */}
   <div className="relative w-full max-w-6xl h-[700px] sm:h-[500px] md:h-[600px] lg:h-[650px] flex flex-col-reverse sm:flex-row-reverse items-start sm:items-center justify-between z-20">
