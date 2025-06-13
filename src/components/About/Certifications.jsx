@@ -32,7 +32,7 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <div className="mb-20">
+    <div className="p-20 bg-[#0A0B0D]">
       <h3 className="text-center text-2xl sm:text-3xl font-bold mb-8 text-[#1FA951]">
         Our Certifications
       </h3>

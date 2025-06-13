@@ -45,7 +45,7 @@ export default function StorySection() {
         isVisible={isVisible}
       />
       
-      <CTASection isVisible={isVisible} />
+      {/* <CTASection isVisible={isVisible} /> */}
       
     </div>
   );
