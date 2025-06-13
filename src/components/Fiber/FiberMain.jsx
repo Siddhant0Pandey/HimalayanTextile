@@ -54,7 +54,7 @@ const fiberData = [
   {
     id: 7,
     title: "Cactus Fibre",
-    imageSrc: "assets/img/Fiber/cactus.png",
+    imageSrc: "assets/img/Fiber/cactusfiber.jpg",
     description:
       "Cactus Fibre, derived mainly from prickly pear, is a sustainable and biodegradable alternative to leather. It's durable, flexible, and produced with minimal water usage.",
     link: "/cactus",
