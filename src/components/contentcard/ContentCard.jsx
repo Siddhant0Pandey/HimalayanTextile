@@ -80,6 +80,9 @@ export default function ContentCard({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ duration: 0.6, delay: delay / 1000 }}
+            style={{
+              willChange: 'transform, opacity'
+            }}
           >
             <div className="space-y-6">
               <motion.div 
@@ -87,6 +90,9 @@ export default function ContentCard({
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: delay / 1000 + 0.2 }}
+                style={{
+                  willChange: 'transform, opacity'
+                }}
               >
                 {typeConfig.badge}
               </motion.div>
@@ -96,6 +102,9 @@ export default function ContentCard({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: delay / 1000 + 0.3 }}
+                style={{
+                  willChange: 'transform, opacity'
+                }}
               >
                 {stackedMode ? title : titleText}
                 {!stackedMode && <span className="animate-pulse">|</span>}
@@ -106,6 +115,9 @@ export default function ContentCard({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: delay / 1000 + 0.4 }}
+                style={{
+                  willChange: 'transform, opacity'
+                }}
               >
                 {stackedMode ? description : descText}
                 {!stackedMode && descText.length < description.length && (
@@ -116,23 +128,25 @@ export default function ContentCard({
           </motion.div>
         </div>
 
-        {/* Subtle decorative elements */}
+        {/* Simplified decorative element */}
         <motion.div
-          className="absolute top-8 right-8 w-12 h-12 bg-white/10 rounded-full backdrop-blur-sm"
+          className="absolute top-8 right-8 w-8 h-8 bg-white/10 rounded-full backdrop-blur-sm"
           animate={{ 
-            y: [0, -8, 0],
-            rotate: [0, 90, 0]
+            y: [0, -6, 0]
           }}
           transition={{ 
-            duration: 6, 
+            duration: 4, 
             repeat: Infinity,
-            delay: delay / 1000
+            delay: delay / 1000,
+            ease: "easeInOut"
+          }}
+          style={{
+            willChange: 'transform'
           }}
         />
       </div>
     );
   }
-
 
   return (
     <motion.div
@@ -140,6 +154,9 @@ export default function ContentCard({
       variants={cardVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
+      style={{
+        willChange: 'transform, opacity'
+      }}
     >
       <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start h-full">
         
@@ -147,6 +164,9 @@ export default function ContentCard({
           <div className="space-y-4">
             <motion.div 
               className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${typeConfig.badgeClass}`}
+              style={{
+                willChange: 'transform, opacity'
+              }}
             >
               {typeConfig.badge}
             </motion.div>
@@ -167,7 +187,6 @@ export default function ContentCard({
           </div>
         </div>
 
-        {/* Video Content - Right Side */}
         <VideoContainer 
           videoSrc={videoSrc} 
           isVisible={isVisible} 

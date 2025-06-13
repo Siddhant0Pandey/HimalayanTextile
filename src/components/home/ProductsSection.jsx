@@ -6,38 +6,38 @@
     {
       category: "Fibre",
       description:
-        "Explore various textile fibres including natural and synthetic options such as cotton, jute, wool, and more.",
+        "Explore various textile fibres including natural options such as banana, silk, hemp, and more.",
       items: [
-        { name: "Cotton", img: "/assets/img/extra/nettle-leaf.png" },
-        { name: "Jute", img: "/assets/img/extra/Jute-Fibre.png" },
-        { name: "Cotton", img: "/assets/img/extra/nettle-leaf.png" },
-        { name: "Wool", img: "/assets/img/extra/Wool-Fibre.png" },
-        { name: "Jute", img: "/assets/img/extra/Jute-Fibre.png" },
+        { name: "Banana", img: "/assets/img/processmaterials/bananafiber.jpg" },
+        { name: "Hemp", img: "/assets/img/processmaterials/hempfiber.png" },
+        { name: "Silk", img: "/assets/img/processmaterials/silkfiber.jpg" },
+        { name: "Banana", img: "/assets/img/processmaterials/bananafiber.jpg" },  
+         { name: "Hemp", img: "/assets/img/processmaterials/hempfiber.png" },
       ],
     },
     {
       category: "Fabric",
       description:
-        "Discover our range of fabrics from pure materials to blends, including woven, knitted, and non-woven fabrics.",
+        "Discover our range of fabrics from pure materials to blends, including hemp, flax, and nettle fabrics.",
       items: [
-        { name: "Woven", img: "/assets/img/extra/Woven-Fabric.png" },
-        { name: "Knitted", img: "/assets/img/extra/Knitted-Fabric.png" },
-        { name: "Woven", img: "/assets/img/extra/Woven-Fabric.png" },
-        { name: "Knitted", img: "/assets/img/extra/Knitted-Fabric.png" },
-        { name: "Non Woven", img: "/assets/img/extra/Non-Woven-Fabric.png" },
+        { name: "Hemp", img: "/assets/img/processmaterials/hempfabric.jpg" },
+        { name: "Nettle", img: "/assets/img/processmaterials/nettlefabric.jpg" },
+       { name: "Flax", img: "/assets/img/processmaterials/flaxfabric.jpg" },
+      { name: "Hemp", img: "/assets/img/processmaterials/hempfabric.jpg" },
+        { name: "Flax", img: "/assets/img/processmaterials/flaxfabric.jpg" },
       ],
     },
     {
       category: "Yarn",
       description:
-        "A wide selection of yarns used in textile manufacturing including cotton, polyester, and blended yarns.",
+        "A wide selection of yarns used in textile manufacturing including hemp, and nettle yarns.",
       items: [
-        { name: "Cotton Yarn", img: "/assets/img/extra/Cotton-Yarn.png" },
-        { name: "Polyester Yarn", img: "/assets/img/extra/Polyster-Yarn.png" },
-        { name: "Blended Yarn", img: "/assets/img/extra/Blended-Yarn.png" },
-        { name: "Cotton Yarn", img: "/assets/img/extra/Cotton-Yarn.png" },
+{ name: "Nettle", img: "/assets/img/processmaterials/nettleyarn.jpg" },
+        { name: "Silk", img: "/assets/img/processmaterials/silkyarn.jpg" },
+        { name: "Hemp", img: "/assets/img/processmaterials/hempyarn.jpg" },
+        { name: "Nettle", img: "/assets/img/processmaterials/nettleyarn.jpg" },
 
-        { name: "Blended Yarn", img: "/assets/img/extra/Blended-Yarn.png" },
+      { name: "Silk", img: "/assets/img/processmaterials/silkyarn.jpg" },
       ],
     },
   ];

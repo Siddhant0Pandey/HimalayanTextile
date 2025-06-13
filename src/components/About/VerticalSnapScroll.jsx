@@ -44,14 +44,14 @@ const WelcomePanel = () => (
       <div className="wrap w-full h-full relative">
         <div className="absolute top-0 left-0 w-[55%] rounded-lg overflow-hidden shadow-lg animate-float">
           <img
-            src="/assets/img/materials.jpg"
+            src="/assets/img/yarn/yarns.jpg"
             alt="Materials"
             className="w-full h-auto object-cover"
           />
         </div>
         <div className="absolute bottom-0 right-0 w-[55%] rounded-lg overflow-hidden shadow-lg animate-float">
           <img
-            src="/assets/img/img2.jpg"
+            src="/assets/img/fabric/main.jpg"
             alt="Artisans"
             className="w-full h-auto object-cover"
           />

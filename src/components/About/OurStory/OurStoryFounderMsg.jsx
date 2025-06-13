@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from "react";
-import { motion, useInView, useAnimation } from "framer-motion"; // Ensure correct imports
+import { motion, useInView, useAnimation } from "framer-motion";
 
 function OurStoryFounderMsg() {
   const ref = useRef(null);
@@ -35,16 +35,16 @@ function OurStoryFounderMsg() {
         },
       });
     } else {
-      controlsLeft.start({ x: -100, opacity: 0, scale: 0.95 });
-      controlsRight.start({ x: 100, opacity: 0, scale: 0.95 });
+      controlsLeft.start({ x: 0, opacity: 0, scale: 0.95 });
+      controlsRight.start({ x: 0, opacity: 0, scale: 0.95 });
     }
   }, [isInView, controlsLeft, controlsRight]);
 
   return (
-    <motion.div className="py-20 max-w-[80%] m-auto">
+    <motion.div className="py-12 md:py-20 max-w-[95%] md:max-w-[80%] m-auto">
       {/* Title Animation */}
       <motion.h1
-        className="text-4xl text-center font-bold text-[#1FA951] mb-12"
+        className="text-2xl md:text-4xl text-center font-bold text-[#1FA951] mb-6 md:mb-12"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -54,47 +54,71 @@ function OurStoryFounderMsg() {
         }}
         viewport={{ once: false }}
       >
-        Founder's Message
+        Chairman's Note
       </motion.h1>
 
       {/* Content Section */}
       <motion.div
-        className="wrap flex flex-col md:flex-row gap-12 px-4 md:px-15 items-center"
+        className="wrap flex flex-row gap-3 md:gap-12 px-2 md:px-15 items-start"
         ref={ref}
       >
-        {/* Left Content (Text) */}
+        {/* Left Content (Text) - Always on left */}
         <motion.div
-          className="left md:w-1/2 text-lg leading-relaxed"
+          className="left w-[65%] md:w-1/2  text-[10px] md:text-lg md:leading-relaxed flex flex-col  leading-relaxed text-justify"
           animate={controlsLeft}
           initial={{ x: -100, opacity: 0, scale: 0.95 }}
         >
-          <p>
-            At <strong className="text-[#1FA951]">Himalayan Textile</strong>,
-            our mission is to craft sustainable, ethically produced fabrics
-            inspired by nature. Every thread we weave is a promise—to protect
-            the environment, empower local artisans, and innovate with
-            responsibility.
+          <p className="mb-1 md:mb-4">
+            Himalayan Textile Industries was founded in 1995 by my mother, Nanda
+            Dangi, and my father, Kamal Dangi, with a vision to create
+            sustainable, natural fiber textiles while preserving traditional
+            artisan crafts.
           </p>
-          <br />
-          <p>
-            Sustainability isn’t just our goal; it’s our foundation. Thank you
-            for supporting a cleaner, greener future.
+
+          <p className="mb-1 md:mb-4">
+            Himalayan Textile Industries was founded in 1995 by my mother, Nanda
+            Dangi, and my father, Kamal Dangi, with a vision to create
+            sustainable, natural fiber textiles while preserving traditional
+            artisan crafts. Over the years, we have grown beyond hand-spun yarn
+            and handloom fabric to incorporate machine-spun yarn and power loom
+            production—combining heritage with innovation.
           </p>
-          <p className="font-semibold mt-4 text-gray-600">
-            — Founder, Himalayan Textile
+
+          <p className="mb-1 md:mb-4">
+            Textile manufacturing is the second largest polluter on the planet
+            after oil. Just as the world is transitioning from fossil fuels to
+            green energy, we are committed to replacing synthetic fibers like
+            polyester with natural, eco-friendly fibers. Every fiber we produce
+            is rooted in our love for the Earth and our commitment to reducing
+            environmental impact.
           </p>
+
+          <p className="mb-2 md:mb-6">
+            At Himalayan Textile Industries, we believe in creating products
+            that not only look and feel good but also protect our planet and
+            empower our communities. Thank you for joining us on this journey
+            toward a more sustainable and beautiful future.
+          </p>
+
+          <div className="font-semibold text-gray-600 lg:text-lg text-[10px] ">
+            <p>Warm regards,</p>
+            <p>Baburam Dangi</p>
+            <p>Chairman & CEO</p>
+            <p>Himalayan Textile Industries</p>
+          </div>
         </motion.div>
 
-        {/* Right Content (Image) */}
+        {/* Right Content (Image) - Always on right */}
         <motion.div
-          className="right md:w-1/2"
+          className="right w-[35%] md:w-1/2 flex flex-col"
           animate={controlsRight}
-          initial={{ x: 100, opacity: 0, scale: 0.95 }}
+          initial={{ x: 0, opacity: 0, scale: 0.95 }}
         >
           <img
-            src="/assets/img/founder.png"
+            src="/assets/img/Chairman's & Ceo.jpg"
             alt="Founder"
-            className="rounded-xl shadow-xl object-cover w-full max-h-[400px]"
+            className="rounded-lg md:rounded-xl shadow-xl object-cover w-full h-[200px] md:h-[400px] lg:h-[500px] grayscale-100 hover:grayscale-0 transition duration-1000"
+            style={{ objectPosition: "60% center" }}
           />
         </motion.div>
       </motion.div>

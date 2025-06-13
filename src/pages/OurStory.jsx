@@ -3,6 +3,7 @@ import OurStoryHero from "../components/About/OurStory/OurStoryHero";
 import OurStoryFounderMsg from "../components/About/OurStory/OurStoryFounderMsg";
 import OurStoryTimeline from "../components/About/OurStory/OurStoryTimeline";
 import OurStoryAnimation from "../components/About/OurStory/OurStoryAnimation";
+import OurStoryAnimation2 from "../components/About/OurStory/OurStoryAnimation2";
 
 function OurStory() {
   return (
@@ -10,7 +11,7 @@ function OurStory() {
       <OurStoryHero />
       <OurStoryTimeline />
       <OurStoryFounderMsg />
-      <OurStoryAnimation />
+      {/* <OurStoryAnimation2 /> */}
     </div>
   );
 }
