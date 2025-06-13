@@ -364,7 +364,7 @@ export default function HeroTitle() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Welcome Text */}
-          <h2 className="text-2xl lg:text-4xl font-medium text-emerald-900 mb-4">
+          <h2 className="text-2xl lg:text-4xl font-normal text-emerald-900 mb-4">
             {welcomeDisplayText}
             {welcomeTyping && (
               <motion.span 
@@ -378,7 +378,7 @@ export default function HeroTitle() {
           </h2>
 
           {/* Main Title */}
-          <h1 className="text-5xl lg:text-7xl font-bold text-emerald-600 mb-8 leading-tight ">
+          <h1 className="text-5xl lg:text-6xl font-normal text-emerald-600 mb-8 leading-tight ">
             {titleText}
             {titleTyping && (
               <motion.span 
