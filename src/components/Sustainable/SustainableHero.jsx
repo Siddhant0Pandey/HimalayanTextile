@@ -97,7 +97,7 @@ const SustainableHero = () => {
           Sustainabilty
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-medium mb-6">
-          "Sustainability is a journey, not simply a destination."
+          Sustainability is a journey, not simply a destination.
         </p>
 
         {/* Badge element */}
