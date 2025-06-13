@@ -12,7 +12,7 @@ const Fibers = () => {
       <GoodnessSection />
       <AnimationSection />
       <FiberMain />
-      <MinimalisticCTA/>
+      <MinimalisticCTA product_name="Fibers" />
     </div>
   );
 };
