@@ -28,25 +28,21 @@ export default function StorySection() {
     }
   };
 
- 
-
   return (
     <div className="min-h-screen bg-[#edfeee] text-[#1d1f10] font-sans">
-      
       <HeroSection isVisible={isVisible} />
-      
+
       <PhilosophySection isVisible={isVisible} />
-      
-      <CollectionsSection 
+
+      <CollectionsSection
         collections={collections}
         openIndexes={openIndexes}
         toggleDescription={toggleDescription}
         isMobile={isMobile}
         isVisible={isVisible}
       />
-      
+
       {/* <CTASection isVisible={isVisible} /> */}
-      
     </div>
   );
 }
