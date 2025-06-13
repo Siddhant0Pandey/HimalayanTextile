@@ -38,7 +38,7 @@ const fiberData = [
   {
     id: 5,
     title: "Nettle Fibre",
-    imageSrc: "assets/img/Fiber/nettle.png",
+    imageSrc: "assets/img/Fiber/nettle.jpg",
     description:
       "Nettle Fibre is strong, breathable, and eco-friendly. Traditionally used in Europe, it has resurfaced as a sustainable textile option with a silky texture similar to linen.",
     link: "/Nettle",
@@ -46,7 +46,7 @@ const fiberData = [
   {
     id: 6,
     title: "Silk Fibre",
-    imageSrc: "assets/img/Fiber/silk.png",
+    imageSrc: "assets/img/Fiber/silk.jpg",
     description:
       "Legendary for its lustrous appearance and smooth texture, silk remains one of the most luxurious natural fibres. Its protein structure gives it unique insulating properties.",
     link: "/silk",
@@ -62,7 +62,7 @@ const fiberData = [
   {
     id: 8,
     title: "Banana Fibre",
-    imageSrc: "assets/img/Fiber/banana.png",
+    imageSrc: "assets/img/Fiber/banana.jpg",
     description:
       "Banana fibre is extracted from the banana plant's pseudostems. It's strong, lightweight, and biodegradable—used in textiles, ropes, and eco-conscious packaging.",
     link: "/banana",
@@ -70,7 +70,7 @@ const fiberData = [
   {
     id: 9,
     title: "Wool Fibre",
-    imageSrc: "assets/img/Fiber/wool.png",
+    imageSrc: "assets/img/Fiber/wool.jpg",
     description:
       "Wool is a natural protein fibre from sheep, prized for its warmth, elasticity, and moisture-wicking abilities. It’s commonly used in garments, blankets, and insulation.",
     link: "/wool",
