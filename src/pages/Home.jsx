@@ -23,7 +23,7 @@ function Home() {
       <ProcessSection />
       <CoreValues />
       <ProductsSection />
-      {/* <WhatSetsUsApartHorizontal /> */}
+      <WhatSetsUsApartHorizontal />
       <MyMap />
       
     </div>
