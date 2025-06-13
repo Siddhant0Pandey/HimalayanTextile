@@ -134,12 +134,12 @@ function Contact() {
 
           <div>
             <h4 className="font-semibold">Email</h4>
-            <p className="text-green-600">info@hti-com-np</p>
+            <p className="text-green-600">info@himalayantextile.com</p>
           </div>
 
           <div>
             <h4 className="font-semibold">Phone</h4>
-            <p className="text-green-600">+977 98413351</p>
+            <p className="text-green-600">+977 9841933455</p>
           </div>
 
           <div>
