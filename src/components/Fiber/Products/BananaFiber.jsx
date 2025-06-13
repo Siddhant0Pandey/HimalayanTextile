@@ -69,7 +69,7 @@ const timelineData = [
     title: "Combing & Alignment",
     description:
       "Fibers are combed using fine tools to remove short, uneven strands and align the long fibers parallel to each other. This step improves fiber texture and is crucial for producing smooth, strong yarn, ready for spinning or blending with other natural fibers.",
-    bgImage: "public/assets/img/cactus/7.png",
+    bgImage: "assets/img/cactus/7.png",
     icon: FaHandsHelping,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Fiber Spinning",
     description:
       "The aligned banana fibers are spun into yarn using traditional hand-spinning wheels or mechanized spindles. Spinning converts loose fiber into a continuous thread, which is flexible yet strong enough to be woven or knitted into fabrics.",
-    bgImage: "public/assets/img/cactus/8.png",
+    bgImage: "assets/img/cactus/8.png",
     icon: FaSort,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Yarn Treatment",
     description:
       "To improve the yarn's performance, treatments such as softening, anti-bacterial washing, or moisture-wicking finishes may be applied. This enhances the banana yarn’s suitability for clothing, upholstery, or interior decor applications.",
-    bgImage: "public/assets/img/cactus/9.png",
+    bgImage: "assets/img/cactus/9.png",
     icon: FaTools,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Quality Testing",
     description:
       "Each yarn batch is tested for tensile strength, moisture resistance, and color fastness. Consistent quality is essential for textile production, ensuring the banana fiber yarn meets modern sustainability and durability standards.",
-    bgImage: "public/assets/img/cactus/10.png",
+    bgImage: "assets/img/cactus/10.png",
     icon: FaCog,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Natural Dyeing",
     description:
       "Banana fiber’s high cellulose content allows it to absorb natural dyes beautifully. Using plant-based and non-toxic dyes, the yarn is colored in earthy tones—highlighting both the aesthetic and environmental values of the material.",
-    bgImage: "public/assets/img/cactus/11.png",
+    bgImage: "assets/img/cactus/11.png",
     icon: FaIndustry,
   },
   {
