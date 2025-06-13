@@ -6,28 +6,28 @@ import { Leaf, Droplets, Wind, Sparkles } from 'lucide-react';
 const processSteps = [
   { 
     name: "Raw Fiber", 
-    image: "/assets/img/Fiber/fibre.jpg", 
-    story: "High in the Himalayas, wild nettle grows naturally in pristine mountain conditions",
+    image: "/assets/img/Fiber/rawfiber.png", 
+    story: "High in the Himalayas, natural fiber grows naturally in pristine mountain conditions",
     icon: Leaf,
     step: "01"
   },
   { 
     name: "Degummed", 
-    image: "/assets/img/extra/nettle.jpg", 
+    image: "/assets/img/extra/degummed.png", 
     story: "Traditional water processing removes natural impurities while preserving fiber strength",
     icon: Droplets,
     step: "02"
   },
   { 
     name: "Yarn", 
-    image: "/assets/img/fabrics.jpg", 
+    image: "/assets/img/yarn/rawyarn.png", 
     story: "Ancient spinning techniques transform clean fibers into strong, durable threads",
     icon: Wind,
     step: "03"
   },
   { 
     name: "Fabric", 
-    image: "/assets/img/extra/Knitted-Fabric.png", 
+    image: "/assets/img/fabric/fabric.png", 
     story: "Master weavers craft sustainable textiles using generations of inherited wisdom",
     icon: Sparkles,
     step: "04"
@@ -89,7 +89,7 @@ const ProcessCard = ({ step, index }) => {
   };
 
   return (
-   <div className="relative flex flex-col md:flex-row items-center mb-16 last:mb-0 overflow-x-hidden">
+   <div className="relative flex flex-col md:flex-row items-center mb-16 last:mb-0 overflow-hidden">
   {/* Timeline line */}
   <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-300 -z-10">
     {index < processSteps.length - 1 && (
@@ -116,7 +116,7 @@ const ProcessCard = ({ step, index }) => {
       animate={isInView ? "visible" : "hidden"}
       className={`w-full md:w-6/12 lg:w-5/12 ${
         isEven ? "md:pr-8" : "md:pl-8"
-      } mb-8 md:mb-0`}
+      } mb-8 md:mb-0 overflow-x-hidden`}
     >
       <div className="bg-white/95 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
         <div className="flex flex-col sm:flex-row">

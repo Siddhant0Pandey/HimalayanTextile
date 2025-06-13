@@ -1,152 +1,285 @@
-import React, { useState, useEffect } from "react";
-import {
-  FaYarn,
-  FaPaintBrush,
-  FaGlobe,
-  FaCog,
-  FaLeaf,
-  FaChevronDown,
-  FaMicrochip,
-  FaHandsHelping,
-  FaIndustry,
-} from "react-icons/fa";
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import OurStoryAnimation from "./OurStoryAnimation";
+import TextileParticles from "./TextileParicles";
+import OurStoryAnimation2 from "./OurStoryAnimation2";
+import AnimatedMapPins from "../../storymap/AnimatedMapPins";
 
+const endProgress = 0.6;
 const timelineData = [
   {
-    id: 1,
-    date: "1985 – Humble Beginnings",
+    year: "1995",
+    title: "Humble Beginnings",
     description:
-      "Founded as a small weaving unit, we began with a simple vision: to weave quality and trust into every thread.",
-    icon: FaYarn, // Represents weaving/thread
+      "Nanda Dangi founded the company in Rukum, Nepal, starting with hand spinning nettle and hemp yarn using locally sourced natural fibers.",
+    image: "/assets/img/1995.jpg",
+    color: "#edfeee",
   },
   {
-    id: 2,
-    date: "1992 – Expanding Our Threads",
+    year: "2000",
+    title: "Yarn Extraction Process Developed",
     description:
-      "We expanded into dyeing and finishing processes, introducing eco-friendly practices that set us apart early on.",
-    icon: FaPaintBrush, // Represents dyeing and finishing
+      "Improved traditional methods of fiber extraction and yarn making, laying the foundation for sustainable production.",
+    image: "/assets/factory.png",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    id: 3,
-    date: "2001 – Global Footprint",
+    year: "2007",
+    title: "Handloom Weaving Introduced",
     description:
-      "Our first international export shipment marked a major milestone, establishing our presence in European and Middle Eastern markets.",
-    icon: FaGlobe, // Represents global expansion
+      "Started handwoven fabric production, employing and empowering over 50 local women in rural Nepal.",
+    image: "/assets/img/handloom.jpg",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    id: 4,
-    date: "2008 – Technology Meets Tradition",
+    year: "2011",
+    title: "Machine Production in Kathmandu",
     description:
-      "We modernized our manufacturing units with cutting-edge textile machinery while preserving the artistry of traditional craftsmanship.",
-    icon: FaCog, // Represents technology/innovation
+      "Established machine spinning and weaving units in Kathmandu, combining traditional knowledge with modern technology.",
+    image: "/assets/img/machinespun.jpg",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    id: 5,
-    date: "2015 – Sustainability First",
+    year: "2017",
+    title: "Export to India Begins",
     description:
-      "We launched our sustainable fabric line, using organic cotton and recycled fibers, reinforcing our commitment to the environment.",
-    icon: FaLeaf, // Represents sustainability and eco-friendliness
+      "Launched exports of yarn and handloom fabric to India, marking the first step into international trade.",
+    color: "from-green-600 to-emerald-800",
   },
   {
-    id: 6,
-    date: "2020 – Smart Textiles & Innovation",
+    year: "2023",
+    title: "Global Expansion",
     description:
-      "Ventured into smart textiles and performance fabrics, merging comfort with innovation for next-gen consumers.",
-    icon: FaMicrochip, // Represents smart textiles/technology
-  },
-  {
-    id: 7,
-    date: "2024 – Community & Culture",
-    description:
-      "Initiated skill development programs to empower local artisans, reinforcing our dedication to social responsibility and cultural heritage.",
-    icon: FaHandsHelping, // Represents community/social responsibility
-  },
-  {
-    id: 8,
-    date: "Today",
-    description:
-      "From local roots to global reach, we continue to evolve—blending heritage, innovation, and sustainability to shape the future of textiles.",
-    icon: FaIndustry, // Represents modern industry and growth
+      "Began exporting eco-friendly home textile products to global markets under a sustainable and ethical model.",
+    color: "from-green-600 to-emerald-800",
   },
 ];
 
-export default function OurStoryTimeline() {
-  const [visibleItems, setVisibleItems] = useState([]);
+const TimelineSection = ({ item, index }) => {
+  const sectionRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const cards = document.querySelectorAll(".timeline-card");
-      const newVisible = [];
-
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.75) {
-          newVisible.push(index);
-        }
-      });
-
-      setVisibleItems(newVisible);
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 640);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger once on mount
-    return () => window.removeEventListener("scroll", handleScroll);
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  const { scrollYProgress: sectionScrollProgress } = useScroll({
+    target: sectionRef,
+    offset: ["-40% end", "end start"],
+  });
+
+  const smoothProgress = useSpring(sectionScrollProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const yearOpacity = useTransform(smoothProgress, [0.05, 0.25], [0, 1]);
+  const yearScale = useTransform(smoothProgress, [0.05, 0.25], [0.7, 1]);
+  const yearY = useTransform(smoothProgress, [0.05, 0.25], [100, 0]);
+
+  const titleOpacity = useTransform(smoothProgress, [0.2, 0.5], [0, 1]);
+  const descriptionOpacity = useTransform(smoothProgress, [0.3, 0.7], [0, 1]);
+
+  const imageOpacity = useTransform(smoothProgress, [0.4, 0.7], [0, 1]);
+  const imageScale = useTransform(smoothProgress, [0.4, 0.7], [1.2, 1]);
+  const imageY = useTransform(smoothProgress, [0.4, 0.7], [120, 0]);
+
+  const hasImage = !!item.image;
+
   return (
-    <div className="bg-highlight py-16 px-4">
-      <h1 className="text-4xl font-bold text-center mb-16 text-[#1FA951]">
-        Our Journey
-      </h1>
-      <div className="relative max-w-5xl mx-auto">
-        {/* Vertical line */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-full bg-green-400 rounded-md z-0" />
+    <div
+      ref={sectionRef}
+      className={`min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 relative overflow-hidden bg-highlight ${item.color}`}
+    >
+      <TextileParticles />
 
-        {timelineData.map((item, index) => {
-          const isLeft = index % 2 === 0;
-          const Icon = item.icon;
-          const isVisible = visibleItems.includes(index);
-
-          return (
-            <div
-              key={item.id}
-              className={`timeline-card relative flex flex-col md:flex-row items-center justify-between my-16 ${
-                isLeft ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-            >
-              {/* Spacer for line */}
-              <div className="hidden md:block md:w-1/2" />
-
-              {/* Card Content */}
-              <div
-                className={`relative z-10 bg-white/90 backdrop-blur-lg rounded-full shadow-xl overflow-hidden w-full md:w-[45%] transition-all duration-700 ease-in-out transform ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : isLeft
-                    ? "-translate-x-10 opacity-0"
-                    : "translate-x-10 opacity-0"
-                }`}
-              >
-                <div className="p-8 px-18">
-                  <h3 className="text-2xl font-semibold mb-2">{item.date}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </div>
-
-              {/* Icon in center */}
-              <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-                <div className="w-14 h-14 flex items-center justify-center bg-green-500 text-white rounded-full border-4 border-white shadow-lg ring-2 ring-green-300">
-                  <Icon size={20} />
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[#edfeee]"></div>
       </div>
 
-      {/* <div className="mt-12 text-center animate-bounce">
-        <FaChevronDown size={28} className="text-green-500" />
-      </div> */}
+      <div className="max-w-7xl w-full mx-auto relative z-10">
+        <motion.div
+          style={{ opacity: yearOpacity, scale: yearScale, y: yearY }}
+          className="mb-8 sm:mb-10 md:mb-12 text-center"
+        >
+          <div className="overflow-hidden">
+            <motion.h1
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-green-600 mb-4 sm:mb-6 tracking-tight leading-none"
+              style={{
+                y: useTransform(smoothProgress, [0.1, 0.5], [200, 0]),
+                rotateX: useTransform(smoothProgress, [0.1, 0.5], [90, 0]),
+              }}
+            >
+              <motion.span
+                style={{
+                  display: "inline-block",
+                  y: useTransform(smoothProgress, [0.15, 0.45], [100, 0]),
+                }}
+                className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-4 sm:pb-6"
+              >
+                {item.year.split("").map((digit, i) => (
+                  <motion.span
+                    key={i}
+                    style={{
+                      display: "inline-block",
+                      y: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.4 + i * 0.05],
+                        [150, 0]
+                      ),
+                      opacity: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.3 + i * 0.05],
+                        [0, 1]
+                      ),
+                      rotateY: useTransform(
+                        smoothProgress,
+                        [0.1 + i * 0.05, 0.4 + i * 0.05],
+                        [180, 0]
+                      ),
+                    }}
+                    className="origin-center"
+                  >
+                    {digit}
+                  </motion.span>
+                ))}
+              </motion.span>
+            </motion.h1>
+          </div>
+        </motion.div>
+
+        <motion.div className="mb-8 sm:mb-12 md:mb-16 pb-6 sm:pb-8 md:pb-12 overflow-hidden text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-green-700 leading-tight px-2 whitespace-pre-wrap break-words">
+            {item.title}
+          </h2>
+        </motion.div>
+
+        <div
+          className={`flex flex-col ${
+            hasImage ? "lg:flex-row" : "lg:flex-col"
+          } gap-8 lg:gap-12 items-center`}
+        >
+          <motion.div className="mb-0 sm:mb-12 md:mb-16 pb-6 sm:pb-8 md:pb-12 overflow-hidden flex-1 w-full">
+            <p
+              className={`text-base sm:text-lg md:text-xl text-green-600 text-opacity-90 leading-relaxed max-w-4xl mx-auto ${
+                hasImage ? "text-center lg:text-left" : "text-center"
+              } px-2`}
+            >
+              {(() => {
+                const words = item.description.split(" ");
+                const totalWords = words.length;
+                const wordInterval = (endProgress - 0.25) / totalWords;
+
+                return words.map((word, wordIndex) => (
+                  <motion.span
+                    key={wordIndex}
+                    className="inline-block mr-1"
+                    style={{
+                      opacity: useTransform(
+                        smoothProgress,
+                        [
+                          0.25 + wordIndex * wordInterval,
+                          0.25 + wordIndex * wordInterval + wordInterval * 0.6,
+                        ],
+                        [0, 1]
+                      ),
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ));
+              })()}
+            </p>
+          </motion.div>
+
+          {hasImage && (
+            <motion.div
+              style={{ opacity: imageOpacity, scale: imageScale, y: imageY }}
+              className="relative flex-1 w-full max-w-lg lg:max-w-3xl mx-auto"
+            >
+              <div className="relative h-[80vh]">
+                <img src={item.image} className="w-full xl:h-60 object-cover" />
+              </div>
+
+              {/* Decorative blobs */}
+              <div className="absolute -top-3 -left-3 w-4 h-4 bg-white bg-opacity-20 rounded-full blur-sm"></div>
+              <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-white bg-opacity-15 rounded-full blur-sm"></div>
+              <div className="absolute top-2 -right-2 w-3 h-3 bg-white bg-opacity-25 rounded-full blur-sm"></div>
+            </motion.div>
+          )}
+        </div>
+      </div>
+
+      {index < timelineData.length - 1 && !isMobile && (
+        <motion.div
+          animate={{ x: [0, 12, 0], opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="w-4 h-8 border-2 border-white border-opacity-50 rounded-full flex justify-center backdrop-blur-sm">
+            <motion.div
+              className="w-0.5 h-2 bg-white bg-opacity-70 rounded-full mt-1.5"
+              animate={{ height: [8, 6, 8] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      )}
     </div>
   );
-}
+};
+
+const OurStoryTimeline = () => {
+  const containerRef = useRef(null);
+
+  return (
+    <div ref={containerRef} className="relative">
+      {timelineData.map((item, index) => (
+        <React.Fragment key={item.year}>
+          <TimelineSection item={item} index={index} />
+          {index === 2 && <OurStoryAnimation />}
+          {index === 4 && <OurStoryAnimation2 />}
+          {index === 5 && <AnimatedMapPins />}
+        </React.Fragment>
+      ))}
+
+      <div className="min-h-screen bg-emerald-800 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center text-white max-w-5xl mx-auto space-y-6"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight px-2">
+            The Journey Continues
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed px-2">
+            From rural Nepal to global markets, our commitment to sustainable
+            and ethical textile production drives us forward into the future.
+          </p>
+          <div className="pt-4">
+            <motion.div
+              className="w-16 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-gradient-to-r from-green-800 to-emerald-500 mx-auto rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: "6rem" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+            />
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default OurStoryTimeline;

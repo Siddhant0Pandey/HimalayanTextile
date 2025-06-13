@@ -9,6 +9,7 @@ import HeroTitle from "../components/home/HeroTitle";
 import TextileStoryTransition from "../components/home/TextileStoryTransition";
 import WhatSetsUsApartHorizontal from "../components/home/WhatSetsUsApart";
 import HeroSection from "../components/hero/HeroSection";
+import AnimatedMapPins from "../components/storymap/AnimatedMapPins";
 
 function Home() {
   return (
@@ -24,6 +25,7 @@ function Home() {
       <ProductsSection />
       {/* <WhatSetsUsApartHorizontal /> */}
       <MyMap />
+      
     </div>
   );
 }

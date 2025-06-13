@@ -1,99 +1,53 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
-import { MountainSnow, Wind, Leaf } from "lucide-react";
-
-export default function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Trigger animations after component mounts
-    setIsVisible(true);
-  }, []);
-
+export default function HeroSection({ isVisible }) {
   return (
-    <>
-      {/* Header with fade-in animation */}
-      <header
-        className="px-6 py-12 sm:py-16 md:py-20 text-center transition-opacity duration-1000 ease-in-out"
-        style={{ opacity: isVisible ? 1 : 0 }}
-      >
-        <h1
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1fa951] mb-6 transition-transform duration-700 ease-out"
-          style={{
-            transform: isVisible ? "translateY(0)" : "translateY(-20px)",
-          }}
-        >
-          Himalayan Textiles
-        </h1>
-        <p
-          className="text-lg md:text-xl max-w-2xl mx-auto text-[#1d1f10] transition-all duration-1000 delay-300"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-5">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-[#1fa951]"
+            style={{
+              width: `${200 + i * 100}px`,
+              height: `${200 + i * 100}px`,
+              left: `${20 + i * 30}%`,
+              top: `${10 + i * 20}%`,
+              animation: `float ${8 + i * 2}s ease-in-out infinite`,
+              animationDelay: `${i * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div
+          className="transition-all duration-1000 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transform: isVisible ? "translateY(0)" : "translateY(30px)"
           }}
         >
-          Centuries of tradition woven into every thread
-        </p>
-      </header>
-
-      {/* Info Section with staggered card animations */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatedInfoCard
-              Icon={MountainSnow}
-              title="Mountain Heritage"
-              color="#1fa951"
-              text="Our textiles draw inspiration from the majestic Himalayan landscapes, capturing the essence of mountain culture."
-              delay={0}
-              isVisible={isVisible}
-            />
-            <AnimatedInfoCard
-              Icon={Wind}
-              title="Sustainable Practice"
-              color="#729a78"
-              text="We honor ancient techniques that respect the environment, using natural dyes and sustainable materials."
-              delay={200}
-              isVisible={isVisible}
-            />
-            <AnimatedInfoCard
-              Icon={Leaf}
-              title="Artisan Crafted"
-              color="#1fa951"
-              text="Every piece tells a story through the hands of skilled artisans who have inherited generations of textile wisdom."
-              delay={400}
-              isVisible={isVisible}
-            />
-          </div>
+          <h1 className="text-5xl md:text-7xl font-normal text-[#1fa951] mb-6 tracking-tight">
+            Himalayan
+            <span className="block font-bold">Textiles</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-[#729a78] mb-8 font-normal">
+            Where tradition meets innovation
+          </p>
+          <div className="w-24 h-1 bg-[#1fa951] mx-auto mb-8 rounded-full" />
+          <p className="text-lg text-[#1d1f10] opacity-80 max-w-2xl mx-auto leading-relaxed">
+            Centuries of craftsmanship woven into sustainable, beautiful textiles 
+            from the heart of the Himalayas
+          </p>
         </div>
-      </section>
-    </>
-  );
-}
-
-function AnimatedInfoCard({ Icon, title, text, color, delay, isVisible }) {
-  return (
-    <div
-      className="bg-[#F0F7F4] p-6 md:p-8 rounded-lg shadow-md transition-all duration-700 ease-out hover:shadow-lg hover:translate-y-1"
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(40px)",
-        transitionDelay: `${delay}ms`,
-      }}
-    >
-      <div className="flex justify-center">
-        <Icon
-          className="w-12 h-12 mb-4 transition-transform duration-500 ease-in-out hover:scale-110"
-          style={{ color }}
-        />
       </div>
-      <h3
-        className="text-xl font-semibold mb-3 text-center transition-colors duration-300"
-        style={{ color }}
-      >
-        {title}
-      </h3>
-      <p className="text-[#1d1f10] text-center">{text}</p>
-    </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+      `}</style>
+    </section>
   );
 }
