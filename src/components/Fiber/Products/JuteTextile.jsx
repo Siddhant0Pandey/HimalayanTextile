@@ -22,7 +22,7 @@ const timelineData = [
     title: "Planting",
     description:
       "Jute cultivation begins with the sowing of seeds in well-prepared soil. Farmers typically plant the seeds during the early monsoon season to take advantage of natural rainfall. The seeds are sown in rows, either by hand or using simple tools, ensuring that there is enough space for the plants to grow properly. The soil is rich in nutrients, well-drained, and has a slightly acidic to neutral pH level, which is ideal for jute cultivation.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/1.png",
     icon: FaSeedling,
   },
   {
@@ -30,7 +30,7 @@ const timelineData = [
     title: "Growing",
     description:
       "Once germinated, jute plants grow rapidly, reaching a height of 10 to 12 feet within just a few months. The plants thrive in warm, humid climates with adequate rainfall. During this phase, farmers regularly monitor the crop, ensuring the plants are healthy and free from pests. Weeding and thinning are carried out to allow each plant sufficient space and nutrients to grow strong and straight.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/2.png",
     icon: FaLeaf,
   },
   {
@@ -38,7 +38,7 @@ const timelineData = [
     title: "Harvesting",
     description:
       "Jute is harvested when the plants are in the flowering stage, usually 100 to 120 days after planting. At this stage, the fiber quality is optimal. Farmers cut the jute stalks close to the ground using sickles. Timing is critical — harvesting too early results in weak fibers, while harvesting too late can make the fibers coarse and brittle.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/3.png",
     icon: FaTractor,
   },
   {
@@ -46,7 +46,7 @@ const timelineData = [
     title: "Bundling",
     description:
       "After cutting, the stalks are tied into bundles and left in the field for a few days to shed excess moisture. This makes them lighter and easier to transport. Proper bundling ensures uniform retting and fiber quality in the next stages of processing.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/4.png",
     icon: FaBoxOpen,
   },
   {
@@ -54,7 +54,7 @@ const timelineData = [
     title: "Retting",
     description:
       "Retting is a microbial process where jute bundles are submerged in slow-moving water (such as ponds or streams) for about 10 to 15 days. This breaks down the plant tissues and separates the fibers from the woody stalks. Proper retting is crucial for obtaining fine, strong fibers. Natural retting is preferred for producing high-quality fiber over chemical or mechanical retting.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/5.png",
     icon: FaWater,
   },
   {
@@ -62,7 +62,7 @@ const timelineData = [
     title: "Stripping",
     description:
       "Once retting is complete, the outer fibers are stripped from the stalks by hand. This labor-intensive process involves holding the stalks in one hand and pulling the fibers with the other. The separated fibers are then washed in clean water to remove any remaining plant residue.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/6.png",
     icon: FaHandsHelping,
   },
   {
@@ -70,7 +70,7 @@ const timelineData = [
     title: "Drying",
     description:
       "The stripped fibers are spread out or hung in the sun to dry thoroughly. Proper drying is essential to prevent mold or degradation of the fiber. Sun-drying also helps to naturally bleach and soften the fibers, improving their texture and appearance.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/7.png",
     icon: FaSun,
   },
   {
@@ -78,7 +78,7 @@ const timelineData = [
     title: "Grading & Sorting",
     description:
       "Once dried, the jute fibers are graded based on length, color, strength, and fineness. Grading ensures consistency in the quality of jute used for different applications. The fibers are then sorted into bundles according to their grade, ready for baling or further processing.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/8.png",
     icon: FaSort,
   },
   {
@@ -86,7 +86,7 @@ const timelineData = [
     title: "Baling",
     description:
       "The sorted fibers are compressed into bales for ease of transport and storage. Baling preserves the quality of the fibers by reducing exposure to moisture and contaminants. These bales are then transported to jute mills for industrial processing.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/9.png",
     icon: FaTools,
   },
   {
@@ -94,7 +94,7 @@ const timelineData = [
     title: "Softening & Batching",
     description:
       "At the mill, raw jute fibers are treated with oil-in-water emulsions to soften them and make them easier to process. Batching involves mixing fibers from different grades to achieve uniform quality, depending on the final product's requirements.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/10.png",
     icon: FaIndustry,
   },
   {
@@ -102,7 +102,7 @@ const timelineData = [
     title: "Carding & Drawing",
     description:
       "Softened fibers are passed through carding machines that disentangle and align them. Drawing combines several carded slivers to form a single, stronger sliver with consistent thickness. This step is critical for preparing the fibers for spinning into yarn.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/11.png",
     icon: FaCut,
   },
   {
@@ -110,7 +110,7 @@ const timelineData = [
     title: "Spinning",
     description:
       "In the spinning process, jute slivers are twisted and drawn out to form yarns of the desired thickness and strength. These yarns can be further treated or blended with other fibers for specific applications. Spinning determines the durability and quality of the final fabric.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/12.png",
     icon: FaSync,
   },
   {
@@ -118,7 +118,7 @@ const timelineData = [
     title: "Weaving",
     description:
       "The final stage involves weaving the jute yarn into fabric using traditional handlooms or modern power looms. The resulting fabric is used for various applications, from gunny sacks and carpets to eco-friendly fashion and home decor products. Weaving patterns and tightness can vary depending on the product requirements.",
-    bgImage: "/api/placeholder/600/400",
+    bgImage: "assets/img/jute/13.png",
     icon: FaThLarge,
   },
 ];
