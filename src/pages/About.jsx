@@ -7,7 +7,7 @@ import Certifications from "../components/About/Certifications";
 
 function About() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <AboutHero />
       <VerticalSnapScroll />
       <VerticalTimeline />

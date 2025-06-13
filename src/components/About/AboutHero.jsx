@@ -96,7 +96,7 @@ const AboutHero = () => {
           ></path>
         </svg>
       </div> */}
-      e{/* Dark overlay */}
+      {/* Dark overlay */}
       <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
       {/* Main content */}
       <div className="text-center px-4 z-50">
