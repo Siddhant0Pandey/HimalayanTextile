@@ -175,7 +175,7 @@ export default function AnimatedHeadhero() {
               <p className="text-white font-medium">Traditional Yarns</p>
             </div>
           </div>
-        </div>1``
+        </div>
         <div className="relative md:mt-12">
           <div
             ref={image2Ref}
