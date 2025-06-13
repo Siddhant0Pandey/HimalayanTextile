@@ -304,7 +304,7 @@ function Navbar() {
           </div>
 
           {/* Right Side Link */}
-          <div className="flex-1 flex items-start md:items-start justify-end">
+          <div className="flex-1 flex items-start md:items-start lg:justify-end">
             <div className="space-y-10 text-5xl md:text-6xl font-bold tracking-tight text-right">
               {navLink2.map((link, index) => (
                 <div key={index}>
@@ -318,7 +318,7 @@ function Navbar() {
                     <span className="text-sm font-light">
                       {String(navLinks.length + index + 1).padStart(2, "0")}
                     </span>
-                    <span className="hover:text-[#1fa951] transition-colors duration-300">
+                    <span className="hover:text-[#1fa951] transition-colors duration-300 ">
                       {link.text}
                     </span>
                   </div>
