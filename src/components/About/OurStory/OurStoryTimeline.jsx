@@ -207,7 +207,7 @@ const TimelineSection = ({ item, index }) => {
               className="relative flex-1 w-full max-w-lg lg:max-w-3xl mx-auto"
             >
               <div className="relative h-[80vh]">
-                <img src={item.image} className="w-full xl:h-60 object-cover" />
+                <img src={item.image} className="w-full object-cover" />
               </div>
 
               {/* Decorative blobs */}
