@@ -11,7 +11,7 @@ const CoreValues = () => {
   const coreValues = [
     'Ethical Practice',
     'Best Quality',
-    'Customer Focus',
+    'Green Commitment',
     'Innovation',
   ];
 
