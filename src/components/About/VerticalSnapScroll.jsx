@@ -100,11 +100,11 @@ const OurMissionPanel = () => {
   }, []);
 
   return (
-    <section className="panel w-screen h-screen flex justify-center items-center text-[#333] p-6 md:p-12 bg-[#f5f5f0]">
+    <section className="panel w-screen h-[100vh]  flex justify-center items-center text-[#333] sm:py-12 p-6 md:p-12 bg-[#f5f5f0]">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {/* Left Column */}
         <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1FA951]">
+          <h2 className="text-xl md:text-4xl font-bold text-[#1FA951]">
             Our Mission
           </h2>
           <div
@@ -121,8 +121,8 @@ const OurMissionPanel = () => {
 
         {/* Center Column: Icon and Para2 */}
         <div className="flex flex-col items-center space-y-6">
-          <div className="w-48 h-48 flex justify-center items-center bg-white rounded-full shadow-lg">
-            <GiArcheryTarget className="text-[#1FA951] w-36 h-36 animate-pulse" />
+            <div className="lg:w-48 lg:h-48 sm:w-0 sm:h-0  lg:flex  justify-center items-center bg-white rounded-full shadow-lg responsive-box" >
+            <GiArcheryTarget className="text-[#1FA951] lg:w-36 lg:h-36 sm:h-0 sm:w-0 animate-pulse"  />
           </div>
           <div
             ref={(el) => (paraRefs.current[1] = el)}
@@ -221,9 +221,9 @@ const OurVisionPanel = () => {
         <div className="flex flex-col items-center space-y-6">
           <div
             ref={eyeRef}
-            className="w-60 h-60 flex justify-center items-center bg-white rounded-full shadow-lg"
+            className="w-60 h-60 flex justify-center items-center bg-white rounded-full shadow-lg responsive-box"
           >
-            <svg width="160" height="160" viewBox="0 0 100 100">
+            <svg width="160" height="160" viewBox="0 0 100 100" className="responsive-box">
               <ellipse cx="50" cy="50" rx="40" ry="25" fill="#a7f3d0" />
               <circle cx="50" cy="50" r="10" fill="#065f46" />
             </svg>
@@ -289,13 +289,14 @@ export default function HorizontalSnapPanels() {
   }, []);
 
   return (
-    <div ref={scrollSectionRef} className="w-full overflow-hidden">
+    <div ref={scrollSectionRef} className="w-full overflow-hidden ">
       <div
         ref={containerRef}
-        className="sticky top-0 h-screen w-full overflow-hidden"
+        className="sticky top-0 h-[100vh]  w-full overflow-hidden "
       >
-        <div className="flex h-full w-[300vw]">
+        <div className="flex h-[100vh] w-[300vw]">
           <WelcomePanel />
+
           <OurMissionPanel />
           <OurVisionPanel />
         </div>
