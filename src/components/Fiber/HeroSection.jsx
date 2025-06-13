@@ -104,10 +104,10 @@ const HeroSection = () => {
           ref={textRef}
           className="text-5xl md:text-6xl font-semibold mb-4 drop-shadow-lg"
         >
-          Fibers
+          Fibres
         </h1>
         <p ref={subtitleRef} className="text-lg md:text-xl font-light mb-6">
-          Earth-Friendly Fibers from the Heart of the Himalayas
+          Earth-Friendly Fibres from the Heart of the Himalayas
         </p>
 
         {/* Badge element */}
