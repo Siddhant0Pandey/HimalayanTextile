@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 const AnimationSection = () => {
-  // Animation state management
   const [currentElement, setCurrentElement] = useState(0);
   const [animationActive, setAnimationActive] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  // Theme colors
   const theme = {
     darkBg: "#0A0B0D",
     primary: "#1fa951",
@@ -17,68 +15,56 @@ const AnimationSection = () => {
     darkText: "#1d1f10",
   };
 
-  // Image collections
   const imageCollections = {
     desktop: [
       {
-        url: "/assets/img/Fiber/raw4.png",
+        url: "/assets/img/Fiber/raw01.png",
         alt: "Starting point of the process",
       },
       {
-        url: "/assets/img/Fiber/raw5.png",
+        url: "/assets/img/Fiber/raw02.png",
         alt: "Middle stage of the process",
       },
       {
-        url: "/assets/img/Fiber/raw8.png",
+        url: "/assets/img/Fiber/raw03.png",
         alt: "Final outcome of the process",
       },
     ],
     mobile: [
       {
-        url: "/assets/img/Fiber/raw1.png",
+        url: "/assets/img/Fiber/raw01.png",
         alt: "Starting point of the process",
       },
       {
-        url: "/assets/img/Fiber/wool.png",
+        url: "/assets/img/Fiber/raw02.png",
         alt: "Middle stage of the process",
       },
       {
-        url: "/assets/img/Fiber/wool1.png",
+        url: "/assets/img/Fiber/raw03.png",
         alt: "Final outcome of the process",
       },
     ],
   };
 
-  // Handle responsive behavior
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
     };
 
-    // Initial check
     handleResize();
-
-    // Set up listener
     window.addEventListener("resize", handleResize);
-
-    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset and restart animation
   const resetAnimation = useCallback(() => {
     setCurrentElement(0);
     setAnimationActive(false);
-
-    // Small delay before reactivating animation
     setTimeout(() => setAnimationActive(true), 100);
   }, []);
 
-  // Manage sequential animation
   useEffect(() => {
     if (!animationActive) return;
 
-    // Animation timeline with progressive delays
     const timers = [
       setTimeout(() => setCurrentElement(1), 800),
       setTimeout(() => setCurrentElement(2), 2200),
@@ -88,11 +74,9 @@ const AnimationSection = () => {
       setTimeout(resetAnimation, 10000),
     ];
 
-    // Cleanup all timers on unmount or when animation restarts
     return () => timers.forEach((timer) => clearTimeout(timer));
   }, [animationActive, resetAnimation]);
 
-  // Select appropriate image set
   const imageData = isSmallScreen
     ? imageCollections.mobile
     : imageCollections.mobile;
@@ -211,9 +195,9 @@ const AnimationSection = () => {
             src={imageData[0].url}
             alt={imageData[0].alt}
             className="w-full h-full object-cover border rounded-lg"
-            style={{ 
+            style={{
               backgroundColor: theme.light,
-              borderColor: theme.secondary 
+              borderColor: theme.secondary,
             }}
           />
         </div>
@@ -223,8 +207,17 @@ const AnimationSection = () => {
           {isSmallScreen ? (
             <div className="flex flex-col items-center px-4">
               <div className="w-5 h-5 flex items-center justify-center mb-1">
-                <svg className="w-5 h-5 text-[#1fa951]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" transform="rotate(90 10 10)" />
+                <svg
+                  className="w-5 h-5 text-[#1fa951]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                    clipRule="evenodd"
+                    transform="rotate(90 10 10)"
+                  />
                 </svg>
               </div>
               <span className="text-xs font-medium text-[#1fa951] bg-white px-2 py-1 rounded shadow-sm">
@@ -234,9 +227,21 @@ const AnimationSection = () => {
           ) : (
             <div className="flex flex-col items-center">
               <div className="w-6 h-6 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#1fa951]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  <path fillRule="evenodd" d="M3 10a1 1 0 011-1h10a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-6 h-6 text-[#1fa951]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M3 10a1 1 0 011-1h10a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <span className="text-sm mt-2 text-[#1fa951] font-medium">
@@ -256,9 +261,9 @@ const AnimationSection = () => {
             src={imageData[1].url}
             alt={imageData[1].alt}
             className="w-full h-full object-cover border rounded-lg"
-            style={{ 
+            style={{
               backgroundColor: theme.light,
-              borderColor: theme.secondary 
+              borderColor: theme.secondary,
             }}
           />
         </div>
@@ -268,8 +273,17 @@ const AnimationSection = () => {
           {isSmallScreen ? (
             <div className="flex flex-col items-center px-4">
               <div className="w-5 h-5 flex items-center justify-center mb-1">
-                <svg className="w-5 h-5 text-[#1fa951]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" transform="rotate(90 10 10)" />
+                <svg
+                  className="w-5 h-5 text-[#1fa951]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                    clipRule="evenodd"
+                    transform="rotate(90 10 10)"
+                  />
                 </svg>
               </div>
               <span className="text-xs font-medium text-[#1fa951] bg-white px-2 py-1 rounded shadow-sm">
@@ -279,9 +293,21 @@ const AnimationSection = () => {
           ) : (
             <div className="flex flex-col items-center">
               <div className="w-6 h-6 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#1fa951]" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  <path fillRule="evenodd" d="M3 10a1 1 0 011-1h10a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                <svg
+                  className="w-6 h-6 text-[#1fa951]"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M3 10a1 1 0 011-1h10a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <span className="text-sm mt-2 text-[#1fa951] font-medium">
@@ -301,9 +327,9 @@ const AnimationSection = () => {
             src={imageData[2].url}
             alt={imageData[2].alt}
             className="w-full h-full object-cover border rounded-lg"
-            style={{ 
+            style={{
               backgroundColor: theme.light,
-              borderColor: theme.secondary 
+              borderColor: theme.secondary,
             }}
           />
         </div>
