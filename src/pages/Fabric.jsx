@@ -9,7 +9,7 @@ export default function Fabric() {
       <FirstHero />
 
       <StorySection />
-      <MinimalisticCTA/>
+      <MinimalisticCTA product_name="Fibers" />
     </div>
   );
 }
