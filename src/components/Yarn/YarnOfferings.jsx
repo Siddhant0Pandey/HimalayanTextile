@@ -14,27 +14,23 @@ import MinimalisticCTA from "./MinimalisticCTA";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function YarnOfferings() {
- 
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
   const subheadingRef = useRef(null);
-  const cardsContainerRef = useRef(null); 
+  const cardsContainerRef = useRef(null);
   const cardsRef = useRef([]);
   const processRef = useRef(null);
   const processItemsRef = useRef([]);
   const ctaRef = useRef(null);
   const buttonRef = useRef(null);
 
-  
   if (!cardsRef.current) cardsRef.current = [];
   if (!processItemsRef.current) processItemsRef.current = [];
 
-  
   const addToCardsRef = (el) => {
     if (el && !cardsRef.current.includes(el)) {
       cardsRef.current.push(el);
 
-   
       if (el) {
         el.style.opacity = 1;
       }
@@ -48,9 +44,7 @@ export default function YarnOfferings() {
   };
 
   useEffect(() => {
-    
     const ctx = gsap.context(() => {
-    
       const heroTl = gsap.timeline();
       if (headingRef.current && subheadingRef.current) {
         heroTl
@@ -72,7 +66,6 @@ export default function YarnOfferings() {
           );
       }
 
-   
       if (cardsRef.current.length > 0) {
         // Set initial state for cards
         gsap.set(cardsRef.current, {
@@ -80,7 +73,6 @@ export default function YarnOfferings() {
           y: 50,
         });
 
- 
         gsap.to(cardsRef.current, {
           opacity: 1,
           y: 0,
@@ -90,7 +82,6 @@ export default function YarnOfferings() {
           delay: 0.5, // Start after hero animation
         });
 
-        
         cardsRef.current.forEach((card) => {
           if (card) {
             card.addEventListener("mouseenter", () => {
@@ -131,7 +122,7 @@ export default function YarnOfferings() {
               });
             }
           });
-        }, 1500); 
+        }, 1500);
       }
 
       if (processRef.current) {
@@ -247,14 +238,12 @@ export default function YarnOfferings() {
         color: "#1d1f10",
       }}
     >
-     
-      <YarnCollection/>
+      <YarnCollection />
 
-  
-     <YarnProcess/>
+      <YarnProcess />
 
       {/* CTA Section */}
-     <MinimalisticCTA/>
+      <MinimalisticCTA product_name="Yarn" />
     </section>
   );
 }
