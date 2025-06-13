@@ -96,10 +96,8 @@ const AboutHero = () => {
           ></path>
         </svg>
       </div> */}
-
-      {/* Dark overlay */}
+      e{/* Dark overlay */}
       <div className="absolute bg-black top-0 left-0  opacity-50 z-40 w-[100%] h-[100%]"></div>
-
       {/* Main content */}
       <div className="text-center px-4 z-50">
         <h1
@@ -115,7 +113,7 @@ const AboutHero = () => {
         {/* Badge element */}
         {/* <div
           ref={badgeRef}
-          className="bg-white text-green-600 text-sm font-bold py-2 px-4 rounded-full inline-block mt-4 cursor-pointer shadow-md"
+          className="bg-whittext-green-600 text-sm font-bold py-2 px-4 rounded-full inline-block mt-4 cursor-pointer shadow-md"
         >
           Explore Our Collection
         </div> */}
