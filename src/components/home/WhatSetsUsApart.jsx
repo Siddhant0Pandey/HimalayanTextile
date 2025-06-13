@@ -20,12 +20,15 @@ const panels = [
       "Unlike conventional textiles, we never blend in polyester. Every product is fully biodegradable and eco-friendly."
   },
   {
+    
     image: "/assets/img/extra/skillartisan.jpg",
     description: "Handcrafted by Skilled Artisans",
     reason:
       "Our Nepalese artisans use traditional techniques to transform nettle fiber into durable, breathable textiles with unique character."
   },
   {
+     image: "/icons/yarn.png",
+        //  image: "/assets/img/extra/skillartisan.jpg",  
     description: "Woven from Nature, Crafted for Life.",
     isQuote: true,
     reason:
@@ -146,7 +149,8 @@ export default function WhatSetsUsApartHorizontal() {
             ref={(el) => el && (panelRefs.current[idx] = el)}
           >
             {panel.isQuote ? (
-              <blockquote className="text-3xl italic text-[#fff] font-semibold max-w-md">
+              <blockquote className="text-3xl italic text-[#fff]  max-w-md">
+               
                 {panel.description}
                 {panel.reason && (
                   <p className="mt-4 text-base text-[#fff] italic">
@@ -186,6 +190,7 @@ export default function WhatSetsUsApartHorizontal() {
                     </defs>
                   </svg>
                 )}
+                 
                 <p className="text-2xl text-lightText max-w-md">
                   {panel.description}
                 </p>
