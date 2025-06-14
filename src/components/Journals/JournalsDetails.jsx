@@ -273,7 +273,7 @@ function JournalsDetails() {
   if (!blog) return <div className="text-center py-10">Blog not found</div>;
 
   return (
-    <div className="container mx-auto px-4 py-22">
+    <div className="container mx-auto px-4 py-22 bg-white text-darkText">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h1 className="text-2xl md:text-4xl font-semibold text-[#1FA951]">
