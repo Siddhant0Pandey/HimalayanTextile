@@ -4,7 +4,7 @@ import JournalsContent from "../components/Journals/JournalsContent";
 
 function Journals() {
   return (
-    <div>
+    <div className="bg-white text-darkText">
       <JournalsHero />
       <JournalsContent />
     </div>
