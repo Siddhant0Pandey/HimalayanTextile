@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const panels = [
   {
-    image: "/assets/img/Fiber/rawfiber.png",
+    image: "/assets/img/Fiber/raw01.png",
     description: "100% Himalayan Nettle Fiber",
     reason:
       "Harvested from wild Himalayan nettle, our fiber is organic, traceable, and supports local communities."
@@ -146,7 +146,7 @@ export default function WhatSetsUsApartHorizontal() {
             ref={(el) => el && (panelRefs.current[idx] = el)}
           >
             {panel.isQuote ? (
-              <blockquote className="text-3xl italic text-[#fff] font-semibold max-w-md">
+              <blockquote className="text-3xl italic text-[#fff]  max-w-md">
                 {panel.description}
                 {panel.reason && (
                   <p className="mt-4 text-base text-[#fff] italic">
