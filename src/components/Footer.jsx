@@ -1,77 +1,9 @@
 'use client'; // If using Next.js App Router
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
 
 const Footer = () => {
   const footerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate Footer Brand
-      gsap.from('.footer-brand', {
-        scale: 0.8,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.footer-brand',
-          start: 'top bottom',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // Animate Footer Columns
-      gsap.from('.footer-column', {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.footer-columns',
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // Footer badge animation
-      gsap.from('.footer-badge', {
-        y: 50,
-        opacity: 0,
-        delay: 0.3,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.footer-columns',
-          start: 'bottom bottom',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // Floating Background Shapes
-      gsap.to('.floating-shape', {
-        y: 20,
-        repeat: -1,
-        yoyo: true,
-        duration: 2,
-        ease: 'sine.inOut',
-      });
-
-      // Ensure ScrollTrigger refreshes after full page load
-      const refreshTrigger = () => ScrollTrigger.refresh();
-      window.addEventListener('load', refreshTrigger);
-
-      return () => {
-        window.removeEventListener('load', refreshTrigger);
-      };
-    }, footerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <footer
