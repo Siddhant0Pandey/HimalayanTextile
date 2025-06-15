@@ -41,7 +41,7 @@ function OurStoryFounderMsg() {
   }, [isInView, controlsLeft, controlsRight]);
 
   return (
-    <motion.div className="py-12 md:py-20 max-w-[95%] md:max-w-[80%] m-auto">
+    <motion.div className="py-12 md:py-20 max-w-[100%] md:max-w-[100%] px-[5%] bg-white text-darkBg">
       {/* Title Animation */}
       <motion.h1
         className="text-2xl md:text-4xl text-center font-bold text-[#1FA951] mb-6 md:mb-12"
