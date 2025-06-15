@@ -41,10 +41,12 @@ function OurStoryFounderMsg() {
   }, [isInView, controlsLeft, controlsRight]);
 
   return (
+
     <motion.div className="py-12 md:py-20 max-w-[100%] md:max-w-[100%] px-[5%] bg-white text-darkBg">
       {/* Title Animation */}
+
       <motion.h1
-        className="text-2xl md:text-4xl text-center font-bold text-[#1FA951] mb-6 md:mb-12"
+        className="text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl text-center font-bold text-[#1FA951] mb-6 md:mb-12 xl:mb-16"
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -57,14 +59,14 @@ function OurStoryFounderMsg() {
         Chairman's Note
       </motion.h1>
 
-      {/* Content Section */}
+      {/* Content */}
       <motion.div
-        className="wrap flex flex-row gap-3 md:gap-12 px-2 md:px-15 items-start"
+        className="wrap flex flex-row gap-3 md:gap-12 xl:gap-20 px-2 md:px-10 xl:px-16 items-start"
         ref={ref}
       >
-        {/* Left Content (Text) - Always on left */}
+        {/* Left: Text */}
         <motion.div
-          className="left w-[65%] md:w-1/2  text-[10px] md:text-lg md:leading-relaxed flex flex-col  leading-relaxed text-justify"
+          className="left w-[65%] md:w-1/2 text-[10px] md:text-lg xl:text-xl 2xl:text-3xl  md:leading-relaxed flex flex-col leading-relaxed text-justify"
           animate={controlsLeft}
           initial={{ x: -100, opacity: 0, scale: 0.95 }}
         >
@@ -93,7 +95,7 @@ function OurStoryFounderMsg() {
             that protect our planet and empower our communities.
           </p>
 
-          <div className="font-semibold text-gray-600 lg:text-lg text-[10px] ">
+          <div className="font-semibold text-gray-600 lg:text-lg xl:text-xl 2xl:text-3xl text-[10px]">
             <p>Warm regards,</p>
             <p>Baburam Dangi</p>
             <p>Chairman & CEO</p>
@@ -101,7 +103,7 @@ function OurStoryFounderMsg() {
           </div>
         </motion.div>
 
-        {/* Right Content (Image) - Always on right */}
+        {/* Right: Image */}
         <motion.div
           className="right w-[35%] md:w-1/2 flex flex-col"
           animate={controlsRight}
@@ -110,7 +112,7 @@ function OurStoryFounderMsg() {
           <img
             src="/assets/img/Chairman's & Ceo.jpg"
             alt="Founder"
-            className="rounded-lg md:rounded-xl shadow-xl object-cover w-full h-[200px] md:h-[400px] lg:h-[500px] grayscale-100 hover:grayscale-0 transition duration-1000"
+            className="rounded-lg md:rounded-xl shadow-xl object-cover w-full h-[200px] md:h-[400px] lg:h-[500px] xl:h-[600px] 2xl:h-[900px]  grayscale-100 hover:grayscale-0 transition duration-1000 3xl:object-contain"
             style={{ objectPosition: "60% center" }}
           />
         </motion.div>

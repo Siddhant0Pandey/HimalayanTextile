@@ -14,7 +14,7 @@ const fiberData = [
   {
     id: 2,
     title: "Cotton Fibre",
-    imageSrc: "assets/img/Fiber/Cotton.jpg",
+    imageSrc: "assets/img/Fiber/cotton2.jpg",
     description:
       "Soft and breathable cotton is a versatile natural fibre. Its comfort and absorbency make it ideal for everyday clothing and personal care products.",
     link: "/cotton",
@@ -54,7 +54,7 @@ const fiberData = [
   {
     id: 7,
     title: "Cactus Fibre",
-    imageSrc: "assets/img/Fiber/cactusfiber.jpg",
+    imageSrc: "assets/img/Fiber/cactus.jpg",
     description:
       "Cactus Fibre, derived mainly from prickly pear, is a sustainable and biodegradable alternative to leather. It's durable, flexible, and produced with minimal water usage.",
     link: "/cactus",

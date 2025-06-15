@@ -21,7 +21,7 @@ const timelineData = [
     title: "Banana Plantation",
     description:
       "Banana plants (Musa species) thrive in tropical climates and are grown globally for their fruit. The plants grow rapidly, reaching maturity within 9–12 months. While the fruit is the primary product, the plant’s pseudostem contains fibrous material that is often discarded—yet it holds tremendous potential for sustainable fiber production.",
-    bgImage: "public/assets/img/banana/1.png",
+    bgImage: "assets/img/banana/1.png",
     icon: FaSeedling,
   },
   {
@@ -29,7 +29,7 @@ const timelineData = [
     title: "Pseudostem Harvesting",
     description:
       "Once banana fruits are harvested, the pseudostems (the trunk-like structures made of tightly packed leaf sheaths) are cut down. These are normally treated as waste, but here they serve as the raw material for fiber extraction, making the entire process more eco-conscious and circular.",
-    bgImage: "public/assets/img/cactus/2.png",
+    bgImage: "assets/img/cactus/2.png",
     icon: FaCut,
   },
   {
@@ -37,7 +37,7 @@ const timelineData = [
     title: "Cleaning & Sorting",
     description:
       "The harvested pseudostems are cleaned to remove surface impurities, leaves, and excess moisture. They are then sorted based on diameter and quality to prepare them for mechanical processing, ensuring consistent fiber output in later stages.",
-    bgImage: "public/assets/img/cactus/3.png",
+    bgImage: "assets/img/cactus/3.png",
     icon: FaLeaf,
   },
   {
@@ -45,7 +45,7 @@ const timelineData = [
     title: "Fiber Extraction",
     description:
       "Using decorticating machines or manual tools, the outer layers of the pseudostem are scraped to separate long fibers. These machines crush the stem and pull out fibrous strands, which are collected for further processing. This step is key to unlocking the value from the plant waste.",
-    bgImage: "public/assets/img/cactus/4.png",
+    bgImage: "assets/img/cactus/4.png",
     icon: FaWater,
   },
   {
@@ -53,7 +53,7 @@ const timelineData = [
     title: "Washing & Drying",
     description:
       "The raw banana fibers are washed thoroughly to remove any remaining sap, dirt, or organic residues. Once clean, the fibers are sun-dried in controlled conditions to prevent mildew and ensure strength retention, contributing to their natural luster and durability.",
-    bgImage: "public/assets/img/cactus/5.png",
+    bgImage: "assets/img/cactus/5.png",
     icon: FaSun,
   },
   {
@@ -61,7 +61,7 @@ const timelineData = [
     title: "Fiber Grading",
     description:
       "After drying, the fibers are graded manually based on characteristics like length, fineness, color, and strength. Grading ensures uniformity in the final product and allows premium-quality fibers to be reserved for textiles, while coarser grades may be used in composites or handicrafts.",
-    bgImage: "public/assets/img/cactus/6.png",
+    bgImage: "assets/img/cactus/6.png",
     icon: FaFire,
   },
   {
@@ -69,7 +69,7 @@ const timelineData = [
     title: "Combing & Alignment",
     description:
       "Fibers are combed using fine tools to remove short, uneven strands and align the long fibers parallel to each other. This step improves fiber texture and is crucial for producing smooth, strong yarn, ready for spinning or blending with other natural fibers.",
-    bgImage: "public/assets/img/cactus/7.png",
+    bgImage: "assets/img/cactus/7.png",
     icon: FaHandsHelping,
   },
   {
@@ -77,7 +77,7 @@ const timelineData = [
     title: "Fiber Spinning",
     description:
       "The aligned banana fibers are spun into yarn using traditional hand-spinning wheels or mechanized spindles. Spinning converts loose fiber into a continuous thread, which is flexible yet strong enough to be woven or knitted into fabrics.",
-    bgImage: "public/assets/img/cactus/8.png",
+    bgImage: "assets/img/cactus/8.png",
     icon: FaSort,
   },
   {
@@ -85,7 +85,7 @@ const timelineData = [
     title: "Yarn Treatment",
     description:
       "To improve the yarn's performance, treatments such as softening, anti-bacterial washing, or moisture-wicking finishes may be applied. This enhances the banana yarn’s suitability for clothing, upholstery, or interior decor applications.",
-    bgImage: "public/assets/img/cactus/9.png",
+    bgImage: "assets/img/cactus/9.png",
     icon: FaTools,
   },
   {
@@ -93,7 +93,7 @@ const timelineData = [
     title: "Quality Testing",
     description:
       "Each yarn batch is tested for tensile strength, moisture resistance, and color fastness. Consistent quality is essential for textile production, ensuring the banana fiber yarn meets modern sustainability and durability standards.",
-    bgImage: "public/assets/img/cactus/10.png",
+    bgImage: "assets/img/cactus/10.png",
     icon: FaCog,
   },
   {
@@ -101,7 +101,7 @@ const timelineData = [
     title: "Natural Dyeing",
     description:
       "Banana fiber’s high cellulose content allows it to absorb natural dyes beautifully. Using plant-based and non-toxic dyes, the yarn is colored in earthy tones—highlighting both the aesthetic and environmental values of the material.",
-    bgImage: "public/assets/img/cactus/11.png",
+    bgImage: "assets/img/cactus/11.png",
     icon: FaIndustry,
   },
   {
@@ -109,7 +109,7 @@ const timelineData = [
     title: "Yarn Finishing",
     description:
       "Dyed yarns are wound onto bobbins and carefully inspected for uniformity in thickness and color. Any inconsistencies are corrected before the yarn is packaged for weaving, knitting, or braiding into fabric structures.",
-    bgImage: "public/assets/img/cactus/12.png",
+    bgImage: "assets/img/cactus/12.png",
     icon: FaSync,
   },
   {
@@ -117,7 +117,7 @@ const timelineData = [
     title: "Textile Manufacturing",
     description:
       "In the final stage, banana fiber yarn is crafted into rugs, garments, accessories, or eco-textiles. Weaving or knitting is done using either traditional looms or modern techniques, resulting in a durable, biodegradable, and elegant fabric ideal for sustainable living.",
-    bgImage: "public/assets/img/cactus/13.png",
+    bgImage: "assets/img/cactus/13.png",
     icon: FaThLarge,
   },
 ];
